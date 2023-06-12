@@ -1,14 +1,14 @@
 import Link from 'next/link'
-import estyleBar from '../../css/header.module.css'
+//import estyleBar from '../../css/header.module.css'
+import estyleBar from '../header/heade.module.css'
 
 
 export default function Header(){
     return(
       <>
-      <div>
-      <header>
-        <h2 className={estyleBar.titulo}>Em construção</h2>
-        <div>
+      
+      <div className={estyleBar.headerBack}>
+        <div className={estyleBar.opcoesMenu}>
      
     
       <Link href="/cadastroUsuario"><h2>Plantar</h2></Link>
@@ -21,8 +21,8 @@ export default function Header(){
       <Link href="/"><h2>Logout</h2></Link>
      
     </div>
-        </header>
-      </div>
+        </div>
+   
        
 
 
