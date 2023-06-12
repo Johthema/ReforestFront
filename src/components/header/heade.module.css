@@ -1,19 +1,76 @@
 
 .headerBack{
-    background-color: rgb(49, 166, 184);
     
     margin-left: -10px;
     margin-right: 0px;
     margin-top: -10px;
     width: 100vw;
-    height: 100px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
    
+    box-shadow: 0 5px 5px -3px rgb(169, 169, 169);
+    /* border-bottom: 3px solid; */
+
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, #469444, #0be6e6, #55ACEE) border-box;
+	/* border-radius: 50em; */
+	border: 3px solid transparent;
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-decoration: none;
+	color: #10a87d;
+	padding: 0.5em 1.5em;
+	cursor: pointer;
+   
+}
+
+.divlogotipo{
+    background-color: #ffffff;
+    display: flex;
+    width: 20%;
+    padding-left: 0px;
+    left: 0px
+    
 }
 
 .opcoesMenu{
     display: flex;
+    width: 40%;
+    text-decoration: none;
+    margin-bottom: 0px
+}
+
+.opcoesMenu .h2Tit{
+    margin: 10px;
+    font-family: var(--fontPadrao);
+    font-size: var(--fontSizeMenu);
+    text-decoration: none;
+    margin-top: 40px;
+    color: var(--secundaryTom1-color3)
     
 }
-.opcoesMenu h2{
-    margin: 15px
+.opcoesMenu .h2Tit:hover{
+    border-bottom: 3px solid;
+    border-bottom-color: var(--primaryTom1-color);
+    color: var(--primaryTom1-color);
+}
+
+.opcoesMenu2{
+    background-color: #ffffff;
+    display: flex;
+    width: 40%;
+    text-decoration: none;
+}
+
+.opcoesMenu2 .h2Tit{
+    margin: 10px;
+    font-family: var(--fontPadrao);
+    font-size: var(--fontSizeMenu);
+    text-decoration: none;
+    
 }
