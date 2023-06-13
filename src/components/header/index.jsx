@@ -1,14 +1,59 @@
 import Link from 'next/link'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../app/globals.css'
-//import estyleBar from '../../css/header.module.css'
-import styleBar from '../header/heade.module.css'
-
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import StyleBar from './heade.module.css'
+import Image from 'react-bootstrap/Image';
 
 export default function Header(){
     return(
      
       <>
-      <div className={styleBar.headerBack}>
+
+<Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
+      <Container>
+        <Navbar.Brand href="#home"><Image src="../../assets/logotipo/logo.png" rounded /></Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            
+            <Nav.Link href="/plantar">Plantar</Nav.Link>
+            <NavDropdown title="Árvores" id="collasible-nav-dropdown" >
+              <NavDropdown.Item ><Link href="/arvores/cadastrarArvore" className={StyleBar.h2Tit}>Cadastrar árvore</Link></NavDropdown.Item>
+              <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}>Lista de árvores</Link></NavDropdown.Item>
+             
+            </NavDropdown>
+            <NavDropdown title="Locais de plantação" id="collasible-nav-dropdown">
+              <NavDropdown.Item ><Link href="/locaisPlantacao/cadastrarLocal" className={StyleBar.h2Tit}>Cadastrar local</Link></NavDropdown.Item>
+              <NavDropdown.Item ><Link href="/locaisPlantacao/listaLocais" className={StyleBar.h2Tit}>Lista de locais</Link></NavDropdown.Item>
+             
+           
+            </NavDropdown>
+            
+            <NavDropdown title="Usuários" id="collasible-nav-dropdown">
+              <NavDropdown.Item ><Link href="/usuarios/cadastrarUsuario" className={StyleBar.h2Tit}>Cadastrar usuário</Link></NavDropdown.Item>
+              <NavDropdown.Item ><Link href="/usuarios/listaUsuario" className={StyleBar.h2Tit}>Lista de usuários</Link></NavDropdown.Item>
+          
+            </NavDropdown>
+
+            <Nav.Link href="#features">Sobre</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href="#deets">Perfil</Nav.Link>
+            <Nav.Link eventKey={2} href="#memes">Notificacoes</Nav.Link>
+            <Nav.Link href="#deets">Logout</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+
+
+
+      {/* <div className={styleBar.headerBack}>
         <div className={styleBar.divlogotipo}>
           <h3>Logotipo</h3>
         </div>
@@ -28,7 +73,7 @@ export default function Header(){
               <Link href="/home" className={styleBar.h2Tit}><h2>Notificação</h2></Link>
               <Link href="/home" className={styleBar.h2Tit}><h2>Logout</h2></Link>
         </div>
-        </div>
+        </div> */}
         </>
       
         
