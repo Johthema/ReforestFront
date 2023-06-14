@@ -99,6 +99,8 @@
     --bs-navbar-active-color: var(--primaryTom1-color);
   }
 
+
+
 /* .opcoesMenu .h2Tit{
     margin: 10px;
     font-family: var(--fontPadrao);
@@ -147,4 +149,8 @@
    
     color: var(--primaryTom1-color);
     
+}
+
+.custom_dropdown2{
+    --bs-nav-link-hover-color: red !important;
 }
