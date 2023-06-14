@@ -26,7 +26,7 @@ export default function Header(){
         <Navbar.Collapse id="responsive-navbar-nav" >
           <Nav  className={StyleBar.NavMenuOp}>
             
-            <Nav.Link href="/plantar" className={StyleBar.custom_dropdown}>Plantar</Nav.Link>
+            <Nav.Link  className={StyleBar.custom_dropdown} href="/plantar">Plantar</Nav.Link>
             <NavDropdown title="Árvores" id="collasible-nav-dropdown " className={StyleBar.custom_dropdown} >
               <NavDropdown.Item ><Link href="/arvores/cadastrarArvore" className={StyleBar.h2Tit}>Cadastrar árvore</Link></NavDropdown.Item>
               <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}>Lista de árvores</Link></NavDropdown.Item>
@@ -45,7 +45,7 @@ export default function Header(){
           
             </NavDropdown>
 
-            <Nav.Link href="#features" className={StyleBar.custom_dropdown}>Sobre</Nav.Link>
+            <Nav.Link className={StyleBar.custom_dropdown} href="/sobre">Sobre</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="#deets">Perfil</Nav.Link>
