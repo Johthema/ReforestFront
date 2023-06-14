@@ -14,80 +14,53 @@ import { FaDoorOpen } from "react-icons/fa";
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
-export default function Header(){
-    return(
-     
-      <>
+export default function Header() {
+  return (
 
-<Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
-      <Container className={StyleBar.navContain}>
-        <Navbar.Brand href="/home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} /></Navbar.Brand>
+    <>
 
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" >
-          <Nav  className={StyleBar.NavMenuOp}>
-            
-            <Nav.Link  className={StyleBar.custom_dropdown} href="/plantar">Plantar</Nav.Link>
-            <NavDropdown title="Árvores" id="collasible-nav-dropdown " className={StyleBar.custom_dropdown} >
-              <NavDropdown.Item ><Link href="/arvores/cadastrarArvore" className={StyleBar.h2Tit}>Cadastrar árvore</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}>Lista de árvores</Link></NavDropdown.Item>
-             
-            </NavDropdown>
-            <NavDropdown title="Locais de plantação" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
-              <NavDropdown.Item ><Link href="/locaisPlantacao/cadastrarLocal" className={StyleBar.h2Tit}>Cadastrar local</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link href="/locaisPlantacao/listaLocais" className={StyleBar.h2Tit}>Lista de locais</Link></NavDropdown.Item>
-             
-           
-            </NavDropdown>
-            
-            <NavDropdown title="Usuários" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
-              <NavDropdown.Item ><Link href="/usuarios/cadastrarUsuario" className={StyleBar.h2Tit}>Cadastrar usuário</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link href="/usuarios/listaUsuario" className={StyleBar.h2Tit}>Lista de usuários</Link></NavDropdown.Item>
-          
-            </NavDropdown>
+      <Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
+        <Container className={StyleBar.navContain}>
+          <Navbar.Brand href="/home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} /></Navbar.Brand>
 
-            <Nav.Link className={StyleBar.custom_dropdown} href="/sobre">Sobre</Nav.Link>
-          </Nav>
-          <Nav>
-          <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon}/></Nav.Link></OverlayTrigger>
-          <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon}/></Nav.Link></OverlayTrigger>
-          <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.Icon}/></Nav.Link></OverlayTrigger>  
-            
-            
-        
-            {/* <Nav.Link eventKey={2} href="#memes">Notificacoes</Nav.Link>
-            <Nav.Link href="#deets">Logout</Nav.Link> */}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav" >
+            <Nav className={StyleBar.NavMenuOp}>
+
+              <Nav.Link className={StyleBar.custom_dropdown} href="/plantar">Plantar</Nav.Link>
+              <NavDropdown title="Árvores" id="collasible-nav-dropdown " className={StyleBar.custom_dropdown} >
+                <NavDropdown.Item ><Link href="/arvores/cadastrarArvore" className={StyleBar.h2Tit}>Cadastrar árvore</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}>Lista de árvores</Link></NavDropdown.Item>
+
+              </NavDropdown>
+              <NavDropdown title="Locais de plantação" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
+                <NavDropdown.Item ><Link href="/locaisPlantacao/cadastrarLocal" className={StyleBar.h2Tit}>Cadastrar local</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/locaisPlantacao/listaLocais" className={StyleBar.h2Tit}>Lista de locais</Link></NavDropdown.Item>
 
 
+              </NavDropdown>
+
+              <NavDropdown title="Usuários" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
+                <NavDropdown.Item ><Link href="/usuarios/cadastrarUsuario" className={StyleBar.h2Tit}>Cadastrar usuário</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/usuarios/listaUsuario" className={StyleBar.h2Tit}>Lista de usuários</Link></NavDropdown.Item>
+
+              </NavDropdown>
+
+              <Nav.Link className={StyleBar.custom_dropdown} href="/sobre">Sobre</Nav.Link>
+            </Nav>
+            <Nav>
+              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
 
-      {/* <div className={styleBar.headerBack}>
-        <div className={styleBar.divlogotipo}>
-          <h3>Logotipo</h3>
-        </div>
-        <div className={styleBar.opcoesMenu}>
-     
-      
-              <Link href="/plantar" className={styleBar.h2Tit}><h2 >Plantar</h2></Link>
-              <Link href="/home" className={styleBar.h2Tit}><h2 >Árvores</h2></Link>
-              <Link href="/cadastroUsuario" className={styleBar.h2Tit}><h2 >Locais de plantação</h2></Link>
-              <Link href="/usuarios/cadastrarUsuario" className={styleBar.h2Tit}><h2 >Usuários</h2></Link>
-              <Link href="/sobre" className={styleBar.h2Tit}><h2 >Sobre</h2></Link>
-              
-     
-        </div>
-        <div className={styleBar.opcoesMenu2}>
-              <Link href="/home" className={styleBar.h2Tit}><h2>Perfil</h2></Link>
-              <Link href="/home" className={styleBar.h2Tit}><h2>Notificação</h2></Link>
-              <Link href="/home" className={styleBar.h2Tit}><h2>Logout</h2></Link>
-        </div>
-        </div> */}
-        </>
-      
-        
-    )
+    </>
+
+
+  )
 }
