@@ -8,9 +8,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import StyleBar from './heade.module.css';
 import Image from 'next/image';
 import Logotipo from '../../assets/images/logo.png';
-
-
-
+import { FaUserCircle } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
+import { FaDoorOpen } from "react-icons/fa";
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 export default function Header(){
     return(
@@ -47,9 +49,14 @@ export default function Header(){
             <Nav.Link className={StyleBar.custom_dropdown} href="/sobre">Sobre</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Perfil</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">Notificacoes</Nav.Link>
-            <Nav.Link href="#deets">Logout</Nav.Link>
+          <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon}/></Nav.Link></OverlayTrigger>
+          <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon}/></Nav.Link></OverlayTrigger>
+          <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.Icon}/></Nav.Link></OverlayTrigger>  
+            
+            
+        
+            {/* <Nav.Link eventKey={2} href="#memes">Notificacoes</Nav.Link>
+            <Nav.Link href="#deets">Logout</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

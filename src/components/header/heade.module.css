@@ -131,8 +131,6 @@
     
 }
 
-.corfont{
-    color: red
 } */
 .h2Menu{
     color: green
@@ -151,6 +149,14 @@
     
 }
 
-.custom_dropdown2{
-    --bs-nav-link-hover-color: red !important;
+
+
+.Icon{
+    width: 30px;
+    height: 30px;
+    color: var(--secundaryTom1-color3)
+}
+
+.Icon:hover{
+    color: var(--primaryTom1-color)
 }
