@@ -184,3 +184,22 @@
     --bs-btn-hover-color: none;
     --bs-btn-hover-bg: none;
 }
+
+.IconeDrop{
+    width: 20px;
+    height: 20px;
+    color: var(--secundaryTom1-color3)
+}
+
+/* .IconeDrop:hover{
+    width: 20px;
+    height: 20px;
+    color: var(--primaryTom1-color);
+   
+} */
+.OpDrop{
+    color: var(--secundaryTom1-color3);
+}
+.OpDrop:hover{
+    color: var(--primaryTom1-color);
+}

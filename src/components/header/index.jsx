@@ -14,7 +14,9 @@ import { FaDoorOpen } from "react-icons/fa";
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Dropdown from 'react-bootstrap/Dropdown';
-
+import { FaCog } from "react-icons/fa";
+import { FaChartLine } from "react-icons/fa";
+import { FaHistory } from "react-icons/fa";
 
 
 export default function Header() {
@@ -62,9 +64,9 @@ export default function Header() {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Faturamento</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Hist. Restauração</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Configurações</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1" className={StyleBar.OpDrop}><FaChartLine className={StyleBar.IconeDrop}/>Faturamento</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><FaHistory className={StyleBar.IconeDrop}/>Hist. Restauração</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><FaCog className={StyleBar.IconeDrop}/>Configurações</Dropdown.Item>
                   
                   </Dropdown.Menu>
             </Dropdown>
