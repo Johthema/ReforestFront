@@ -23,8 +23,8 @@ export default function Header(){
         <Navbar.Brand href="#home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} /></Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" className={StyleBar.NavMenuOp}>
-          <Nav className="me-auto">
+        <Navbar.Collapse id="responsive-navbar-nav" >
+          <Nav  className={StyleBar.NavMenuOp}>
             
             <Nav.Link href="/plantar">Plantar</Nav.Link>
             <NavDropdown title="Árvores" id="collasible-nav-dropdown" >
