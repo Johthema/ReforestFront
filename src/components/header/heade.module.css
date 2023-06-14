@@ -46,6 +46,15 @@
     
 }
 
+.navContain{
+    margin-left: 35px !important
+}
+.NavMenuOp{
+
+    margin: auto !important;
+    justify-content: center !important
+}
+
 .divlogotipo{
     background-color: #ffffff;
     display: flex;
@@ -53,6 +62,16 @@
     padding-left: 0px;
     left: 0px
     
+}
+
+.Navlogo{
+    margin-left: -70px;
+}
+
+.logo{
+    width: 200px;
+    height: 40px;
+    margin-left: 0px;
 }
 
 .opcoesMenu{

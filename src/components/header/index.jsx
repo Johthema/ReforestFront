@@ -5,8 +5,13 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import StyleBar from './heade.module.css'
-import Image from 'react-bootstrap/Image';
+import StyleBar from './heade.module.css';
+import Image from 'next/image';
+import Logotipo from '../../assets/images/logo.png';
+
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 
 export default function Header(){
     return(
@@ -14,10 +19,11 @@ export default function Header(){
       <>
 
 <Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
-      <Container>
-        <Navbar.Brand href="#home"><Image src="../../assets/logotipo/logo.png" rounded /></Navbar.Brand>
+      <Container className={StyleBar.navContain}>
+        <Navbar.Brand href="#home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} /></Navbar.Brand>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse id="responsive-navbar-nav" className={StyleBar.NavMenuOp}>
           <Nav className="me-auto">
             
             <Nav.Link href="/plantar">Plantar</Nav.Link>
