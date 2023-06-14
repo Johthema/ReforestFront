@@ -81,6 +81,24 @@
     margin-bottom: 0px
 }
 
+/* .fontMenu{
+    
+} */
+
+/* .custom_dropdown > .nav-link {
+    color: red !important; 
+  } */
+
+.custom_dropdown {
+    --bs-nav-link-color: var(--secundaryTom1-color3);
+    --bs-navbar-active-color: var(--primaryTom1-color);
+    font-family: var(--fontPadrao);
+  }
+.custom_dropdown:hover {
+    --bs-nav-link-hover-color: var(--primaryTom1-color);
+    --bs-navbar-active-color: var(--primaryTom1-color);
+  }
+
 /* .opcoesMenu .h2Tit{
     margin: 10px;
     font-family: var(--fontPadrao);
