@@ -153,6 +153,7 @@
 
 
 .Icon{
+   
     width: 30px;
     height: 30px;
     color: var(--secundaryTom1-color3)
@@ -160,4 +161,26 @@
 
 .Icon:hover{
     color: var(--primaryTom1-color)
+}
+
+.IconLogout{
+    margin-top: 23px;
+    width: 30px;
+    height: 30px;
+    color: var(--secundaryTom1-color3)
+}
+
+.IconLogout:hover{
+    color: var(--primaryTom1-color)
+}
+
+.IconeMENU{
+    margin-top: 20px;
+    --bs-btn-bg: none;
+    --bs-btn-border-color: none;
+    --bs-btn-hover-color: none;
+    background-color: transparent !important;
+    color: none;
+    --bs-btn-hover-color: none;
+    --bs-btn-hover-bg: none;
 }

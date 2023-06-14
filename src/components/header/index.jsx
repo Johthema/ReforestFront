@@ -13,6 +13,9 @@ import { FaBell } from "react-icons/fa";
 import { FaDoorOpen } from "react-icons/fa";
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+
 
 export default function Header() {
   return (
@@ -49,9 +52,37 @@ export default function Header() {
               <Nav.Link className={StyleBar.custom_dropdown} href="/sobre">Sobre</Nav.Link>
             </Nav>
             <Nav>
-              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+              {/* <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><NavDropdown  ><NavDropdown.Item><Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} />Configuração</Link></NavDropdown.Item></NavDropdown></OverlayTrigger>
               <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
-              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.Icon} /></Nav.Link></OverlayTrigger> */}
+
+              <Dropdown>
+                  <Dropdown.Toggle className={StyleBar.IconeMENU}>
+                  <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Faturamento</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Hist. Restauração</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Configurações</Dropdown.Item>
+                  
+                  </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown>
+                  <Dropdown.Toggle className={StyleBar.IconeMENU}>
+                  <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Esta tudo certo!</Dropdown.Item>
+                    
+                  
+                  </Dropdown.Menu>
+            </Dropdown>
+            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
+
+
+
 
             </Nav>
           </Navbar.Collapse>
