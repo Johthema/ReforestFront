@@ -64,9 +64,9 @@ export default function Header() {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1" className={StyleBar.OpDrop}><FaChartLine className={StyleBar.IconeDrop}/>Faturamento</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><FaHistory className={StyleBar.IconeDrop}/>Hist. Restauração</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><FaCog className={StyleBar.IconeDrop}/>Configurações</Dropdown.Item>
+                    <Dropdown.Item className={StyleBar.OpDrop}><Link href="/faturamento" className={StyleBar.h2Tit}><FaChartLine className={StyleBar.IconeDrop}/>Faturamento</Link></Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><Link href="/configuracao" className={StyleBar.h2Tit}><FaHistory className={StyleBar.IconeDrop}/>Hist. Restauração</Link></Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><Link href="/hist_restauracao" className={StyleBar.h2Tit}><FaCog className={StyleBar.IconeDrop}/>Configurações</Link></Dropdown.Item>
                   
                   </Dropdown.Menu>
             </Dropdown>
