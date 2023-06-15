@@ -32,6 +32,8 @@
 .headerBack{
     background: linear-gradient(white, white) padding-box, linear-gradient(to right, #469444, #0be6e6, #55ACEE) border-box;
     border: 3.5px solid transparent;
+    border-left: transparent;
+    border-right: transparent;
     position: relative;
 	margin-top: -10px;
     height: 80px;
