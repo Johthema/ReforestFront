@@ -191,6 +191,9 @@
     --bs-btn-hover-bg: none;
 }
 
+.IconeMENU:hover .Icon{
+    color: var(--primaryTom1-color)
+}
 .IconeDrop{
     width: 20px;
     height: 20px;
