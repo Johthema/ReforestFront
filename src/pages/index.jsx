@@ -4,7 +4,7 @@
 import Header from '../components/header/index'
 import React from 'react'
 import Cards from '../components/cards/cardHome/index'
-
+import Style from '../pages/home.module.css'
 
 export default function Home() {
   return (
@@ -12,7 +12,22 @@ export default function Home() {
 <div >
 
 <Header/>
-<h1>Página Início aqui </h1>
+<div className={Style.DivTitulos}>
+
+  <div className={Style.DivInternoTitutlos}>
+  <h2 className={Style.tituloH2}>Árvores plantadas hoje</h2>
+  <h2 className={Style.subtituloH2}>8.453</h2>
+  </div>
+  <div className={Style.DivInternoTitutlos}>
+  <h2 className={Style.tituloH2}>Árvores plantadas este mês</h2>
+  <h2 className={Style.subtituloH2}>40.453</h2>
+  </div>
+  <div className={Style.DivInternoTitutlos}>
+  <h2 className={Style.tituloH2}>Árvores plantadas este ano</h2>
+  <h2 className={Style.subtituloH2}>1.245,552</h2>
+  </div>
+  
+</div>
 <Cards></Cards>
 </div>
 )
