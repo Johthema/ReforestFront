@@ -192,7 +192,8 @@
 .IconeDrop{
     width: 20px;
     height: 20px;
-    color: var(--secundaryTom1-color3)
+    color: var(--secundaryTom1-color3);
+    margin-right: 10px;
 }
 
 /* .IconeDrop:hover{

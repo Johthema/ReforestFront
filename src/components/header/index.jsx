@@ -8,16 +8,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import StyleBar from './heade.module.css';
 import Image from 'next/image';
 import Logotipo from '../../assets/images/logo.png';
-import { FaUserCircle } from "react-icons/fa";
-import { FaBell } from "react-icons/fa";
-import { FaDoorOpen } from "react-icons/fa";
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { FaCog } from "react-icons/fa";
-import { FaChartLine } from "react-icons/fa";
-import { FaHistory } from "react-icons/fa";
-
+import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory, FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends } from "react-icons/fa";
 
 export default function Header() {
   return (
@@ -34,20 +28,20 @@ export default function Header() {
 
               <Nav.Link className={StyleBar.custom_dropdown} href="/plantar">Plantar</Nav.Link>
               <NavDropdown title="Árvores" id="collasible-nav-dropdown " className={StyleBar.custom_dropdown} >
-                <NavDropdown.Item ><Link href="/arvores/cadastrarArvore" className={StyleBar.h2Tit}>Cadastrar árvore</Link></NavDropdown.Item>
-                <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}>Lista de árvores</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/arvores/cadastrarArvore" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar árvore</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}><FaEnvira className={StyleBar.IconeDrop}/>Lista de árvores</Link></NavDropdown.Item>
 
               </NavDropdown>
               <NavDropdown title="Locais de plantação" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
-                <NavDropdown.Item ><Link href="/locaisPlantacao/cadastrarLocal" className={StyleBar.h2Tit}>Cadastrar local</Link></NavDropdown.Item>
-                <NavDropdown.Item ><Link href="/locaisPlantacao/listaLocais" className={StyleBar.h2Tit}>Lista de locais</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/locaisPlantacao/cadastrarLocal" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar local</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/locaisPlantacao/listaLocais" className={StyleBar.h2Tit}><FaMapMarkerAlt className={StyleBar.IconeDrop}/>Lista de locais</Link></NavDropdown.Item>
 
 
               </NavDropdown>
 
               <NavDropdown title="Usuários" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
-                <NavDropdown.Item ><Link href="/usuarios/cadastrarUsuario" className={StyleBar.h2Tit}>Cadastrar usuário</Link></NavDropdown.Item>
-                <NavDropdown.Item ><Link href="/usuarios/listaUsuario" className={StyleBar.h2Tit}>Lista de usuários</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/usuarios/cadastrarUsuario" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar usuário</Link></NavDropdown.Item>
+                <NavDropdown.Item ><Link href="/usuarios/listaUsuario" className={StyleBar.h2Tit}><FaUserFriends className={StyleBar.IconeDrop}/>Lista de usuários</Link></NavDropdown.Item>
 
               </NavDropdown>
 
@@ -65,8 +59,8 @@ export default function Header() {
 
                   <Dropdown.Menu>
                     <Dropdown.Item className={StyleBar.OpDrop}><Link href="/faturamento" className={StyleBar.h2Tit}><FaChartLine className={StyleBar.IconeDrop}/>Faturamento</Link></Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><Link href="/configuracao" className={StyleBar.h2Tit}><FaHistory className={StyleBar.IconeDrop}/>Hist. Restauração</Link></Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><Link href="/hist_restauracao" className={StyleBar.h2Tit}><FaCog className={StyleBar.IconeDrop}/>Configurações</Link></Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><Link href="/hist_restauracao" className={StyleBar.h2Tit}><FaHistory className={StyleBar.IconeDrop}/>Hist. Restauração</Link></Dropdown.Item>
+                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><Link href="/configuracao" className={StyleBar.h2Tit}><FaCog className={StyleBar.IconeDrop}/>Configurações</Link></Dropdown.Item>
                   
                   </Dropdown.Menu>
             </Dropdown>
