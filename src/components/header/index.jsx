@@ -48,9 +48,6 @@ export default function Header() {
               <Nav.Link className={StyleBar.custom_dropdown} href="/sobre">Sobre</Nav.Link>
             </Nav>
             <Nav>
-              {/* <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><NavDropdown  ><NavDropdown.Item><Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} />Configuração</Link></NavDropdown.Item></NavDropdown></OverlayTrigger>
-              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
-              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.Icon} /></Nav.Link></OverlayTrigger> */}
 
               <Dropdown>
                   <Dropdown.Toggle className={StyleBar.IconeMENU}>
@@ -59,8 +56,8 @@ export default function Header() {
 
                   <Dropdown.Menu>
                     <Dropdown.Item className={StyleBar.OpDrop}><Link href="/faturamento" className={StyleBar.h2Tit}><FaChartLine className={StyleBar.IconeDrop}/>Faturamento</Link></Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><Link href="/hist_restauracao" className={StyleBar.h2Tit}><FaHistory className={StyleBar.IconeDrop}/>Hist. Restauração</Link></Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" className={StyleBar.OpDrop}><Link href="/configuracao" className={StyleBar.h2Tit}><FaCog className={StyleBar.IconeDrop}/>Configurações</Link></Dropdown.Item>
+                    <Dropdown.Item className={StyleBar.OpDrop}><Link href="/hist_restauracao" className={StyleBar.h2Tit}><FaHistory className={StyleBar.IconeDrop}/>Hist. Restauração</Link></Dropdown.Item>
+                    <Dropdown.Item className={StyleBar.OpDrop}><Link href="/configuracao" className={StyleBar.h2Tit}><FaCog className={StyleBar.IconeDrop}/>Configurações</Link></Dropdown.Item>
                   
                   </Dropdown.Menu>
             </Dropdown>
