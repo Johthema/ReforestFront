@@ -30,35 +30,31 @@ export default function Header() {
               <NavDropdown title="Árvores" id="collasible-nav-dropdown " className={StyleBar.custom_dropdown} >
                 <NavDropdown.Item ><Link href="/arvores/cadastrarArvore" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar árvore</Link></NavDropdown.Item>
                 <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}><FaEnvira className={StyleBar.IconeDrop}/>Lista de árvores</Link></NavDropdown.Item>
-
               </NavDropdown>
+
               <NavDropdown title="Locais de plantação" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
                 <NavDropdown.Item ><Link href="/locaisPlantacao/cadastrarLocal" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar local</Link></NavDropdown.Item>
                 <NavDropdown.Item ><Link href="/locaisPlantacao/listaLocais" className={StyleBar.h2Tit}><FaMapMarkerAlt className={StyleBar.IconeDrop}/>Lista de locais</Link></NavDropdown.Item>
-
-
               </NavDropdown>
 
               <NavDropdown title="Usuários" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
                 <NavDropdown.Item ><Link href="/usuarios/cadastrarUsuario" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar usuário</Link></NavDropdown.Item>
                 <NavDropdown.Item ><Link href="/usuarios/listaUsuario" className={StyleBar.h2Tit}><FaUserFriends className={StyleBar.IconeDrop}/>Lista de usuários</Link></NavDropdown.Item>
-
               </NavDropdown>
 
               <Nav.Link className={StyleBar.custom_dropdown} href="/sobre">Sobre</Nav.Link>
             </Nav>
-            <Nav>
 
-              <Dropdown>
+            <Nav>
+            <Dropdown>
                   <Dropdown.Toggle className={StyleBar.IconeMENU}>
-                  <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
                     <Dropdown.Item className={StyleBar.OpDrop}><Link href="/faturamento" className={StyleBar.h2Tit}><FaChartLine className={StyleBar.IconeDrop}/>Faturamento</Link></Dropdown.Item>
                     <Dropdown.Item className={StyleBar.OpDrop}><Link href="/hist_restauracao" className={StyleBar.h2Tit}><FaHistory className={StyleBar.IconeDrop}/>Hist. Restauração</Link></Dropdown.Item>
                     <Dropdown.Item className={StyleBar.OpDrop}><Link href="/configuracao" className={StyleBar.h2Tit}><FaCog className={StyleBar.IconeDrop}/>Configurações</Link></Dropdown.Item>
-                  
                   </Dropdown.Menu>
             </Dropdown>
             <Dropdown>
@@ -68,14 +64,9 @@ export default function Header() {
 
                   <Dropdown.Menu>
                     <Dropdown.Item href="#/action-1">Esta tudo certo!</Dropdown.Item>
-                    
-                  
                   </Dropdown.Menu>
             </Dropdown>
             <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
-
-
-
 
             </Nav>
           </Navbar.Collapse>
