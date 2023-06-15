@@ -1,0 +1,67 @@
+.CardDiv{
+    display: flex;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+.card{
+    margin-left: 20px;
+    width: 15rem;
+    height: 20rem;
+    background-image: linear-gradient( #55ACEE , #469444);
+    border-radius: 20px;
+    box-shadow: 0 5px 5px -3px rgb(169, 169, 169);
+    background: linear-gradient(#55ACEE , #469444) padding-box, linear-gradient(to right, #55ACEE, #469444) border-box;
+    border: 3.5px solid transparent;
+    cursor: pointer;
+}
+
+.card:hover{
+    margin-left: 20px;
+    width: 15rem;
+    height: 20rem;
+    background-image: linear-gradient( #55ACEE , #469444);
+    border-radius: 20px;
+    box-shadow: 0 5px 5px -3px rgb(169, 169, 169);
+    background: linear-gradient(#2e5e82 , #1b371a) padding-box, linear-gradient(to right, #55ACEE, #469444) border-box;
+    border: 3.5px solid transparent;
+    cursor: pointer;
+}
+
+.IconeCard{
+    display: flex;
+    margin-top: 30px;
+    font-size: 5.4rem;
+    color: #fff;
+    margin-inline: auto; 
+    align-items: center;
+    margin-bottom: 40px;
+
+}
+
+.TituloCard{
+   display: flex;
+   margin: auto;
+   font-weight: bold;
+   justify-content: center;
+}
+
+
+.InfoCard{
+    color: #fff;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+   
+}
+
+.botaoCard{
+    display: flex;
+    margin: auto;
+    width: 100px;
+    background-color: #EFEFEF;
+    color: #000;
+    justify-content: center;
+}

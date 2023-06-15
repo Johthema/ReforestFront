@@ -11,7 +11,8 @@ import Logotipo from '../../assets/images/logo.png';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Dropdown from 'react-bootstrap/Dropdown';
-import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory, FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends } from "react-icons/fa";
+import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
+        FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends } from "react-icons/fa";
 
 export default function Header() {
   return (
@@ -20,7 +21,7 @@ export default function Header() {
 
       <Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
         <Container className={StyleBar.navContain}>
-          <Navbar.Brand href="/home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} /></Navbar.Brand>
+          <Navbar.Brand href="/" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} /></Navbar.Brand>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" >
