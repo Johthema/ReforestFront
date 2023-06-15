@@ -2,6 +2,11 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Style from './cards.module.css'
 import { FaSeedling } from 'react-icons/fa';
+import { FaHandHoldingHeart } from 'react-icons/fa';
+import { FaTree } from 'react-icons/fa';
+
+
+
 export default function Cards(){
 
 
@@ -22,18 +27,20 @@ export default function Cards(){
             <Card className={Style.card} >
                 {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                 <Card.Body>
-                    <Card.Title>Oferecer árvore</Card.Title>
-                    <Card.Text>+Informações</Card.Text>
-                    <Button >Oferecer</Button>
+                    <Card.Title className={Style.TituloCard}>Oferecer árvore</Card.Title>
+                    <FaHandHoldingHeart className={Style.IconeCard}/>
+                    <Card.Text className={Style.InfoCard}>+Informações</Card.Text>
+                    <Button className={Style.botaoCard}>Oferecer</Button>
                 </Card.Body>
             </Card>
 
             <Card className={Style.card}>
                 {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                 <Card.Body>
-                    <Card.Title>Minha floresta</Card.Title>
-                    <Card.Text>+Informações</Card.Text>
-                    <Button >Entar</Button>
+                    <Card.Title className={Style.TituloCard}>Minha floresta</Card.Title>
+                    <FaTree className={Style.IconeCard}/>
+                    <Card.Text className={Style.InfoCard}>+Informações</Card.Text>
+                    <Button className={Style.botaoCard}>Entar</Button>
                 </Card.Body>
             </Card>
         </div> 
