@@ -4,7 +4,7 @@ import Style from './cards.module.css'
 import { FaSeedling } from 'react-icons/fa';
 import { FaHandHoldingHeart } from 'react-icons/fa';
 import { FaTree } from 'react-icons/fa';
-
+import Link from 'next/link'
 
 
 export default function Cards(){
@@ -20,7 +20,7 @@ export default function Cards(){
                     <Card.Title className={Style.TituloCard}>Plantar árvore</Card.Title>
                     <FaSeedling className={Style.IconeCard}/>
                     <Card.Text className={Style.InfoCard}>+Informações</Card.Text>
-                    <Button className={Style.botaoCard}>Plantar</Button>
+                    <Button className={Style.botaoCard} ><Link href="/plantar" className={Style.botaoTitulo}>Plantar</Link></Button>
                 </Card.Body>
             </Card>
 
@@ -30,7 +30,7 @@ export default function Cards(){
                     <Card.Title className={Style.TituloCard}>Oferecer árvore</Card.Title>
                     <FaHandHoldingHeart className={Style.IconeCard}/>
                     <Card.Text className={Style.InfoCard}>+Informações</Card.Text>
-                    <Button className={Style.botaoCard}>Oferecer</Button>
+                    <Button className={Style.botaoCard}><Link href="#" className={Style.botaoTitulo}>Oferecer</Link></Button>
                 </Card.Body>
             </Card>
 
@@ -40,7 +40,7 @@ export default function Cards(){
                     <Card.Title className={Style.TituloCard}>Minha floresta</Card.Title>
                     <FaTree className={Style.IconeCard}/>
                     <Card.Text className={Style.InfoCard}>+Informações</Card.Text>
-                    <Button className={Style.botaoCard}>Entar</Button>
+                    <Button className={Style.botaoCard}><Link href="#" className={Style.botaoTitulo}>Entar</Link></Button>
                 </Card.Body>
             </Card>
         </div> 

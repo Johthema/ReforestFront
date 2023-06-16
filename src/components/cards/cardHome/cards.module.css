@@ -77,3 +77,25 @@
     color: #000;
     justify-content: center;
 }
+
+.botaoTitulo{
+    text-decoration: none;
+    color: #000;
+}
+
+
+
+.botaoTitulo{
+    text-decoration: none;
+    color: #000;
+    ;
+}
+.botaoCard:hover{
+  
+    background-color: #55ACEE
+}
+.botaoCard:hover .botaoTitulo{
+    text-decoration: none;
+    color: #ffffff;
+   
+}
