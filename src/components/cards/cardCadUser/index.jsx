@@ -6,8 +6,13 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Style from './card.module.css';
 import Form from 'react-bootstrap/Form';
+import { useState } from 'react';
+import Example from '../../modals/modalpapel/index'
 
 function LeftTabsExample() {
+  
+
+
   return (
     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
       <Row className={Style.RowDiv}>
@@ -53,23 +58,27 @@ function LeftTabsExample() {
                         <Form.Control type="password"  />
                     </Form.Group>
                     </Row>
-                    <Row>
-                    <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>Papel</Form.Label>
+                    <Row >
+                    <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
+                    
                     <Form.Select >
+                    <option value="0">Papel</option>
                         <option value="1">Administrador</option>
                         <option value="2">Opção2</option>
                         <option value="3">Opção3</option>
                       
-                        <option value="4">--Novo papel--</option>
-                       
+                        {/* <option value="4" >--Novo papel--</option> */}
+                        
                         
                     </Form.Select>
+                    <Example/>
                     </Form.Group>
                     </Row>
                     <br/>
                     </Form>
+                    
                     <Button className={Style.BotaoCad}>Salvar</Button>
+                    
                 </Card.Body>
             </Card>
             </Tab.Pane>
@@ -115,13 +124,14 @@ function LeftTabsExample() {
                             </Form.Group>
                         </Row>
                         <Row>
-                            <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>Papel</Form.Label>
+                            <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
+                          
                             <Form.Select >
                                 <option value="1">Administrador</option>
                                 <option value="2">Opção2</option>
                                 <option value="3">Opção3</option>
                             </Form.Select>
+                            <Example/>
                             </Form.Group>
                         </Row>
                         <br/>

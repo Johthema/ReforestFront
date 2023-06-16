@@ -28,3 +28,7 @@
 
 }
 
+.formPapel{
+    display: flex;
+    height: 40px
+}
