@@ -1,0 +1,6 @@
+.Titulo{
+    justify-content: center;
+    font-size: 36px;
+    display: flex;
+    font-family: var(--fontPadrao);
+}
