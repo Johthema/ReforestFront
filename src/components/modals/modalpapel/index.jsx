@@ -2,6 +2,9 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import Table from 'react-bootstrap/Table';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+
 
 export default function Example() {
   const [show, setShow] = useState(false);
@@ -27,13 +30,47 @@ export default function Example() {
                 autoFocus
               />
             </Form.Group>
-            <Form.Group
+            {/* <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Example textarea</Form.Label>
               <Form.Control as="textarea" rows={3} />
-            </Form.Group>
+            </Form.Group> */}
+            <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Criado em</th>
+          <th>Editar</th>
+          <th>Deletar</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td>31/01/1995</td>
+          <td><FaEdit/></td>
+          <td><FaTrashAlt/></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jacob</td>
+          <td>18/01/1995</td>
+          <td><FaEdit/></td>
+          <td><FaTrashAlt/></td>
+        </tr>
+        {/* <tr>
+          <td>3</td>
+          <td colSpan={2}>Larry the Bird</td>
+          <td>@twitter</td>
+        </tr> */}
+      </tbody>
+    </Table>
+ 
           </Form>
         </Modal.Body>
         <Modal.Footer>
