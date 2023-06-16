@@ -28,9 +28,9 @@ export default function Header() {
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" >
-            <Nav className={StyleBar.NavMenuOp}>
+            <Nav className={StyleBar.NavMenuOp} variant="underline" >
 
-              <Nav.Link className={StyleBar.custom_dropdown} href="/plantar">Plantar</Nav.Link>
+              <Nav.Link className={StyleBar.custom_dropdown} href="/plantar" >Plantar</Nav.Link>
               <NavDropdown title="Árvores" id="collasible-nav-dropdown " className={StyleBar.custom_dropdown} >
                 <NavDropdown.Item ><Link href="/arvores/cadastrarArvore" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar árvore</Link></NavDropdown.Item>
                 <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}><FaEnvira className={StyleBar.IconeDrop}/>Lista de árvores</Link></NavDropdown.Item>
@@ -46,7 +46,7 @@ export default function Header() {
                 <NavDropdown.Item ><Link href="/usuarios/listaUsuario" className={StyleBar.h2Tit}><FaUserFriends className={StyleBar.IconeDrop}/>Lista de usuários</Link></NavDropdown.Item>
               </NavDropdown>
 
-              <Nav.Link className={StyleBar.custom_dropdown} href="/sobre">Sobre</Nav.Link>
+              <Nav.Link className={StyleBar.custom_dropdown} href="/sobre" >Sobre</Nav.Link>
             </Nav>
 
             <Nav>
