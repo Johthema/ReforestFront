@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
-import Logotipo from '../../../assets/images/reforestImagem.png';
+import Logo from '../../../assets/images/reforestImagem.png';
+import Logot from '../../../assets/images/logo.png';
 
 export default function LoginCard(){
     return (
@@ -13,16 +14,20 @@ export default function LoginCard(){
        
       <div className={Style.divFundo}>
            
+           <div className={Style.divBarra}>
+           <Image src={Logot} className={Style.logo} />
                 <Tabs
                     defaultActiveKey="login"
                     transition={true}
                     id="noanim-tab-example"
                     className={Style.BarraCard }
                     >
+                      
+                        
                     <Tab eventKey="login" title="Login">
 
                    <div className={Style.DivCorpoCard}>
-                   <Image src={Logotipo} className={Style.imgMundo} />
+                   <Image src={Logo} className={Style.imgMundo} />
                    <div className={Style.DivForm}>
                    <h3 className={Style.TituloCard}>Iniciar sessão na ReForest</h3>
                     <Form className={Style.Formulario}>
@@ -55,6 +60,7 @@ export default function LoginCard(){
                     
                     
                 </Tabs>
+                </div>
               
            
        </div>

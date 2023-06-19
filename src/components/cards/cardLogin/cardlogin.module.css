@@ -19,9 +19,19 @@
     justify-content: end;
     
     border-radius: 10px 7px 0px 0px;
-    width: 100%;
+    width: 70%;
     position: relative;
+    margin-left: 225px;
+    margin-inline-start: auto;
+    margin-top: -40px;
 
+}
+
+.divBarra{
+    height: 40px;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px 7px 0px 0px;
 }
 
 .DivForm{
@@ -64,6 +74,14 @@
     height: 350px;
     margin: auto
    
+}
+
+.logo{
+    width: 200px;
+    height: 40px;
+    margin-left: 5px;
+   
+
 }
 
 .BotaoEntrar{
