@@ -4,6 +4,6 @@
     background: conic-gradient(from 180deg at 50% 50%, #55ACEE -78.75deg, #469444 45deg, rgb(0, 0, 0) 120deg, #1c62ca,   #70a9f0 281.25deg, #469444 405deg);
     width: 100vw;
     height: 100vh;
-    margin: -10px;
+    /* margin: -10px; */
 }
 

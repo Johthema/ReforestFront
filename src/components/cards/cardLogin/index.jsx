@@ -4,8 +4,8 @@ import Style from './cardlogin.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import Image from 'next/image';
-// import Logotipo from '../../assets/images/logo.png';
+import Image from 'next/image';
+import Logotipo from '../../../assets/images/reforestImagem.png';
 
 export default function LoginCard(){
     return (
@@ -22,7 +22,7 @@ export default function LoginCard(){
                     <Tab eventKey="login" title="Login">
 
                    <div className={Style.DivCorpoCard}>
-                   {/* <Image src={Logotipo} className={StyleBar.logo} /> */}
+                   <Image src={Logotipo} className={Style.imgMundo} />
                    <div className={Style.DivForm}>
                    <h3 className={Style.TituloCard}>Iniciar sessão na ReForest</h3>
                     <Form className={Style.Formulario}>
@@ -34,14 +34,14 @@ export default function LoginCard(){
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Label>Senha</Form.Label>
+                            <Form.Control type="password" placeholder="Digite sua senha" />
                         </Form.Group>
                         {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group> */}
-                        <p>Esqueci minha senha</p>
-                        <Button variant="primary" type="submit">
+                        <p className={Style.EsqueciSen}>Esqueci minha senha</p>
+                        <Button variant="primary" type="submit" className={Style.BotaoEntrar}>
                             Entrar
                         </Button>
                     </Form>
