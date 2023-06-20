@@ -7,8 +7,25 @@ import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
 import Logo from '../../../assets/images/reforestImagem.png';
 import Logot from '../../../assets/images/logo.png';
+import { useRouter } from "next/router"
+
 
 export default function LoginCard(){
+
+    const router = useRouter();
+
+    function funcaoEntrar(){
+        console.log("entrou na funcao");
+    
+        router.push('/');
+     
+
+    }
+
+
+
+
+
     return (
   
        
@@ -47,7 +64,7 @@ export default function LoginCard(){
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group> */}
                         <p className={Style.EsqueciSen}>Esqueci minha senha</p>
-                        <Button variant="primary" type="submit" className={Style.BotaoEntrar}>
+                        <Button variant="primary"  className={Style.BotaoEntrar} onClick={funcaoEntrar}>
                             Entrar
                         </Button>
                     </Form>
@@ -89,7 +106,7 @@ export default function LoginCard(){
                             <Form.Control type="password" placeholder="Redigite sua senha" />
                         </Form.Group>
                      
-                        <Button variant="primary" type="submit" className={Style.BotaoEntrar}>
+                        <Button variant="primary"  className={Style.BotaoEntrar} onClick={funcaoEntrar}>
                             Entrar
                         </Button>
                     </Form>
