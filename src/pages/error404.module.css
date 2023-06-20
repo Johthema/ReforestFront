@@ -1,0 +1,45 @@
+.DivFundo{
+    margin-top: 200px;
+}
+
+.titulo{
+    font-size: 50px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    font-family: var(--fontPadrao);
+    color: #469444
+
+}
+.subtitulo{
+    font-size: 28px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    font-family: var(--fontPadrao);
+    color: #469444
+
+}
+
+.imagemFolha{
+    display: flex;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+
+}
+
+.botaoVoltar{
+    background-color: green;
+    display: flex;
+    margin: auto;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 24px;
+    justify-content: center;
+
+}
