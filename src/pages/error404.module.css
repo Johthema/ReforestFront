@@ -1,5 +1,9 @@
 .DivFundo{
     margin-top: 200px;
+    background-color: #202020;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 20px;
 }
 
 .titulo{
@@ -8,7 +12,7 @@
     margin: auto;
     justify-content: center;
     font-family: var(--fontPadrao);
-    color: #469444
+    color: #ffffff
 
 }
 .subtitulo{
@@ -41,5 +45,11 @@
     border-radius: 20px;
     font-size: 24px;
     justify-content: center;
+    justify-self: center;
+    align-items: center;
 
+}
+
+.botaoVoltar:hover{
+    background-color: rgb(0, 90, 0);
 }
