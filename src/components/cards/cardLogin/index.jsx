@@ -76,7 +76,7 @@ export default function LoginCard(){
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                          
-                            <Form.Control type="number" placeholder="Digite seu telefone" />
+                            <Form.Control placeholder="Digite seu telefone" />
                            
                         </Form.Group>
 <br/>
