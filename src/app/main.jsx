@@ -5,15 +5,6 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 
 import CadastrarUsuario from '../pages/usuarios/cadastrarUsuario/index'
-// import CadastrarUsuario from '../pages/usuarios/cadastrarUsuario/index'
-
-
-// const router = createBrowserRouter([
-// {
-//   path: "/",
-//   element: <Home />
-// },
-// ])
 
 const router = createBrowserRouter([
     {

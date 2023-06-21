@@ -210,6 +210,11 @@
 .OpDrop{
     color: var(--secundaryTom1-color3);
 }
+
 .OpDrop:hover{
     color: var(--primaryTom1-color);
+}
+
+.OpDropNotifi{
+    margin-left: -40px
 }

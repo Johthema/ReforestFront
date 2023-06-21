@@ -66,8 +66,8 @@ export default function Header() {
                   <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
                   </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Esta tudo certo!</Dropdown.Item>
+                  <Dropdown.Menu className={StyleBar.OpDropNotifi}>
+                    <Dropdown.Item href="#/action-1" >Esta tudo certo!</Dropdown.Item>
                   </Dropdown.Menu>
             </Dropdown>
             <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
