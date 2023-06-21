@@ -1,0 +1,28 @@
+.imagemManutencao{
+    display: grid;
+    margin-top: 10px;
+    width: 550px;
+    height: 350px;
+    margin: auto;
+}
+
+.tituloManutencao{
+    display: grid;
+    padding: 10px;
+    margin: auto;
+    color: black;
+    border: 2px solid #d7b005;
+    border-radius: 20px;
+    width: 500px;
+    justify-content: center;
+    margin-top: 100px;
+
+}
+.subtituloManutencao{
+    display: grid;
+    margin: auto;
+    color: black;
+    justify-content: center;
+    font-size: 1.3rem;
+
+}

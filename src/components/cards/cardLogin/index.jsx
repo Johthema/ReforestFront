@@ -35,7 +35,7 @@ export default function LoginCard(){
            <Image src={Logot} className={Style.logo} />
                 <Tabs
                     defaultActiveKey="login"
-                    transition={true}
+                    transition={false}
                     id="noanim-tab-example"
                     className={Style.BarraCard }
                     >
