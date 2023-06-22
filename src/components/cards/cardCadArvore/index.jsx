@@ -4,7 +4,8 @@ import Style from './cadarvore.module.css'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 
 export default function CadastroArvore() {
   return (
@@ -81,13 +82,39 @@ export default function CadastroArvore() {
                     />
                 </Col>
             </Form.Group>
-
+            <br/>
+            <Row>
+                <Col>
+                <Form.Control placeholder="Período de produção" />
+                </Col>
+                <Col>
+                <Form.Control placeholder="Tempo de colheita/ substituição" />
+                </Col>
+              
+            </Row>
+<br/>
+                <Row>
+                <Col>
+                <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Control type="file" className={Style.Preco}/>
+                </Form.Group>
+                <Form.Control placeholder="Preço" className={Style.Preco}/>
+                </Col>
+             
+                </Row>
+            <br/>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                   
+                    <Form.Control as="textarea" rows={3}  placeholder='Descrição'/>
+                </Form.Group>
+                <br/>
+                <Form.Control placeholder="Formas de uso" />
 
         </Form>
        
 
 
-
+        <br/>
         {/* <Card.Title>Special title treatment</Card.Title>
         <Card.Text>
           With supporting text below as a natural lead-in to additional content.

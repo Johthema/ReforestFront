@@ -1,10 +1,15 @@
 .cardArvore{
     text-align: center;
-    width: 50vw;
-    margin: auto
+    width: 45vw;
+    margin: auto;
+    margin-top: 20px;
 }
 .estiloRadio{
-    width: 60%;
+    width: 70%;
     margin: auto;
     padding: 1.5rem;
+}
+.Preco{
+    width: 40%;
+    margin: auto;
 }
