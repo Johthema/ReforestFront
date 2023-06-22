@@ -77,6 +77,7 @@
   /* box-sizing: border-box; */
   padding: 0px;
   margin: 0px;
+  background-repeat-y: no-repeat
 }
 
 /* html,
@@ -88,7 +89,8 @@ body {
 
 body {
   background-image: linear-gradient(#E5F4FF, #fff);
-  height: 101vh
+  height: 101vh;
+  
   /* color: rgb(var(--foreground-rgb));
   
  background: linear-gradient(
