@@ -1,0 +1,15 @@
+.cardArvore{
+    text-align: center;
+    width: 45vw;
+    margin: auto;
+    margin-top: 20px;
+}
+.estiloRadio{
+    width: 70%;
+    margin: auto;
+    padding: 1.5rem;
+}
+.Preco{
+    width: 40%;
+    margin: auto;
+}
