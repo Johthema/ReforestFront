@@ -17,7 +17,7 @@ export default function LoginCard(){
     function funcaoEntrar(){
         console.log("entrou na funcao");
     
-        router.push('/');
+        router.push('/home');
      
 
     }
