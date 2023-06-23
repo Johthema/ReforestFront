@@ -1,5 +1,5 @@
 .Card{
-    width: 20%;
+    width: 15%;
     margin: auto;
     
 }
@@ -34,4 +34,12 @@
     justify-content: auto;
     justify-items: auto;
    
+}
+
+.imgArvore{
+    width: 99%;
+    height: 20vh;
+    margin: auto;
+    display: flex;
+
 }
