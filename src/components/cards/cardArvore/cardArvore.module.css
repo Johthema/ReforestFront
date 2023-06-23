@@ -1,0 +1,37 @@
+.Card{
+    width: 20%;
+    margin: auto;
+    
+}
+
+.HeaderCard{
+    display: flex;
+    
+}
+.HeaderCard0{
+    background-color: #9EC69D;
+}
+
+.opcoesCard{
+    display: flex;
+    margin-inline-start: auto;
+}
+
+.iconeCard{
+    font-size: 20px;
+    margin: 3px;
+    cursor: pointer
+}
+.StatusCard{
+    font-size: 12px;
+    width: 60px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    background-color: green;
+    color: #fff;
+    justify-self: auto;
+    justify-content: auto;
+    justify-items: auto;
+   
+}

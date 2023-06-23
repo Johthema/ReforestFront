@@ -12,7 +12,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Dropdown from 'react-bootstrap/Dropdown';
 import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
-        FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends } from "react-icons/fa";
+        FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends, FaSignOutAlt } from "react-icons/fa";
 
 
 
@@ -70,7 +70,7 @@ export default function Header() {
                     <Dropdown.Item href="#/action-1" >Esta tudo certo!</Dropdown.Item>
                   </Dropdown.Menu>
             </Dropdown>
-            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaDoorOpen className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaSignOutAlt className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
 
             </Nav>
           </Navbar.Collapse>
