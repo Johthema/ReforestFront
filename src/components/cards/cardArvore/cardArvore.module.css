@@ -43,5 +43,6 @@
     height: 20vh;
     margin: auto;
     display: flex;
+    object-fit: cover;
 
 }
