@@ -4,9 +4,10 @@ import Style from './cadlocais.module.css'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image';
-import Carousel from 'react-bootstrap/Carousel';
+// import Container from 'react-bootstrap/Container';
+// import Image from 'react-bootstrap/Image';
+// import Carousel from 'react-bootstrap/Carousel';
+import Arvores from '../cardArvore/index';
 
 export default function CadastroLocal() {
   return (
@@ -93,17 +94,13 @@ export default function CadastroLocal() {
     <br/>
 
 
-
-    <Carousel>
+    <Arvores/>
+    {/* <Carousel>
       <Carousel.Item>
         <h2>Card1</h2>
+        
     
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
+      
       <h2>Card2</h2>
 
         <Carousel.Caption>
@@ -121,7 +118,7 @@ export default function CadastroLocal() {
           </p>
         </Carousel.Caption>
       </Carousel.Item>
-    </Carousel>
+    </Carousel> */}
 
 
 

@@ -1,5 +1,6 @@
 .Card{
-    width: 15%;
+    width: 30%;
+    height: 30%;
     margin: auto;
     
 }
@@ -20,7 +21,8 @@
 .iconeCard{
     font-size: 20px;
     margin: 3px;
-    cursor: pointer
+    cursor: pointer;
+    color: #fff
 }
 .StatusCard{
     font-size: 12px;
