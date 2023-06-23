@@ -4,6 +4,7 @@ import Style from './cadlocais.module.css'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 // import Container from 'react-bootstrap/Container';
 // import Image from 'react-bootstrap/Image';
 // import Carousel from 'react-bootstrap/Carousel';
@@ -11,37 +12,54 @@ import Arvores from '../cardArvore/index';
 
 export default function CadastroLocal() {
   return (
+    
     <Card className={Style.cardArvore}>
       <Card.Header>Cadastro do Local</Card.Header>
       <Card.Body>
 
         <Form>
             <Form.Group className="mb-3" controlId="formGrouNome">
-                <Form.Control type="text" placeholder="Nome" />
+            <FloatingLabel controlId="floatingInput" label="Nome" className="mb-3">
+                <Form.Control type="text"  placeholder="Nome" />
+            </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                   <Form.Control as="textarea" rows={3}  placeholder='Descrição'/>
+                <Form.Control as="textarea"  rows={3}  placeholder='Descrição'/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupLocalizacao">
+            <FloatingLabel controlId="floatingInput" label="Localização" className="mb-3">
                 <Form.Control type="text" placeholder="Localização" />
+            </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupEndereco">
-                <Form.Control type="text" placeholder="Endereço" />
+            <FloatingLabel controlId="floatingInput" label="Descrição" className="mb-3">
+                <Form.Control type="text"  placeholder="Endereço" />
+            </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupCdgPostal">
-                <Form.Control type="text" placeholder="Código postal" />
+            <FloatingLabel controlId="floatingInput" label="Código postal" className="mb-3">
+                <Form.Control type="text"  placeholder="Código postal" />
+            </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupEndereco">
-                <Form.Control type="text" placeholder="Endereço" />
+            <FloatingLabel controlId="floatingInput" label="Endereço" className="mb-3">
+                <Form.Control type="text"  placeholder="Endereço" />
+            </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupCidade">
+            <FloatingLabel controlId="floatingInput" label="Cidade" className="mb-3">
                 <Form.Control type="text" placeholder="Cidade" />
+            </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupPais">
+            <FloatingLabel controlId="floatingInput" label="País" className="mb-3">
                 <Form.Control type="text" placeholder="Pais" />
+                </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupHectare">
+            <FloatingLabel controlId="floatingInput" label="Hectare" className="mb-3">
                 <Form.Control type="text" placeholder="Hectare" />
+                </FloatingLabel>
             </Form.Group>
 
             <Card.Text>
@@ -50,13 +68,13 @@ export default function CadastroLocal() {
 
             <Row>
                 <Col>
-                <Form.Control type="number" placeholder="Árvores derrubadas" />
+                  <Form.Control type="number" placeholder="Árvores derrubadas" />
                 </Col>
                 <Col>
-                <Form.Control type="number" placeholder="Árvores ja plantadas " />
+                  <Form.Control type="number" placeholder="Árvores ja plantadas " />
                 </Col>
                 <Col>
-                <Form.Control type="number" placeholder="Árvores a plantar" />
+                  <Form.Control type="number"  placeholder="Árvores a plantar" />
                 </Col>
             </Row>
 
@@ -93,49 +111,19 @@ export default function CadastroLocal() {
                 </Row>
     <br/>
 
-
     <Arvores/>
-    {/* <Carousel>
-      <Carousel.Item>
-        <h2>Card1</h2>
-        
-    
-      
-      <h2>Card2</h2>
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-      <h2>Card3</h2>
-
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel> */}
-
-
-
-
 
         </Form>
        
-
-
         <br/>
         {/* <Card.Title>Special title treatment</Card.Title>
         <Card.Text>
           With supporting text below as a natural lead-in to additional content.
         </Card.Text> */}
-        <Button variant="primary">Salvar</Button>
+        <Button variant="primary" className={Style.botaoSalvar}>Salvar</Button>
       </Card.Body>
       {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
     </Card>
   );
+  
 }  

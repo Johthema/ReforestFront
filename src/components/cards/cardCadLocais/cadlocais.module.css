@@ -13,3 +13,11 @@
     width: 40%;
     margin: auto;
 }
+.botaoSalvar{
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #469444;
+    --bs-btn-border-color: #469444;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #31662f;
+    --bs-btn-hover-border-color: #31662f;
+}

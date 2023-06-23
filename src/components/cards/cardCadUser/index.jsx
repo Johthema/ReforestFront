@@ -7,7 +7,10 @@ import Card from 'react-bootstrap/Card';
 import Style from './card.module.css';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import Example from '../../modals/modalpapel/index'
+import Example from '../../modals/modalpapel/index';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+
+
 
 function LeftTabsExample() {
   
@@ -40,22 +43,27 @@ function LeftTabsExample() {
                 <Form>
                     <Row>
                         <Col>
-                        <Form.Label>Nome</Form.Label>
-                        <Form.Control  />
+                        
+                        <FloatingLabel controlId="floatingInput" label="Nome" className="mb-3">
+                        <Form.Control placeholder='Nome' />
+                        </FloatingLabel>
                         </Col>
                         <Col>
-                        <Form.Label>Sobrenome</Form.Label>
-                        <Form.Control  />
+                        <FloatingLabel controlId="floatingInput" label="Sobrenome" className="mb-3">
+                        <Form.Control  placeholder='Sobrenome'/>
+                        </FloatingLabel>
                         </Col>
                     </Row>
                     <Row>
                     <Form.Group className="mb-3" controlId="formGroupEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email"  />
+                    <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
+                        <Form.Control type="email" placeholder='Email' />
+                    </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password"  />
+                    <FloatingLabel controlId="floatingInput" label="password" className="mb-3">
+                        <Form.Control type="password" placeholder='password'  />
+                    </FloatingLabel>
                     </Form.Group>
                     </Row>
                     <Row >
@@ -95,32 +103,34 @@ function LeftTabsExample() {
                     <Form>
                         <Row>
                            <Col>
-                            <Form.Label>Razão social</Form.Label>
-                            <Form.Control />
-                         
-                            <Form.Label>Nome completo</Form.Label>
-                            <Form.Control  />
+                            
+                            <FloatingLabel controlId="floatingInput" label="Razão social" className="mb-3">
+                              <Form.Control placeholder='Razão social' />
+                            </FloatingLabel>
+                            
+                            <FloatingLabel controlId="floatingInput" label="Nome completo" className="mb-3">
+                              <Form.Control placeholder='Nome completo'  />
+                            </FloatingLabel>
 
-                            <Form.Label>Site</Form.Label>
-                            <Form.Control />
+                            
+                            <FloatingLabel controlId="floatingInput" label="Site" className="mb-3">
+                              <Form.Control placeholder='Site'/>
+                              </FloatingLabel>
                             </Col>
-                            {/* <Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
-                            <InputGroup className="mb-3">
-                                <InputGroup.Text id="basic-addon3">
-                                https://example.com/users/
-                                </InputGroup.Text>
-                                <Form.Control id="basic-url" aria-describedby="basic-addon3" />
-                            </InputGroup> */}
                          
                         </Row>
                         <Row>
                             <Form.Group className="mb-3" controlId="formGroupEmail">
-                                <Form.Label >Email</Form.Label>
-                                <Form.Control type="email" />
+                                
+                                <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
+                                  <Form.Control type="email" placeholder='Email' />
+                                </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" />
+                                
+                                <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
+                                  <Form.Control type="password" placeholder='Password' />
+                                </FloatingLabel>
                             </Form.Group>
                         </Row>
                         <Row>
