@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 export default function CadastroArvore() {
   return (
@@ -15,13 +16,19 @@ export default function CadastroArvore() {
 
         <Form>
             <Form.Group className="mb-3" controlId="formGrouNome">
+            <FloatingLabel controlId="floatingInput" label="Nome popular" className="mb-3">
                 <Form.Control type="text" placeholder="Nome popular" />
+            </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupCientifico">
+            <FloatingLabel controlId="floatingInput" label="Nome científico" className="mb-3">
                 <Form.Control type="text" placeholder="Nome científico" />
+            </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupEspecie">
+            <FloatingLabel controlId="floatingInput" label="Espécie" className="mb-3">
                 <Form.Control type="text" placeholder="Espécie" />
+            </FloatingLabel>
             </Form.Group>
 
             <Card.Text>
@@ -30,13 +37,19 @@ export default function CadastroArvore() {
 
             <Row>
                 <Col>
-                <Form.Control placeholder="Taxa permanente" />
+                <FloatingLabel controlId="floatingInput" label="Taxa permanente" className="mb-3">
+                    <Form.Control placeholder="Taxa permanente" />
+                </FloatingLabel>
                 </Col>
                 <Col>
-                <Form.Control placeholder="Período" />
+                <FloatingLabel controlId="floatingInput" label="Período" className="mb-3">
+                    <Form.Control placeholder="Período" />
+                </FloatingLabel>
                 </Col>
                 <Col>
-                <Form.Control placeholder="Taxa anual" />
+                <FloatingLabel controlId="floatingInput" label="Taxa anual" className="mb-3">
+                    <Form.Control placeholder="Taxa anual" />
+                </FloatingLabel>
                 </Col>
             </Row>
 
@@ -51,13 +64,19 @@ export default function CadastroArvore() {
     <br/>
             <Row>
                 <Col>
-                <Form.Control placeholder="Vida natural média" />
+                <FloatingLabel controlId="floatingInput" label="Vida natural média" className="mb-3">
+                    <Form.Control placeholder="Vida natural média" />
+                </FloatingLabel>
                 </Col>
                 <Col>
-                <Form.Control placeholder="Altura " />
+                <FloatingLabel controlId="floatingInput" label="Altura" className="mb-3">
+                    <Form.Control placeholder="Altura " />
+                </FloatingLabel>
                 </Col>
                 <Col>
-                <Form.Control placeholder="Diâmetro" />
+                <FloatingLabel controlId="floatingInput" label="Diâmetro" className="mb-3">
+                    <Form.Control placeholder="Diâmetro" />
+                </FloatingLabel>
                 </Col>
             </Row>
 <br/>
@@ -85,10 +104,14 @@ export default function CadastroArvore() {
             <br/>
             <Row>
                 <Col>
+                <FloatingLabel controlId="floatingInput" label="Período de produção" className="mb-3">
                 <Form.Control placeholder="Período de produção" />
+                </FloatingLabel>
                 </Col>
                 <Col>
+                <FloatingLabel controlId="floatingInput" label="Tempo de colheita/ substituição" className="mb-3">
                 <Form.Control placeholder="Tempo de colheita/ substituição" />
+                </FloatingLabel>
                 </Col>
               
             </Row>
