@@ -43,20 +43,17 @@ export default function ListarUsuario(){
     return(
         <div>
             <Header></Header>
-            <h1>
-                Tela de lista de usuários em construção!
-            </h1>
 
             <ul>
                     {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
                 {loading && !data &&
                 <h3>Carregando informações...</h3>
                 }
-            {/* <h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2> */}
+          
                     {/* Segundo carregamento será para listar cada item existente no array data pelo metodo map */}
                 
-                   
-                    <Table striped bordered hover>
+                   <div className={Style.divFundo}>
+                    <Table striped bordered hover className={Style.Tabela}>
                         <thead>
                             <tr>
 
@@ -80,7 +77,7 @@ export default function ListarUsuario(){
                         </tbody>
                     </Table>
                     
-               
+                    </div>
              
             </ul>
         </div>

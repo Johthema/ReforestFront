@@ -1,5 +1,10 @@
 .divFundo{
-
+display: flex;
+margin-top: 100px
+}
+.Tabela{
+    width: 80%;
+    margin: auto
 }
 
 .listaItemUsuario{
@@ -13,8 +18,9 @@
 }
 .FontUsuario{
     font-size: 1rem;
-   
+    text-decoration: none;
     justify-content: center;
     align-items: center;
-    
+    margin: auto;
+    font-family: var(--fontPadrao);
 }
