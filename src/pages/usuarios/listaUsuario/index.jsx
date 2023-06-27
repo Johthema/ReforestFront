@@ -75,21 +75,6 @@ export default function ListarUsuario(){
                                     <td><h2 key={item._id} className={Style.FontUsuario}> {item.phone}</h2></td>
                                 </tr>
                             ))}
-                       
-                            
-
-                            {/* <td>
-                            {data && data.map((item) => (
-                                <h2 key={item._id} className={Style.FontUsuario}> {item.email}</h2>
-                                ))}
-                            </td>
-
-                            <td>
-                            {data && data.map((item) => (
-                                <h2 key={item._id} className={Style.FontUsuario}> {item.phone}</h2>
-                                ))} 
-                            </td> */}
-                          
                          
                            
                         </tbody>
