@@ -1,6 +1,8 @@
 import Header from '../../../components/header/index'
 import { useEffect, useState } from 'react'
 import Style from './listauser.module.css'
+import Table from 'react-bootstrap/Table';
+
 const URL_API=  "http://192.168.0.249:3001/api/users";
 
 
@@ -50,17 +52,50 @@ export default function ListarUsuario(){
                 {loading && !data &&
                 <h3>Carregando informações...</h3>
                 }
-            
+            {/* <h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2> */}
                     {/* Segundo carregamento será para listar cada item existente no array data pelo metodo map */}
-                {data && data.map((item) => (
-                    <ul className={Style.listaItemUsuario}>
-                        <li className={Style.itemUsuario}>
-                        <h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2>
-                        </li>
-                    </ul>
- 
+                
+                   
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                       
+                          
+                           {data && data.map((item) => (
+                                <tr>
+                                    <h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2>
+                                    <td><h2 key={item._id} className={Style.FontUsuario}> {item.email}</h2></td>
+                                    <td><h2 key={item._id} className={Style.FontUsuario}> {item.phone}</h2></td>
+                                </tr>
+                            ))}
+                       
+                            
+
+                            {/* <td>
+                            {data && data.map((item) => (
+                                <h2 key={item._id} className={Style.FontUsuario}> {item.email}</h2>
+                                ))}
+                            </td>
+
+                            <td>
+                            {data && data.map((item) => (
+                                <h2 key={item._id} className={Style.FontUsuario}> {item.phone}</h2>
+                                ))} 
+                            </td> */}
+                          
+                         
+                           
+                        </tbody>
+                    </Table>
                     
-                ))}
+               
              
             </ul>
         </div>
