@@ -2,6 +2,7 @@ import Header from '../../../components/header/index'
 import { useEffect, useState } from 'react'
 import Style from './listauser.module.css'
 import Table from 'react-bootstrap/Table';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
 const URL_API=  "http://192.168.0.249:3001/api/users";
 
@@ -58,8 +59,12 @@ export default function ListarUsuario(){
                             <tr>
 
                             <th>Nome</th>
+                            <th>Sobrenome</th>
                             <th>Email</th>
                             <th>Telefone</th>
+                            <th>papel</th>
+                            <th></th>
+                            <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,9 +72,14 @@ export default function ListarUsuario(){
                           
                            {data && data.map((item) => (
                                 <tr>
-                                    <h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2>
+
+                                    <td><h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2></td>
+                                    <td><h2 key={item._id} className={Style.FontUsuario}> {item.fullname}</h2></td>
                                     <td><h2 key={item._id} className={Style.FontUsuario}> {item.email}</h2></td>
                                     <td><h2 key={item._id} className={Style.FontUsuario}> {item.phone}</h2></td>
+                                    <td><h2 key={item._id} className={Style.FontUsuario}> {item.createAt}</h2></td>
+                                    <td className={Style.Editar}><FaEdit className={Style.icoEditar}/></td>
+                                    <td className={Style.Deletar}><FaTrashAlt className={Style.icoDeletar}/></td>
                                 </tr>
                             ))}
                          

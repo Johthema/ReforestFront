@@ -24,3 +24,29 @@ margin-top: 100px
     margin: auto;
     font-family: var(--fontPadrao);
 }
+
+.Editar{
+    cursor: pointer;
+    color: #55ACEE
+}
+.Editar:hover{
+ 
+    background-color: #E5F4FF
+}
+.Deletar{
+    cursor: pointer;
+    color: #EE6755
+}
+.Deletar:hover{
+    cursor: pointer;
+    background-color: #FBECEA
+}
+
+.icoEditar{
+   
+    color: #55ACEE
+}
+.icoDeletar{
+   
+    color: #EE6755
+}
