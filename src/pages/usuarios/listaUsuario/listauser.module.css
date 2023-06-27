@@ -1,0 +1,20 @@
+.divFundo{
+
+}
+
+.listaItemUsuario{
+    list-style-type: none;
+    margin-top: 10px;
+    
+}
+
+.itemUsuario{
+    border-bottom: 1px solid #a19f9f 
+}
+.FontUsuario{
+    font-size: 1rem;
+   
+    justify-content: center;
+    align-items: center;
+    
+}
