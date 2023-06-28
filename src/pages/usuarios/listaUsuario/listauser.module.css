@@ -1,5 +1,5 @@
 .divFundo{
-display: flex;
+
 margin-top: 100px
 }
 .Tabela{
@@ -49,4 +49,10 @@ margin-top: 100px
 .icoDeletar{
    
     color: #EE6755
+}
+
+.Busca{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
 }

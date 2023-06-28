@@ -2,7 +2,11 @@ import Header from '../../../components/header/index'
 import { useEffect, useState } from 'react'
 import Style from './listauser.module.css'
 import Table from 'react-bootstrap/Table';
-import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt, FaSearch } from 'react-icons/fa';
+import Spinner from 'react-bootstrap/Spinner';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
 
 const URL_API=  "http://192.168.0.249:3001/api/users";
 
@@ -45,15 +49,25 @@ export default function ListarUsuario(){
         <div>
             <Header></Header>
 
-            <ul>
+         
                     {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
-                {loading && !data &&
+                {/* {loading && !data &&
                 <h3>Carregando informações...</h3>
-                }
-          
-                    {/* Segundo carregamento será para listar cada item existente no array data pelo metodo map */}
-                
+                } */}
+
+                   
                    <div className={Style.divFundo}>
+                      <InputGroup className={Style.Busca}>
+                          <Form.Control
+                            placeholder="Buscar"
+                            aria-label="Buscar por nome"
+                            aria-describedby="basic-addon2"
+                          />
+                          <Button variant="outline-secondary" id="button-addon2">
+                            <FaSearch/>
+                          </Button>
+                      </InputGroup>
+
                     <Table striped bordered hover className={Style.Tabela}>
                         <thead>
                             <tr>
@@ -69,7 +83,24 @@ export default function ListarUsuario(){
                         </thead>
                         <tbody>
                        
-                          
+                        {loading && !data &&
+                          <Button variant="primary" disabled >
+                          <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                            
+                          />
+                          Carregando informações..
+                        </Button>
+                           
+                          // <Spinner animation="border" role="status">
+                           
+                          //   <span className="visually-hidden">Loading...</span>
+                          // </Spinner>
+                        }
                            {data && data.map((item) => (
                                 <tr>
 
@@ -89,7 +120,7 @@ export default function ListarUsuario(){
                     
                     </div>
              
-            </ul>
+          
         </div>
     )
 }
