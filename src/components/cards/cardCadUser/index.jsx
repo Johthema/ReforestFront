@@ -19,9 +19,9 @@ function LeftTabsExample() {
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  // const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [tipo, setTipo] = useState('');
+  const [roles, setTipo] = useState('');
 
   const [success, setSuccess] = useState(false)
 
@@ -38,6 +38,18 @@ function LeftTabsExample() {
   const onChangeSobrenome = (evt) =>{
     setSobrenome(evt.target.value)
   }
+  const onChangeEmail = (evt) =>{
+    setEmail(evt.target.value)
+  }
+  // const onChangePhone = (evt) =>{
+  //   setPhone(evt.target.value)
+  // }
+  const onChangePassword = (evt) =>{
+    setPassword(evt.target.value)
+  }
+  const onChangeRoles = (evt) =>{
+    setRoles(evt.target.value)
+  }
 
   const enviarForm = async (evt) => {
     //console.log(nome, sobrenome)
@@ -50,7 +62,7 @@ function LeftTabsExample() {
         'Content-type': 'application/json'
       },
 
-      body: JSON.stringify({ nome, sobrenome }),
+      body: JSON.stringify({ nome, sobrenome, email, password, roles }),
     })
 
     const json = await response.json()
@@ -107,19 +119,19 @@ function LeftTabsExample() {
                     <Row>
                     <Form.Group className="mb-3" controlId="formGroupEmail">
                     <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
-                        <Form.Control type="email" placeholder='Email' />
+                        <Form.Control type="email" placeholder='Email' name='email' value={email} onChange={onChangeEmail} />
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPassword">
                     <FloatingLabel controlId="floatingInput" label="password" className="mb-3">
-                        <Form.Control type="password" placeholder='password'  />
+                        <Form.Control type="password" placeholder='password' name='password' value={password} onChange={onChangePassword}  />
                     </FloatingLabel>
                     </Form.Group>
                     </Row>
                     <Row >
                     <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
                     
-                    <Form.Select >
+                    <Form.Select value={roles} onChange={onChangeRoles}>
                     <option value="0">Papel</option>
                         <option value="1">Administrador</option>
                         <option value="2">Opção2</option>
