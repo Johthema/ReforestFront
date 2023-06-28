@@ -21,7 +21,7 @@ function LeftTabsExample() {
   const [email, setEmail] = useState('');
   // const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [roles, setTipo] = useState('');
+  const [roles, setRoles] = useState('');
 
   const [success, setSuccess] = useState(false)
 
