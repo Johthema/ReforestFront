@@ -14,10 +14,64 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 function LeftTabsExample() {
   
+  //-----------------------------------Funções--------------------------------------
+
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [tipo, setTipo] = useState('');
+
+  const [success, setSuccess] = useState(false)
+
+  //dinamico
+  // const onChange = (evt) => {
+  //   console.log(evt.target.name)
+  // }
+  const URL_API=  "http://192.168.0.249:3001/api/user";
+
+  const onChangeNome = (evt) => {
+    setNome(evt.target.value)
+   
+  }
+  const onChangeSobrenome = (evt) =>{
+    setSobrenome(evt.target.value)
+  }
+
+  const enviarForm = async (evt) => {
+    //console.log(nome, sobrenome)
+    evt.preventDefault()
+    try{
+    const response = await fetch(URL_API,{
+      method: 'POST',
+      headers:{
+        Accept: 'application/json',
+        'Content-type': 'application/json'
+      },
+
+      body: JSON.stringify({ nome, sobrenome }),
+    })
+
+    const json = await response.json()
+    setSuccess(true)
+    
+  } catch(err){
+    console.log(err)
+
+  }
+  return false
+  }
+
+
+  //---------------------------------Pagina do card---------------------------------
 
 
   return (
+    
     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+      {success && 
+      <p>Cadastro realizado com sucesso!</p>}
       <Row className={Style.RowDiv}>
         <Col sm={3}>
           <Nav variant="pills" className="flex-column">
@@ -35,22 +89,18 @@ function LeftTabsExample() {
             <Card >
                 <Card.Header>Dados Pessoa Física</Card.Header>
                 <Card.Body>
-                    {/* <Card.Title>Special title treatment</Card.Title>
-                    <Card.Text>
-                    With supporting text below as a natural lead-in to additional content.
-                    </Card.Text> */}
-
-                <Form>
+                  
+                <Form onSubmit={enviarForm} method='post'>
                     <Row>
                         <Col>
                         
                         <FloatingLabel controlId="floatingInput" label="Nome" className="mb-3">
-                        <Form.Control placeholder='Nome' />
+                        <Form.Control placeholder='Nome' type='text' name='nome' value={nome} onChange={onChangeNome} />
                         </FloatingLabel>
                         </Col>
                         <Col>
                         <FloatingLabel controlId="floatingInput" label="Sobrenome" className="mb-3">
-                        <Form.Control  placeholder='Sobrenome'/>
+                        <Form.Control  placeholder='Sobrenome' type='text' name='sobrenome' value={sobrenome} onChange={onChangeSobrenome}/>
                         </FloatingLabel>
                         </Col>
                     </Row>
@@ -83,9 +133,10 @@ function LeftTabsExample() {
                     </Form.Group>
                     </Row>
                     <br/>
+                    <Button className={Style.BotaoCad} onClick={enviarForm}>Salvar</Button>
                     </Form>
                     
-                    <Button className={Style.BotaoCad}>Salvar</Button>
+                    
                     
                 </Card.Body>
             </Card>
@@ -95,11 +146,7 @@ function LeftTabsExample() {
             <Card>
                 <Card.Header>Dados Pessoa Jurídica</Card.Header>
                 <Card.Body>
-                    {/* <Card.Title>Special title treatment</Card.Title>
-                    <Card.Text>
-                    With supporting text below as a natural lead-in to additional content.
-                    </Card.Text> */}
-
+                   
                     <Form>
                         <Row>
                            <Col>
