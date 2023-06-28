@@ -52,7 +52,7 @@ function LeftTabsExample() {
   }
 
   const enviarForm = async (evt) => {
-    //console.log(nome, sobrenome)
+    
     evt.preventDefault()
     try{
     const response = await fetch(URL_API,{
