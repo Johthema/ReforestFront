@@ -14,8 +14,7 @@ import Nav from 'react-bootstrap/Nav';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Dropdown from 'react-bootstrap/Dropdown';
-import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
-        FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends, FaSignOutAlt } from "react-icons/fa";
+import {FaFilter } from "react-icons/fa";
 
 
 
@@ -96,12 +95,7 @@ export default function ListarUsuario(){
            
                     {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
                   
-                      
-                    
-
                    <div className={Style.divFundo}>
-
-                
 
                       <InputGroup className={Style.Busca}>
                           <Form.Control
@@ -117,9 +111,9 @@ export default function ListarUsuario(){
                       <Navbar className={Style.headerTabela}>
                       <Container>
                         {/* <Navbar.Brand href="#home">Filtros</Navbar.Brand>  */}
-                        <Dropdown>
+                        <Dropdown className={Style.DropMENU}>
                               <Dropdown.Toggle className={Style.IconeMENU}>
-                              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={Style.Icon} /></Nav.Link></OverlayTrigger>
+                             <Nav.Link href="#deets"  ><FaFilter className={Style.Icon} />Filtro</Nav.Link>
                               </Dropdown.Toggle>
 
                               <Dropdown.Menu className={Style.OpDropNotifi}>
