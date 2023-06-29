@@ -20,7 +20,7 @@ export default function ListarUsuario(){
     const [initialRepos, setInitialRepo] = useState([])
     const [repos, setRepo] = useState([])
 
-
+    //-----------------------------------------------------------------------Inicio Função de filtros
     useEffect(()=>{
       const fetchRepos = async () => {
         try {
@@ -35,6 +35,17 @@ export default function ListarUsuario(){
       }
       fetchRepos()
     }, []);
+
+    const handleChange = ({target}) =>{
+      if(!target.value){
+        setRepo(initialRepos)
+        return;
+      }
+
+      const filterRepos = repos.filter(({name}) => name.includes(target.value));
+      setRepo(filterRepos)
+    }
+    //----------------------------------------------------------------------------Fim Função de filtros
   
   //Primeiro carregamengto para saber se esta tudo certo
     const fecthAllData = async ()=> {
@@ -64,20 +75,12 @@ export default function ListarUsuario(){
   
     },[]);
 
-    const handleChange = ({target}) =>{
-      if(!target.value){
-        setRepo(initialRepos)
-        return;
-      }
 
-      const filterRepos = repos.filter(({name}) => name.includes(target.value));
-      setRepo(filterRepos)
-    }
 
     return(
         <div>
             <Header></Header>
-            <input type="text" onChange={handleChange}/>
+            <input type="text" />
             <ul>
               {repos.map((repo)=>(
                 <li key={repo._id}>{repo.name}</li>
@@ -97,6 +100,7 @@ export default function ListarUsuario(){
                             placeholder="Buscar"
                             aria-label="Buscar por nome"
                             aria-describedby="basic-addon2"
+                            onChange={handleChange}
                           />
                           <Button variant="outline-secondary" id="button-addon2">
                             <FaSearch/>
