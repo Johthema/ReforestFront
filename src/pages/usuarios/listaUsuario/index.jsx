@@ -80,20 +80,9 @@ export default function ListarUsuario(){
     return(
         <div>
             <Header></Header>
-            <input type="text" />
-            <ul>
-              {repos.map((repo)=>(
-                <li key={repo._id}>{repo.name}</li>
-              ))}
-            </ul>
-
-         
+           
                     {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
-                {/* {loading && !data &&
-                <h3>Carregando informações...</h3>
-                } */}
-
-                   
+         
                    <div className={Style.divFundo}>
                       <InputGroup className={Style.Busca}>
                           <Form.Control
@@ -140,8 +129,25 @@ export default function ListarUsuario(){
                           //   <span className="visually-hidden">Loading...</span>
                           // </Spinner>
                         }
-                           {data && data.map((item) => (
+
+                          {repos.map((repo)=>(
+
+                            <tr>
+                                    <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
+                                    <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.fullname}</h2></td>
+                                    <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
+                                    <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
+                                    <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.createAt}</h2></td>
+                                    <td className={Style.Editar}><FaEdit className={Style.icoEditar}/></td>
+                                    <td className={Style.Deletar}><FaTrashAlt className={Style.icoDeletar}/></td>
+                            </tr>
+        
+                          ))}
+
+                           {/* {data && data.map((item) => (
                                 <tr>
+
+                                  
 
                                     <td><h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2></td>
                                     <td><h2 key={item._id} className={Style.FontUsuario}> {item.fullname}</h2></td>
@@ -151,7 +157,7 @@ export default function ListarUsuario(){
                                     <td className={Style.Editar}><FaEdit className={Style.icoEditar}/></td>
                                     <td className={Style.Deletar}><FaTrashAlt className={Style.icoDeletar}/></td>
                                 </tr>
-                            ))}
+                            ))} */}
                          
                            
                         </tbody>
