@@ -1,5 +1,5 @@
 import Header from '../../../components/header/index'
-import { useEffect, useState } from 'react'
+import { useState, useEffect  } from 'react'
 import Style from './listauser.module.css'
 import Table from 'react-bootstrap/Table';
 import { FaEdit, FaTrashAlt, FaSearch } from 'react-icons/fa';
@@ -15,6 +15,26 @@ export default function ListarUsuario(){
    
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState(null)
+
+    //variáveis de filtros
+    const [initialRepos, setInitialRepo] = useState([])
+    const [repos, setRepo] = useState([])
+
+
+    useEffect(()=>{
+      const fetchRepos = async () => {
+        try {
+          const response = await fetch(URL_API)
+          const dados = await response.json();
+          setInitialRepo(dados);
+          setRepo(dados);
+
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      fetchRepos()
+    }, []);
   
   //Primeiro carregamengto para saber se esta tudo certo
     const fecthAllData = async ()=> {
@@ -42,12 +62,27 @@ export default function ListarUsuario(){
     useEffect(()=>{
       fecthAllData();
   
-    },[])
+    },[]);
 
+    const handleChange = ({target}) =>{
+      if(!target.value){
+        setRepo(initialRepos)
+        return;
+      }
+
+      const filterRepos = repos.filter(({name}) => name.includes(target.value));
+      setRepo(filterRepos)
+    }
 
     return(
         <div>
             <Header></Header>
+            <input type="text" onChange={handleChange}/>
+            <ul>
+              {repos.map((repo)=>(
+                <li key={repo._id}>{repo.name}</li>
+              ))}
+            </ul>
 
          
                     {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
