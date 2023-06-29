@@ -56,3 +56,30 @@ margin-top: 100px
     margin: auto;
     margin-bottom: 20px;
 }
+
+.headerTabela{
+    background-color: #a19f9f;
+    width: 80%;
+    margin: auto;
+}
+
+.IconeMENU{
+    margin-top: 20px;
+    --bs-btn-bg: none;
+    --bs-btn-border-color: none;
+    --bs-btn-hover-color: none;
+    background-color: transparent !important;
+    color: none;
+    --bs-btn-hover-color: none;
+    --bs-btn-hover-bg: none;
+}
+
+.IconeMENU:hover .Icon{
+    color: var(--primaryTom1-color)
+}
+.IconeDrop{
+    width: 20px;
+    height: 20px;
+    color: var(--secundaryTom1-color3);
+    margin-right: 10px;
+}

@@ -7,6 +7,19 @@ import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+
+import Nav from 'react-bootstrap/Nav';
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Dropdown from 'react-bootstrap/Dropdown';
+import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
+        FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends, FaSignOutAlt } from "react-icons/fa";
+
+
+
+
 
 const URL_API=  "http://192.168.0.249:3001/api/users";
 
@@ -82,8 +95,14 @@ export default function ListarUsuario(){
             <Header></Header>
            
                     {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
-         
+                  
+                      
+                    
+
                    <div className={Style.divFundo}>
+
+                
+
                       <InputGroup className={Style.Busca}>
                           <Form.Control
                             placeholder="Buscar"
@@ -91,11 +110,24 @@ export default function ListarUsuario(){
                             aria-describedby="basic-addon2"
                             onChange={handleChange}
                           />
-                          <Button variant="outline-secondary" id="button-addon2">
+                          {/* <Button variant="outline-secondary" id="button-addon2">
                             <FaSearch/>
-                          </Button>
+                          </Button> */}
                       </InputGroup>
+                      <Navbar className={Style.headerTabela}>
+                      <Container>
+                        {/* <Navbar.Brand href="#home">Filtros</Navbar.Brand>  */}
+                        <Dropdown>
+                              <Dropdown.Toggle className={Style.IconeMENU}>
+                              <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={Style.Icon} /></Nav.Link></OverlayTrigger>
+                              </Dropdown.Toggle>
 
+                              <Dropdown.Menu className={Style.OpDropNotifi}>
+                                <Dropdown.Item href="#/action-1" >Esta tudo certo!</Dropdown.Item>
+                              </Dropdown.Menu>
+                        </Dropdown>
+                        </Container>
+                    </Navbar>
                     <Table striped bordered hover className={Style.Tabela}>
                         <thead>
                             <tr>
@@ -162,8 +194,9 @@ export default function ListarUsuario(){
                            
                         </tbody>
                     </Table>
-                    
+                   
                     </div>
+                   
              
           
         </div>
