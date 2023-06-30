@@ -20,7 +20,7 @@ import {FaFilter } from "react-icons/fa";
 
 
 
-const URL_API=  "http://192.168.0.249:3001/api/users";
+const URL_API=  "http://192.168.0.249:3001/api/user";
 
 
 export default function ListarUsuario(){
