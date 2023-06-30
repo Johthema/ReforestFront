@@ -56,11 +56,12 @@ margin-top: 100px
     margin: auto;
     margin-bottom: 20px;
 }
-
+ 
 .headerTabela{
-    background-color: #a19f9f;
+    background-color: #2F2F2F;
     width: 80%;
     margin: auto;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .DropMENU{
@@ -72,7 +73,7 @@ margin-top: 100px
     
     --bs-btn-bg: none;
     --bs-btn-border-color: none;
-    --bs-btn-hover-color: none;
+    --bs-btn-hover-color: #55ACEE!important;
     background-color: transparent !important;
     color: none;
     --bs-btn-hover-color: none;

@@ -97,6 +97,9 @@ export default function ListarUsuario(){
                   
                    <div className={Style.divFundo}>
 
+                      
+                      <Navbar className={Style.headerTabela}>
+                      <Container>
                       <InputGroup className={Style.Busca}>
                           <Form.Control
                             placeholder="Buscar"
@@ -108,8 +111,6 @@ export default function ListarUsuario(){
                             <FaSearch/>
                           </Button> */}
                       </InputGroup>
-                      <Navbar className={Style.headerTabela}>
-                      <Container>
                         {/* <Navbar.Brand href="#home">Filtros</Navbar.Brand>  */}
                         <Dropdown className={Style.DropMENU}>
                               <Dropdown.Toggle className={Style.IconeMENU}>
@@ -117,8 +118,11 @@ export default function ListarUsuario(){
                               </Dropdown.Toggle>
 
                               <Dropdown.Menu className={Style.OpDropNotifi}>
-                                <Dropdown.Item href="#/action-1" >Esta tudo certo!</Dropdown.Item>
+                                <Dropdown.Item href="#/action-1" >Data de criação</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2" >Ordem alfabética</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3" >Tipo</Dropdown.Item>
                               </Dropdown.Menu>
+                             
                         </Dropdown>
                         </Container>
                     </Navbar>
