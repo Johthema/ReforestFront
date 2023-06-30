@@ -9,10 +9,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-
 import Nav from 'react-bootstrap/Nav';
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Dropdown from 'react-bootstrap/Dropdown';
 import {FaFilter } from "react-icons/fa";
 
@@ -154,10 +151,7 @@ export default function ListarUsuario(){
                           Carregando informações..
                         </Button>
                            
-                          // <Spinner animation="border" role="status">
-                           
-                          //   <span className="visually-hidden">Loading...</span>
-                          // </Spinner>
+                        
                         }
 
                           {repos.map((repo)=>(
