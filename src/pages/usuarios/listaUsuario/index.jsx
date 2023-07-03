@@ -193,19 +193,19 @@ export default function ListarUsuario(){
 <Modal show={show} onHide={handleClose}>
     <Modal.Header closeButton>
               <Modal.Title id="example-modal-sizes-title-sm">
-                <h2>Deletar usuário!</h2>
+                <h2 className={Style.tituloDeletar}>Deletar usuário!</h2>
               </Modal.Title>
     </Modal.Header>
     <Modal.Body>
       
-      <h4><FaRedoAlt/> Se quiseres, poderá restaura-lo mais tarde. </h4>
+      <h4><FaRedoAlt/> Por conveniência, poderá restaura-lo mais tarde. </h4>
     </Modal.Body>
   <Modal.Footer>
     <Button variant="secondary" onClick={handleClose}>
       Cancelar
     </Button>
     <Button variant="primary" onClick={handleClose}>
-      Excluir
+      Deletar
     </Button>
   </Modal.Footer>
 </Modal>
