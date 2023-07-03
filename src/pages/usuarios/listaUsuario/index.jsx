@@ -12,7 +12,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
 import {FaFilter } from "react-icons/fa";
-
+import Alert from 'react-bootstrap/Alert';
 
 
 
@@ -123,6 +123,9 @@ export default function ListarUsuario(){
                         </Dropdown>
                         </Container>
                     </Navbar>
+
+                  
+                    
                     <Table striped bordered hover className={Style.Tabela}>
                         <thead>
                             <tr>
@@ -135,24 +138,13 @@ export default function ListarUsuario(){
                             <th></th>
                             <th></th>
                             </tr>
+
                         </thead>
+                        
+                        
                         <tbody>
                        
-                        {loading && !data &&
-                          <Button variant="primary" disabled >
-                          <Spinner
-                            as="span"
-                            animation="grow"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                            
-                          />
-                          Carregando informações..
-                        </Button>
-                           
-                        
-                        }
+                       
 
                           {repos.map((repo)=>(
 
@@ -188,9 +180,14 @@ export default function ListarUsuario(){
                     </Table>
                    
                     </div>
-                   
-             
-          
+
+                    {loading && !data &&
+                       <Alert key="1231" variant="primary" className={Style.botaoCarregamento}>
+                            <Spinner animation="border" variant="primary"/> Carregando informações..
+                       </Alert>
+                       }
         </div>
+        
     )
+   
 }

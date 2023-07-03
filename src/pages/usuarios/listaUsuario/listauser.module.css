@@ -87,3 +87,11 @@ margin-top: 100px
     color: var(--secundaryTom1-color3);
     margin-right: 10px;
 }
+
+.botaoCarregamento{
+    display: flex;
+    width: 50%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
