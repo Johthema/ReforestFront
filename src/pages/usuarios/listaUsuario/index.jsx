@@ -2,7 +2,7 @@ import Header from '../../../components/header/index'
 import { useState, useEffect  } from 'react'
 import Style from './listauser.module.css'
 import Table from 'react-bootstrap/Table';
-import { FaEdit, FaTrashAlt, FaSearch } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaRecycle } from 'react-icons/fa';
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -11,9 +11,8 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
-import {FaFilter } from "react-icons/fa";
 import Alert from 'react-bootstrap/Alert';
-
+import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -28,6 +27,13 @@ export default function ListarUsuario(){
     //variáveis de filtros
     const [initialRepos, setInitialRepo] = useState([])
     const [repos, setRepo] = useState([])
+
+    //variaveis do modal
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
 
     //-----------------------------------------------------------------------Inicio Função de filtros
     useEffect(()=>{
@@ -124,8 +130,6 @@ export default function ListarUsuario(){
                         </Container>
                     </Navbar>
 
-                  
-                    
                     <Table striped bordered hover className={Style.Tabela}>
                         <thead>
                             <tr>
@@ -141,11 +145,8 @@ export default function ListarUsuario(){
 
                         </thead>
                         
-                        
                         <tbody>
                        
-                       
-
                           {repos.map((repo)=>(
 
                             <tr>
@@ -155,7 +156,7 @@ export default function ListarUsuario(){
                                     <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
                                     <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.createAt}</h2></td>
                                     <td className={Style.Editar}><FaEdit className={Style.icoEditar}/></td>
-                                    <td className={Style.Deletar}><FaTrashAlt className={Style.icoDeletar}/></td>
+                                    <td className={Style.Deletar} onClick={handleShow}><FaTrashAlt className={Style.icoDeletar}/></td>
                             </tr>
         
                           ))}
@@ -186,7 +187,35 @@ export default function ListarUsuario(){
                             <Spinner animation="border" variant="primary"/> Carregando informações..
                        </Alert>
                        }
+
+
+{/* Modal de exclusão de usuario */}
+<Modal show={show} onHide={handleClose}>
+    <Modal.Header closeButton>
+              <Modal.Title id="example-modal-sizes-title-sm">
+                <h2>Deletar usuário!</h2>
+              </Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      
+      <h4><FaRedoAlt/> Se quiseres, poderá restaura-lo mais tarde. </h4>
+    </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={handleClose}>
+      Cancelar
+    </Button>
+    <Button variant="primary" onClick={handleClose}>
+      Excluir
+    </Button>
+  </Modal.Footer>
+</Modal>
+
+                       
         </div>
+
+
+
+
         
     )
    
