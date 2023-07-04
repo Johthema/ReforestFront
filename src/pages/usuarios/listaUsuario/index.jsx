@@ -42,15 +42,23 @@ export default function ListarUsuario() {
   const [success, setSuccess] = useState(false)
   const [id, setId] = useState('');
 
+  // const btn_exlcuir = () => {
+  //   console.log("excluir o id: ", id )
+   
+  //   setId(id)
+  // }
+
   const idUsuario = (event) =>{
    
     console.log("O id do usuario é: ", event)
     //console.log("O event é: ", event )
-    //setId(id)
-    //setShow(true)
+    setId(event)
+    setShow(true)
+    // if(show==true){
 
-    //const idU = event;
-    setId('147')
+    // }
+  
+    // setId('147')
     // console.log("O id agora é: ", idU )
 
     // const handleChange = ({ target }) => {
@@ -107,6 +115,7 @@ export default function ListarUsuario() {
   const DeleteUser = async (evt) => {
     
     evt.preventDefault()
+    console.log("deletando o usuario de id: ",id)
     try{
     const response = await fetch(URL_API+"/"+id,{
       method: 'DELETE',
