@@ -92,8 +92,8 @@ margin-top: 100px
     display: flex;
     width: 50%;
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    bottom: 0%;
+    right: 0%;
 }
 .tituloDeletar{
     color: #EE6755

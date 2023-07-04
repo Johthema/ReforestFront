@@ -41,6 +41,7 @@ export default function ListarUsuario() {
     //variaveis deletar usuario
   const [success, setSuccess] = useState(false)
   const [id, setId] = useState('');
+  const [loadingExcluir, setLoadingExcluir] = useState(false);
 
   // const btn_exlcuir = () => {
   //   console.log("excluir o id: ", id )
@@ -125,15 +126,24 @@ export default function ListarUsuario() {
       },
 
       body: JSON.stringify({ id }),
+      
     })
-
+    
     const json = await response.json()
+    
+    
+    handleClose()
     setSuccess(true)
+    setTimeout(() => {
+      setSuccess(false)
+    }, 2000);
+    
     
   } catch(err){
     console.log(err)
 
   }
+  //handleClose()
   return false
   }
   //----------------------------------------------------------------------------Fim função deletar usuario
