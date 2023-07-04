@@ -16,13 +16,13 @@ function LeftTabsExample() {
   
   //-----------------------------------Funções--------------------------------------
 
-  const [nome, setNome] = useState('');
+  const [name, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
   const [email, setEmail] = useState('');
   // const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [roles, setRoles] = useState('');
-
+  const [person, setPerson] = useState('PF');
   const [success, setSuccess] = useState(false)
 
   //dinamico
@@ -47,9 +47,9 @@ function LeftTabsExample() {
   const onChangePassword = (evt) =>{
     setPassword(evt.target.value)
   }
-  const onChangeRoles = (evt) =>{
-    setRoles(evt.target.value)
-  }
+  // const onChangeRoles = (evt) =>{
+  //   setRoles(evt.target.value)
+  // }
 
   const enviarForm = async (evt) => {
     
@@ -62,7 +62,7 @@ function LeftTabsExample() {
         'Content-type': 'application/json'
       },
 
-      body: JSON.stringify({ nome, sobrenome, email, password, roles }),
+      body: JSON.stringify({ name, sobrenome, email, password, person }),
     })
 
     const json = await response.json()
@@ -107,7 +107,7 @@ function LeftTabsExample() {
                         <Col>
                         
                         <FloatingLabel controlId="floatingInput" label="Nome" className="mb-3">
-                        <Form.Control placeholder='Nome' type='text' name='nome' value={nome} onChange={onChangeNome} />
+                        <Form.Control placeholder='Nome' type='text' name='nome' value={name} onChange={onChangeNome} />
                         </FloatingLabel>
                         </Col>
                         <Col>
@@ -131,13 +131,13 @@ function LeftTabsExample() {
                     <Row >
                     <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
                     
-                    <Form.Select value={roles} onChange={onChangeRoles}>
+                    <Form.Select >
                     <option value="0">Papel</option>
                         <option value="1">Administrador</option>
                         <option value="2">Opção2</option>
                         <option value="3">Opção3</option>
                       
-                        {/* <option value="4" >--Novo papel--</option> */}
+                  
                         
                         
                     </Form.Select>
