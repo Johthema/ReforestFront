@@ -15,7 +15,6 @@ import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
 
 
-
 const URL_API = "http://192.168.0.249:3001/api/user";
 
 
@@ -32,56 +31,10 @@ export default function ListarUsuario() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  // const handleShow = (idUse) => {
-  //   setShow(true),
-  //   console.log("O id do usuario é: ", idUse )
-  //   setId(idUse)
-  // };
 
-    //variaveis deletar usuario
+  //variaveis deletar usuario
   const [success, setSuccess] = useState(false)
   const [id, setId] = useState('');
-  const [loadingExcluir, setLoadingExcluir] = useState(false);
-
-  // const btn_exlcuir = () => {
-  //   console.log("excluir o id: ", id )
-   
-  //   setId(id)
-  // }
-
-  const idUsuario = (event) =>{
-   
-    console.log("O id do usuario é: ", event)
-    //console.log("O event é: ", event )
-    setId(event)
-    setShow(true)
-    // if(show==true){
-
-    // }
-  
-    // setId('147')
-    // console.log("O id agora é: ", idU )
-
-    // const handleChange = ({ target }) => {
-    //   if (!target.value) {
-    //     setRepo(initialRepos)
-    //     return;
-    //   }
-  
-    //   const filterRepos = repos.filter(({ name }) => name.includes(target.value));
-    //   setRepo(filterRepos)
-    // }
-
-
-
-    // const handleShow = () => {
-    //   setShow(true)
-    // };
-
-  }
-
-
-  // const idRecebido = () => setId(_id)
 
 
 
@@ -113,6 +66,13 @@ export default function ListarUsuario() {
   //----------------------------------------------------------------------------Fim Função de filtros
 
   //----------------------------------------------------------------------------Inicio função deletar usuario
+  const idUsuario = (event) =>{
+   
+    console.log("O id do usuario é: ", event)
+    setId(event)
+    setShow(true)
+  }
+
   const DeleteUser = async (evt) => {
     
     evt.preventDefault()
@@ -132,23 +92,22 @@ export default function ListarUsuario() {
     const json = await response.json()
     
     
-    handleClose()
-    setSuccess(true)
-    setTimeout(() => {
-      setSuccess(false)
+    handleClose()//Fechar a janela modal
+    setSuccess(true) // Aparecer o alert de sucesso 
+
+    setTimeout(() => { //Uso do setTimeout para fechar o alert dos dados
+      setSuccess(false);
     }, 2000);
-    
+    window.location.reload();
     
   } catch(err){
     console.log(err)
 
   }
-  //handleClose()
+  
   return false
   }
   //----------------------------------------------------------------------------Fim função deletar usuario
-
-
 
 
 
@@ -200,11 +159,9 @@ export default function ListarUsuario() {
                 aria-describedby="basic-addon2"
                 onChange={handleChange}
               />
-              {/* <Button variant="outline-secondary" id="button-addon2">
-                            <FaSearch/>
-                          </Button> */}
+          
             </InputGroup>
-            {/* <Navbar.Brand href="#home" value='5550123' onClick={idUsuario}>Filtros</Navbar.Brand>  */}
+
             <Dropdown className={Style.DropMENU}>
               <Dropdown.Toggle className={Style.IconeMENU}>
                 <Nav.Link href="#deets"  ><FaFilter className={Style.Icon} />Filtro</Nav.Link>
@@ -223,7 +180,6 @@ export default function ListarUsuario() {
         <Table striped bordered hover className={Style.Tabela}>
           <thead>
             <tr>
-              <th>id</th>
               <th>Nome</th>
               <th>Sobrenome</th>
               <th>Email</th>
@@ -240,7 +196,6 @@ export default function ListarUsuario() {
             {repos.map((repo) => (
 
               <tr>
-                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo._id}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.fullname}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
@@ -284,12 +239,6 @@ export default function ListarUsuario() {
           <Spinner animation="border" variant="primary" /> Deletado com sucesso..
         </Alert>
       }
-
-      {/* {!success &&
-        <Alert key="1231" variant="primary" className={Style.botaoCarregamento}>
-          <Spinner animation="border" variant="primary" /> Erro ao deletar..
-        </Alert>
-      } */}
 
 
       {/* Modal de exclusão de usuario */}
