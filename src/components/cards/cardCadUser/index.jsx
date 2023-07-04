@@ -83,6 +83,14 @@ function LeftTabsExample() {
   return false
   }
 
+  const pessoaFisica= () => {
+    setPerson('PF')
+  }
+
+  const pessoaJuridica= () => {
+    setPerson('PJ')
+  }
+
 
   //---------------------------------Pagina do card---------------------------------
 
@@ -96,10 +104,10 @@ function LeftTabsExample() {
         <Col sm={3}>
           <Nav variant="pills" className="flex-column">
             <Nav.Item>
-              <Nav.Link eventKey="first" className={Style.OpcaoCad}>Pessoa Física</Nav.Link>
+              <Nav.Link eventKey="first" className={Style.OpcaoCad} onClick={pessoaFisica}>Pessoa Física</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="second" className={Style.OpcaoCad}>Pessoa Jurídica</Nav.Link>
+              <Nav.Link eventKey="second" className={Style.OpcaoCad} onClick={pessoaJuridica}>Pessoa Jurídica</Nav.Link>
             </Nav.Item>
           </Nav>
         </Col>
