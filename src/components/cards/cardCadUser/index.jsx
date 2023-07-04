@@ -28,6 +28,7 @@ function LeftTabsExample() {
 
   //variavel de Alerta de sucesso ou erro do cadastro
   const [success, setSuccess] = useState(false)
+  const [error, setErro] = useState(false)
 
   //dinamico
   // const onChange = (evt) => {
@@ -55,6 +56,8 @@ function LeftTabsExample() {
   //   setRoles(evt.target.value)
   // }
 
+  const [show, setShow] = useState(true);
+
   const enviarForm = async (evt) => {
     
     evt.preventDefault()
@@ -70,15 +73,19 @@ function LeftTabsExample() {
     })
 
     const json = await response.json()
-
-    setSuccess(true)
+    if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
+      setSuccess(true)
+    } else {
+      setErro(true)
+    }
+   
     setTimeout(()=>{
       setSuccess(false)
-    },2000)
+    },1500)
     
   } catch(err){
     console.log(err)
-
+    setErro(true)
   }
   return false
   }
@@ -243,6 +250,12 @@ function LeftTabsExample() {
 {success &&
   <Alert key="1232" variant="primary" className={Style.botaoCarregamento}>
     <Spinner animation="border" variant="primary" /> Salvo com sucesso..
+  </Alert>
+}
+
+{error &&
+  <Alert key="1233" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+    <Spinner animation="grow" variant="danger" /> Opa! algo deu errado. Preencha todos os campos corretamente..
   </Alert>
 }
 </>
