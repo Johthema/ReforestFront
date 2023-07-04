@@ -164,7 +164,7 @@ export default function ListarUsuario() {
 
             <Dropdown className={Style.DropMENU}>
               <Dropdown.Toggle className={Style.IconeMENU}>
-                <Nav.Link href="#deets"  ><FaFilter className={Style.Icon} />Filtro</Nav.Link>
+                <Nav.Link><FaFilter className={Style.Icon} />Filtro</Nav.Link>
               </Dropdown.Toggle>
 
               <Dropdown.Menu className={Style.OpDropNotifi}>
