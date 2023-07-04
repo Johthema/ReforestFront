@@ -197,7 +197,7 @@ export default function ListarUsuario() {
 
               <tr>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
-                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.fullname}</h2></td>
+                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.surname}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
              

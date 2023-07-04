@@ -9,20 +9,24 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import Example from '../../modals/modalpapel/index';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-
-
+import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
 
 function LeftTabsExample() {
   
   //-----------------------------------Funções--------------------------------------
 
   const [name, setNome] = useState('');
-  const [sobrenome, setSobrenome] = useState('');
+  const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   // const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [roles, setRoles] = useState('');
   const [person, setPerson] = useState('PF');
+  const [phone, setPhone] = useState('')
+
+
+  //variavel de Alerta de sucesso ou erro do cadastro
   const [success, setSuccess] = useState(false)
 
   //dinamico
@@ -35,15 +39,15 @@ function LeftTabsExample() {
     setNome(evt.target.value)
    
   }
-  const onChangeSobrenome = (evt) =>{
-    setSobrenome(evt.target.value)
+  const onChangeSurname = (evt) =>{
+    setSurname(evt.target.value)
   }
   const onChangeEmail = (evt) =>{
     setEmail(evt.target.value)
   }
-  // const onChangePhone = (evt) =>{
-  //   setPhone(evt.target.value)
-  // }
+  const onChangePhone = (evt) =>{
+    setPhone(evt.target.value)
+  }
   const onChangePassword = (evt) =>{
     setPassword(evt.target.value)
   }
@@ -62,11 +66,15 @@ function LeftTabsExample() {
         'Content-type': 'application/json'
       },
 
-      body: JSON.stringify({ name, sobrenome, email, password, person }),
+      body: JSON.stringify({ name, surname, email, phone, password, person }),
     })
 
     const json = await response.json()
+
     setSuccess(true)
+    setTimeout(()=>{
+      setSuccess(false)
+    },2000)
     
   } catch(err){
     console.log(err)
@@ -80,10 +88,10 @@ function LeftTabsExample() {
 
 
   return (
-    
+    <>
     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-      {success && 
-      <p>Cadastro realizado com sucesso!</p>}
+      {/* {success && 
+      <p>Cadastro realizado com sucesso!</p>} */}
       <Row className={Style.RowDiv}>
         <Col sm={3}>
           <Nav variant="pills" className="flex-column">
@@ -112,7 +120,7 @@ function LeftTabsExample() {
                         </Col>
                         <Col>
                         <FloatingLabel controlId="floatingInput" label="Sobrenome" className="mb-3">
-                        <Form.Control  placeholder='Sobrenome' type='text' name='sobrenome' value={sobrenome} onChange={onChangeSobrenome}/>
+                        <Form.Control  placeholder='Sobrenome' type='text' name='sobrenome' value={surname} onChange={onChangeSurname}/>
                         </FloatingLabel>
                         </Col>
                     </Row>
@@ -120,6 +128,11 @@ function LeftTabsExample() {
                     <Form.Group className="mb-3" controlId="formGroupEmail">
                     <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
                         <Form.Control type="email" placeholder='Email' name='email' value={email} onChange={onChangeEmail} />
+                    </FloatingLabel>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formGroupPhone">
+                    <FloatingLabel controlId="floatingInput" label="Phone" className="mb-3">
+                        <Form.Control type="text" placeholder='Telefone' name='phone' value={phone} onChange={onChangePhone}/>
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -218,6 +231,13 @@ function LeftTabsExample() {
         </Col>
       </Row>
     </Tab.Container>
+
+{success &&
+  <Alert key="1232" variant="primary" className={Style.botaoCarregamento}>
+    <Spinner animation="border" variant="primary" /> Salvo com sucesso..
+  </Alert>
+}
+</>
   );
 }
 
