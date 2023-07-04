@@ -255,7 +255,7 @@ function LeftTabsExample() {
 
 {error &&
   <Alert key="1233" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
-    <Spinner animation="grow" variant="danger" /> Opa! algo deu errado. Preencha todos os campos corretamente..
+    <Spinner animation="grow" variant="danger" /> Ops! algo deu errado. Preencha todos os campos corretamente..
   </Alert>
 }
 </>
