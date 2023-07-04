@@ -32,7 +32,48 @@ export default function ListarUsuario() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = (idUse) => {
+  //   setShow(true),
+  //   console.log("O id do usuario é: ", idUse )
+  //   setId(idUse)
+  // };
+
+    //variaveis deletar usuario
+  const [success, setSuccess] = useState(false)
+  const [id, setId] = useState('');
+
+  const idUsuario = (event) =>{
+   
+    console.log("O id do usuario é: ", event)
+    //console.log("O event é: ", event )
+    //setId(id)
+    //setShow(true)
+
+    //const idU = event;
+    setId('147')
+    // console.log("O id agora é: ", idU )
+
+    // const handleChange = ({ target }) => {
+    //   if (!target.value) {
+    //     setRepo(initialRepos)
+    //     return;
+    //   }
+  
+    //   const filterRepos = repos.filter(({ name }) => name.includes(target.value));
+    //   setRepo(filterRepos)
+    // }
+
+
+
+    // const handleShow = () => {
+    //   setShow(true)
+    // };
+
+  }
+
+
+  // const idRecebido = () => setId(_id)
+
 
 
   //-----------------------------------------------------------------------Inicio Função de filtros
@@ -61,6 +102,36 @@ export default function ListarUsuario() {
     setRepo(filterRepos)
   }
   //----------------------------------------------------------------------------Fim Função de filtros
+
+  //----------------------------------------------------------------------------Inicio função deletar usuario
+  const DeleteUser = async (evt) => {
+    
+    evt.preventDefault()
+    try{
+    const response = await fetch(URL_API+"/"+id,{
+      method: 'DELETE',
+      headers:{
+        Accept: 'application/json',
+        'Content-type': 'application/json'
+      },
+
+      body: JSON.stringify({ id }),
+    })
+
+    const json = await response.json()
+    setSuccess(true)
+    
+  } catch(err){
+    console.log(err)
+
+  }
+  return false
+  }
+  //----------------------------------------------------------------------------Fim função deletar usuario
+
+
+
+
 
   //Primeiro carregamengto para saber se esta tudo certo
   const fecthAllData = async () => {
@@ -114,7 +185,7 @@ export default function ListarUsuario() {
                             <FaSearch/>
                           </Button> */}
             </InputGroup>
-            {/* <Navbar.Brand href="#home">Filtros</Navbar.Brand>  */}
+            {/* <Navbar.Brand href="#home" value='5550123' onClick={idUsuario}>Filtros</Navbar.Brand>  */}
             <Dropdown className={Style.DropMENU}>
               <Dropdown.Toggle className={Style.IconeMENU}>
                 <Nav.Link href="#deets"  ><FaFilter className={Style.Icon} />Filtro</Nav.Link>
@@ -133,12 +204,12 @@ export default function ListarUsuario() {
         <Table striped bordered hover className={Style.Tabela}>
           <thead>
             <tr>
-
+              <th>id</th>
               <th>Nome</th>
               <th>Sobrenome</th>
               <th>Email</th>
               <th>Telefone</th>
-              <th>papel</th>
+             
               <th></th>
               <th></th>
             </tr>
@@ -150,13 +221,14 @@ export default function ListarUsuario() {
             {repos.map((repo) => (
 
               <tr>
+                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo._id}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.fullname}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
-                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.createAt}</h2></td>
+             
                 <td className={Style.Editar}><FaEdit className={Style.icoEditar} /></td>
-                <td className={Style.Deletar} onClick={handleShow}><FaTrashAlt className={Style.icoDeletar} /></td>
+                <td className={Style.Deletar} value={repo._id} onClick={() => idUsuario(repo._id)} ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
 
             ))}
@@ -188,6 +260,18 @@ export default function ListarUsuario() {
         </Alert>
       }
 
+      {success &&
+        <Alert key="1231" variant="primary" className={Style.botaoCarregamento}>
+          <Spinner animation="border" variant="primary" /> Deletado com sucesso..
+        </Alert>
+      }
+
+      {/* {!success &&
+        <Alert key="1231" variant="primary" className={Style.botaoCarregamento}>
+          <Spinner animation="border" variant="primary" /> Erro ao deletar..
+        </Alert>
+      } */}
+
 
       {/* Modal de exclusão de usuario */}
       <Modal show={show} onHide={handleClose}>
@@ -204,7 +288,7 @@ export default function ListarUsuario() {
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={DeleteUser} >
             Deletar
           </Button>
         </Modal.Footer>
