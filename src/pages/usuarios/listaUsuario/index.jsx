@@ -235,7 +235,7 @@ export default function ListarUsuario() {
       }
 
       {success &&
-        <Alert key="1231" variant="primary" className={Style.botaoCarregamento}>
+        <Alert key="1232" variant="primary" className={Style.botaoCarregamento}>
           <Spinner animation="border" variant="primary" /> Deletado com sucesso..
         </Alert>
       }
