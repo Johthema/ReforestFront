@@ -196,9 +196,6 @@ function LeftTabsExample() {
                         <option value="1">Administrador</option>
                         <option value="2">Opção2</option>
                         <option value="3">Opção3</option>
-                      
-                  
-                        
                         
                     </Form.Select>
                     <Example/>
