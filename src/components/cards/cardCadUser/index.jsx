@@ -24,6 +24,8 @@ function LeftTabsExample() {
   const [roles, setRoles] = useState('');
   const [person, setPerson] = useState('PF');
   const [phone, setPhone] = useState('')
+  const [site, setSite] = useState('')
+  const [fullname, setFullName] = useState('')
 
 
   //variavel de Alerta de sucesso ou erro do cadastro
@@ -55,6 +57,12 @@ function LeftTabsExample() {
   // const onChangeRoles = (evt) =>{
   //   setRoles(evt.target.value)
   // }
+  const onChangeSite = (evt) =>{
+    setSite(evt.target.value)
+  }
+  const onChangeFullName = (evt) =>{
+    setFullName(evt.target.value)
+  }
 
   const [show, setShow] = useState(true);
 
@@ -62,26 +70,50 @@ function LeftTabsExample() {
     
     evt.preventDefault()
     try{
-    const response = await fetch(URL_API,{
-      method: 'POST',
-      headers:{
-        Accept: 'application/json',
-        'Content-type': 'application/json'
-      },
 
-      body: JSON.stringify({ name, surname, email, phone, password, person }),
-    })
+      if(person == 'PF'){
+        const response = await fetch(URL_API,{
+          method: 'POST',
+          headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+    
+          body: JSON.stringify({ name, surname, email, phone, password, person }),
+        })
+    
+        const json = await response.json()
+        if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
+          setSuccess(true)
+        } else {
+          setErro(true)
+        }
 
-    const json = await response.json()
-    if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
-      setSuccess(true)
-    } else {
-      setErro(true)
-    }
+      } else if(person == 'PJ') {
+
+        const response = await fetch(URL_API,{
+          method: 'POST',
+          headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+    
+          body: JSON.stringify({ name, fullname, email, phone, password, person, site }),
+        })
+    
+        const json = await response.json()
+        if(name!='' && email !='' && phone !='' && password !='' && person !=''){
+          setSuccess(true)
+        } else {
+          setErro(true)
+        }
+
+      }
+
    
     setTimeout(()=>{
       setSuccess(false)
-    },1500)
+    },1000)
     
   } catch(err){
     console.log(err)
@@ -187,21 +219,25 @@ function LeftTabsExample() {
                 <Card.Header>Dados Pessoa Jurídica</Card.Header>
                 <Card.Body>
                    
-                    <Form>
+                    <Form onSubmit={enviarForm} method='post'>
                         <Row>
                            <Col>
                             
                             <FloatingLabel controlId="floatingInput" label="Razão social" className="mb-3">
-                              <Form.Control placeholder='Razão social' />
+                              <Form.Control placeholder='Razão social' value={fullname} onChange={onChangeFullName} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="Nome completo" className="mb-3">
-                              <Form.Control placeholder='Nome completo'  />
+                              <Form.Control placeholder='Nome completo' value={name} onChange={onChangeNome} />
+                            </FloatingLabel>
+
+                            <FloatingLabel controlId="floatingInput" label="Telefone" className="mb-3">
+                              <Form.Control placeholder='Telefone' value={phone} onChange={onChangePhone} />
                             </FloatingLabel>
 
                             
                             <FloatingLabel controlId="floatingInput" label="Site" className="mb-3">
-                              <Form.Control placeholder='Site'/>
+                              <Form.Control placeholder='Site' value={site} onChange={onChangeSite}/>
                               </FloatingLabel>
                             </Col>
                          
@@ -210,13 +246,13 @@ function LeftTabsExample() {
                             <Form.Group className="mb-3" controlId="formGroupEmail">
                                 
                                 <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
-                                  <Form.Control type="email" placeholder='Email' />
+                                  <Form.Control type="email" placeholder='Email' value={email} onChange={onChangeEmail}/>
                                 </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPassword">
                                 
                                 <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
-                                  <Form.Control type="password" placeholder='Password' />
+                                  <Form.Control type="password" placeholder='Password' value={password} onChange={onChangePassword} />
                                 </FloatingLabel>
                             </Form.Group>
                         </Row>
@@ -238,7 +274,7 @@ function LeftTabsExample() {
 
 
 
-                    <Button className={Style.BotaoCad}>Salvar</Button>
+                    <Button className={Style.BotaoCad} onClick={enviarForm}>Salvar</Button>
                 </Card.Body>
             </Card>
             </Tab.Pane>
