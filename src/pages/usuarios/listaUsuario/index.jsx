@@ -155,9 +155,6 @@ export default function ListarUsuario() {
 
       <div className={Style.divFundo}>
 
-     
-
-
         <Navbar className={Style.headerTabela}>
           <Container>
             <InputGroup className={Style.Busca}>
