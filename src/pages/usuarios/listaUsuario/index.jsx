@@ -173,8 +173,8 @@ export default function ListarUsuario() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu className={Style.OpDropNotifi}>
-                <Dropdown.Item href="#/action-1" >Data de criação</Dropdown.Item>
-                <Dropdown.Item href="#/action-2" >Ordem alfabética</Dropdown.Item>
+                <Dropdown.Item href="#/action-1" >Pessoa Fisica</Dropdown.Item>
+                <Dropdown.Item href="#/action-2" >Pessoa Jurídica</Dropdown.Item>
                 <Dropdown.Item href="#/action-3" >Tipo</Dropdown.Item>
               </Dropdown.Menu>
 

@@ -162,29 +162,29 @@ function LeftTabsExample() {
                         <Col>
                         
                         <FloatingLabel controlId="floatingInput" label="*Nome" className="mb-3">
-                        <Form.Control placeholder='*Nome' type='text' name='nome' value={name} onChange={onChangeNome} />
+                        <Form.Control placeholder='*Nome' type='text' name='nome'  onChange={onChangeNome} />
                         </FloatingLabel>
                         </Col>
                         <Col>
                         <FloatingLabel controlId="floatingInput" label="*Sobrenome" className="mb-3">
-                        <Form.Control  placeholder='Sobrenome' type='text' name='*sobrenome' value={surname} onChange={onChangeSurname}/>
+                        <Form.Control  placeholder='Sobrenome' type='text' name='*sobrenome'  onChange={onChangeSurname}/>
                         </FloatingLabel>
                         </Col>
                     </Row>
                     <Row>
                     <Form.Group className="mb-3" controlId="formGroupEmail">
                     <FloatingLabel controlId="floatingInput" label="*Email" className="mb-3">
-                        <Form.Control type="email" placeholder='*Email' name='email' value={email} onChange={onChangeEmail} />
+                        <Form.Control type="email" placeholder='*Email' name='email'  onChange={onChangeEmail} />
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPhone">
                     <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                        <Form.Control type="text" placeholder='*Telefone' name='phone' value={phone} onChange={onChangePhone}/>
+                        <Form.Control type="text" placeholder='*Telefone' name='phone'  onChange={onChangePhone}/>
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPassword">
                     <FloatingLabel controlId="floatingInput" label="*Password" className="mb-3">
-                        <Form.Control type="password" placeholder='*Password' name='password' value={password} onChange={onChangePassword}  />
+                        <Form.Control type="password" placeholder='*Password' name='password'  onChange={onChangePassword}  />
                     </FloatingLabel>
                     </Form.Group>
                     </Row>
@@ -221,20 +221,20 @@ function LeftTabsExample() {
                            <Col>
                             
                             <FloatingLabel controlId="floatingInput" label="Razão social(opcional)" className="mb-3">
-                              <Form.Control placeholder='Razão social(opcional)' value={fullname} onChange={onChangeFullName} />
+                              <Form.Control placeholder='Razão social(opcional)'  onChange={onChangeFullName} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="*Nome completo" className="mb-3">
-                              <Form.Control placeholder='*Nome completo' value={name} onChange={onChangeNome} />
+                              <Form.Control placeholder='*Nome completo'  onChange={onChangeNome} />
                             </FloatingLabel>
 
                             <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                              <Form.Control placeholder='*Telefone' value={phone} onChange={onChangePhone} />
+                              <Form.Control placeholder='*Telefone'  onChange={onChangePhone} />
                             </FloatingLabel>
 
                             
                             <FloatingLabel controlId="floatingInput" label="Site(opcional)" className="mb-3">
-                              <Form.Control placeholder='Site(opcional)' value={site} onChange={onChangeSite}/>
+                              <Form.Control placeholder='Site(opcional)'  onChange={onChangeSite}/>
                               </FloatingLabel>
                             </Col>
                          
@@ -243,13 +243,13 @@ function LeftTabsExample() {
                             <Form.Group className="mb-3" controlId="formGroupEmail">
                                 
                                 <FloatingLabel controlId="floatingInput" label="*Email" className="mb-3">
-                                  <Form.Control type="email" placeholder='*Email' value={email} onChange={onChangeEmail}/>
+                                  <Form.Control type="email" placeholder='*Email'  onChange={onChangeEmail}/>
                                 </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPassword">
                                 
                                 <FloatingLabel controlId="floatingInput" label="*Password" className="mb-3">
-                                  <Form.Control type="password" placeholder='*Password' value={password} onChange={onChangePassword} />
+                                  <Form.Control type="password" placeholder='*Password'  onChange={onChangePassword} />
                                 </FloatingLabel>
                             </Form.Group>
                         </Row>
