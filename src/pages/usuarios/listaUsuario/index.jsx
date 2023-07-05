@@ -22,6 +22,7 @@ export default function ListarUsuario() {
 
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null)
+  const [errorInt, setErroInterno] = useState(false)
 
   //variáveis de filtros
   const [initialRepos, setInitialRepo] = useState([])
@@ -49,6 +50,7 @@ export default function ListarUsuario() {
 
       } catch (error) {
         console.log(error)
+        setErroInterno(true)
       }
     }
     fetchRepos()
@@ -244,6 +246,12 @@ export default function ListarUsuario() {
           <Spinner animation="border" variant="primary" /> Deletado com sucesso..
         </Alert>
       }
+
+{errorInt &&
+  <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+    <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
+  </Alert>
+}
 
 
       {/* Modal de exclusão de usuario */}
