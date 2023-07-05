@@ -70,7 +70,7 @@ export default function Header() {
                     <Dropdown.Item href="#/action-1" >Esta tudo certo!</Dropdown.Item>
                   </Dropdown.Menu>
             </Dropdown>
-            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaSignOutAlt className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="/"  ><FaSignOutAlt className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
 
             </Nav>
           </Navbar.Collapse>
