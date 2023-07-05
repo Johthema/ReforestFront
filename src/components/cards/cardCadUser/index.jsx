@@ -23,12 +23,18 @@ function LeftTabsExample() {
   const [password, setPassword] = useState('');
   const [roles, setRoles] = useState('');
   const [person, setPerson] = useState('PF');
-  const [phone, setPhone] = useState('')
+  const [phone, setPhone] = useState('');
+
+  const [fullname, setFullname] = useState('');
+  const [site, setSite] = useState('');
 
 
   //variavel de Alerta de sucesso ou erro do cadastro
   const [success, setSuccess] = useState(false)
-  const [error, setErro] = useState(false)
+  const [erros, setErro] = useState(false)
+  const [errorInterno, setErroInterno] = useState(false)
+
+  
 
   //dinamico
   // const onChange = (evt) => {
@@ -52,6 +58,14 @@ function LeftTabsExample() {
   const onChangePassword = (evt) =>{
     setPassword(evt.target.value)
   }
+
+
+  const onChangeSite = (evt) =>{
+    setSite(evt.target.value)
+  }
+  const onChangeFullname = (evt) =>{
+    setFullname(evt.target.value)
+  }
   // const onChangeRoles = (evt) =>{
   //   setRoles(evt.target.value)
   // }
@@ -62,6 +76,27 @@ function LeftTabsExample() {
     
     evt.preventDefault()
     try{
+
+      if(person=='Pf'){
+        const response = await fetch(URL_API,{
+          method: 'POST',
+          headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+    
+          body: JSON.stringify({ name, surname, email, phone, password, person }),
+        })
+
+        if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
+          setSuccess(true)
+        } else {
+          setErro(true)
+          console.log("deu erro nos campos do pf")
+        }
+        const json = await response.json()
+
+      } else if (person=='PJ'){
     const response = await fetch(URL_API,{
       method: 'POST',
       headers:{
@@ -69,23 +104,34 @@ function LeftTabsExample() {
         'Content-type': 'application/json'
       },
 
-      body: JSON.stringify({ name, surname, email, phone, password, person }),
+      body: JSON.stringify({ name, fullname, email, phone, password, person, site }),
     })
 
-    const json = await response.json()
-    if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
+    if(name!='' && fullname!='' && email !='' && phone !='' && password !='' && person !=''){
       setSuccess(true)
     } else {
       setErro(true)
+      console.log("deu erro nos campos do pj")
     }
+    const json = await response.json()
+  }
+
+   
+    // if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
+    //   setSuccess(true)
+    // } else {
+    //   setErro(true)
+    // }
    
     setTimeout(()=>{
       setSuccess(false)
     },1500)
     
   } catch(err){
-    console.log(err)
+     
+    console.log("->",err)
     setErro(true)
+    
   }
   return false
   }
@@ -104,7 +150,7 @@ function LeftTabsExample() {
 
   return (
     <>
-    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+    <Tab.Container id="left-tabs-example1" defaultActiveKey="first">
       {/* {success && 
       <p>Cadastro realizado com sucesso!</p>} */}
       <Row className={Style.RowDiv}>
@@ -129,41 +175,41 @@ function LeftTabsExample() {
                     <Row>
                         <Col>
                         
-                        <FloatingLabel controlId="floatingInput" label="Nome" className="mb-3">
+                        <FloatingLabel controlId="floatingInput0" label="Nome" className="mb-3">
                         <Form.Control placeholder='Nome' type='text' name='nome' value={name} onChange={onChangeNome} />
                         </FloatingLabel>
                         </Col>
                         <Col>
-                        <FloatingLabel controlId="floatingInput" label="Sobrenome" className="mb-3">
+                        <FloatingLabel controlId="floatingInput1" label="Sobrenome" className="mb-3">
                         <Form.Control  placeholder='Sobrenome' type='text' name='sobrenome' value={surname} onChange={onChangeSurname}/>
                         </FloatingLabel>
                         </Col>
                     </Row>
                     <Row>
                     <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
+                    <FloatingLabel controlId="floatingInput2" label="Email" className="mb-3">
                         <Form.Control type="email" placeholder='Email' name='email' value={email} onChange={onChangeEmail} />
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPhone">
-                    <FloatingLabel controlId="floatingInput" label="Phone" className="mb-3">
+                    <FloatingLabel controlId="floatingInput3" label="Phone" className="mb-3">
                         <Form.Control type="text" placeholder='Telefone' name='phone' value={phone} onChange={onChangePhone}/>
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPassword">
-                    <FloatingLabel controlId="floatingInput" label="password" className="mb-3">
+                    <FloatingLabel controlId="floatingInput4" label="password" className="mb-3">
                         <Form.Control type="password" placeholder='password' name='password' value={password} onChange={onChangePassword}  />
                     </FloatingLabel>
                     </Form.Group>
                     </Row>
                     <Row >
-                    <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
+                    <Form.Group as={Col} controlId="formGridState1" className={Style.formPapel}>
                     
                     <Form.Select >
                     <option value="0">Papel</option>
-                        <option value="1">Administrador</option>
-                        <option value="2">Opção2</option>
-                        <option value="3">Opção3</option>
+                        <option value="1" key={112}>Administrador</option>
+                        <option value="2" key={113}>Opção2</option>
+                        <option value="3" key={114}>Opção3</option>
                       
                   
                         
@@ -187,46 +233,49 @@ function LeftTabsExample() {
                 <Card.Header>Dados Pessoa Jurídica</Card.Header>
                 <Card.Body>
                    
-                    <Form>
+                    <Form onSubmit={enviarForm} method='post'>
                         <Row>
                            <Col>
                             
-                            <FloatingLabel controlId="floatingInput" label="Razão social" className="mb-3">
-                              <Form.Control placeholder='Razão social' />
+                            <FloatingLabel controlId="floatingInput5" label="Razão social" className="mb-3">
+                              <Form.Control placeholder='Razão social' value={fullname} onChange={onChangeFullname} />
                             </FloatingLabel>
                             
-                            <FloatingLabel controlId="floatingInput" label="Nome completo" className="mb-3">
-                              <Form.Control placeholder='Nome completo'  />
+                            <FloatingLabel controlId="floatingInput6" label="Nome completo" className="mb-3">
+                              <Form.Control placeholder='Nome' value={name} onChange={onChangeNome} />
                             </FloatingLabel>
 
-                            
-                            <FloatingLabel controlId="floatingInput" label="Site" className="mb-3">
-                              <Form.Control placeholder='Site'/>
-                              </FloatingLabel>
+                            <FloatingLabel controlId="floatingInput7" label="Telefone" className="mb-3">
+                              <Form.Control placeholder='Telefone' value={phone} onChange={onChangePhone} />
+                            </FloatingLabel>
+
+                            <FloatingLabel controlId="floatingInput8" label="Site" className="mb-3">
+                              <Form.Control placeholder='Site' value={site} onChange={onChangeSite}/>
+                            </FloatingLabel>
                             </Col>
                          
                         </Row>
                         <Row>
-                            <Form.Group className="mb-3" controlId="formGroupEmail">
+                            <Form.Group className="mb-3" controlId="formGroupEmail2">
                                 
-                                <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
-                                  <Form.Control type="email" placeholder='Email' />
+                                <FloatingLabel controlId="floatingInput9" label="Email" className="mb-3">
+                                  <Form.Control type="email" placeholder='Email' value={email} onChange={onChangeEmail} />
                                 </FloatingLabel>
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formGroupPassword">
+                            <Form.Group className="mb-3" controlId="formGroupPassword2">
                                 
-                                <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
-                                  <Form.Control type="password" placeholder='Password' />
+                                <FloatingLabel controlId="floatingInput10" label="Password" className="mb-3">
+                                  <Form.Control type="password" placeholder='Password' value={password} onChange={onChangePassword} />
                                 </FloatingLabel>
                             </Form.Group>
                         </Row>
                         <Row>
-                            <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
+                            <Form.Group as={Col} controlId="formGridState13" className={Style.formPapel}>
                           
                             <Form.Select >
-                                <option value="1">Administrador</option>
-                                <option value="2">Opção2</option>
-                                <option value="3">Opção3</option>
+                                <option value="1" key={111}>Administrador</option>
+                                <option value="2" key={222}>Opção2</option>
+                                <option value="3"key={333}>Opção3</option>
                             </Form.Select>
                             <Example/>
                             </Form.Group>
@@ -238,7 +287,7 @@ function LeftTabsExample() {
 
 
 
-                    <Button className={Style.BotaoCad}>Salvar</Button>
+                    <Button className={Style.BotaoCad} onClick={enviarForm}>Salvar</Button>
                 </Card.Body>
             </Card>
             </Tab.Pane>
@@ -253,11 +302,12 @@ function LeftTabsExample() {
   </Alert>
 }
 
-{error &&
+{erros &&
   <Alert key="1233" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
     <Spinner animation="grow" variant="danger" /> Ops! algo deu errado. Preencha todos os campos corretamente..
   </Alert>
 }
+
 </>
   );
 }

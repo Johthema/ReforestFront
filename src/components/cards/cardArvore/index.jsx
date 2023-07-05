@@ -33,7 +33,7 @@ export default function CardArvore() {
           
           <Card.Body>
             <Card.Title>Tectona grandis</Card.Title>
-            <Image src={ImgArvore} className={Style.imgArvore} />
+            <Image src={ImgArvore} className={Style.imgArvore} alt=""/>
             {/* <Card.Text>
               With supporting text below as a natural lead-in to additional content.
             </Card.Text> */}
@@ -63,7 +63,7 @@ export default function CardArvore() {
           
           <Card.Body>
             <Card.Title>Tectona 2 grandis</Card.Title>
-            <Image src={ImgArvore} className={Style.imgArvore} />
+            <Image src={ImgArvore} className={Style.imgArvore} alt=""/>
             {/* <Card.Text>
               With supporting text below as a natural lead-in to additional content.
             </Card.Text> */}

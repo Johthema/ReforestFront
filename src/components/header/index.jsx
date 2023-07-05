@@ -24,7 +24,7 @@ export default function Header() {
 
       <Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
         <Container className={StyleBar.navContain}>
-          <Navbar.Brand href="/home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} /></Navbar.Brand>
+          <Navbar.Brand href="/home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} alt="" /></Navbar.Brand>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" >
@@ -36,12 +36,12 @@ export default function Header() {
                 <NavDropdown.Item ><Link href="/arvores/listarArvores" className={StyleBar.h2Tit}><FaEnvira className={StyleBar.IconeDrop}/>Lista de árvores</Link></NavDropdown.Item>
               </NavDropdown>
 
-              <NavDropdown title="Locais de plantação" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
+              <NavDropdown title="Locais de plantação" id="collasible-nav-dropdown1" className={StyleBar.custom_dropdown}>
                 <NavDropdown.Item ><Link href="/locaisPlantacao/cadastrarLocal" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar local</Link></NavDropdown.Item>
                 <NavDropdown.Item ><Link href="/locaisPlantacao/listaLocais" className={StyleBar.h2Tit}><FaMapMarkerAlt className={StyleBar.IconeDrop}/>Lista de locais</Link></NavDropdown.Item>
               </NavDropdown>
 
-              <NavDropdown title="Usuários" id="collasible-nav-dropdown" className={StyleBar.custom_dropdown}>
+              <NavDropdown title="Usuários" id="collasible-nav-dropdown2" className={StyleBar.custom_dropdown}>
                 <NavDropdown.Item ><Link href="/usuarios/cadastrarUsuario" className={StyleBar.h2Tit}><FaPlus className={StyleBar.IconeDrop}/>Cadastrar usuário</Link></NavDropdown.Item>
                 <NavDropdown.Item ><Link href="/usuarios/listaUsuario" className={StyleBar.h2Tit}><FaUserFriends className={StyleBar.IconeDrop}/>Lista de usuários</Link></NavDropdown.Item>
               </NavDropdown>
@@ -52,7 +52,7 @@ export default function Header() {
             <Nav>
             <Dropdown>
                   <Dropdown.Toggle className={StyleBar.IconeMENU}>
-                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled1" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
@@ -63,14 +63,14 @@ export default function Header() {
             </Dropdown>
             <Dropdown>
                   <Dropdown.Toggle className={StyleBar.IconeMENU}>
-                  <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+                  <OverlayTrigger overlay={<Tooltip id="tooltip-disabled2" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className={StyleBar.OpDropNotifi}>
                     <Dropdown.Item href="#/action-1" >Esta tudo certo!</Dropdown.Item>
                   </Dropdown.Menu>
             </Dropdown>
-            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaSignOutAlt className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled3" >Logout</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaSignOutAlt className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
 
             </Nav>
           </Navbar.Collapse>

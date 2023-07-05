@@ -32,7 +32,7 @@ export default function LoginCard(){
       <div className={Style.divFundo}>
            
            <div className={Style.divBarra}>
-           <Image src={Logot} className={Style.logo} />
+           <Image src={Logot} className={Style.logo} alt="" />
                 <Tabs
                     defaultActiveKey="login"
                     transition={false}
@@ -44,13 +44,13 @@ export default function LoginCard(){
                     <Tab eventKey="login" title="Login">
 
                    <div className={Style.DivCorpoCard}>
-                   <Image src={Logo} className={Style.imgMundo} />
+                   <Image src={Logo} className={Style.imgMundo} alt="" />
                    <div className={Style.DivForm}>
                    <h3 className={Style.TituloCard}>Iniciar sessão na ReForest</h3>
                 
                     <Form className={Style.Formulario}>
                     
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3" controlId="formBasicEmail1">
                             <Form.Label>Email/Telefone</Form.Label>
                             <Form.Control type="email" placeholder="Digite seu email ou telefone" />
                            
@@ -74,34 +74,34 @@ export default function LoginCard(){
                     <Tab eventKey="profile" title="Registre-se">
                   
                     <div className={Style.DivCorpoCard}>
-                   <Image src={Logo} className={Style.imgMundo} />
+                   <Image src={Logo} className={Style.imgMundo} alt="" />
                    <div className={Style.DivForm}>
                    <h3 className={Style.TituloCard}>Cadastre-se</h3>
                  
                     <Form className={Style.Formulario}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3" controlId="formBasicEmail2">
                         
                             <Form.Control  placeholder="Digite seu nome" />
                            
                         </Form.Group>
                     
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3" controlId="formBasicEmail3">
                         
                             <Form.Control type="email" placeholder="Digite seu email" />
                            
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3" controlId="formBasicEmail4">
                          
                             <Form.Control placeholder="Digite seu telefone" />
                            
                         </Form.Group>
 <br/>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="formBasicPassword5">
                         
                             <Form.Control type="password" placeholder="Digite sua senha" />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="formBasicPassword6">
                          
                             <Form.Control type="password" placeholder="Redigite sua senha" />
                         </Form.Group>
