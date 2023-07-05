@@ -111,9 +111,9 @@ function LeftTabsExample() {
       }
 
    
-    setTimeout(()=>{
-      setSuccess(false)
-    },1000)
+    // setTimeout(()=>{
+    //   setSuccess(false)
+    // },1000)
     
   } catch(err){
     console.log(err)
@@ -231,17 +231,15 @@ function LeftTabsExample() {
                             <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
                               <Form.Control placeholder='*Telefone'  onChange={onChangePhone} />
                             </FloatingLabel>
-
                             
                             <FloatingLabel controlId="floatingInput" label="Site(opcional)" className="mb-3">
                               <Form.Control placeholder='Site(opcional)'  onChange={onChangeSite}/>
-                              </FloatingLabel>
+                            </FloatingLabel>
+
                             </Col>
-                         
                         </Row>
                         <Row>
                             <Form.Group className="mb-3" controlId="formGroupEmail">
-                                
                                 <FloatingLabel controlId="floatingInput" label="*Email" className="mb-3">
                                   <Form.Control type="email" placeholder='*Email'  onChange={onChangeEmail}/>
                                 </FloatingLabel>
@@ -278,7 +276,7 @@ function LeftTabsExample() {
 
 {success &&
   <Alert key="1232" variant="primary" className={Style.botaoCarregamento}>
-    <Spinner animation="border" variant="primary" /> Salvo com sucesso..
+    <Spinner animation="grow" variant="primary" /> Salvo com sucesso.. <Alert.Link href="/usuarios/listaUsuario">Ver lista de usuarios</Alert.Link>
   </Alert>
 }
 
