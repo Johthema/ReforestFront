@@ -11,6 +11,9 @@ import Example from '../../modals/modalpapel/index';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
+import { FaListOl, FaListAlt } from "react-icons/fa";
+
+
 
 function LeftTabsExample() {
   
@@ -275,8 +278,8 @@ function LeftTabsExample() {
     </Tab.Container>
 
 {success &&
-  <Alert key="1232" variant="primary" className={Style.botaoCarregamento}>
-    <Spinner animation="grow" variant="primary" /> Salvo com sucesso.. <Alert.Link href="/usuarios/listaUsuario">Ver lista de usuarios</Alert.Link>
+  <Alert key="1232" variant="primary" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+    <Spinner animation="grow" variant="primary" /> Salvo com sucesso! | <Alert.Link href="/usuarios/listaUsuario">  <FaListAlt/> Ver lista de usuarios</Alert.Link>
   </Alert>
 }
 

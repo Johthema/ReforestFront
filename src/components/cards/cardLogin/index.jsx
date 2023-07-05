@@ -32,7 +32,7 @@ export default function LoginCard(){
       <div className={Style.divFundo}>
            
            <div className={Style.divBarra}>
-           <Image src={Logot} className={Style.logo} />
+           <Image src={Logot} className={Style.logo} alt="" />
                 <Tabs
                     defaultActiveKey="login"
                     transition={false}
@@ -44,7 +44,7 @@ export default function LoginCard(){
                     <Tab eventKey="login" title="Login">
 
                    <div className={Style.DivCorpoCard}>
-                   <Image src={Logo} className={Style.imgMundo} />
+                   <Image src={Logo} className={Style.imgMundo} alt="" />
                    <div className={Style.DivForm}>
                    <h3 className={Style.TituloCard}>Iniciar sessão na ReForest</h3>
                 
@@ -74,7 +74,7 @@ export default function LoginCard(){
                     <Tab eventKey="profile" title="Registre-se">
                   
                     <div className={Style.DivCorpoCard}>
-                   <Image src={Logo} className={Style.imgMundo} />
+                   <Image src={Logo} className={Style.imgMundo} alt="" />
                    <div className={Style.DivForm}>
                    <h3 className={Style.TituloCard}>Cadastre-se</h3>
                  

@@ -89,9 +89,9 @@ margin-top: 100px
 }
 
 .botaoCarregamento{
-    display: flex;
+    display: block;
     width: 50%;
-    position: absolute;
+    position: fixed;
     bottom: 0%;
     right: 0%;
 }
