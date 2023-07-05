@@ -34,7 +34,8 @@ function LeftTabsExample() {
   //variavel de Alerta de sucesso ou erro do cadastro
   const [success, setSuccess] = useState(false)
   const [error, setErro] = useState(false)
-
+  const [errorInt, setErroInterno] = useState(false)
+  const [loading, setLoading] = useState(false)
   //dinamico
   // const onChange = (evt) => {
   //   console.log(evt.target.name)
@@ -73,7 +74,7 @@ function LeftTabsExample() {
     
     evt.preventDefault()
     try{
-
+      setLoading(true)
       if(person == 'PF'){
         const response = await fetch(URL_API,{
           method: 'POST',
@@ -87,8 +88,10 @@ function LeftTabsExample() {
     
         const json = await response.json()
         if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
+          setLoading(false)
           setSuccess(true)
         } else {
+          setLoading(false)
           setErro(true)
         }
 
@@ -106,8 +109,10 @@ function LeftTabsExample() {
     
         const json = await response.json()
         if(name!='' && email !='' && phone !='' && password !='' && person !=''){
+          setLoading(false)
           setSuccess(true)
         } else {
+          setLoading(false)
           setErro(true)
         }
 
@@ -119,8 +124,9 @@ function LeftTabsExample() {
     // },1000)
     
   } catch(err){
-    console.log(err)
-    setErro(true)
+    console.log("O erro retornado: ",err)
+    setLoading(false)
+    setErroInterno(true)
   }
   return false
   }
@@ -278,14 +284,26 @@ function LeftTabsExample() {
     </Tab.Container>
 
 {success &&
-  <Alert key="1232" variant="primary" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
-    <Spinner animation="grow" variant="primary" /> Salvo com sucesso! | <Alert.Link href="/usuarios/listaUsuario">  <FaListAlt/> Ver lista de usuarios</Alert.Link>
+  <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+    <Spinner animation="grow" variant="success" /> Salvo com sucesso! | <Alert.Link href="/usuarios/listaUsuario">  <FaListAlt/> Ver lista de usuarios</Alert.Link>
   </Alert>
 }
 
 {error &&
   <Alert key="1233" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
     <Spinner animation="grow" variant="danger" /> Ops! algo deu errado. Preencha todos os campos corretamente..
+  </Alert>
+}
+
+{errorInt &&
+  <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+    <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
+  </Alert>
+}
+
+{loading &&
+  <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
+    <Spinner animation="border" variant="primary" /> Aguarde, salvando...
   </Alert>
 }
 </>
