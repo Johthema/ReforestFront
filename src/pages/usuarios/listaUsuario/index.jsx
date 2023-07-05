@@ -35,7 +35,7 @@ export default function ListarUsuario() {
   //variaveis deletar usuario
   const [success, setSuccess] = useState(false)
   const [id, setId] = useState('');
-
+  const [nome, setUsuarioNome] = useState('');
 
 
   //-----------------------------------------------------------------------Inicio Função de filtros
@@ -66,10 +66,11 @@ export default function ListarUsuario() {
   //----------------------------------------------------------------------------Fim Função de filtros
 
   //----------------------------------------------------------------------------Inicio função deletar usuario
-  const idUsuario = (event) =>{
+  const idUsuario = (event, nome) =>{
    
     console.log("O id do usuario é: ", event)
     setId(event)
+    setUsuarioNome(nome)
     setShow(true)
   }
 
@@ -202,7 +203,7 @@ export default function ListarUsuario() {
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
              
                 <td className={Style.Editar}><FaEdit className={Style.icoEditar} /></td>
-                <td className={Style.Deletar} value={repo._id} onClick={() => idUsuario(repo._id)} ><FaTrashAlt className={Style.icoDeletar} /></td>
+                <td className={Style.Deletar} value={repo._id} onClick={() => idUsuario(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
 
             ))}
@@ -246,6 +247,7 @@ export default function ListarUsuario() {
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
             <h2 className={Style.tituloDeletar}>Deletar usuário!</h2>
+            <h5 className={Style.tituloDelet}>{nome}</h5>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
