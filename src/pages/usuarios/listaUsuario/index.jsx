@@ -13,7 +13,7 @@ import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
-
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 const URL_API = "http://192.168.0.249:3001/api/user";
 
@@ -141,14 +141,21 @@ export default function ListarUsuario() {
   }, []);
 
 
-
+//===========================================[[[RENDERIZAÇÃO DA PAGINA]]]===================================================
   return (
     <div>
       <Header></Header>
+      <Breadcrumb className={Style.migalhas}>
+        <Breadcrumb.Item href="/home">Home</Breadcrumb.Item>
+        
+        <Breadcrumb.Item active>Lista de usuários.</Breadcrumb.Item>
+      </Breadcrumb>
 
       {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
 
       <div className={Style.divFundo}>
+
+     
 
 
         <Navbar className={Style.headerTabela}>
