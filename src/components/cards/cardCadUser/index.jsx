@@ -53,7 +53,7 @@ function LeftTabsExample() {
     setEmail(evt.target.value)
   }
   const onChangePhone = (evt) =>{
-    setPhone(evt.target.value)
+    setPhone('+55'+ evt.target.value)
   }
   const onChangePassword = (evt) =>{
     setPassword(evt.target.value)
@@ -188,7 +188,7 @@ function LeftTabsExample() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPhone">
                     <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                        <Form.Control type="text" placeholder='*Telefone' name='phone'  onChange={onChangePhone}/>
+                        <Form.Control type="text" placeholder='*Telefone' name='phone'   onChange={onChangePhone}/>
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPassword">
