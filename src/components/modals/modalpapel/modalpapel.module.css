@@ -1,0 +1,14 @@
+.botao{
+    /* background-color: #469444;
+    --bs-btn-border-color: #469444 */
+--bs-btn-color: #fff;
+--bs-btn-bg: #469444;
+--bs-btn-border-color: #469444;
+--bs-btn-hover-color: #fff;
+--bs-btn-hover-bg: #295527;
+--bs-btn-hover-border-color: #295527;
+}
+/* .botao:hover{
+    background-color: #295527;
+    --bs-btn-border-color: #469444
+} */

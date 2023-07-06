@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
-
+import Style from './modalpapel.module.css'
 
 export default function Example() {
   const [show, setShow] = useState(false);
@@ -14,7 +14,7 @@ export default function Example() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" onClick={handleShow} className={Style.botao}>
         Novo
       </Button>
 

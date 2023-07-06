@@ -15,7 +15,7 @@ import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
-const URL_API = "http://192.168.0.249:3001/api/user";
+const URL_API = "http://192.168.0.133:3001/api/user";
 
 
 export default function ListarUsuario() {

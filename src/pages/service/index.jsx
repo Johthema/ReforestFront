@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const URL_API=  "http://192.168.0.249:3001/api/users";
+const URL_API=  "http://192.168.0.133:3001/api/users";
 
 export default function ListaUs() {
 
