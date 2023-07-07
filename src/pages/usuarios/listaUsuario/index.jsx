@@ -275,7 +275,7 @@ export default function ListarUsuario() {
         </Modal.Header>
         <Modal.Body>
 
-          <h4><FaRedoAlt /> Por conveniência, poderá restaura-lo mais tarde. </h4>
+          <h4><FaRedoAlt /> Por conveniência, poderá restaurá-lo mais tarde. </h4>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
