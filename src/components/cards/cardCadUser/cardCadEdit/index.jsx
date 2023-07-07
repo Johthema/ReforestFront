@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Style from '../card.module.css';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import { useState,  useEffect } from 'react';
 import Example from '../../../modals/modalpapel/index';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Alert from 'react-bootstrap/Alert';
@@ -26,7 +26,7 @@ export default function EditarUsuario({handleShowEdit}) {
   // const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [roles, setRoles] = useState('');
-  const [person, setPerson] = useState('PF');
+  const [person, setPerson] = useState(handleShowEdit[1]);
   const [phone, setPhone] = useState('')
   const [site, setSite] = useState('')
   const [fullname, setFullName] = useState('')
@@ -36,6 +36,10 @@ export default function EditarUsuario({handleShowEdit}) {
   const [error, setErro] = useState(false)
   const [errorInt, setErroInterno] = useState(false)
   const [loading, setLoading] = useState(false)
+
+
+  const [data, setData] = useState([])
+
   //dinamico
   // const onChange = (evt) => {
   //   console.log(evt.target.name)
@@ -69,6 +73,42 @@ export default function EditarUsuario({handleShowEdit}) {
   }
 
   const [show, setShow] = useState(true);
+
+
+  //================================Inicio do Carregamento dos dados do usuário
+  const fecthAllData = async () => {
+    try {
+
+      setLoading(true)
+      const response = await fetch(URL_API+idEditavel) //por padrão o fetch ja utiliza o GET
+      const data = await response.json()
+      console.log("O conteudo: ",data);
+
+      if (!data)
+        throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+      setData(data)
+
+      //Iniciando a estrutura da requisição
+
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+
+  }
+
+  //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
+  useEffect(() => {
+    fecthAllData();
+
+  }, []);
+
+  //================================Fim do Carregamento dos dados do usuário
+
+
+
+
 
   const enviarForm = async (evt) => {
     
@@ -171,55 +211,58 @@ export default function EditarUsuario({handleShowEdit}) {
             <Card >
                 <Card.Header>Dados Pessoa Física</Card.Header>
                 <Card.Body>
-                  
+               
                 <Form onSubmit={enviarForm} method='post'>
+              
                     <Row>
                         <Col>
-                        
-                        <FloatingLabel controlId="floatingInput" label="*Nome" className="mb-3">
-                        <Form.Control placeholder='*Nome' type='text' name='nome'  onChange={onChangeNome} />
-                        </FloatingLabel>
+
+                            <FloatingLabel controlId="floatingInput" label="*Nome" className="mb-3">
+                                <Form.Control placeholder='*Nome' type='text' name='nome' Value={data.name} onChange={onChangeNome} />
+                            </FloatingLabel>
                         </Col>
                         <Col>
-                        <FloatingLabel controlId="floatingInput" label="*Sobrenome" className="mb-3">
-                        <Form.Control  placeholder='Sobrenome' type='text' name='*sobrenome'  onChange={onChangeSurname}/>
-                        </FloatingLabel>
+                            <FloatingLabel controlId="floatingInput" label="*Sobrenome" className="mb-3">
+                                <Form.Control placeholder='Sobrenome' type='text' name='*sobrenome' Value={data.surname} onChange={onChangeSurname} />
+                            </FloatingLabel>
                         </Col>
-                    </Row>
-                    <Row>
-                    <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <FloatingLabel controlId="floatingInput" label="*Email" className="mb-3">
-                        <Form.Control type="email" placeholder='*Email' name='email'  onChange={onChangeEmail} />
-                    </FloatingLabel>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formGroupPhone">
-                    <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                        <Form.Control type="text" placeholder='*Telefone' name='phone'   onChange={onChangePhone}/>
-                    </FloatingLabel>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formGroupPassword">
-                    <FloatingLabel controlId="floatingInput" label="*Password" className="mb-3">
-                        <Form.Control type="password" placeholder='*Password' name='password'  onChange={onChangePassword}  />
-                    </FloatingLabel>
-                    </Form.Group>
-                    </Row>
-                    <Row >
-                    <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
+                    </Row><Row>
+                            <Form.Group className="mb-3" controlId="formGroupEmail">
+                                <FloatingLabel controlId="floatingInput" label="*Email" className="mb-3">
+                                    <Form.Control type="email" placeholder='*Email' name='email' Value={data.email} onChange={onChangeEmail} />
+                                </FloatingLabel>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formGroupPhone">
+                                <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
+                                    <Form.Control type="text" placeholder='*Telefone' name='phone' Value={data.phone} onChange={onChangePhone} />
+                                </FloatingLabel>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formGroupPassword">
+                                <FloatingLabel controlId="floatingInput" label="*Password" className="mb-3">
+                                    <Form.Control type="password" placeholder='*Password' name='password' onChange={onChangePassword} />
+                                </FloatingLabel>
+                               
+                            </Form.Group>
+                           
+                        </Row><Row>
+                            <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
+
+                                <Form.Select>
+                                    <option value="0">Papel</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Opção2</option>
+                                    <option value="3">Opção3</option>
+
+                                </Form.Select>
+                                <Example />
+                            </Form.Group>
+                        </Row><br />
+                      
+                        <Button className={Style.BotaoCad} onClick={enviarForm}>Salvar</Button>
+                
                     
-                    <Form.Select >
-                    <option value="0">Papel</option>
-                        <option value="1">Administrador</option>
-                        <option value="2">Opção2</option>
-                        <option value="3">Opção3</option>
-                        
-                    </Form.Select>
-                    <Example/>
-                    </Form.Group>
-                    </Row>
-                    <br/>
-                    <Button className={Style.BotaoCad} onClick={enviarForm}>Salvar</Button>
                     </Form>
-                    
+                   
                     
                     
                 </Card.Body>
@@ -239,19 +282,19 @@ export default function EditarUsuario({handleShowEdit}) {
                            <Col>
                             
                             <FloatingLabel controlId="floatingInput" label="Razão social(opcional)" className="mb-3">
-                              <Form.Control placeholder='Razão social(opcional)'  onChange={onChangeFullName} />
+                              <Form.Control placeholder='Razão social(opcional)' Value={data.fullname}  onChange={onChangeFullName} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="*Nome completo" className="mb-3">
-                              <Form.Control placeholder='*Nome completo'  onChange={onChangeNome} />
+                              <Form.Control placeholder='*Nome completo' Value={data.name} onChange={onChangeNome} />
                             </FloatingLabel>
 
                             <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                              <Form.Control placeholder='*Telefone'  onChange={onChangePhone} />
+                              <Form.Control placeholder='*Telefone' Value={data.phone} onChange={onChangePhone} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="Site(opcional)" className="mb-3">
-                              <Form.Control placeholder='Site(opcional)'  onChange={onChangeSite}/>
+                              <Form.Control placeholder='Site(opcional)' Value={data.site}  onChange={onChangeSite}/>
                             </FloatingLabel>
 
                             </Col>
@@ -259,7 +302,7 @@ export default function EditarUsuario({handleShowEdit}) {
                         <Row>
                             <Form.Group className="mb-3" controlId="formGroupEmail">
                                 <FloatingLabel controlId="floatingInput" label="*Email" className="mb-3">
-                                  <Form.Control type="email" placeholder='*Email'  onChange={onChangeEmail}/>
+                                  <Form.Control type="email" placeholder='*Email' Value={data.email} onChange={onChangeEmail}/>
                                 </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPassword">
