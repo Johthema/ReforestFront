@@ -14,11 +14,11 @@ import Spinner from 'react-bootstrap/Spinner';
 import { FaListOl, FaListAlt } from "react-icons/fa";
 
 
-export default function LeftTabsExample({handleShowEdit}) {
+export default function EditarUsuario({handleShowEdit}) {
   //console.log("id retornou: ",handleShowEdit )
   console.log("person retornou: ",handleShowEdit[1])
   //-----------------------------------Funções--------------------------------------
-  //const [idEditavel, setIdEditavel] = useState(handleShowEdit)
+  const [idEditavel, setIdEditavel] = useState(handleShowEdit[0])
 
   const [name, setNome] = useState('');
   const [surname, setSurname] = useState('');
@@ -40,7 +40,7 @@ export default function LeftTabsExample({handleShowEdit}) {
   // const onChange = (evt) => {
   //   console.log(evt.target.name)
   // }
-  const URL_API=  "http://192.168.0.133:3001/api/user";
+  const URL_API=  "http://192.168.0.133:3001/api/user/";
 
   const onChangeNome = (evt) => {
     setNome(evt.target.value)
@@ -76,8 +76,8 @@ export default function LeftTabsExample({handleShowEdit}) {
     try{
       setLoading(true)
       if(person == 'PF'){
-        const response = await fetch(URL_API,{
-          method: 'POST',
+        const response = await fetch(URL_API+idEditavel,{
+          method: 'PUT',
           headers:{
             Accept: 'application/json',
             'Content-type': 'application/json'
@@ -97,8 +97,8 @@ export default function LeftTabsExample({handleShowEdit}) {
 
       } else if(person == 'PJ') {
 
-        const response = await fetch(URL_API,{
-          method: 'POST',
+        const response = await fetch(URL_API+idEditavel,{
+          method: 'PUT',
           headers:{
             Accept: 'application/json',
             'Content-type': 'application/json'
