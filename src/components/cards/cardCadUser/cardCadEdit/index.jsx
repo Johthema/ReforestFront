@@ -14,10 +14,11 @@ import Spinner from 'react-bootstrap/Spinner';
 import { FaListOl, FaListAlt } from "react-icons/fa";
 
 
-
-function LeftTabsExample() {
-  
+export default function LeftTabsExample({handleShowEdit}) {
+  //console.log("id retornou: ",handleShowEdit )
+  console.log("person retornou: ",handleShowEdit[1])
   //-----------------------------------Funções--------------------------------------
+  //const [idEditavel, setIdEditavel] = useState(handleShowEdit)
 
   const [name, setNome] = useState('');
   const [surname, setSurname] = useState('');
@@ -29,7 +30,6 @@ function LeftTabsExample() {
   const [phone, setPhone] = useState('')
   const [site, setSite] = useState('')
   const [fullname, setFullName] = useState('')
-
 
   //variavel de Alerta de sucesso ou erro do cadastro
   const [success, setSuccess] = useState(false)
@@ -151,16 +151,22 @@ function LeftTabsExample() {
       <Row className={Style.RowDiv}>
         <Col sm={3}>
           <Nav variant="pills" className="flex-column">
+            {handleShowEdit[1] == 'PF' &&
             <Nav.Item>
-              <Nav.Link eventKey="first" className={Style.OpcaoCad} onClick={pessoaFisica}>Pessoa Física Edit</Nav.Link>
+              <Nav.Link eventKey="first" className={`${Style.OpcaoCad}, ${Style.OpcaoCadEdit}`} onClick={pessoaFisica}>Editar Pessoa Física</Nav.Link>
             </Nav.Item>
+            }
+            {handleShowEdit[1] == 'PJ' &&
             <Nav.Item>
-              <Nav.Link eventKey="second" className={Style.OpcaoCad} onClick={pessoaJuridica}>Pessoa Jurídica Edit</Nav.Link>
+              <Nav.Link eventKey="first" className={`${Style.OpcaoCad}, ${Style.OpcaoCadEdit}`} onClick={pessoaJuridica}>Editar Pessoa Jurídica</Nav.Link>
             </Nav.Item>
+            }
           </Nav>
         </Col>
         <Col sm={9} className={Style.ColunaSm9}>
+        
           <Tab.Content>
+            {handleShowEdit[1] == 'PF' &&
             <Tab.Pane eventKey="first">
             <Card >
                 <Card.Header>Dados Pessoa Física</Card.Header>
@@ -219,8 +225,11 @@ function LeftTabsExample() {
                 </Card.Body>
             </Card>
             </Tab.Pane>
+            }
 
-            <Tab.Pane eventKey="second">
+            {handleShowEdit[1] == 'PJ' &&
+
+            <Tab.Pane eventKey="first">
             <Card>
                 <Card.Header>Dados Pessoa Jurídica</Card.Header>
                 <Card.Body>
@@ -278,6 +287,7 @@ function LeftTabsExample() {
                 </Card.Body>
             </Card>
             </Tab.Pane>
+            }
           </Tab.Content>
         </Col>
       </Row>
@@ -310,4 +320,3 @@ function LeftTabsExample() {
   );
 }
 
-export default LeftTabsExample;

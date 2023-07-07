@@ -44,11 +44,20 @@ export default function ListarUsuario() {
 
   //Variáveis editar usuario
   const [showEdit, setShowEdit] = useState(false);
-  const handleShowEdit = () => setShowEdit(true);
-
-
-
-
+  const [IdEdit, setIdEdit] = useState();
+  const [personEdit, setPersonEdit] = useState();
+  const [dadosEditar, setDadosEditar] = useState([])
+  const handleShowEdit = (idUser, personName) =>{
+    console.log("o id a passar: ", idUser)
+    setShowEdit(true);
+    setIdEdit(idUser)
+    setPersonEdit(personName)
+   
+    setDadosEditar([idUser, personName]);
+    
+  } 
+  console.log("o array a passar: ", dadosEditar)
+  
   //-----------------------------------------------------------------------Inicio Função de filtros
   useEffect(() => {
     const fetchRepos = async () => {
@@ -103,8 +112,8 @@ export default function ListarUsuario() {
     })
     
     const json = await response.json()
-    
-    
+
+
     handleClose()//Fechar a janela modal
     setSuccess(true) // Aparecer o alert de sucesso 
 
@@ -112,16 +121,14 @@ export default function ListarUsuario() {
       setSuccess(false);
     }, 2000);
     window.location.reload();
-    
+
   } catch(err){
     console.log(err)
-
   }
   
   return false
   }
   //----------------------------------------------------------------------------Fim função deletar usuario
-
 
 
   //Primeiro carregamengto para saber se esta tudo certo
@@ -218,7 +225,7 @@ export default function ListarUsuario() {
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
              
-                <td className={Style.Editar} onClick={handleShowEdit}><FaEdit className={Style.icoEditar} /></td>
+                <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id, repo.person)}><FaEdit className={Style.icoEditar} /></td>
                 <td className={Style.Deletar} value={repo._id} onClick={() => idUsuario(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
 
@@ -292,7 +299,7 @@ export default function ListarUsuario() {
           <Offcanvas.Title>Editar usuário</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-        <CardUsuarioEdit/>
+        <CardUsuarioEdit handleShowEdit={dadosEditar} />
         </Offcanvas.Body>
       </Offcanvas>
 
