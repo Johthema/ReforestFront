@@ -14,6 +14,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import CardUsuarioEdit from '../../../components/cards/cardCadUser/cardCadEdit/index';
+
 
 const URL_API = "http://192.168.0.133:3001/api/user";
 
@@ -32,11 +35,18 @@ export default function ListarUsuario() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
+  const handleCloseEdit = () => setShowEdit(false);
 
   //variaveis deletar usuario
   const [success, setSuccess] = useState(false)
   const [id, setId] = useState('');
   const [nome, setUsuarioNome] = useState('');
+
+  //Variáveis editar usuario
+  const [showEdit, setShowEdit] = useState(false);
+  const handleShowEdit = () => setShowEdit(true);
+
+
 
 
   //-----------------------------------------------------------------------Inicio Função de filtros
@@ -208,7 +218,7 @@ export default function ListarUsuario() {
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
                 <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
              
-                <td className={Style.Editar}><FaEdit className={Style.icoEditar} /></td>
+                <td className={Style.Editar} onClick={handleShowEdit}><FaEdit className={Style.icoEditar} /></td>
                 <td className={Style.Deletar} value={repo._id} onClick={() => idUsuario(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
 
@@ -247,11 +257,11 @@ export default function ListarUsuario() {
         </Alert>
       }
 
-{errorInt &&
-  <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
-    <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
-  </Alert>
-}
+      {errorInt &&
+        <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+          <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
+        </Alert>
+      }
 
 
       {/* Modal de exclusão de usuario */}
@@ -276,12 +286,17 @@ export default function ListarUsuario() {
         </Modal.Footer>
       </Modal>
 
+      {/* Formulario para edição do usuario selecionado */}
+      <Offcanvas show={showEdit} onHide={handleCloseEdit}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Editar usuário</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <CardUsuarioEdit/>
+        </Offcanvas.Body>
+      </Offcanvas>
 
     </div>
-
-
-
-
 
   )
 
