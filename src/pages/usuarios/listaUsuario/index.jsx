@@ -44,20 +44,14 @@ export default function ListarUsuario() {
 
   //Variáveis editar usuario
   const [showEdit, setShowEdit] = useState(false);
-  const [IdEdit, setIdEdit] = useState();
-  const [personEdit, setPersonEdit] = useState();
   const [dadosEditar, setDadosEditar] = useState([])
+
   const handleShowEdit = (idUser, personName) =>{
     console.log("o id a passar: ", idUser)
     setShowEdit(true);
-    setIdEdit(idUser)
-    setPersonEdit(personName)
-   
     setDadosEditar([idUser, personName]);
-    
-  } 
-  console.log("o array a passar: ", dadosEditar)
-  
+  }
+
   //-----------------------------------------------------------------------Inicio Função de filtros
   useEffect(() => {
     const fetchRepos = async () => {
@@ -299,7 +293,8 @@ export default function ListarUsuario() {
           <Offcanvas.Title>Editar usuário</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-        <CardUsuarioEdit handleShowEdit={dadosEditar} />
+        {/* Passagem de valores por props. */}
+        <CardUsuarioEdit handleShowEdit={dadosEditar} /> 
         </Offcanvas.Body>
       </Offcanvas>
 
