@@ -244,7 +244,7 @@ export default function EditarUsuario({handleShowEdit}) {
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPhone">
                                 <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                                    <Form.Control type="text" placeholder='*Telefone' name='phone' Value={data.phone} onChange={onChangePhone} />
+                                    <Form.Control type="text" placeholder='*Telefone' name='phone' Value={data.phone} maxLength={11} onChange={onChangePhone} />
                                 </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPassword">

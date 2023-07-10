@@ -187,8 +187,8 @@ function LeftTabsExample() {
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPhone">
-                    <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                        <Form.Control type="text" placeholder='*Telefone' name='phone'   onChange={onChangePhone}/>
+                    <FloatingLabel controlId="floatingInput" label="*Telefone(xx)xxxxx-xxxx" className="mb-3">
+                        <Form.Control type="text" placeholder='*Telefone(xx)xxxxx-xxxx' name='phone' maxLength={11}   onChange={onChangePhone}/>
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -238,7 +238,7 @@ function LeftTabsExample() {
                             </FloatingLabel>
 
                             <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                              <Form.Control placeholder='*Telefone'  onChange={onChangePhone} />
+                              <Form.Control placeholder='*Telefone' maxLength={11} onChange={onChangePhone} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="Site(opcional)" className="mb-3">
