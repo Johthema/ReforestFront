@@ -58,7 +58,7 @@ export default function EditarUsuario({handleShowEdit}) {
     setEmail(evt.target.value)
   }
   const onChangePhone = (evt) =>{
-    setPhone('+55'+ evt.target.value)
+    setPhone(evt.target.value)
   }
   const onChangePassword = (evt) =>{
     setPassword(evt.target.value)
@@ -244,7 +244,7 @@ export default function EditarUsuario({handleShowEdit}) {
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPhone">
                                 <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                                    <Form.Control type="text" placeholder='*Telefone' name='phone' Value={data.phone} maxLength={11} onChange={onChangePhone} />
+                                    <Form.Control type="text" placeholder='*Telefone' name='phone' Value={data.phone} maxLength={14} onChange={onChangePhone} />
                                 </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -300,7 +300,7 @@ export default function EditarUsuario({handleShowEdit}) {
                             </FloatingLabel>
 
                             <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                              <Form.Control placeholder='*Telefone' Value={data.phone} onChange={onChangePhone} />
+                              <Form.Control placeholder='*Telefone' Value={data.phone} onChange={onChangePhone} maxLength={14} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="Site(opcional)" className="mb-3">
