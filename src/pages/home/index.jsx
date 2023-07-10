@@ -1,7 +1,8 @@
 
 //import Home from '../pages/home/index'
 //import './globals.css'
-import Header from '../../components/header/index'
+import Header from '../../components/header/index';
+import Footer from '../../components/footer/index'
 import React from 'react'
 import Cards from '../../components/cards/cardHome/index'
 import Style from './home.module.css'
@@ -29,6 +30,9 @@ export default function Home() {
   
 </div>
 <Cards></Cards>
+
+<Footer/>
+
 </div>
 )
   

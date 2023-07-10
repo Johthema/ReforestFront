@@ -16,7 +16,7 @@ import Modal from 'react-bootstrap/Modal';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardUsuarioEdit from '../../../components/cards/cardCadUser/cardCadEdit/index';
-
+import Footer from '../../../components/footer/index'
 
 const URL_API = "http://192.168.0.133:3001/api/user";
 
@@ -297,7 +297,7 @@ export default function ListarUsuario() {
         <CardUsuarioEdit handleShowEdit={dadosEditar} /> 
         </Offcanvas.Body>
       </Offcanvas>
-
+      <Footer/>
     </div>
 
   )
