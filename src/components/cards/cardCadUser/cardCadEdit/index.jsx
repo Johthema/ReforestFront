@@ -19,7 +19,7 @@ export default function EditarUsuario({handleShowEdit}) {
   console.log("person retornou: ",handleShowEdit[1])
   //-----------------------------------Funções--------------------------------------
   const [idEditavel, setIdEditavel] = useState(handleShowEdit[0])
-
+  const [data, setData] = useState([])
   const [name, setNome] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -38,7 +38,7 @@ export default function EditarUsuario({handleShowEdit}) {
   const [loading, setLoading] = useState(false)
 
 
-  const [data, setData] = useState([])
+  
 
   //dinamico
   // const onChange = (evt) => {
@@ -47,6 +47,7 @@ export default function EditarUsuario({handleShowEdit}) {
   const URL_API=  "http://192.168.0.133:3001/api/user/";
 
   const onChangeNome = (evt) => {
+    console.log("entrou na funcao log do nome")
     setNome(evt.target.value)
    
   }
@@ -87,6 +88,15 @@ export default function EditarUsuario({handleShowEdit}) {
       if (!data)
         throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
       setData(data)
+
+      //Setando as variáveis com os atributos vindo da api após o data ser setado. para não passar vazio no envio do formulario
+      setNome(data.name)
+      setSurname(data.surname)
+      setEmail(data.email)
+      setPhone(data.phone)
+      setSite(data.site)
+      setFullName(data.fullname)
+      
 
       //Iniciando a estrutura da requisição
 
@@ -218,7 +228,7 @@ export default function EditarUsuario({handleShowEdit}) {
                         <Col>
 
                             <FloatingLabel controlId="floatingInput" label="*Nome" className="mb-3">
-                                <Form.Control placeholder='*Nome' type='text' name='nome' Value={data.name} onChange={onChangeNome} />
+                                <Form.Control placeholder='*Nome' type='text' name='name' Value={data.name} onChange={onChangeNome} />
                             </FloatingLabel>
                         </Col>
                         <Col>
@@ -254,7 +264,7 @@ export default function EditarUsuario({handleShowEdit}) {
                                     <option value="3">Opção3</option>
 
                                 </Form.Select>
-                                <Example />
+                               
                             </Form.Group>
                         </Row><br />
                       
@@ -320,7 +330,7 @@ export default function EditarUsuario({handleShowEdit}) {
                                 <option value="2">Opção2</option>
                                 <option value="3">Opção3</option>
                             </Form.Select>
-                            <Example/>
+                            
                             </Form.Group>
                         </Row>
                         <br/>
