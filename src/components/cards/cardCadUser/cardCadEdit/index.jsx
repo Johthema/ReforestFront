@@ -273,8 +273,6 @@ export default function EditarUsuario({handleShowEdit}) {
                     
                     </Form>
                    
-                    
-                    
                 </Card.Body>
             </Card>
             </Tab.Pane>

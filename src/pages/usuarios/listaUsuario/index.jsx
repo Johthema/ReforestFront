@@ -211,13 +211,13 @@ export default function ListarUsuario() {
 
           <tbody>
 
-            {repos.map((repo) => (
+            {repos.map((repo,index) => (
 
-              <tr>
-                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
-                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.surname || repo.fullname}</h2></td>
-                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
-                <td><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
+              <tr className={Style.trUsuario} key={index}>
+                <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
+                <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.surname || repo.fullname}</h2></td>
+                <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
+                <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
              
                 <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id, repo.person)}><FaEdit className={Style.icoEditar} /></td>
                 <td className={Style.Deletar} value={repo._id} onClick={() => idUsuario(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
