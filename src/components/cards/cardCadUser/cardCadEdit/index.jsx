@@ -22,7 +22,6 @@ export default function EditarUsuario({handleShowEdit}) {
   const [name, setNome] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
-  // const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [roles, setRolesApi] = useState(['']);
   const [role, setRoleLocal] = useState(roles);
@@ -63,16 +62,12 @@ export default function EditarUsuario({handleShowEdit}) {
   const onChangePassword = (evt) =>{
     setPassword(evt.target.value)
   }
-  // const onChangeRoles = (evt) =>{
-  //   setRoles(evt.target.value)
-  // }
   const onChangeSite = (evt) =>{
     setSite(evt.target.value)
   }
   const onChangeFullName = (evt) =>{
     setFullName(evt.target.value)
   }
-
   const onChangeRoles=(role) =>{
     setRolesApi(role) //Seta para a api 
     setRoleLocal(role) //Seta localmente
@@ -125,8 +120,6 @@ export default function EditarUsuario({handleShowEdit}) {
   //================================Fim do Carregamento dos dados do usuário
 
   const opcoes = [{name: "admin"}];
-
-
 
   const enviarForm = async (evt) => {
     
