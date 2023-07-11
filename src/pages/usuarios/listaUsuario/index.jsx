@@ -172,7 +172,7 @@ export default function ListarUsuario() {
           <Container>
             <InputGroup className={Style.Busca}>
               <Form.Control
-                placeholder="Buscar"
+                placeholder="Buscar por nome"
                 aria-label="Buscar por nome"
                 aria-describedby="basic-addon2"
                 onChange={handleChange}
