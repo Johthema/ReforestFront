@@ -270,11 +270,13 @@ function LeftTabsExample() {
                         <Row>
                             <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
                           
-                            <Form.Select >
-                                <option value="1">Administrador</option>
-                                <option value="2">Opção2</option>
-                                <option value="3">Opção3</option>
-                            </Form.Select>
+                            <Form.Select  onChange={(e) =>onChangeRoles(e.target.value) }>
+                        <option value="user">Usuário</option>
+                        <option value="admin">Administrador</option>
+                        
+                        {/* <option value="3">Opção3</option> */}
+                        
+                    </Form.Select>
                             <Example/>
                             </Form.Group>
                         </Row>
