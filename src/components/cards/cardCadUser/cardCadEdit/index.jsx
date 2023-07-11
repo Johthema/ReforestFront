@@ -369,7 +369,7 @@ export default function EditarUsuario({handleShowEdit}) {
     <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
   </Alert>
 }
-
+ 
 {loading &&
   <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
     <Spinner animation="border" variant="primary" /> Aguarde, salvando...
