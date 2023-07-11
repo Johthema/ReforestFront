@@ -83,11 +83,11 @@ function LeftTabsExample() {
             'Content-type': 'application/json'
           },
     
-          body: JSON.stringify({ name, surname, email, phone, password, person }),
+          body: JSON.stringify({ name, surname, email, phone, password, person, roles }),
         })
     
         const json = await response.json()
-        if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
+        if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !='' && roles != ''){
           setLoading(false)
           setSuccess(true)
         } else {
@@ -104,11 +104,11 @@ function LeftTabsExample() {
             'Content-type': 'application/json'
           },
     
-          body: JSON.stringify({ name, fullname, email, phone, password, person, site }),
+          body: JSON.stringify({ name, fullname, email, phone, password, person, site, roles }),
         })
     
         const json = await response.json()
-        if(name!='' && email !='' && phone !='' && password !='' && person !=''){
+        if(name!='' && email !='' && phone !='' && password !='' && person !='' && roles != ''){
           setLoading(false)
           setSuccess(true)
         } else {
@@ -139,6 +139,13 @@ function LeftTabsExample() {
     setPerson('PJ')
   }
 
+  const onChangeRoles=(role) =>{
+    console.log("o papel: ",role)
+    //setSelectedOption(e.target.value)
+    setRoles(role)
+  }
+
+  const [selectedOption, setSelectedOption] = useState('');
 
   //---------------------------------Pagina do card---------------------------------
 
@@ -200,11 +207,11 @@ function LeftTabsExample() {
                     <Row >
                     <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
                     
-                    <Form.Select >
-                    <option value="0">Papel</option>
-                        <option value="1">Administrador</option>
-                        <option value="2">Opção2</option>
-                        <option value="3">Opção3</option>
+                    <Form.Select  onChange={(e) =>onChangeRoles(e.target.value) }>
+                        <option value="user">Usuário</option>
+                        <option value="admin">Administrador</option>
+                        
+                        {/* <option value="3">Opção3</option> */}
                         
                     </Form.Select>
                     <Example/>

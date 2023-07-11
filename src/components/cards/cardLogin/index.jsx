@@ -106,8 +106,8 @@ export default function LoginCard(){
                             <Form.Control type="password" placeholder="Redigite sua senha" />
                         </Form.Group>
                      
-                        <Button variant="primary"  className={Style.BotaoEntrar} onClick={funcaoEntrar}>
-                            Entrar
+                        <Button variant="primary"  className={Style.BotaoEntrar} >
+                            Cadastrar
                         </Button>
                     </Form>
                     </div>
