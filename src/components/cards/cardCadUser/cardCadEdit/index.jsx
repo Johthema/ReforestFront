@@ -7,11 +7,10 @@ import Card from 'react-bootstrap/Card';
 import Style from '../card.module.css';
 import Form from 'react-bootstrap/Form';
 import { useState,  useEffect } from 'react';
-import Example from '../../../modals/modalpapel/index';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
-import { FaListOl, FaListAlt } from "react-icons/fa";
+import { FaListAlt } from "react-icons/fa";
 
 
 export default function EditarUsuario({handleShowEdit}) {
@@ -25,8 +24,8 @@ export default function EditarUsuario({handleShowEdit}) {
   const [email, setEmail] = useState('');
   // const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [roles, setRoles] = useState(['']);
-  const [role, setRole] = useState(roles);
+  const [roles, setRolesApi] = useState(['']);
+  const [role, setRoleLocal] = useState(roles);
   const [person, setPerson] = useState(handleShowEdit[1]);
   const [phone, setPhone] = useState('')
   const [site, setSite] = useState('')
@@ -74,6 +73,11 @@ export default function EditarUsuario({handleShowEdit}) {
     setFullName(evt.target.value)
   }
 
+  const onChangeRoles=(role) =>{
+    setRolesApi(role) //Seta para a api 
+    setRoleLocal(role) //Seta localmente
+  }
+
   const [show, setShow] = useState(true);
 
 
@@ -98,18 +102,9 @@ export default function EditarUsuario({handleShowEdit}) {
       setSite(data.site)
       setFullName(data.fullname)
 
-      //const newRole2 = data.roles[0].name;
-      //const newRole = JSON.stringify(data.roles[0].name);
-      setRole(data.roles[0].name)
+      setRoleLocal(data.roles[0].name)
       
       console.log("o role que retornou é: ", data.roles[0].name)
-      
-      // data.map((repo) => (
-      //   console.log("o role que retornou é: ", repo)
-      //   //setRoles(repo.roles)
-
-      // ))
-      
 
       //Iniciando a estrutura da requisição
 
@@ -202,10 +197,7 @@ export default function EditarUsuario({handleShowEdit}) {
     setPerson('PJ')
   }
 
-  const onChangeRoles=(role) =>{
-    setRoles(role)
-    setRole(role)
-  }
+ 
 
 
   //---------------------------------Pagina do card---------------------------------
