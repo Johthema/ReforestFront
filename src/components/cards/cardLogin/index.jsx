@@ -8,9 +8,20 @@ import Image from 'next/image';
 import Logo from '../../../assets/images/reforestImagem.png';
 import Logot from '../../../assets/images/logo.png';
 import { useRouter } from "next/router"
-
+import { useState } from 'react';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import CardUsuarioEdit from '../../cards/cardCadUser/index';
 
 export default function LoginCard(){
+    //variaveis do modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+
+    const handleShow = () =>{
+       
+        setShow(true);
+        //setDadosEditar([idUser, personName]);
+      }
 
     const router = useRouter();
 
@@ -71,15 +82,15 @@ export default function LoginCard(){
                     </div>
                     </div> 
                     </Tab>
-                    <Tab eventKey="profile" title="Registre-se">
+                    <Tab eventKey="profile" title="Registre-se"  >
                   
                     <div className={Style.DivCorpoCard}>
                    <Image src={Logo} className={Style.imgMundo} alt="" />
                    <div className={Style.DivForm}>
-                   <h3 className={Style.TituloCard}>Cadastre-se</h3>
+                   <h3 className={Style.TituloCard}>Cadastre-se como</h3>
                  
                     <Form className={Style.Formulario}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    {/* <Form.Group className="mb-3" controlId="formBasicEmail">
                         
                             <Form.Control  placeholder="Digite seu nome" />
                            
@@ -104,10 +115,10 @@ export default function LoginCard(){
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                          
                             <Form.Control type="password" placeholder="Redigite sua senha" />
-                        </Form.Group>
+                        </Form.Group> */}
                      
-                        <Button variant="primary"  className={Style.BotaoEntrar} >
-                            Cadastrar
+                        <Button variant="primary"  className={Style.BotaoEntrar} onClick={() => handleShow()} >
+                            Preencher formulário
                         </Button>
                     </Form>
                     </div>
@@ -117,6 +128,21 @@ export default function LoginCard(){
                     
                 </Tabs>
                 </div>
+
+
+
+
+                <Offcanvas show={show} onHide={handleClose} placement={"end"}>
+                    <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Cadastrar usuário</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                    {/* Passagem de valores por props. */}
+                    <CardUsuarioEdit /> 
+                    </Offcanvas.Body>
+                </Offcanvas>
+              
+    
               
            
        </div>
