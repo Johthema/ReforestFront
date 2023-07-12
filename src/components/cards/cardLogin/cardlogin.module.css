@@ -58,7 +58,7 @@
 .TituloCard{
     
     justify-content: center;
-    margin-inline-start: center;
+    margin: auto;
     font-size: 28px;
     display:inline-flex;
     margin-top: 70px;
@@ -95,6 +95,32 @@ display: flex !important;
 margin-inline-start: auto !important;
 
 }
+.BotaoCad{
+    --bs-btn-bg: #55ACEE !important;
+    --bs-btn-border-color: #55ACEE !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-hover-bg: #0b5ed7 !important;
+    --bs-btn-hover-border-color: #0a58ca !important;
+    display: flex !important;
+    /* margin-inline-start: auto !important; */
+    margin: auto;
+    margin-top: 50px;
+   
+    }
+
+.BotaoCadGoogle{
+        --bs-btn-bg: #ffffff !important;
+        --bs-btn-border-color: #0b5ed7 !important;
+        --bs-btn-hover-color: #fff !important;
+        --bs-btn-hover-bg: #0b5ed7 !important;
+        --bs-btn-hover-border-color: #0a58ca !important;
+        color: #0b5ed7;
+        display: flex !important;
+        /* margin-inline-start: auto !important; */
+        margin: auto;
+        margin-top: 50px;
+        
+        }
 
 .EsqueciSen{
     justify-content: end;

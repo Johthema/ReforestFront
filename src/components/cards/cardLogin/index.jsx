@@ -87,7 +87,7 @@ export default function LoginCard(){
                     <div className={Style.DivCorpoCard}>
                    <Image src={Logo} className={Style.imgMundo} alt="" />
                    <div className={Style.DivForm}>
-                   <h3 className={Style.TituloCard}>Cadastre-se como</h3>
+                   <h3 className={Style.TituloCard}>Cadastre-se no ReForest</h3>
                  
                     <Form className={Style.Formulario}>
                     {/* <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -117,8 +117,11 @@ export default function LoginCard(){
                             <Form.Control type="password" placeholder="Redigite sua senha" />
                         </Form.Group> */}
                      
-                        <Button variant="primary"  className={Style.BotaoEntrar} onClick={() => handleShow()} >
-                            Preencher formulário
+                        <Button variant="primary"  className={Style.BotaoCad} onClick={() => handleShow()} >
+                            Escolher modo de usuário
+                        </Button>
+                        <Button variant="primary"  className={Style.BotaoCadGoogle} >
+                                Cadastrar com Google
                         </Button>
                     </Form>
                     </div>
