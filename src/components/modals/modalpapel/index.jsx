@@ -5,8 +5,56 @@ import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import Style from './modalpapel.module.css'
+import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Example() {
+  const URL_API=  "http://192.168.0.133:3001/api/role";
+
+  const [nomePapel, setNomePapel] = useState('');
+  const [name, setNome] = useState('');
+  const [loading, setLoading] = useState(false)
+
+  //Função para setar o nome do papel
+  const onChangeNome = (evt) => {
+    setNome(evt.target.value)
+   
+  }
+
+  const enviarForm = async (evt) => {
+    
+    evt.preventDefault()
+    try{
+      setLoading(true)
+     
+        const response = await fetch(URL_API,{
+          method: 'POST',
+          headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+    
+          body: JSON.stringify({ name }),
+        })
+
+        const json = await response.json()
+        if(name!=''){
+          setLoading(false)
+          setSuccess(true)
+        } else {
+          setLoading(false)
+          setErro(true)
+        }
+        //setLoading(false)
+       
+      } catch(err){
+        console.log(err)
+      }
+    }
+  
+
+
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -18,15 +66,18 @@ export default function Example() {
         Novo
       </Button>
 
+
+     
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Cadastrar novo papel</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={enviarForm} method='post'>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Nome</Form.Label>
-              <Form.Control
+              <Form.Control placeholder='Administrador' type='text' name='nome'  onChange={onChangeNome}
                 autoFocus
               />
             </Form.Group>
@@ -77,11 +128,18 @@ export default function Example() {
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={enviarForm} >
             Salvar
           </Button>
         </Modal.Footer>
       </Modal>
+      
+
+      {loading &&
+  <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
+    <Spinner animation="border" variant="primary" /> Aguarde, salvando...
+  </Alert>
+}
     </>
   );
 }
