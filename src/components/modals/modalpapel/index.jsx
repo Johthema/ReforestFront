@@ -6,7 +6,11 @@ import Table from 'react-bootstrap/Table';
 import Style from './modalpapel.module.css'
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
-import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaRecycle } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt,FaListAlt, FaSearch, FaFilter, FaRedoAlt, FaRecycle } from 'react-icons/fa';
+
+
+
+
 export default function Example() {
   const URL_API=  "http://192.168.0.153:3001/api/role";
   const URL_APIRoles=  "http://192.168.0.153:3001/api/role";
@@ -14,8 +18,7 @@ export default function Example() {
   const [name, setNome] = useState('');
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
-  const [data2, setData2] = useState([])
-
+  const [success, setSuccess] = useState(false)
   //Função para setar o nome do papel
   const onChangeNome = (evt) => {
     setNome(evt.target.value)
@@ -40,13 +43,16 @@ export default function Example() {
 
         const json = await response.json()
         if(name!=''){
+          //setLoading(false)
           setLoading(false)
           setSuccess(true)
+
+         
         } else {
           setLoading(false)
           setErro(true)
         }
-        //setLoading(false)
+        // setLoading(false)
        
       } catch(err){
         console.log(err)
@@ -60,6 +66,9 @@ export default function Example() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [show2, setShow2] = useState(false);
+
 
 
 
@@ -154,6 +163,18 @@ export default function Example() {
             }
 
           </tbody>
+
+          {success &&
+            <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow2(false)} dismissible>
+              <Spinner animation="grow" variant="success" /> Salvo com sucesso!
+            </Alert>
+          }
+
+          {loading &&
+            <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
+              <Spinner animation="border" variant="primary" /> Aguarde, salvando...
+            </Alert>
+          }
         </Table>
 
 
@@ -199,11 +220,14 @@ export default function Example() {
       </Modal>
       
 
-      {loading &&
+      {/* {success &&
   <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
     <Spinner animation="border" variant="primary" /> Aguarde, salvando...
   </Alert>
-}
+} */}
+
+
+
     </>
   );
 }
