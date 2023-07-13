@@ -1,19 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
-import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import Style from './modalpapel.module.css'
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
-
+import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaRecycle } from 'react-icons/fa';
 export default function Example() {
   const URL_API=  "http://192.168.0.133:3001/api/role";
 
-  const [nomePapel, setNomePapel] = useState('');
   const [name, setNome] = useState('');
   const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
 
   //Função para setar o nome do papel
   const onChangeNome = (evt) => {
@@ -60,6 +59,38 @@ export default function Example() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+
+  //Primeiro carregamengto para saber se esta tudo certo
+  const fecthAllData = async () => {
+    try {
+
+      setLoading(true)
+      const response = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
+      const data = await response.json()
+
+      if (!data)
+        throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+      setData(data)
+
+      //Iniciando a estrutura da requisição
+
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+
+  }
+
+  //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
+  useEffect(() => {
+    fecthAllData();
+
+  }, []);
+
+
+
   return (
     <>
       <Button variant="primary" onClick={handleShow} className={Style.botao}>
@@ -88,7 +119,40 @@ export default function Example() {
               <Form.Label>Example textarea</Form.Label>
               <Form.Control as="textarea" rows={3} />
             </Form.Group> */}
-            <Table striped bordered hover>
+
+<Table striped bordered hover className={Style.Tabela}>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Criado em</th>
+              <th>Editar</th>
+              <th>Deletar</th>
+             
+              <th></th>
+              <th></th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            {data.map((item) =>  (
+
+              <tr className={Style.trUsuario} key={index}>
+                <td className={Style.tdUsuario}><h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2></td>
+                <td className={Style.tdUsuario}><h2 key={item._id} className={Style.FontUsuario}> {item.createdAt}</h2></td>
+             
+                {/* <td className={Style.Editar} value={item._id} onClick={() => handleShowEdit(item._id, item.person)}><FaEdit className={Style.icoEditar} /></td>
+                <td className={Style.Deletar} value={item._id} onClick={() => idUsuario(item._id, item.name)} ><FaTrashAlt className={Style.icoDeletar} /></td> */}
+              </tr>
+
+            ))}
+
+          </tbody>
+        </Table>
+
+
+            {/* <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
@@ -114,13 +178,8 @@ export default function Example() {
           <td><FaEdit/></td>
           <td><FaTrashAlt/></td>
         </tr>
-        {/* <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr> */}
       </tbody>
-    </Table>
+    </Table> */}
  
           </Form>
         </Modal.Body>

@@ -19,3 +19,38 @@
     bottom: 0%;
     right: 0%;
 }
+
+.FontUsuario{
+    font-size: 1rem;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-family: var(--fontPadrao);
+}
+
+.Editar{
+    cursor: pointer;
+    color: #55ACEE
+}
+.Editar:hover{
+ 
+    background-color: #E5F4FF
+}
+.Deletar{
+    cursor: pointer;
+    color: #EE6755
+}
+.Deletar:hover{
+    cursor: pointer;
+    background-color: #FBECEA
+}
+
+.icoEditar{
+   
+    color: #55ACEE
+}
+.icoDeletar{
+   
+    color: #EE6755
+}
