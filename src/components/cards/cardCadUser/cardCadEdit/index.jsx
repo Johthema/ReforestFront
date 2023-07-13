@@ -15,7 +15,7 @@ import { FaListAlt } from "react-icons/fa";
 
 export default function EditarUsuario({handleShowEdit}) {
   //console.log("id retornou: ",handleShowEdit )
-  console.log("person retornou: ",handleShowEdit[1])
+  //console.log("person retornou: ",handleShowEdit[1])
   //-----------------------------------Funções--------------------------------------
   const [idEditavel, setIdEditavel] = useState(handleShowEdit[0])
   const [data, setData] = useState([])
@@ -43,7 +43,7 @@ export default function EditarUsuario({handleShowEdit}) {
   // const onChange = (evt) => {
   //   console.log(evt.target.name)
   // }
-  const URL_API=  "http://192.168.0.133:3001/api/user/";
+  const URL_API=  "http://192.168.0.153:3001/api/user/";
 
   const onChangeNome = (evt) => {
     console.log("entrou na funcao log do nome")

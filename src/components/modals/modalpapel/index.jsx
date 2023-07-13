@@ -8,11 +8,13 @@ import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaRecycle } from 'react-icons/fa';
 export default function Example() {
-  const URL_API=  "http://192.168.0.133:3001/api/role";
+  const URL_API=  "http://192.168.0.153:3001/api/role";
+  const URL_APIRoles=  "http://192.168.0.153:3001/api/role";
 
   const [name, setNome] = useState('');
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
+  const [data2, setData2] = useState([])
 
   //Função para setar o nome do papel
   const onChangeNome = (evt) => {
@@ -66,12 +68,13 @@ export default function Example() {
     try {
 
       setLoading(true)
-      const response = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
+      const response = await fetch(URL_APIRoles) //por padrão o fetch ja utiliza o GET
       const data = await response.json()
 
       if (!data)
         throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
-      setData(data)
+      setData(data.roles)
+      
 
       //Iniciando a estrutura da requisição
 
@@ -82,7 +85,7 @@ export default function Example() {
     }
 
   }
-
+  console.log("o data é: ", data)
   //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
   useEffect(() => {
     fecthAllData();
@@ -128,25 +131,27 @@ export default function Example() {
               <th>Editar</th>
               <th>Deletar</th>
              
-              <th></th>
-              <th></th>
+    
             </tr>
 
           </thead>
 
           <tbody>
 
-            {data.map((item) =>  (
+            
+            {data && data.map((item, i=index) =>  (
 
-              <tr className={Style.trUsuario} key={index}>
+              <tr className={Style.trUsuario} key={i} >
                 <td className={Style.tdUsuario}><h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2></td>
                 <td className={Style.tdUsuario}><h2 key={item._id} className={Style.FontUsuario}> {item.createdAt}</h2></td>
              
-                {/* <td className={Style.Editar} value={item._id} onClick={() => handleShowEdit(item._id, item.person)}><FaEdit className={Style.icoEditar} /></td>
-                <td className={Style.Deletar} value={item._id} onClick={() => idUsuario(item._id, item.name)} ><FaTrashAlt className={Style.icoDeletar} /></td> */}
+                <td className={Style.Editar} value={item._id} ><FaEdit className={Style.icoEditar} /></td>
+                <td className={Style.Deletar} value={item._id}  ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
 
-            ))}
+            )
+            )
+            }
 
           </tbody>
         </Table>
