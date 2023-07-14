@@ -40,7 +40,7 @@ export default function Tela(){
        
             <Card.Title className={Style.Titulo2}>Escura</Card.Title>
             <Card.Text className={Style.subTitulo2}>
-            O modelo escuro, tem cores pouco mais neutras e vibrantes, porém usadas com moderação para 
+            O modelo escuro, tem cores pouco neutras e vibrantes, porém usadas com moderação para 
             não prejudicar a visão e experiência do usuário.
             </Card.Text>
         </Card.Body>
@@ -49,7 +49,7 @@ export default function Tela(){
             <ListGroup.Item className={Style.Item5}>Sucesso!</ListGroup.Item>
             <ListGroup.Item className={Style.Item6}>Carregando..</ListGroup.Item>
         </ListGroup>
-        <Card.Body className={Style.Corpo2}>
+        <Card.Body className={Style.Corpo2_1}>
             <Card.Link className={Style.Link2}>Links </Card.Link>
             <Button variant="primary">Botão</Button>
         </Card.Body>
