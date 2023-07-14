@@ -11,11 +11,22 @@ import { useRouter } from "next/router"
 import { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardUsuarioEdit from '../../cards/cardCadUser/index';
+import {RotateLoader } from 'react-spinners';
 
 export default function LoginCard(){
+
+
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //       loading: true
+    //     }
+    //   }
+
     //variaveis do modal
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+    const [loadding,  setLoadding] = useState(false)
 
     const handleShow = () =>{
        
@@ -27,6 +38,7 @@ export default function LoginCard(){
 
     function funcaoEntrar(){
         console.log("entrou na funcao");
+        setLoadding(true)
     
         router.push('/home');
      
@@ -39,7 +51,7 @@ export default function LoginCard(){
 
     return (
   
-       
+       <>
       <div className={Style.divFundo}>
            
            <div className={Style.divBarra}>
@@ -146,9 +158,25 @@ export default function LoginCard(){
                 </Offcanvas>
               
     
-              
-           
+                <div className='sweet-loading'>
+        {/* <RingLoader
+          color={'#123abc'} 
+          loading={this.state.loading} 
+        /> */}
+       
+        
+      </div>
+     
        </div>
+      
+       {loadding &&
+            <div className={Style.SpinnerLoadding}>
+            <RotateLoader color="#36d7b7"  />
+            </div>
+        }
+       
+       
+       </>
   
     );
 }

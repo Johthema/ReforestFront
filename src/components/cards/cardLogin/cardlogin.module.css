@@ -138,3 +138,10 @@ margin-inline-start: auto !important;
     margin-right: 5px;
    
 }
+
+.SpinnerLoadding{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: auto; 
+}
