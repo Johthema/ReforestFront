@@ -4,8 +4,10 @@ import Tabs from 'react-bootstrap/Tabs';
 import Footer from '../../components/footer/index'
 import CardUsuario from '../../components/cards/cardCadUser/index';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import Style from './configure.module.css'
-import Modo from '../../components/cards/cardConfigTela/index'
+import Style from './configure.module.css';
+import Modo from '../../components/cards/cardConfigTela/index';
+import Permissao from './permissao/index'
+
 export default function Configuracao(){
     return(
         <>
@@ -27,7 +29,7 @@ export default function Configuracao(){
             <CardUsuario /> 
         </Tab>
         <Tab eventKey="perm" title="Permissões">
-          
+          <Permissao/>
         </Tab>
         <Tab eventKey="tela" title="Aparência">
             <Modo/>

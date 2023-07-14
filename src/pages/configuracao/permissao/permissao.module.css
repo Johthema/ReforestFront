@@ -1,0 +1,80 @@
+.botao{
+    /* background-color: #469444;
+    --bs-btn-border-color: #469444 */
+--bs-btn-color: #fff;
+--bs-btn-bg: #469444;
+--bs-btn-border-color: #469444;
+--bs-btn-hover-color: #fff;
+--bs-btn-hover-bg: #295527;
+--bs-btn-hover-border-color: #295527;
+}
+
+.botaoEnviar{
+    display: flex;
+    margin-inline-start: auto;
+   
+}
+
+.Tabela{
+    width: 80%;
+    margin: auto
+}
+/* .botao:hover{
+    background-color: #295527;
+    --bs-btn-border-color: #469444
+} */
+.botaoCarregamento{
+    display: block;
+    width: 50%;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+}
+
+.FontUsuario{
+    font-size: 1rem;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-family: var(--fontPadrao);
+}
+
+.Permissao{
+    cursor: pointer;
+    color: #12d639
+}
+
+.Editar{
+    cursor: pointer;
+    color: #55ACEE
+}
+.Editar:hover{
+ 
+    background-color: #E5F4FF
+}
+.Deletar{
+    cursor: pointer;
+    color: #EE6755
+}
+.Deletar:hover{
+    cursor: pointer;
+    background-color: #FBECEA
+}
+.icoPermissao{
+   
+    color: #5bcc3c
+}
+.icoEditar{
+   
+    color: #55ACEE
+}
+.icoDeletar{
+   
+    color: #EE6755
+}
+
+.PermissaoOpcoes{
+    width: 300px;
+    margin: auto;
+}
