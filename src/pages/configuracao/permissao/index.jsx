@@ -68,7 +68,7 @@ export default function Permissao(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
-    const [show2, setShow2] = useState(false);
+    //const [show2, setShow2] = useState(false);
   
   
   
@@ -106,7 +106,7 @@ export default function Permissao(){
 
     return(
         <>
-         <Button variant="primary" onClick={enviarForm} className={Style.botaoEnviar} >
+         <Button variant="primary" onClick={handleShow} className={Style.botaoEnviar} >
             +Add membro
           </Button>
         <Table striped bordered hover className={Style.Tabela}>
@@ -148,6 +148,39 @@ export default function Permissao(){
             }
 
           </tbody>
+
+
+          <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Insira o nome do membro </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                   
+
+                <Form onSubmit={enviarForm} method='post'>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Nome</Form.Label>
+              <Form.Control placeholder='Administrador' type='text' name='nome'  onChange={onChangeNome}
+                autoFocus
+              />
+            </Form.Group>
+            </Form>
+
+
+
+
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Cancelar
+                </Button>
+                <Button variant="primary" onClick={enviarForm}>
+                    Salvar
+                </Button>
+                </Modal.Footer>
+            </Modal>
+
+
 
           {success &&
             <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow2(false)} dismissible>
