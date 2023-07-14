@@ -29,7 +29,7 @@ export default function Configuracao(){
         <Tab eventKey="perm" title="Permissões">
           
         </Tab>
-        <Tab eventKey="tela" title="Tela">
+        <Tab eventKey="tela" title="Aparência">
             <Modo/>
            
         </Tab>
