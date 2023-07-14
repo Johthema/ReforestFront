@@ -1,0 +1,18 @@
+.DivModelos{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+.modelos{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    word-break: break-all;
+    flex-wrap: wrap
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+}
+
+.Card{
+    margin: 20px;
+}

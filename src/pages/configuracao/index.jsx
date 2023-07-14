@@ -5,7 +5,7 @@ import Footer from '../../components/footer/index'
 import CardUsuario from '../../components/cards/cardCadUser/index';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Style from './configure.module.css'
-
+import Modo from '../../components/cards/cardConfigTela/index'
 export default function Configuracao(){
     return(
         <>
@@ -13,7 +13,7 @@ export default function Configuracao(){
         <Breadcrumb className={Style.migalhas}>
                 <Breadcrumb.Item href="/home">Home</Breadcrumb.Item>
                 
-                <Breadcrumb.Item active>Configuração.</Breadcrumb.Item>
+                <Breadcrumb.Item active>Configurações.</Breadcrumb.Item>
             </Breadcrumb>
 
         <Tabs
@@ -30,6 +30,7 @@ export default function Configuracao(){
           
         </Tab>
         <Tab eventKey="tela" title="Tela">
+            <Modo/>
            
         </Tab>
         <Tab eventKey="password" title="Senha" >
