@@ -111,16 +111,19 @@ margin-inline-start: auto !important;
 .BotaoCadGoogle{
         --bs-btn-bg: #ffffff !important;
         --bs-btn-border-color: #0b5ed7 !important;
-        --bs-btn-hover-color: #fff !important;
+        
         --bs-btn-hover-bg: #0b5ed7 !important;
         --bs-btn-hover-border-color: #0a58ca !important;
-        color: #0b5ed7;
+        color: #0b5ed7 !important;
         display: flex !important;
         /* margin-inline-start: auto !important; */
         margin: auto;
         margin-top: 50px;
         
         }
+.BotaoCadGoogle:hover{
+    color: #fff !important;
+}
 
 .EsqueciSen{
     justify-content: end;
