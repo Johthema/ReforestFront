@@ -18,8 +18,8 @@ export default function Tela(){
        
             <Card.Title className={Style.Titulo1}>Clara</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+           O modelo claro, tem cores suaves e muito bem padronizadas para que
+            não possa prejudicar a visão e experiência do usuário.
             </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
@@ -38,10 +38,10 @@ export default function Tela(){
        
         <Card.Body className={Style.Corpo2}>
        
-            <Card.Title className={Style.Titulo2}>Clara</Card.Title>
+            <Card.Title className={Style.Titulo2}>Escura</Card.Title>
             <Card.Text className={Style.subTitulo2}>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            O modelo escuro, tem cores pouco mais neutras e vibrantes, porém usadas com moderação para 
+            não prejudicar a visão e experiência do usuário.
             </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
