@@ -27,7 +27,7 @@ export default function Tela(){
             <ListGroup.Item className={Style.Item2}>Sucesso!</ListGroup.Item>
             <ListGroup.Item className={Style.Item3}>Carregando..</ListGroup.Item>
         </ListGroup>
-        <Card.Body>
+        <Card.Body className={Style.Corpo1}>
             <Card.Link className={Style.Link1}>Links </Card.Link>
             <Button variant="primary">Botão</Button>
         </Card.Body>
@@ -39,7 +39,7 @@ export default function Tela(){
         <Card.Body className={Style.Corpo2}>
        
             <Card.Title className={Style.Titulo2}>Clara</Card.Title>
-            <Card.Text>
+            <Card.Text className={Style.subTitulo2}>
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
             </Card.Text>
@@ -49,21 +49,17 @@ export default function Tela(){
             <ListGroup.Item className={Style.Item5}>Sucesso!</ListGroup.Item>
             <ListGroup.Item className={Style.Item6}>Carregando..</ListGroup.Item>
         </ListGroup>
-        <Card.Body>
-            <Card.Link className={Style.Link1}>Links </Card.Link>
+        <Card.Body className={Style.Corpo2}>
+            <Card.Link className={Style.Link2}>Links </Card.Link>
             <Button variant="primary">Botão</Button>
         </Card.Body>
         </Card>
 
 
 
-
-
-
         </div>
 
 
-        
       </Card.Body>
       <Card.Footer className="text-muted"><Button variant="primary">Restaurar padrão</Button></Card.Footer>
     </Card>

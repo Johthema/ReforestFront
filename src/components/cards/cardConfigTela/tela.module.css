@@ -25,7 +25,7 @@
     transition: 0.3s;
 }
 .Card1:hover{
-    border: solid 1px transparent;
+    
     box-shadow: 0px 0px 5px 5px #e8e6e6;
     scale: 1.1;
     transition: 0.3s;
@@ -59,7 +59,7 @@
 
 /*----------------------- Card2 ----------------------*/
 .Corpo2{
-    background-image: linear-gradient(#0b6aad, #fff);
+    background-color: #2F2F2F;
 }
 .Card2{
     margin: 10px;
@@ -67,7 +67,7 @@
     transition: 0.3s;
 }
 .Card2:hover{
-    border: solid 1px transparent;
+   
     box-shadow: 0px 0px 5px 5px #e8e6e6;
     scale: 1.1;
     transition: 0.3s;
@@ -77,6 +77,11 @@
     color: #469444;
 
 }
+.subTitulo2{
+    color: #ffffff;
+
+}
+
 .Item4{
     color: #fff ;
     background-color: #EE6755
@@ -90,10 +95,11 @@
     background-color: #55ACEE
 }
 
-.Link1{
+.Link2{
     margin-right: 20px;
+    color: #fff
 }
-.Link1:hover{
+.Link2:hover{
     margin-right: 20px;
     cursor: pointer
 }
