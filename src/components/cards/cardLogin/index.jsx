@@ -12,6 +12,9 @@ import { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardUsuarioEdit from '../../cards/cardCadUser/index';
 import {RotateLoader } from 'react-spinners';
+import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
+import { FaListOl, FaListAlt } from "react-icons/fa";
 
 export default function LoginCard(){
 
@@ -33,6 +36,8 @@ export default function LoginCard(){
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
 
+    const [error, setErro] = useState(false)
+    const [errorInt, setErroInterno] = useState(false)
 
     const onChangeEmail = (evt) => {
         setIdentifier(evt.target.value)
@@ -88,8 +93,10 @@ export default function LoginCard(){
                 setLoadding(true)
     
                 router.push('/home');
-            } else {
-
+            } else if(response.status == 401) {
+                setErro(true)
+            } else if(response.status == 500) {
+                setErroInterno(true)
             }
             
         } catch (error) {
@@ -226,6 +233,18 @@ export default function LoginCard(){
             <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} />
             </div>
         }
+
+{error &&
+  <Alert key="1233" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+    <Spinner animation="grow" variant="danger" /> Email ou senha incorretos!
+  </Alert>
+}
+
+{errorInt &&
+  <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+    <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
+  </Alert>
+}
        
        
        </>
