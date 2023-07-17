@@ -15,7 +15,7 @@ import {RotateLoader } from 'react-spinners';
 
 export default function LoginCard(){
 
-
+    const URL_API=  "http://192.168.0.153:3001/api/signin";
     // constructor(props){
     //     super(props);
     //     this.state = {
@@ -27,6 +27,22 @@ export default function LoginCard(){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [loadding,  setLoadding] = useState(false)
+
+
+    //Variaveis login
+    const [identifier, setIdentifier] = useState('');
+    const [password, setPassword] = useState('');
+
+
+    const onChangeEmail = (evt) => {
+        setIdentifier(evt.target.value)
+       
+      }
+      const onChangeSenha = (evt) => {
+        setPassword(evt.target.value)
+       
+      }
+
 
     const handleShow = () =>{
        
@@ -43,6 +59,33 @@ export default function LoginCard(){
         router.push('/home');
      
 
+    }
+
+//Fomulario de envio dos requisitos de login
+
+    const onChangeLogin = (evt) => {
+        setNome(evt.target.value)
+       
+      }
+
+    const enviarForm = async (evt) =>{
+        evt.preventDefault()
+        try {
+
+            const response = await fetch (URL_API,{
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ identifier, password }),
+            })
+
+            const json = await response.json()
+            
+        } catch (error) {
+            console.log("retornou erro: ",error)
+        }
     }
 
 
@@ -71,23 +114,23 @@ export default function LoginCard(){
                    <div className={Style.DivForm}>
                    <h3 className={Style.TituloCard}>Iniciar sessão na ReForest</h3>
                 
-                    <Form className={Style.Formulario}>
+                    <Form onSubmit={enviarForm} method='post' className={Style.Formulario}>
                     
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email/Telefone</Form.Label>
-                            <Form.Control type="email" placeholder="Digite seu email ou telefone" />
+                            <Form.Control type="email" placeholder="Digite seu email ou telefone" onChange={onChangeEmail} />
                            
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Senha</Form.Label>
-                            <Form.Control type="password" placeholder="Digite sua senha" />
+                            <Form.Control type="password" placeholder="Digite sua senha" onChange={onChangeSenha} />
                         </Form.Group>
                         {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group> */}
                         <p className={Style.EsqueciSen}>Esqueci minha senha</p>
-                        <Button variant="primary"  className={Style.BotaoEntrar} onClick={funcaoEntrar}>
+                        <Button variant="primary"  className={Style.BotaoEntrar} onClick={enviarForm}>
                             Entrar
                         </Button>
                     </Form>
