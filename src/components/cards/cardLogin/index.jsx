@@ -42,7 +42,7 @@ export default function LoginCard(){
 
     const onChangeEmail = (evt) => {
         setIdentifier(evt.target.value)
-       
+
       }
       const onChangeSenha = (evt) => {
         setPassword(evt.target.value) 
@@ -50,7 +50,7 @@ export default function LoginCard(){
 
 
     const handleShow = () =>{
-       
+
         setShow(true);
         //setDadosEditar([idUser, personName]);
       }
@@ -60,9 +60,8 @@ export default function LoginCard(){
     function funcaoEntrar(){
         console.log("entrou na funcao");
         setLoadding(true)
-    
+
         router.push('/home');
-     
 
     }
 
