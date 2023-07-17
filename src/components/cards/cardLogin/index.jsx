@@ -93,7 +93,7 @@ export default function LoginCard(){
                 setLoadding(true)
     
                 router.push('/home');
-            } else if(response.status == 401) {
+            } else if(response.status == 401 || 400) {
                 setErro(true)
             } else if(response.status == 500) {
                 setErroInterno(true)
@@ -217,22 +217,16 @@ export default function LoginCard(){
                 </Offcanvas>
               
     
-                <div className='sweet-loading'>
-        {/* <RingLoader
-          color={'#123abc'} 
-          loading={this.state.loading} 
-        /> */}
-       
-        
-      </div>
+            
      
        </div>
       
-       {loadding &&
-            <div className={Style.DivSpinnerLoadding}>
-            <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} />
-            </div>
-        }
+
+{loadding &&
+    <div className={Style.DivSpinnerLoadding}>
+        <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} />
+    </div>
+}
 
 {error &&
   <Alert key="1233" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
@@ -245,7 +239,6 @@ export default function LoginCard(){
     <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
   </Alert>
 }
-       
        
        </>
   

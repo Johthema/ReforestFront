@@ -154,3 +154,14 @@ margin-inline-start: auto !important;
     margin: auto; 
     position: absolute
 }
+
+.botaoCarregamento{
+    display: block;
+    width: 50%;
+    position: absolute !important;
+    bottom: 0%;
+    right: 0%;
+}
+/* .cardlogin{
+    position: absolute !important;
+} */
