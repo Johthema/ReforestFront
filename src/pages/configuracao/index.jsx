@@ -5,9 +5,11 @@ import Footer from '../../components/footer/index'
 import CardUsuario from '../../components/cards/cardCadUser/index';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Style from './configure.module.css';
-import Modo from '../../components/cards/cardConfigTela/index';
+// import Modo from '../../components/cards/cardConfigTela/index';
+import Aparencia from './aparencia/index'
 import Permissao from './permissao/index'
-import Senha from './senha/index'
+import Senha from './senha/index';
+import Informacao from './informacao/index'
 export default function Configuracao(){
     return(
         <>
@@ -25,13 +27,13 @@ export default function Configuracao(){
         justify
         >
         <Tab eventKey="info" title="Informações pessoais">
-            <CardUsuario /> 
+            <Informacao/> 
         </Tab>
-        <Tab eventKey="perm" title="Permissões">
+        <Tab eventKey="perm" title="Papel e Permissões">
           <Permissao/>
         </Tab>
         <Tab eventKey="tela" title="Aparência">
-            <Modo/>
+            <Aparencia/>
            
         </Tab>
         <Tab eventKey="password" title="Senha" >
