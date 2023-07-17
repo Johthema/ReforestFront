@@ -7,7 +7,7 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Style from './configure.module.css';
 import Modo from '../../components/cards/cardConfigTela/index';
 import Permissao from './permissao/index'
-
+import Senha from './senha/index'
 export default function Configuracao(){
     return(
         <>
@@ -25,7 +25,6 @@ export default function Configuracao(){
         justify
         >
         <Tab eventKey="info" title="Informações pessoais">
-         
             <CardUsuario /> 
         </Tab>
         <Tab eventKey="perm" title="Permissões">
@@ -36,6 +35,7 @@ export default function Configuracao(){
            
         </Tab>
         <Tab eventKey="password" title="Senha" >
+            <Senha/>
         
         </Tab>
         </Tabs>
