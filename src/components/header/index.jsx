@@ -11,6 +11,9 @@ import Logotipo from '../../assets/images/logo.png';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
         FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends, FaSignOutAlt } from "react-icons/fa";
 
@@ -18,9 +21,14 @@ import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
 
 
 export default function Header() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   return (
 
-
+<>
 
       <Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
         <Container className={StyleBar.navContain}>
@@ -70,7 +78,7 @@ export default function Header() {
                     <Dropdown.Item href="#/action-1" >Esta tudo certo!</Dropdown.Item>
                   </Dropdown.Menu>
             </Dropdown>
-            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Logout</Tooltip>} placement="left"><Nav.Link href="/"  ><FaSignOutAlt className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled"   >Logout</Tooltip>} placement="left"><Nav.Link onClick={handleShow} ><FaSignOutAlt className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
 
             </Nav>
           </Navbar.Collapse>
@@ -78,7 +86,24 @@ export default function Header() {
       </Navbar>
 
 
-   
+   {/* //--------------------------------Modal Logout */}
 
+   <Modal show={show} onHide={handleClose}>
+   <Modal.Header closeButton>
+    
+   </Modal.Header>
+   <Modal.Body>
+    <h5>Deseja fazer logout?</h5>
+   <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="primary" href='/' >
+            Sim
+          </Button>
+        </Modal.Footer>
+    </Modal.Body>
+    </Modal>
+    </>
   )
 }
