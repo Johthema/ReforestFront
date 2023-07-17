@@ -61,7 +61,10 @@ export default function Tela(){
 
 
       </Card.Body>
-      <Card.Footer className="text-muted"><Button variant="primary">Restaurar padrão</Button></Card.Footer>
+      <Card.Footer className="text-muted">
+        <Button variant="secondary" className={Style.botaoStilo}>Restaurar padrão</Button>
+        <Button variant="primary" className={Style.botaoStilo}> Salvar</Button>
+      </Card.Footer>
     </Card>
 
         </>
