@@ -38,14 +38,14 @@ export default function LoginCard(){
 
     const [error, setErro] = useState(false)
     const [errorInt, setErroInterno] = useState(false)
+    const [aviso, setAviso] = useState(false)
 
     const onChangeEmail = (evt) => {
         setIdentifier(evt.target.value)
        
       }
       const onChangeSenha = (evt) => {
-        setPassword(evt.target.value)
-       
+        setPassword(evt.target.value) 
       }
 
 
@@ -88,14 +88,20 @@ export default function LoginCard(){
 
             const json = await response.json()
             console.log(response)
+            if(!identifier || !password){
+                setAviso(true)
+            } else
 
             if(response.status == 200){
+                setAviso(false)
                 setLoadding(true)
     
                 router.push('/home');
             } else if(response.status == 401 || 400) {
+                setAviso(false)
                 setErro(true)
             } else if(response.status == 500) {
+                setAviso(false)
                 setErroInterno(true)
             }
             
@@ -231,6 +237,12 @@ export default function LoginCard(){
 {error &&
   <Alert key="1233" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
     <Spinner animation="grow" variant="danger" /> Email ou senha incorretos!
+  </Alert>
+}
+
+{aviso &&
+  <Alert key="1233" variant="warning" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+    <Spinner animation="grow" variant="warning" /> Todos os campos precisam ser preenchidos!
   </Alert>
 }
 
