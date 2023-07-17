@@ -16,6 +16,7 @@ import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import { FaListOl, FaListAlt } from "react-icons/fa";
 
+
 export default function LoginCard(){
 
     const URL_API=  "http://192.168.0.153:3001/api/signin";
