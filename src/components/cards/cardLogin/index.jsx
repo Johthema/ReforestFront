@@ -171,7 +171,7 @@ export default function LoginCard(){
       
        {loadding &&
             <div className={Style.DivSpinnerLoadding}>
-            <RotateLoader color="#36d7b7" size="15" margin="20" className={Style.SpinnerLoadding} />
+            <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} />
             </div>
         }
        
