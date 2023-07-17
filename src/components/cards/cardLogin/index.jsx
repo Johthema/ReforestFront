@@ -82,6 +82,15 @@ export default function LoginCard(){
             })
 
             const json = await response.json()
+            console.log(response)
+
+            if(response.status == 200){
+                setLoadding(true)
+    
+                router.push('/home');
+            } else {
+
+            }
             
         } catch (error) {
             console.log("retornou erro: ",error)
