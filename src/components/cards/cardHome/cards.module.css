@@ -85,11 +85,10 @@
 }
 
 
-
 .botaoTitulo{
     text-decoration: none;
     color: #000;
-    ;
+    
 }
 .botaoCard:hover{
   
@@ -98,5 +97,4 @@
 .botaoCard:hover .botaoTitulo{
     text-decoration: none;
     color: #ffffff;
-   
 }
