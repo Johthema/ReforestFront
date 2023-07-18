@@ -24,12 +24,14 @@ const URL_API = "http://192.168.0.153:3001/api/user";
 export default function ListarUsuario() {
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(null)
-  const [errorInt, setErroInterno] = useState(false)
+  const [data, setData] = useState(null);
+  const [errorInt, setErroInterno] = useState(false);
 
   //variáveis de filtros
-  const [initialRepos, setInitialRepo] = useState([])
-  const [repos, setRepo] = useState([])
+  const [initialRepos, setInitialRepo] = useState([]);
+  const [repos, setRepo] = useState([]);
+  const [tipo, setTipo] = useState('todos')
+  const [valorSelecionado, setValorSelecionado] = useState(null);
 
   //variaveis do modal
   const [show, setShow] = useState(false);
@@ -41,7 +43,7 @@ export default function ListarUsuario() {
   const [success, setSuccess] = useState(false)
   const [id, setId] = useState('');
   const [nome, setUsuarioNome] = useState('');
-
+  const [reloadCount, setReloadCount] = useState(0);
   //Variáveis editar usuario
   const [showEdit, setShowEdit] = useState(false);
   const [dadosEditar, setDadosEditar] = useState([])
@@ -54,12 +56,27 @@ export default function ListarUsuario() {
 
   //-----------------------------------------------------------------------Inicio Função de filtros
   useEffect(() => {
+    
     const fetchRepos = async () => {
       try {
-        const response = await fetch(URL_API)
-        const dados = await response.json();
+        console.log("o tipo de usuario é: ",tipo)
+        if(tipo!='todos'){
+          const response = await fetch(URL_API+"?role="+tipo)
+          const dados = await response.json();
         setInitialRepo(dados);
         setRepo(dados);
+        setLoading(false)
+        } else if (tipo=='todos'){
+          const response = await fetch(URL_API)
+          const dados = await response.json();
+        setInitialRepo(dados);
+        setRepo(dados);
+        setLoading(false)
+        } 
+        //const response = await fetch(URL_API)
+        // const dados = await response.json();
+        // setInitialRepo(dados);
+        // setRepo(dados);
 
       } catch (error) {
         console.log(error)
@@ -67,7 +84,7 @@ export default function ListarUsuario() {
       }
     }
     fetchRepos()
-  }, []);
+  }, [reloadCount]);
 
   const handleChange = ({ target }) => {
     if (!target.value) {
@@ -125,33 +142,51 @@ export default function ListarUsuario() {
   //----------------------------------------------------------------------------Fim função deletar usuario
 
 
-  //Primeiro carregamengto para saber se esta tudo certo
-  const fecthAllData = async () => {
-    try {
-
-      setLoading(true)
-      const response = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
-      const data = await response.json()
-
-      if (!data)
-        throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
-      setData(data)
-
-      //Iniciando a estrutura da requisição
-
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-    }
-
+  const onChangeRoles=(role) =>{
+    //setSelectedOption(e.target.value)
+    setTipo(role)
+    setLoading(true)
+    setReloadCount(prevCount => prevCount + 1);
   }
+  
 
-  //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
-  useEffect(() => {
-    fecthAllData();
 
-  }, []);
+  // //Primeiro carregamengto para saber se esta tudo certo
+  // const fecthAllData = async () => {
+  //   try {
+
+  //     setLoading(true)
+  //     if(tipo == 'user'){
+  //       console.log("tem tipo")
+  //       const response = await fetch(URL_API+'?role='+tipo)
+        
+  //     } else if(tipo == ''){
+  //       console.log("não tem tipo")
+  //       const response = await fetch(URL_API)
+        
+  //     }
+  //     //por padrão o fetch ja utiliza o GET
+  //     const data = await response.json()
+
+  //     if (!data)
+  //       throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+  //     setData(data)
+
+  //     //Iniciando a estrutura da requisição
+
+  //   } catch (error) {
+  //     console.log(error)
+  //   } finally {
+  //     setLoading(false)
+  //   }
+
+  // }
+
+  // //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
+  // useEffect(() => {
+  //   fecthAllData();
+
+  // }, []);
 
 
 //===========================================[[[RENDERIZAÇÃO DA PAGINA]]]===================================================
@@ -165,7 +200,7 @@ export default function ListarUsuario() {
       </Breadcrumb>
 
       {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
-
+ 
       <div className={Style.divFundo}>
 
         <Navbar className={Style.headerTabela}>
@@ -181,20 +216,35 @@ export default function ListarUsuario() {
             </InputGroup>
 
             <Dropdown className={Style.DropMENU}>
+              <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+              <FaFilter className={Style.Icon} />Filtrar por
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+              <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+
+              </Dropdown.Menu>
+            </Dropdown>
+
+            {/* <Dropdown className={Style.DropMENU}>
               <Dropdown.Toggle className={Style.IconeMENU}>
                 <Nav.Link><FaFilter className={Style.Icon} />Filtro</Nav.Link>
               </Dropdown.Toggle>
 
-              <Dropdown.Menu className={Style.OpDropNotifi}>
-                <Dropdown.Item href="#/action-1" >Pessoa Fisica</Dropdown.Item>
-                <Dropdown.Item href="#/action-2" >Pessoa Jurídica</Dropdown.Item>
-                <Dropdown.Item href="#/action-3" >Tipo</Dropdown.Item>
+              <Dropdown.Menu className={Style.OpDropNotifi} onClick={(e) =>onChangeRoles(e.target.value) }>
+                <Dropdown.Item value="todos" >Todos</Dropdown.Item>
+                <Dropdown.Item value="admin">Administrador</Dropdown.Item>
+                <Dropdown.Item value="user">Usuario</Dropdown.Item>
+
+             
               </Dropdown.Menu>
 
-            </Dropdown>
+            </Dropdown> */}
           </Container>
         </Navbar>
-
+ 
         <Table striped bordered hover className={Style.Tabela}>
           <thead>
             <tr>
@@ -218,7 +268,7 @@ export default function ListarUsuario() {
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.surname || repo.fullname}</h2></td>
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
-             
+
                 <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id, repo.person)}><FaEdit className={Style.icoEditar} /></td>
                 <td className={Style.Deletar} value={repo._id} onClick={() => idUsuario(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
