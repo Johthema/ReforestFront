@@ -2,7 +2,7 @@ import Header from '../../../components/header/index'
 import { useState, useEffect } from 'react'
 import Style from './listauser.module.css'
 import Table from 'react-bootstrap/Table';
-import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaRecycle } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaListOl } from 'react-icons/fa';
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -217,16 +217,29 @@ export default function ListarUsuario() {
 
             <Dropdown className={Style.DropMENU}>
               <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
-              <FaFilter className={Style.Icon} />Filtrar por
+              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar por</Nav.Link>
+             
               </Dropdown.Toggle>
 
-              <Dropdown.Menu>
+              <Dropdown.Menu  className={Style.OpDropNotifi}>
               <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
                 <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
                 <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
 
+
               </Dropdown.Menu>
             </Dropdown>
+            <Dropdown >
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                  <Nav.Link><FaListOl className={Style.Icon} />ordenar por</Nav.Link>
+                  
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                  </Dropdown.Menu>
+             </Dropdown>
 
             {/* <Dropdown className={Style.DropMENU}>
               <Dropdown.Toggle className={Style.IconeMENU}>
