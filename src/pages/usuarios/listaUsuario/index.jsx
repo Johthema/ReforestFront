@@ -31,7 +31,7 @@ export default function ListarUsuario() {
   const [initialRepos, setInitialRepo] = useState([]);
   const [repos, setRepo] = useState([]);
   const [tipo, setTipo] = useState('todos')
-  const [valorSelecionado, setValorSelecionado] = useState(null);
+  const [ordenar, setOrdenar] = useState('recente')
 
   //variaveis do modal
   const [show, setShow] = useState(false);
@@ -61,7 +61,7 @@ export default function ListarUsuario() {
       try {
         console.log("o tipo de usuario é: ",tipo)
         if(tipo!='todos'){
-          const response = await fetch(URL_API+"?role="+tipo)
+          const response = await fetch(URL_API+"?order="+ordenar+"&role="+tipo)
           const dados = await response.json();
         setInitialRepo(dados);
         setRepo(dados);
@@ -141,10 +141,15 @@ export default function ListarUsuario() {
   }
   //----------------------------------------------------------------------------Fim função deletar usuario
 
-
+//----------------------------------Filtros --------------------------------
   const onChangeRoles=(role) =>{
-    //setSelectedOption(e.target.value)
     setTipo(role)
+    setLoading(true)
+    setReloadCount(prevCount => prevCount + 1);
+  }
+
+  const onChangeOrdem=(ordem) =>{
+    setOrdenar(ordem)
     setLoading(true)
     setReloadCount(prevCount => prevCount + 1);
   }
