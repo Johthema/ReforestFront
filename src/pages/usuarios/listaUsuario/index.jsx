@@ -59,6 +59,7 @@ export default function ListarUsuario() {
     
     const fetchRepos = async () => {
       try {
+        setLoading(true)
         console.log("o tipo de usuario é: ",tipo)
         if(tipo!='todos'){
           const response = await fetch(URL_API+"?order="+ordenar+"&role="+tipo)
