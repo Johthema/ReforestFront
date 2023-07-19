@@ -20,6 +20,8 @@ export default function Permissao(){
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
     const [success, setSuccess] = useState(false)
+    const [reloadCount, setReloadCount] = useState(0);
+
     //Função para setar o nome do papel
     const onChangeNome = (evt) => {
       setNome(evt.target.value)
@@ -47,7 +49,8 @@ export default function Permissao(){
             //setLoading(false)
             setLoading(false)
             setSuccess(true)
-  
+            setShow(false);
+            setReloadCount(prevCount => prevCount + 1);
            
           } else {
             setLoading(false)
@@ -61,7 +64,7 @@ export default function Permissao(){
       }
     
   
-  
+   
   
     const [show, setShow] = useState(false);
   
@@ -100,7 +103,7 @@ export default function Permissao(){
     useEffect(() => {
       fecthAllData();
   
-    }, []);
+    }, [reloadCount]);
 
 
 
@@ -183,7 +186,7 @@ export default function Permissao(){
 
 
           {success &&
-            <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow2(false)} dismissible>
+            <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
               <Spinner animation="grow" variant="success" /> Salvo com sucesso!
             </Alert>
           }
