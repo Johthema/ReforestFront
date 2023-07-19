@@ -68,6 +68,7 @@ export default function Permissao() {
       })
 
       const json = await response.json()
+      // console.log("::",error.response)
       if (name) {
         //setLoading(false)
         setLoading(false)
@@ -79,10 +80,16 @@ export default function Permissao() {
         setAviso(true)
         setLoading(false)
         //setErro(true)
+      } if (response.status == 400){
+        setSuccess(false)
+        setErroInterno(true)
+        
       }
+     
       // setLoading(false)
 
     } catch (err) {
+     
       console.log(err)
     }
   }
@@ -105,14 +112,19 @@ const enviarFormEdit = async (evt) => {
       })
   
       const json = await response.json()
-      if(name){
+      console.log("o response 2: ",response)
+      if(name!=''){
         setShowEdit(false)
         setLoading(false)
         setSuccess(true)
         setReloadCount(prevCount => prevCount + 1);
-      } else if(!name) {
+      } else if(name=='') {
         setLoading(false)
         setAviso(true)
+      } if (response.status == 400){
+        setSuccess(false)
+        setErroInterno(true)
+        
       }
 
  
