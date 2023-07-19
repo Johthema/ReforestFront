@@ -16,15 +16,38 @@ export default function Permissao() {
   const URL_APIRoles = "http://192.168.0.153:3001/api/role";
 
   const [name, setNome] = useState('');
-  const [loading, setLoading] = useState(false)
-  const [data, setData] = useState([])
-  const [success, setSuccess] = useState(false)
-  const [successDell, setSuccessDell] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [aviso, setAviso] = useState(false);
+  const [errorInt, setErroInterno] = useState(false);
+
+  const [data, setData] = useState([]);
+  const [success, setSuccess] = useState(false);
+  const [successDell, setSuccessDell] = useState(false);
   const [reloadCount, setReloadCount] = useState(0);
   const [id, setId] = useState('');
+  const [idPapel, setIdPapel] = useState('');
+
+  const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [show2, setShow2] = useState(false);
+
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
+
+  const handleClose = () =>{
+    setShow(false)
+    setShowEdit(false)
+  } ;
+  const handleShow = () => setShow(true);
+
+  const [nome, setPapelNome] = useState('');
+
+
+
   //Função para setar o nome do papel
   const onChangeNome = (evt) => {
     setNome(evt.target.value)
+    setPapelNome(evt.target.value)
 
   }
 
@@ -45,16 +68,17 @@ export default function Permissao() {
       })
 
       const json = await response.json()
-      if (name != '') {
+      if (name) {
         //setLoading(false)
         setLoading(false)
         setSuccess(true)
         setShow(false);
         setReloadCount(prevCount => prevCount + 1);
 
-      } else {
+      } else if (!name) {
+        setAviso(true)
         setLoading(false)
-        setErro(true)
+        //setErro(true)
       }
       // setLoading(false)
 
@@ -63,17 +87,49 @@ export default function Permissao() {
     }
   }
 
+//Editar-------------------------------------------------------
+const enviarFormEdit = async (evt) => {
+    
+  evt.preventDefault()
+  try{
+    setLoading(true)
 
-  const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
+      const response = await fetch(URL_API+"/"+idPapel,{
+        method: 'PUT',
+        headers:{
+          Accept: 'application/json',
+          'Content-type': 'application/json'
+        },
+  
+        body: JSON.stringify({ name }),
+      })
+  
+      const json = await response.json()
+      if(name){
+        setShowEdit(false)
+        setLoading(false)
+        setSuccess(true)
+        setReloadCount(prevCount => prevCount + 1);
+      } else if(!name) {
+        setLoading(false)
+        setAviso(true)
+      }
 
-  const handleClose2 = () => setShow2(false);
-  const handleShow2 = () => setShow2(true);
+ 
+} catch(err){
+  console.log("O erro retornado: ",err)
+  setLoading(false)
+  setErroInterno(true)
+}
+return false
+}
+//Editar fim---------------------------------------------------
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
-  const [nome, setPapelNome] = useState('');
+
+
+
+
 
 
   //Primeiro carregamengto para saber se esta tudo certo
@@ -88,7 +144,7 @@ export default function Permissao() {
         throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
       setData(data.roles)
 
-
+      setNome(data.name)
       //Iniciando a estrutura da requisição
 
     } catch (error) {
@@ -98,7 +154,7 @@ export default function Permissao() {
     }
 
   }
-  console.log("o data é: ", data)
+ 
   //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
   useEffect(() => {
     fecthAllData();
@@ -113,6 +169,14 @@ export default function Permissao() {
     setId(event)
     setPapelNome(nome)
     setShow2(true)
+  }
+  const idPapelEdit = (event, nome) =>{
+   
+    console.log("O id do papel é: ", event)
+    console.log("O nome do papel é: ", nome)
+    setIdPapel(event)
+    setPapelNome(nome)
+    setShowEdit(true)
   }
 
   const DeleteUser = async (evt) => {
@@ -187,7 +251,7 @@ export default function Permissao() {
                 </Form.Select> */}
 
               </td>
-              <td className={Style.Editar} value={item._id} ><FaEdit className={Style.icoEditar} /></td>
+              <td className={Style.Editar} value={item._id} onClick={()=> idPapelEdit(item._id, item.name)}><FaEdit className={Style.icoEditar} /></td>
               <td className={Style.Deletar} value={item._id} onClick={() => idUsuario(item._id, item.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
             </tr>
 
@@ -220,6 +284,37 @@ export default function Permissao() {
               Cancelar
             </Button>
             <Button variant="primary" onClick={enviarForm}>
+              Salvar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+{/* ==============Modal de editar de papel============== */}
+<Modal show={showEdit} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Editar nome do membro </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+
+
+            <Form onSubmit={enviarFormEdit} method='post'>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Nome</Form.Label>
+                <Form.Control placeholder='Administrador' type='text' required  value={nome} name='nome' onChange={onChangeNome}
+                  autoFocus
+                />
+                 {/* <Form.Control.Feedback type="invalid">
+                  Por favor insira um nome
+                  </Form.Control.Feedback> */}
+              </Form.Group>
+            </Form>
+
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Cancelar
+            </Button>
+            <Button variant="primary" onClick={enviarFormEdit}>
               Salvar
             </Button>
           </Modal.Footer>
@@ -264,6 +359,18 @@ export default function Permissao() {
         {loading &&
           <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
             <Spinner animation="border" variant="primary" /> Aguarde, carregando...
+          </Alert>
+        }
+
+        {aviso &&
+          <Alert key="123456" variant="primary" className={Style.botaoCarregamento}  dismissible>
+            <Spinner animation="border" variant="warning" /> O nome não pode ser vazio!
+          </Alert>
+        }
+
+        {errorInt &&
+          <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+            <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
           </Alert>
         }
       </Table>
