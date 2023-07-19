@@ -6,8 +6,8 @@ import Table from 'react-bootstrap/Table';
 import Style from './permissao.module.css'
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
-import { FaEdit, FaTrashAlt, FaCheckSquare } from 'react-icons/fa';
-import Toast from 'react-bootstrap/Toast';
+import { FaEdit, FaTrashAlt, FaCheckSquare, FaRedoAlt } from 'react-icons/fa';
+
 
 
 export default function Permissao() {
@@ -19,8 +19,9 @@ export default function Permissao() {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const [success, setSuccess] = useState(false)
+  const [successDell, setSuccessDell] = useState(false)
   const [reloadCount, setReloadCount] = useState(0);
-
+  const [id, setId] = useState('');
   //Função para setar o nome do papel
   const onChangeNome = (evt) => {
     setNome(evt.target.value)
@@ -64,11 +65,15 @@ export default function Permissao() {
 
 
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  //const [show2, setShow2] = useState(false);
+  const [nome, setPapelNome] = useState('');
 
 
   //Primeiro carregamengto para saber se esta tudo certo
@@ -99,6 +104,51 @@ export default function Permissao() {
     fecthAllData();
 
   }, [reloadCount]);
+
+
+  //-----------------------------Deletar papel------------------------------------
+  const idUsuario = (event, nome) =>{
+   
+    console.log("O id do usuario é: ", event)
+    setId(event)
+    setPapelNome(nome)
+    setShow2(true)
+  }
+
+  const DeleteUser = async (evt) => {
+    
+    evt.preventDefault()
+    //console.log("deletando o papel de id: ",id)
+    try{
+    const response = await fetch(URL_API+"/"+id,{
+      method: 'DELETE',
+      headers:{
+        Accept: 'application/json',
+        'Content-type': 'application/json'
+      },
+
+      body: JSON.stringify({ id }),
+      
+    })
+    
+    const json = await response.json()
+
+
+    handleClose2()//Fechar a janela modal
+    setSuccessDell(true) // Aparecer o alert de sucesso 
+
+    setTimeout(() => { //Uso do setTimeout para fechar o alert dos dados
+      setSuccessDell(false);
+    }, 2000);
+    setReloadCount(prevCount => prevCount + 1);
+    //window.location.reload();
+
+  } catch(err){
+    console.log(err)
+  }
+  
+  return false
+  }
 
 
 
@@ -138,7 +188,7 @@ export default function Permissao() {
 
               </td>
               <td className={Style.Editar} value={item._id} ><FaEdit className={Style.icoEditar} /></td>
-              <td className={Style.Deletar} value={item._id}  ><FaTrashAlt className={Style.icoDeletar} /></td>
+              <td className={Style.Deletar} value={item._id} onClick={() => idUsuario(item._id, item.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
             </tr>
 
           )
@@ -147,7 +197,7 @@ export default function Permissao() {
 
         </tbody>
 
-
+{/* ==============Modal de cadastro de papel============== */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Insira o nome do membro </Modal.Title>
@@ -164,9 +214,6 @@ export default function Permissao() {
               </Form.Group>
             </Form>
 
-
-
-
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -179,10 +226,38 @@ export default function Permissao() {
         </Modal>
 
 
+{/* ==============Modal de deletar papel============== */}
+        <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-sm">
+            <h2 className={Style.tituloDeletar}>Deletar membro!</h2>
+            <h5 className={Style.tituloDelet}>{nome}</h5>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
+          <h4><FaRedoAlt /> Por conveniência, poderá restaurá-lo mais tarde. </h4>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose2}>
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={DeleteUser} >
+            Deletar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
 
         {success &&
           <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
             <Spinner animation="grow" variant="success" /> Salvo com sucesso!
+          </Alert>
+        }
+        {successDell &&
+          <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+            <Spinner animation="grow" variant="success" /> Deletado com sucesso!
           </Alert>
         }
 
