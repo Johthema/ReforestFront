@@ -223,7 +223,7 @@ export default function ListarUsuario() {
 
             <Dropdown className={Style.DropMENU}>
               <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
-              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar por</Nav.Link>
+              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
              
               </Dropdown.Toggle>
 
@@ -237,7 +237,7 @@ export default function ListarUsuario() {
             </Dropdown>
             <Dropdown >
                   <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
-                  <Nav.Link><FaListOl className={Style.Icon} />ordenar por</Nav.Link>
+                  <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
                   
                   </Dropdown.Toggle>
 
