@@ -230,9 +230,12 @@ return false
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className={Style.botaoEnviar} >
+    <div className={Style.DivBotao}>
+    <Button variant="primary" onClick={handleShow} className={Style.botaoEnviar} >
         +Add membro
       </Button>
+    </div>
+     
       <Table striped bordered hover className={Style.Tabela}>
         <thead>
           <tr>

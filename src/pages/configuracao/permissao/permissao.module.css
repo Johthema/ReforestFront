@@ -9,6 +9,14 @@
 --bs-btn-hover-border-color: #295527;
 }
 
+.DivBotao{
+    width: 90%;
+   
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
 .botaoEnviar{
     display: flex;
     margin-inline-start: auto;

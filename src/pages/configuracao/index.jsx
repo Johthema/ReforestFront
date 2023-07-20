@@ -21,11 +21,11 @@ export default function Configuracao(){
                 
                 <Breadcrumb.Item active>Configurações.</Breadcrumb.Item>
         </Breadcrumb>
-        <h4>Configuração do usuário</h4>
+        <h4 className={Style.TituloTab}>Configuração do usuário</h4>
         <Tabs
         defaultActiveKey="info"
         id="justify-tab-example"
-        className="mb-3"
+        className={Style.TabsCorpo}
         justify
         >
         <Tab eventKey="info" title="Informações pessoais">
@@ -39,11 +39,11 @@ export default function Configuracao(){
         </Tabs>
        
         <hr/>
-        <h4>Configuração do sistema</h4>
+        <h4  className={Style.TituloTab}>Configuração do sistema</h4>
         <Tabs
         defaultActiveKey="perm"
         id="justify-tab-example"
-        className="mb-3"
+        className={Style.TabsCorpo}
         justify
         >
       
