@@ -18,7 +18,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardUsuarioEdit from '../../../components/cards/cardCadUser/cardCadEdit/index';
 import Footer from '../../../components/footer/index'
 
-const URL_API = "http://192.168.0.153:3001/api/user";
+const URL_API = "http://192.168.0.252:3001/api/user";
 
 
 export default function ListarUsuario() {

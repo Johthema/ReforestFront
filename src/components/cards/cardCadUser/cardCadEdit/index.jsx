@@ -43,7 +43,7 @@ export default function EditarUsuario({handleShowEdit}) {
   // const onChange = (evt) => {
   //   console.log(evt.target.name)
   // }
-  const URL_API=  "http://192.168.0.153:3001/api/user/";
+  const URL_API=  "http://192.168.0.252:3001/api/user/";
 
   const onChangeNome = (evt) => {
     console.log("entrou na funcao log do nome")

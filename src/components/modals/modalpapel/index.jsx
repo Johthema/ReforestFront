@@ -12,8 +12,8 @@ import { FaEdit, FaTrashAlt,FaListAlt, FaSearch, FaFilter, FaRedoAlt, FaRecycle 
 
 
 export default function Example() {
-  const URL_API=  "http://192.168.0.153:3001/api/role";
-  const URL_APIRoles=  "http://192.168.0.153:3001/api/role";
+  const URL_API=  "http://192.168.0.252:3001/api/role";
+  const URL_APIRoles=  "http://192.168.0.252:3001/api/role";
 
   const [name, setNome] = useState('');
   const [loading, setLoading] = useState(false)
