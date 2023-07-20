@@ -9,7 +9,9 @@ import Style from './configure.module.css';
 import Aparencia from './aparencia/index'
 import Permissao from './permissao/index'
 import Senha from './senha/index';
-import Informacao from './informacao/index'
+import Informacao from './informacao/index';
+import Categoria from './categoria/index';
+
 export default function Configuracao(){
     return(
         <>
@@ -35,8 +37,9 @@ export default function Configuracao(){
         
         </Tab>
         </Tabs>
-        <h4>Configuração do sistema</h4>
+       
         <hr/>
+        <h4>Configuração do sistema</h4>
         <Tabs
         defaultActiveKey="perm"
         id="justify-tab-example"
@@ -48,7 +51,7 @@ export default function Configuracao(){
           <Permissao/>
         </Tab>
         <Tab eventKey="cat" title="Categoria">
-           <h4>Em construção</h4>
+           <Categoria/>
            
         </Tab>
         <Tab eventKey="tela" title="Aparência">
