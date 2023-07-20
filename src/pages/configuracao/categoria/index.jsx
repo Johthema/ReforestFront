@@ -33,7 +33,6 @@ export default function Categoria() {
   const [show2, setShow2] = useState(false);
 
   const handleClose2 = () => setShow2(false);
-  const handleShow2 = () => setShow2(true);
 
   const handleClose = () =>{
     setShow(false)
@@ -265,18 +264,17 @@ return false
 
         </tbody>
 
-{/* ==============Modal de cadastro de papel============== */}
+{/* ==============Modal de cadastro da categoria============== */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Insira o nome do membro </Modal.Title>
+            <Modal.Title>Insira o nome da categoria </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-
 
             <Form onSubmit={enviarForm} method='post'>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Nome</Form.Label>
-                <Form.Control placeholder='Administrador' type='text' name='nome' onChange={onChangeNome}
+                <Form.Control placeholder='Exótico' type='text' name='nome' onChange={onChangeNome}
                   autoFocus
                 />
               </Form.Group>
@@ -293,10 +291,10 @@ return false
           </Modal.Footer>
         </Modal>
 
-{/* ==============Modal de editar de papel============== */}
+{/* ==============Modal de editar da categoria============== */}
 <Modal show={showEdit} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Editar nome do membro </Modal.Title>
+            <Modal.Title>Editar nome da categoria </Modal.Title>
           </Modal.Header>
           <Modal.Body>
 
@@ -304,12 +302,10 @@ return false
             <Form onSubmit={enviarFormEdit} method='post'>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Nome</Form.Label>
-                <Form.Control placeholder='Administrador' type='text' required  value={nome} name='nome' onChange={onChangeNome}
+                <Form.Control placeholder='Exotico' type='text' required  value={nome} name='nome' onChange={onChangeNome}
                   autoFocus
                 />
-                 {/* <Form.Control.Feedback type="invalid">
-                  Por favor insira um nome
-                  </Form.Control.Feedback> */}
+              
               </Form.Group>
             </Form>
 
@@ -325,11 +321,11 @@ return false
         </Modal>
 
 
-{/* ==============Modal de deletar papel============== */}
+{/* ==============Modal de deletar categoria============== */}
         <Modal show={show2} onHide={handleClose2}>
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
-            <h2 className={Style.tituloDeletar}>Deletar membro!</h2>
+            <h2 className={Style.tituloDeletar}>Deletar categoria!</h2>
             <h5 className={Style.tituloDelet}>{nome}</h5>
           </Modal.Title>
         </Modal.Header>
