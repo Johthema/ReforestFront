@@ -13,8 +13,8 @@ import { FaEdit, FaTrashAlt, FaCheckSquare, FaRedoAlt } from 'react-icons/fa';
 
 export default function Categoria() {
 
-  const URL_API = "http://192.168.0.252:3001/api/category";
-  const URL_APIRoles = "http://192.168.0.252:3001/api/category";
+  const URL_API = "http://192.168.0.253:3001/api/category";
+  const URL_APIRoles = "http://192.168.0.253:3001/api/category";
 
   const [name, setNome] = useState('');
   const [loading, setLoading] = useState(false);
