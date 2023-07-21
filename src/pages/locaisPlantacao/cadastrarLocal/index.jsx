@@ -1,14 +1,4 @@
 import Header from '../../../components/header/index';
-// import CardLocacao from '../../../components/cards/cardCadLocais/index'
-// export default function CadastrarLocal(){
-//     return(
-//         <div>
-//             <Header></Header>
-//             <CardLocacao/>
-//         </div>
-//     )
-// }
-
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Style from './cadlocais.module.css'
@@ -16,9 +6,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-// import Container from 'react-bootstrap/Container';
-// import Image from 'react-bootstrap/Image';
-// import Carousel from 'react-bootstrap/Carousel';
 import Arvores from '../../../components/cards/cardArvore/index';
 
 export default function CadastrarLocal() {
@@ -128,10 +115,7 @@ export default function CadastrarLocal() {
         </Form>
        
         <br/>
-        {/* <Card.Title>Special title treatment</Card.Title>
-        <Card.Text>
-          With supporting text below as a natural lead-in to additional content.
-        </Card.Text> */}
+   
         <Button variant="primary" className={Style.botaoSalvar}>Salvar</Button>
       </Card.Body>
       {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
