@@ -1,0 +1,23 @@
+.cardArvore{
+    text-align: center;
+    width: 45vw;
+    margin: auto;
+    margin-top: 20px;
+}
+.estiloRadio{
+    width: 70%;
+    margin: auto;
+    padding: 1.5rem;
+}
+.Preco{
+    width: 40%;
+    margin: auto;
+}
+.botaoSalvar{
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #469444;
+    --bs-btn-border-color: #469444;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #31662f;
+    --bs-btn-hover-border-color: #31662f;
+}
