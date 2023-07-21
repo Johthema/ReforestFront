@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const URL_API=  process.env.NEXT_PUBLIC_USER_API_URL;
+const URL_API=  process.env.NEXT_PUBLIC_API_URL+"user";
 
 export default function ListaUs() {
 

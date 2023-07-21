@@ -13,8 +13,8 @@ import { FaEdit, FaTrashAlt, FaCheckSquare, FaRedoAlt } from 'react-icons/fa';
 
 export default function Categoria() {
 
-  const URL_API = process.env.NEXT_PUBLIC_CATEGORY_API_URL;
-  const URL_APIRoles = process.env.NEXT_PUBLIC_CATEGORY_API_URL;
+  const URL_API = process.env.NEXT_PUBLIC_API_URL+"category";
+  const URL_APIRoles = process.env.NEXT_PUBLIC_API_URL+"category";
 
   const [name, setNome] = useState('');
   const [loading, setLoading] = useState(false);

@@ -19,7 +19,7 @@ import { FaListOl, FaListAlt } from "react-icons/fa";
 
 export default function LoginCard(){
 
-    const URL_API=  process.env.NEXT_PUBLIC_LOGIN_API_URL;
+    const URL_API=  process.env.NEXT_PUBLIC_API_URL+"signin";
     // constructor(props){
     //     super(props);
     //     this.state = {

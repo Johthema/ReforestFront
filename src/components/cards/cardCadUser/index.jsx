@@ -40,7 +40,7 @@ function LeftTabsExample() {
   // const onChange = (evt) => {
   //   console.log(evt.target.name)
   // }
-  const URL_API=  process.env.NEXT_PUBLIC_USER_API_URL;
+  const URL_API=  process.env.NEXT_PUBLIC_API_URL+"user";
 
   const onChangeNome = (evt) => {
     setNome(evt.target.value)
@@ -108,6 +108,12 @@ function LeftTabsExample() {
         })
     
         const json = await response.json()
+        if(response.status == 400){
+          setSuccess(false)
+          setLoading(false)
+          setErro(true)
+        } else {
+
         if(name!='' && email !='' && phone !='' && password !='' && person !='' && roles != ''){
           setLoading(false)
           setSuccess(true)
@@ -115,6 +121,7 @@ function LeftTabsExample() {
           setLoading(false)
           setErro(true)
         }
+      }
 
       }
 
