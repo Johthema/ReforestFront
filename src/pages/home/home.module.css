@@ -22,3 +22,43 @@
     font-weight: bold;
     
 }
+.Sessao1{
+    height: 50%;
+    background-color: #43944314;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+.DivPlantarArvoreEsquerdo{
+    width: 50%;
+   
+    justify-content: center;
+    
+}
+.DivPlantarArvoreDireito{
+    width: 50%;
+   
+    justify-content: center;
+    
+}
+.TextoArvoreEsquerdo{
+    width: 70%;
+    margin-top: 40px;
+    
+   
+}
+.logo{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.TituloArvore{
+   margin-bottom: 15%;
+   color: #469444;
+   --fontPadrao: "Manrope", sans-serif;
+}
+.subTituloArvore{
+    margin-bottom: 15%;
+    --fontPadrao: "Manrope", sans-serif;
+}

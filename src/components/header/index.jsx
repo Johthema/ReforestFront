@@ -35,7 +35,7 @@ export default function Header() {
           <Navbar.Brand href="/home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} alt="" /></Navbar.Brand>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" >
+          <Navbar.Collapse id="responsive-navbar-nav" className={StyleBar.NavColaps} >
             <Nav className={StyleBar.NavMenuOp} variant="underline" >
 
               <Nav.Link className={StyleBar.custom_dropdown} href="/plantar" >Plantar</Nav.Link>

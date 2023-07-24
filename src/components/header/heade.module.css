@@ -188,3 +188,10 @@
 .OpDropNotifi{
     margin-left: -40px
 }
+
+@media (max-width:1082px) {
+    .NavColaps{
+
+     font-size:16px
+    }
+}

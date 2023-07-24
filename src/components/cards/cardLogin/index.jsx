@@ -90,7 +90,7 @@ export default function LoginCard(){
             console.log(response)
             if(!identifier || !password){
                 setAviso(true)
-            } else
+            }else
 
             if(response.status == 200){
                 setAviso(false)
@@ -100,7 +100,8 @@ export default function LoginCard(){
             } else if(response.status == 401 || 400) {
                 setAviso(false)
                 setErro(true)
-            } else if(response.status == 500) {
+            }
+             else if(response.status == 500) {
                 setAviso(false)
                 setErroInterno(true)
             }
