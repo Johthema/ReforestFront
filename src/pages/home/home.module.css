@@ -36,7 +36,7 @@
     
 }
 .DivPlantarArvoreDireito{
-    width: 50%;
+    width: 30%;
    
     justify-content: center;
     
@@ -69,19 +69,10 @@
     display: flex;
     margin: auto;
     justify-content: center;
-}
-.DivPlantarArvoreEsquerdo2{
-    width: 50%;
-   
-    justify-content: center;
+    margin-bottom: 50px;
     
 }
-.DivPlantarArvoreDireito2{
-    width: 50%;
-   
-    justify-content: center;
-    
-}
+
 .TextoArvoreEsquerdo2{
     width: 70%;
     margin-top: 40px;
@@ -112,18 +103,8 @@
     margin: auto;
     justify-content: center;
 }
-.DivPlantarArvoreEsquerdo3{
-    width: 50%;
-   
-    justify-content: center;
-    
-}
-.DivPlantarArvoreDireito3{
-    width: 50%;
-   
-    justify-content: center;
-    
-}
+
+
 .TextoArvoreEsquerdo3{
     width: 70%;
     margin-top: 40px;
@@ -152,6 +133,9 @@
         display: none
     }
     .Sessao2{
+        display: none
+    }
+    .Sessao3{
         display: none
     }
 }

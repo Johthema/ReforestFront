@@ -36,15 +36,16 @@ export default function Home() {
   <div className={Style.DivPlantarArvoreEsquerdo}>
     <div className={Style.TextoArvoreEsquerdo}>
     <h1 className={Style.TituloArvore}>Plante uma árvore</h1>
-    <h4 className={Style.subTituloArvore}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
     <p className={Style.TextoArvore}>
     Juntos, podemos cultivar um ambiente mais saudável para as próximas gerações. 
     Plante uma árvore e seja parte da mudança positiva que nosso planeta precisa!"
     </p>
+    <h4 className={Style.subTituloArvore}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
+    
     <Button variant="success">Plantar</Button>
     </div>
   </div>
-  <div className={Style.DivPlantarArvoreDireiro}>
+  <div className={Style.DivPlantarArvoreDireito}>
     <div >
     <Image src={Logotipo} className={Style.logo} alt="" />
     </div>
@@ -52,28 +53,28 @@ export default function Home() {
   </div>
 </section >
 <section className={Style.Sessao2}>
-<div className={Style.DivPlantarArvoreDireiro2}>
+<div className={Style.DivPlantarArvoreDireito}>
     <div >
     <Image src={Logotipo} className={Style.logo} alt="" />
     </div>
   
   </div>
-  <div className={Style.DivPlantarArvoreEsquerdo2}>
+  <div className={Style.DivPlantarArvoreEsquerdo}>
     <div className={Style.TextoArvoreEsquerdo2}>
-    <h1 className={Style.TituloArvore2}>Oferecer uma árvore</h1>
-    <h4 className={Style.subTituloArvore2}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
+    <h1 className={Style.TituloArvore2}>Plante amor e sustentabilidade no coração de alguém!</h1>
     <p className={Style.TextoArvore2}>
-    Juntos, podemos cultivar um ambiente mais saudável para as próximas gerações. 
-    Plante uma árvore e seja parte da mudança positiva que nosso planeta precisa!"
+    Transmita seu carinho através da natureza, cultivando um futuro mais verde juntos.
+    Surpreenda com um presente que perdura por gerações, renovando esperanças e deixando um legado para o mundo.
     </p>
-    <Button variant="success">Plantar</Button>
+    <h4 className={Style.subTituloArvore2}>presenteie uma árvore! Um gesto eco-friendly que floresce vida e conecta almas.</h4>
+    <Button variant="success">Oferecer</Button>
     </div>
   </div>
  
 </section >
 <section className={Style.Sessao3}>
 
-  <div className={Style.DivPlantarArvoreEsquerdo3}>
+  <div className={Style.DivPlantarArvoreEsquerdo}>
     <div className={Style.TextoArvoreEsquerdo3}>
     <h1 className={Style.TituloArvore3}>Minha floresta</h1>
     <h4 className={Style.subTituloArvore3}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
@@ -84,7 +85,7 @@ export default function Home() {
     <Button variant="success">Plantar</Button>
     </div>
   </div>
-  <div className={Style.DivPlantarArvoreDireiro3}>
+  <div className={Style.DivPlantarArvoreDireito}>
     <div >
     <Image src={Logotipo} className={Style.logo} alt="" />
     </div>
