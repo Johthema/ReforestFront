@@ -16,7 +16,7 @@ export default function CadastroLocal() {
     <Card className={Style.cardArvore}>
       <Card.Header>Cadastro do Local</Card.Header>
       <Card.Body>
-
+ 
         <Form>
             <Form.Group className="mb-3" controlId="formGrouNome">
             <FloatingLabel controlId="floatingInput" label="Nome" className="mb-3">
