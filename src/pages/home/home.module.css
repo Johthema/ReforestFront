@@ -62,8 +62,96 @@
     margin-bottom: 15%;
     --fontPadrao: "Manrope", sans-serif;
 }
+/* Sessão 2 */
+.Sessao2{
+    height: 50%;
+    background-color: #ffffff;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+.DivPlantarArvoreEsquerdo2{
+    width: 50%;
+   
+    justify-content: center;
+    
+}
+.DivPlantarArvoreDireito2{
+    width: 50%;
+   
+    justify-content: center;
+    
+}
+.TextoArvoreEsquerdo2{
+    width: 70%;
+    margin-top: 40px;
+    
+   
+}
+/* .logo{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+} */
+
+.TituloArvore2{
+   margin-bottom: 15%;
+   color: #469444;
+   --fontPadrao: "Manrope", sans-serif;
+}
+.subTituloArvore2{
+    margin-bottom: 15%;
+    --fontPadrao: "Manrope", sans-serif;
+}
+
+/* Sessão 3 */
+.Sessao3{
+    height: 50%;
+    background-color: #469444;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+.DivPlantarArvoreEsquerdo3{
+    width: 50%;
+   
+    justify-content: center;
+    
+}
+.DivPlantarArvoreDireito3{
+    width: 50%;
+   
+    justify-content: center;
+    
+}
+.TextoArvoreEsquerdo3{
+    width: 70%;
+    margin-top: 40px;
+    
+   
+}
+/* .logo{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+} */
+
+.TituloArvore3{
+   margin-bottom: 15%;
+   color: #ffffff;
+   --fontPadrao: "Manrope", sans-serif;
+}
+.subTituloArvore3{
+    margin-bottom: 15%;
+    --fontPadrao: "Manrope", sans-serif;
+}
+
+
 @media (max-width: 797px){
     .Sessao1{
+        display: none
+    }
+    .Sessao2{
         display: none
     }
 }

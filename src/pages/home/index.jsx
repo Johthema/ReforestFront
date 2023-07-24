@@ -52,11 +52,46 @@ export default function Home() {
   </div>
 </section >
 <section className={Style.Sessao2}>
-  <h2>Segunda sessão</h2>
+<div className={Style.DivPlantarArvoreDireiro2}>
+    <div >
+    <Image src={Logotipo} className={Style.logo} alt="" />
+    </div>
+  
+  </div>
+  <div className={Style.DivPlantarArvoreEsquerdo2}>
+    <div className={Style.TextoArvoreEsquerdo2}>
+    <h1 className={Style.TituloArvore2}>Oferecer uma árvore</h1>
+    <h4 className={Style.subTituloArvore2}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
+    <p className={Style.TextoArvore2}>
+    Juntos, podemos cultivar um ambiente mais saudável para as próximas gerações. 
+    Plante uma árvore e seja parte da mudança positiva que nosso planeta precisa!"
+    </p>
+    <Button variant="success">Plantar</Button>
+    </div>
+  </div>
+ 
 </section >
 <section className={Style.Sessao3}>
-  <h2>Terceira sessão</h2>
-</section>
+
+  <div className={Style.DivPlantarArvoreEsquerdo3}>
+    <div className={Style.TextoArvoreEsquerdo3}>
+    <h1 className={Style.TituloArvore3}>Minha floresta</h1>
+    <h4 className={Style.subTituloArvore3}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
+    <p className={Style.TextoArvore3}>
+    Juntos, podemos cultivar um ambiente mais saudável para as próximas gerações. 
+    Plante uma árvore e seja parte da mudança positiva que nosso planeta precisa!"
+    </p>
+    <Button variant="success">Plantar</Button>
+    </div>
+  </div>
+  <div className={Style.DivPlantarArvoreDireiro3}>
+    <div >
+    <Image src={Logotipo} className={Style.logo} alt="" />
+    </div>
+  
+  </div>
+ 
+</section >
 <Cards></Cards>
 
 <Footer/>
