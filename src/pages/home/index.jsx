@@ -89,16 +89,13 @@ export default function Home() {
     </p>
     <Button variant="success">Explorar</Button>
     </div>
+    
 </div>
 
 <div className={Style.ContentContainer}>
   <div className={Style.Content}>
-  {/* <h1 className={Style.TituloArvore3}>Minha floresta</h1>
-    <h4 className={Style.subTituloArvore3}>Adentre um mundo mágico e único.</h4>
-    <p className={Style.TextoArvore3}>
-    Um santuário de biodiversidade, fruto do amor e dedicação de ações sustentáveis.
-    </p>
-    <Button variant="success">Explorar</Button> */}
+  
+ 
     </div>
 </div>
 </div>
@@ -119,8 +116,8 @@ export default function Home() {
 
  
 </section >
-<Cards></Cards>
 
+<Cards></Cards>
 <Footer/>
 
 </div>

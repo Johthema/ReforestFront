@@ -176,7 +176,12 @@
     width: 100vw;
     overflow-x: hidden;
     overflow-y: scroll;
+   
   }
+
+  .MainContainer::-webkit-scrollbar {
+    display: none;
+}
   .ContentContainer {
     position: relative;
     display: block;
