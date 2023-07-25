@@ -78,11 +78,34 @@ export default function Home() {
 <section className={Style.Sessao3}>
 
  
-    
+<div className={Style.MainContainer}>
+
+<div className={Style.ParallaxContainer}>
+<h1 className={Style.TituloArvore3}>Minha floresta</h1>
+<div className={Style.ContainerTextoFloresta}>
+    <h4 className={Style.subTituloArvore3}>Adentre um mundo mágico e único.</h4>
+    <p className={Style.TextoArvore3}>
+    Um santuário de biodiversidade, fruto do amor e dedicação de ações sustentáveis.
+    </p>
+    <Button variant="success">Explorar</Button>
+    </div>
+</div>
+
+<div className={Style.ContentContainer}>
+  <div className={Style.Content}>
+  {/* <h1 className={Style.TituloArvore3}>Minha floresta</h1>
+    <h4 className={Style.subTituloArvore3}>Adentre um mundo mágico e único.</h4>
+    <p className={Style.TextoArvore3}>
+    Um santuário de biodiversidade, fruto do amor e dedicação de ações sustentáveis.
+    </p>
+    <Button variant="success">Explorar</Button> */}
+    </div>
+</div>
+</div>
  
    
    
-    <div className={Style.TextoArvoreEsquerdo3}>
+    {/* <div className={Style.TextoArvoreEsquerdo3}>
     <h1 className={Style.TituloArvore3}>Minha floresta</h1>
     <h4 className={Style.subTituloArvore3}>Adentre um mundo mágico e único.</h4>
     <p className={Style.TextoArvore3}>
@@ -90,7 +113,7 @@ export default function Home() {
     </p>
     <Button variant="success">Explorar</Button>
    
-  </div>
+  </div> */}
    
   
 
