@@ -85,10 +85,10 @@
     height: 500px;
     object-fit: cover;
 } */
-
+ 
 .TituloArvore2{
    margin-bottom: 15%;
-   color: #469444;
+   color: #55ACEE;
    --fontPadrao: "Manrope", sans-serif;
 }
 .subTituloArvore2{
@@ -205,13 +205,9 @@
     justify-content: center;
     align-items: center;
     transform: translateZ(-1px) scale(2);
-    background: url(../../assets/images/fundo_floresta.png);
+    background: url(../../assets/images/fundofloresta4.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-origin: content-box;
     background-color: #fae4d8;
   }
-  
-  
-  
-  
