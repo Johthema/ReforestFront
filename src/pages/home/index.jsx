@@ -81,7 +81,7 @@ export default function Home() {
 <div className={Style.MainContainer}>
 
 <div className={Style.ParallaxContainer}>
-<h1 className={Style.TituloArvore3}>Minha floresta</h1>
+<h1 className={Style.TituloArvore3}>Minha Floresta</h1>
 <div className={Style.ContainerTextoFloresta}>
     <h4 className={Style.subTituloArvore3}>Adentre um mundo mágico e único.</h4>
     <p className={Style.TextoArvore3}>

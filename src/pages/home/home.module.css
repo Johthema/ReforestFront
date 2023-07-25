@@ -120,12 +120,13 @@
 
 .TituloArvore3{
     letter-spacing: -15px;
-    font-family: Open Sans;
+   
     color: white;
     text-align: center;
     font-size: 200px;
     font-weight: 800;
     line-height: 200px;
+    --fontPadrao: "Manrope", sans-serif;
 }
 
 
