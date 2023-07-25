@@ -8,6 +8,9 @@ import Cards from '../../components/cards/cardHome/index'
 import Style from './home.module.css'
 import Image from 'next/image';
 import Logotipo from '../../assets/images/Plantacao.png';
+import Doar from '../../assets/images/presente4.png';
+//import Doar from '../../assets/images/presente2.png';
+//import Fundotipo from '../../assets/images/fundo_floresta.png';
 import Button from 'react-bootstrap/Button';
 
 export default function Home() {
@@ -15,7 +18,7 @@ export default function Home() {
  
 <div >
 
-<Header/>
+<Header className={Style.HeaderStilo} />
 <div className={Style.DivTitulos}>
 
   <div className={Style.DivInternoTitutlos}>
@@ -53,14 +56,14 @@ export default function Home() {
   </div>
 </section >
 <section className={Style.Sessao2}>
-<div className={Style.DivPlantarArvoreDireito}>
+<div className={Style.DivPlantarArvoreEsquerdo}>
     <div >
-    <Image src={Logotipo} className={Style.logo} alt="" />
+    <Image src={Doar} className={Style.logo} alt="" />
     </div>
   
   </div>
-  <div className={Style.DivPlantarArvoreEsquerdo}>
-    <div className={Style.TextoArvoreEsquerdo2}>
+  <div className={Style.DivPlantarArvoreDireito}>
+    <div className={Style.TextoArvoreDireito}>
     <h1 className={Style.TituloArvore2}>Plante amor e sustentabilidade no coração de alguém!</h1>
     <p className={Style.TextoArvore2}>
     Transmita seu carinho através da natureza, cultivando um futuro mais verde juntos.
@@ -74,23 +77,23 @@ export default function Home() {
 </section >
 <section className={Style.Sessao3}>
 
-  <div className={Style.DivPlantarArvoreEsquerdo}>
+ 
+    
+ 
+   
+   
     <div className={Style.TextoArvoreEsquerdo3}>
     <h1 className={Style.TituloArvore3}>Minha floresta</h1>
-    <h4 className={Style.subTituloArvore3}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
+    <h4 className={Style.subTituloArvore3}>Adentre um mundo mágico e único.</h4>
     <p className={Style.TextoArvore3}>
-    Juntos, podemos cultivar um ambiente mais saudável para as próximas gerações. 
-    Plante uma árvore e seja parte da mudança positiva que nosso planeta precisa!"
+    Um santuário de biodiversidade, fruto do amor e dedicação de ações sustentáveis.
     </p>
-    <Button variant="success">Plantar</Button>
-    </div>
+    <Button variant="success">Explorar</Button>
+   
   </div>
-  <div className={Style.DivPlantarArvoreDireito}>
-    <div >
-    <Image src={Logotipo} className={Style.logo} alt="" />
-    </div>
+   
   
-  </div>
+
  
 </section >
 <Cards></Cards>

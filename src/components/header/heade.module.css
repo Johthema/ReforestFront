@@ -5,7 +5,7 @@
     border-left: transparent;
     border-right: transparent;
     position: relative;
-	margin-top: -10px;
+	margin-top: -25px;
     height: 80px;
 	justify-content: center;
 	align-items: center;
@@ -15,7 +15,7 @@
     /* width: 100vw; */
 	padding: 0.5em 1.5em; 
     box-shadow: 0 5px 5px -3px rgb(169, 169, 169);
-    
+    /* position: fixed; */
 }
 
 .navContain{
