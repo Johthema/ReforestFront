@@ -7,7 +7,7 @@ import React from 'react'
 import Cards from '../../components/cards/cardHome/index'
 import Style from './home.module.css'
 import Image from 'next/image';
-import Logotipo from '../../assets/images/Plantacao.png';
+import Logotipo from '../../assets/images/plantar1.png';
 import Doar from '../../assets/images/presente4.png';
 //import Doar from '../../assets/images/presente2.png';
 //import Fundotipo from '../../assets/images/fundo_floresta.png';
@@ -45,7 +45,7 @@ export default function Home() {
     </p>
     <h4 className={Style.subTituloArvore}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
     
-    <Button variant="success">Plantar</Button>
+    <Button variant="success" className={Style.Botao}>Plantar</Button>
     </div>
   </div>
   <div className={Style.DivPlantarArvoreDireito}>
@@ -70,7 +70,7 @@ export default function Home() {
     Surpreenda com um presente que perdura por gerações, renovando esperanças e deixando um legado para o mundo.
     </p>
     <h4 className={Style.subTituloArvore2}>presenteie uma árvore! Um gesto eco-friendly que floresce vida e conecta almas.</h4>
-    <Button variant="success">Oferecer</Button>
+    <Button variant="success" className={Style.Botao}>Oferecer</Button>
     </div>
   </div>
  
@@ -92,30 +92,13 @@ export default function Home() {
     
 </div>
 
-<div className={Style.ContentContainer}>
-  <div className={Style.Content}>
-  
- 
-    </div>
-</div>
-</div>
- 
-   
-   
-    {/* <div className={Style.TextoArvoreEsquerdo3}>
-    <h1 className={Style.TituloArvore3}>Minha floresta</h1>
-    <h4 className={Style.subTituloArvore3}>Adentre um mundo mágico e único.</h4>
-    <p className={Style.TextoArvore3}>
-    Um santuário de biodiversidade, fruto do amor e dedicação de ações sustentáveis.
-    </p>
-    <Button variant="success">Explorar</Button>
-   
-  </div> */}
-   
-  
 
+</div>
  
 </section >
+<section className={Style.Sessao4}>
+<h1>Categoria</h1>
+</section>
 
 <Cards></Cards>
 <Footer/>

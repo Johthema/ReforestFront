@@ -49,9 +49,13 @@
    
 }
 .logo{
-    width: 500px;
-    height: 500px;
+    width: 480px;
+    height: 480px;
     object-fit: cover;
+    transition: 1s;
+}
+.Botao{
+    background-color: #000;
 }
 
 .TituloArvore{
@@ -145,6 +149,15 @@
     padding: 10px
 }
  
+@media (max-width: 1196px){
+.logo{
+    width: 393px;
+    height: 393px;
+    margin-left: -50px;
+    object-fit: cover;
+    transition: 1s;
+}
+}
 
 @media (max-width: 797px){
     .Sessao1{
@@ -212,3 +225,9 @@
     background-origin: content-box;
     background-color: #fae4d8;
   }
+
+/* Sessão 4 */
+.Sessao4{
+    background-color:#e6e5e5;
+    height: 200px;
+}
