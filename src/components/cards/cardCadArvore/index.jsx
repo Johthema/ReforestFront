@@ -25,11 +25,11 @@ export default function CadastroArvore() {
                 <Form.Control type="text" placeholder="Nome científico" />
             </FloatingLabel>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formGroupEspecie">
+            {/* <Form.Group className="mb-3" controlId="formGroupEspecie">
             <FloatingLabel controlId="floatingInput" label="Espécie" className="mb-3">
                 <Form.Control type="text" placeholder="Espécie" />
             </FloatingLabel>
-            </Form.Group>
+            </Form.Group> */}
 
             <Card.Text>
            Taxa de compensação de CO2
@@ -131,7 +131,7 @@ export default function CadastroArvore() {
                     <Form.Control as="textarea" rows={3}  placeholder='Descrição'/>
                 </Form.Group>
                 <br/>
-                <Form.Control placeholder="Formas de uso" />
+                {/* <Form.Control placeholder="Formas de uso" /> */}
 
         </Form>
        
