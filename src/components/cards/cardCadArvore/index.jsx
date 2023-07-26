@@ -305,7 +305,7 @@ const enviarForm = async (evt) => {
 
 {success &&
     <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
-      <Spinner animation="grow" variant="success" /> Salvo com sucesso! | <Alert.Link href="/usuarios/listaUsuario">  <FaListAlt/> Ver lista de árvores</Alert.Link>
+      <Spinner animation="grow" variant="success" /> Salvo com sucesso! | <Alert.Link href="/arvores/listarArvores">  <FaListAlt/> Ver lista de árvores</Alert.Link>
     </Alert>
   }
   
