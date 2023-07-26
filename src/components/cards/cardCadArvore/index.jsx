@@ -27,13 +27,13 @@ const [successDell, setSuccessDell] = useState(false);
 const [name, setNome] = useState('');
 const [cientificName, setCientificName] = useState('');
 const [category, setCategory] = useState('');
-const [img, setImg] = useState('');
+const [img, setImg] = useState('image.jpg');
 const [permanentCarbonTax, setPermanentCarbonTax] = useState('');
 const [annualCarbonOffset, setAnnualCarbonOffset] = useState('');
 const [carbonOffsetPeriod, setCarbonOffsetPeriod] = useState('');
 const [treeHeight, setTreeHeight] = useState('');
 const [treeDiameter, setTreeDiameter] = useState('');
-const [fruitfulTree, setFruitfulTree] = useState('');
+const [fruitfulTree, setFruitfulTree] = useState(true);
 const [productionPeriod, setProductionPeriod] = useState('');
 const [harvestReplace, setHarvestReplace] = useState('');
 const [price, setPrice] = useState('');
@@ -60,13 +60,17 @@ const onChangeNome = (evt) => {
    
   }
   const onChangeAnnualCarbonOffset = (evt) => {
+    console.log("o valor anual é: ", evt)
     setAnnualCarbonOffset(evt.target.value)
+
    
   }
-  const onChangeCategory = (evt) => {
-    setCategory(evt.target.value)
+  const onChangeCategory=(cat) => {
+    // console.log("a categoria é: ", evt)
+    setCategory(cat)
    
   }
+  
 
 
   const onChangeTreeHeight = (evt) => {
@@ -136,15 +140,15 @@ const enviarForm = async (evt) => {
         setSuccess(true)
        
 
+      } else if (response.status == 400){
+        setSuccess(false)
+        setErroInterno(true)
+        
       } else {
         setAviso(true)
         setLoading(false)
         //setErro(true)
-      } if (response.status == 400){
-        setSuccess(false)
-        setErroInterno(true)
-        
-      }
+      } 
      
       // setLoading(false)
 
@@ -164,7 +168,7 @@ const enviarForm = async (evt) => {
       <Card.Header>Cadastro de árvore</Card.Header>
       <Card.Body>
 
-        <Form onSubmit={enviarForm}>
+        <Form onSubmit={enviarForm} method='post'>
             <Form.Group className="mb-3" controlId="formGrouNome">
             <FloatingLabel controlId="floatingInput" label="Nome popular" className="mb-3">
                 <Form.Control type="text" placeholder="Nome popular" onChange={onChangeNome} />
@@ -200,11 +204,14 @@ const enviarForm = async (evt) => {
 
             <Form.Group as={Col} controlId="formGridState">
             <br/>
-                <Form.Select defaultValue="Choose...">
-                    <option>Categoria</option>
-                    <option>Opcao2</option>
-                    <option>Opcao3</option>
-                </Form.Select>
+            <Form.Select  onClick={(e)=>onChangeCategory(e.target.value) }>
+                        <option value="64b6b5bba57d6752a6aa04b3">Categoria escolhida</option>
+                        <option value="64b6">Categoria escolhida 2</option>
+                        {/* <option value="admin">Administrador</option> */}
+                        
+                        {/* <option value="3">Opção3</option> */}
+                        
+                    </Form.Select>
             </Form.Group>
     <br/>
             <Row>
