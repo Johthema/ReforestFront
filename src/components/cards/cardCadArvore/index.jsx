@@ -140,20 +140,21 @@ const enviarForm = async (evt) => {
         setSuccess(true)
        
 
-      } else if (response.status == 400){
+      } else if (response.status == 400 || response.status == 500){
+        console.log("o status é: ", response.status)
         setSuccess(false)
-        setErroInterno(true)
-        
-      } else {
-        setAviso(true)
         setLoading(false)
+        setErroInterno(true)
         //setErro(true)
+        
       } 
      
       // setLoading(false)
 
     } catch (err) {
-     
+        setSuccess(false)
+        setLoading(false)
+        setErroInterno(true)
       console.log(err)
     }
   }    
