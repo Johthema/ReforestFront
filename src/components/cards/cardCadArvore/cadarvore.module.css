@@ -21,3 +21,10 @@
     bottom: 0%;
     right: 0%;
 }
+
+@media (max-width: 1047px) {
+    .cardArvore{
+        width: 80vw;
+      
+    }
+}

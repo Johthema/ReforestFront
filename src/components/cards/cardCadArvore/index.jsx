@@ -262,8 +262,8 @@ const enviarForm = async (evt) => {
                 </FloatingLabel>
                 </Col>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Tempo de colheita/ substituição" className="mb-3">
-                <Form.Control placeholder="Tempo de colheita/ substituição" onChange={onChangeHarvestReplace} />
+                <FloatingLabel controlId="floatingInput" label="Tempo de colheita" className="mb-3">
+                <Form.Control placeholder="Tempo de colheita" onChange={onChangeHarvestReplace} />
                 </FloatingLabel>
                 </Col>
               
