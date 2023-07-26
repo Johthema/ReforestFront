@@ -33,7 +33,7 @@ const [annualCarbonOffset, setAnnualCarbonOffset] = useState('');
 const [carbonOffsetPeriod, setCarbonOffsetPeriod] = useState('');
 const [treeHeight, setTreeHeight] = useState('');
 const [treeDiameter, setTreeDiameter] = useState('');
-const [fruitfulTree, setFruitfulTree] = useState(true);
+const [fruitfulTree, setFruitfulTree] = useState(Boolean);
 const [productionPeriod, setProductionPeriod] = useState('');
 const [harvestReplace, setHarvestReplace] = useState('');
 const [price, setPrice] = useState('');
@@ -82,7 +82,7 @@ const onChangeNome = (evt) => {
    
   }
   const onChangeFruitfulTree = (evt) => {
-    setFruitfulTree(evt.target.value)
+    setFruitfulTree(evt)
    
   }
   const onChangeProductionPeriod = (evt) => {
@@ -237,7 +237,7 @@ const enviarForm = async (evt) => {
                     Árvore frutífera?
                 </Form.Label> */}
                 <Col>
-                    <Form.Check
+                    <Form.Check onClick={()=>onChangeFruitfulTree(true) }
                     type="radio"
                     label="Árvore frutífera"
                     name="formHorizontalRadios"
@@ -245,7 +245,7 @@ const enviarForm = async (evt) => {
                     />
                     </Col>
                     <Col>
-                    <Form.Check
+                    <Form.Check  onClick={()=>onChangeFruitfulTree(false) }
                     type="radio"
                     label="Árvore não frutífera"
                     name="formHorizontalRadios"
