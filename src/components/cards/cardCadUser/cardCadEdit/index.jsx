@@ -43,7 +43,7 @@ export default function EditarUsuario({handleShowEdit}) {
   // const onChange = (evt) => {
   //   console.log(evt.target.name)
   // }
-  const URL_API=  process.env.NEXT_PUBLIC_API_URL+"user";
+  const URL_API=  process.env.NEXT_PUBLIC_API_URL+"user/";
 
   const onChangeNome = (evt) => {
     console.log("entrou na funcao log do nome")
