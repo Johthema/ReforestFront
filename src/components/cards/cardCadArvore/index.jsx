@@ -4,33 +4,178 @@ import Style from './cadarvore.module.css'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { useState, useEffect } from 'react';
+import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
+import { FaListOl, FaListAlt } from "react-icons/fa";
+
 
 export default function CadastroArvore() {
+//API
+const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
+
+//variáveis de feedback
+const [loading, setLoading] = useState(false);
+const [aviso, setAviso] = useState(false);
+const [errorInt, setErroInterno] = useState(false);
+const [success, setSuccess] = useState(false);
+const [error, setErro] = useState(false)
+const [successDell, setSuccessDell] = useState(false);
+//Variaveis de cadastro
+const [name, setNome] = useState('');
+const [cientificName, setCientificName] = useState('');
+const [category, setCategory] = useState('');
+const [img, setImg] = useState('');
+const [permanentCarbonTax, setPermanentCarbonTax] = useState('');
+const [annualCarbonOffset, setAnnualCarbonOffset] = useState('');
+const [carbonOffsetPeriod, setCarbonOffsetPeriod] = useState('');
+const [treeHeight, setTreeHeight] = useState('');
+const [treeDiameter, setTreeDiameter] = useState('');
+const [fruitfulTree, setFruitfulTree] = useState('');
+const [productionPeriod, setProductionPeriod] = useState('');
+const [harvestReplace, setHarvestReplace] = useState('');
+const [price, setPrice] = useState('');
+const [description, setDescription] = useState('');
+
+
+//Funçãos de cadastro da árvore
+
+const onChangeNome = (evt) => {
+    setNome(evt.target.value)
+   
+  }
+  const onChangeCientificName = (evt) => {
+    setCientificName(evt.target.value)
+   
+  }
+
+  const onChangePermanentCarbonTax = (evt) => {
+    setPermanentCarbonTax(evt.target.value)
+   
+  }
+  const onChangeCarbonOffsetPeriod = (evt) => {
+    setCarbonOffsetPeriod(evt.target.value)
+   
+  }
+  const onChangeAnnualCarbonOffset = (evt) => {
+    setAnnualCarbonOffset(evt.target.value)
+   
+  }
+  const onChangeCategory = (evt) => {
+    setCategory(evt.target.value)
+   
+  }
+
+
+  const onChangeTreeHeight = (evt) => {
+    setTreeHeight(evt.target.value)
+   
+  }
+  const onChangeTreeDiameter = (evt) => {
+    setTreeDiameter(evt.target.value)
+   
+  }
+  const onChangeFruitfulTree = (evt) => {
+    setFruitfulTree(evt.target.value)
+   
+  }
+  const onChangeProductionPeriod = (evt) => {
+    setProductionPeriod(evt.target.value)
+   
+  }
+  const onChangeHarvestReplace = (evt) => {
+    setHarvestReplace(evt.target.value)
+   
+  }
+  const onChangePrice = (evt) => {
+    setPrice(evt.target.value)
+   
+  }
+  const onChangeImg = (evt) => {
+    setImg(evt.target.value)
+   
+  }
+  const onChangeDescription = (evt) => {
+    setDescription(evt.target.value)
+   
+  }
+
+
+
+
+const enviarForm = async (evt) => {
+
+    evt.preventDefault()
+    try {
+      setLoading(true)
+
+      const response = await fetch(URL_API, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json'
+        },
+
+        body: JSON.stringify({ 
+             name, cientificName, category, img,
+             permanentCarbonTax, annualCarbonOffset, carbonOffsetPeriod,
+             treeHeight, treeDiameter, fruitfulTree, productionPeriod,
+             harvestReplace, price, description }),
+      })
+
+      const json = await response.json()
+      // console.log("::",error.response)
+      if ( name!='' && cientificName!='' && category!='' && img!='' &&
+        permanentCarbonTax!='' && annualCarbonOffset!='' && carbonOffsetPeriod!='' &&
+        treeHeight!='' && treeDiameter!='' && fruitfulTree!='' && productionPeriod!='' &&
+        harvestReplace!='' && price!='' && description!='') {
+        //setLoading(false)
+        setLoading(false)
+        setSuccess(true)
+       
+
+      } else {
+        setAviso(true)
+        setLoading(false)
+        //setErro(true)
+      } if (response.status == 400){
+        setSuccess(false)
+        setErroInterno(true)
+        
+      }
+     
+      // setLoading(false)
+
+    } catch (err) {
+     
+      console.log(err)
+    }
+  }    
+
+  const [show, setShow] = useState(true);
+
+
+
   return (
+    <>
     <Card className={Style.cardArvore}>
       <Card.Header>Cadastro de árvore</Card.Header>
       <Card.Body>
 
-        <Form>
+        <Form onSubmit={enviarForm}>
             <Form.Group className="mb-3" controlId="formGrouNome">
             <FloatingLabel controlId="floatingInput" label="Nome popular" className="mb-3">
-                <Form.Control type="text" placeholder="Nome popular" />
+                <Form.Control type="text" placeholder="Nome popular" onChange={onChangeNome} />
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupCientifico">
             <FloatingLabel controlId="floatingInput" label="Nome científico" className="mb-3">
-                <Form.Control type="text" placeholder="Nome científico" />
+                <Form.Control type="text" placeholder="Nome científico" onChange={onChangeCientificName} />
             </FloatingLabel>
             </Form.Group>
-            {/* <Form.Group className="mb-3" controlId="formGroupEspecie">
-            <FloatingLabel controlId="floatingInput" label="Espécie" className="mb-3">
-                <Form.Control type="text" placeholder="Espécie" />
-            </FloatingLabel>
-            </Form.Group> */}
-
+           
             <Card.Text>
            Taxa de compensação de CO2
             </Card.Text>
@@ -38,17 +183,17 @@ export default function CadastroArvore() {
             <Row>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Taxa permanente" className="mb-3">
-                    <Form.Control placeholder="Taxa permanente" />
+                    <Form.Control placeholder="Taxa permanente" onChange={onChangePermanentCarbonTax} />
                 </FloatingLabel>
                 </Col>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Período" className="mb-3">
-                    <Form.Control placeholder="Período" />
+                    <Form.Control placeholder="Período" onChange={onChangeCarbonOffsetPeriod} />
                 </FloatingLabel>
                 </Col>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Taxa anual" className="mb-3">
-                    <Form.Control placeholder="Taxa anual" />
+                    <Form.Control placeholder="Taxa anual" onChange={onChangeAnnualCarbonOffset} />
                 </FloatingLabel>
                 </Col>
             </Row>
@@ -65,17 +210,17 @@ export default function CadastroArvore() {
             <Row>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Vida natural média" className="mb-3">
-                    <Form.Control placeholder="Vida natural média" />
+                    <Form.Control placeholder="Vida natural média" onChange={onChangeProductionPeriod} />
                 </FloatingLabel>
                 </Col>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Altura" className="mb-3">
-                    <Form.Control placeholder="Altura " />
+                    <Form.Control placeholder="Altura " onChange={onChangeTreeHeight} />
                 </FloatingLabel>
                 </Col>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Diâmetro" className="mb-3">
-                    <Form.Control placeholder="Diâmetro" />
+                    <Form.Control placeholder="Diâmetro" onChange={onChangeTreeDiameter}/>
                 </FloatingLabel>
                 </Col>
             </Row>
@@ -105,12 +250,12 @@ export default function CadastroArvore() {
             <Row>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Período de produção" className="mb-3">
-                <Form.Control placeholder="Período de produção" />
+                <Form.Control placeholder="Período de produção" onChange={onChangeProductionPeriod} />
                 </FloatingLabel>
                 </Col>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Tempo de colheita/ substituição" className="mb-3">
-                <Form.Control placeholder="Tempo de colheita/ substituição" />
+                <Form.Control placeholder="Tempo de colheita/ substituição" onChange={onChangeHarvestReplace} />
                 </FloatingLabel>
                 </Col>
               
@@ -119,19 +264,18 @@ export default function CadastroArvore() {
                 <Row>
                 <Col>
                 <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Control type="file" className={Style.Preco}/>
+                    <Form.Control type="file" className={Style.Preco} onChange={onChangeImg}/>
                 </Form.Group>
-                <Form.Control placeholder="Preço" className={Style.Preco}/>
+                <Form.Control placeholder="Preço" className={Style.Preco} onChange={onChangePrice}/>
                 </Col>
              
                 </Row>
             <br/>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                    
-                    <Form.Control as="textarea" rows={3}  placeholder='Descrição'/>
+                    <Form.Control as="textarea" rows={3}  placeholder='Descrição' onChange={onChangeDescription}/>
                 </Form.Group>
                 <br/>
-                {/* <Form.Control placeholder="Formas de uso" /> */}
 
         </Form>
        
@@ -142,9 +286,42 @@ export default function CadastroArvore() {
         <Card.Text>
           With supporting text below as a natural lead-in to additional content.
         </Card.Text> */}
-        <Button variant="primary">Salvar</Button>
+        <Button variant="primary" onClick={enviarForm}>Salvar</Button>
       </Card.Body>
       {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
     </Card>
+
+
+
+
+
+{success &&
+    <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+      <Spinner animation="grow" variant="success" /> Salvo com sucesso! | <Alert.Link href="/usuarios/listaUsuario">  <FaListAlt/> Ver lista de usuarios</Alert.Link>
+    </Alert>
+  }
+  
+  {error &&
+    <Alert key="1233" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+      <Spinner animation="grow" variant="danger" /> Ops! algo deu errado. Preencha todos os campos corretamente..
+    </Alert>
+  }
+  
+  {errorInt &&
+    <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+      <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
+    </Alert>
+  }
+  
+  {loading &&
+    <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
+      <Spinner animation="border" variant="primary" /> Aguarde, salvando...
+    </Alert>
+  }
+
+</>
+
+
+
   );
 }  
