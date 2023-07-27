@@ -164,7 +164,8 @@ const enviarForm = async (evt) => {
 
 
   return (
-    <>
+    <div className={Style.divCorpoArvore}>
+    
     <Card className={Style.cardArvore}>
       <Card.Header>Cadastro de árvore</Card.Header>
       <Card.Body>
@@ -327,7 +328,7 @@ const enviarForm = async (evt) => {
     </Alert>
   }
 
-</>
+</div>
 
 
 

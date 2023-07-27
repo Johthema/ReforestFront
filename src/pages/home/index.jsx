@@ -18,7 +18,7 @@ export default function Home() {
  
 <div >
 
-<Header className={Style.HeaderStilo} />
+<Header />
 <div className={Style.DivTitulos}>
 
   <div className={Style.DivInternoTitutlos}>
