@@ -64,13 +64,13 @@
   } */
 
 .custom_dropdown {
-    --bs-nav-link-color: var(--secundaryTom1-color3);
-    --bs-navbar-active-color: var(--primaryTom1-color);
+    --bs-nav-link-color: var(--secundaryTom3-color3);
+    --bs-navbar-active-color: var(--secundaryTom1-color3);
     font-family: var(--fontPadrao);
   }
 .custom_dropdown:hover {
-    --bs-nav-link-hover-color: var(--primaryTom1-color);
-    --bs-navbar-active-color: var(--primaryTom1-color);
+    --bs-nav-link-hover-color: var(--secundaryTom1-color3);
+    --bs-navbar-active-color: var(--secundaryTom1-color3);
   }
 
 
@@ -133,22 +133,22 @@
 .Icon{
     width: 30px;
     height: 30px;
-    color: var(--secundaryTom1-color3)
+    color: var(--secundaryTom3-color3)
 }
 
 .Icon:hover{
-    color: var(--primaryTom1-color)
+    color: var(--secundaryTom3-color3)
 }
 
 .IconLogout{
     margin-top: 20px;
     width: 30px;
     height: 40px;
-    color: var(--secundaryTom1-color3)
+    color: var(--secundaryTom3-color3)
 }
 
 .IconLogout:hover{
-    color: var(--primaryTom1-color)
+    color: var(--secundaryTom1-color3)
 }
 
 .IconeMENU{
@@ -163,7 +163,7 @@
 }
 
 .IconeMENU:hover .Icon{
-    color: var(--primaryTom1-color)
+    color: var(--secundaryTom1-color3)
 }
 .IconeDrop{
     width: 20px;
