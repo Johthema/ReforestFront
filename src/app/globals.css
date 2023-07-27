@@ -77,7 +77,8 @@
   /* box-sizing: border-box; */
   padding: 0px;
   margin: 0px;
-  background-repeat-y: no-repeat
+  background-repeat-y: no-repeat;
+  
 }
 
 /* html,
