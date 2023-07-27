@@ -29,6 +29,7 @@ export default function Header() {
   return (
 
 <>
+<div className={StyleBar.DivFundo}>
 
       <Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
         <Container className={StyleBar.navContain}>
@@ -84,6 +85,7 @@ export default function Header() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      </div>
 
 
    {/* //--------------------------------Modal Logout */}
