@@ -98,7 +98,7 @@ export default function Home() {
  
 </section >
 <section className={Style.Sessao4}>
-<h1>Categoria</h1>
+<h1>Categoria/ arvores, locais, usuarios</h1>
 </section>
 
 <Cards></Cards>
