@@ -167,7 +167,7 @@ export default function ListarArvore() {
     <hr/>
 
       {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
- 
+
       <div className={Style.divFundo}>
 
         <Navbar className={Style.headerTabela}>
@@ -179,20 +179,19 @@ export default function ListarArvore() {
                 aria-describedby="basic-addon2"
                 onChange={handleChange}
               />
-          
+
             </InputGroup>
 
             <Dropdown className={Style.DropMENU}>
               <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
               <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
-             
+
               </Dropdown.Toggle>
 
               <Dropdown.Menu  className={Style.OpDropNotifi}>
               <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
                 {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
                 <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
-
 
               </Dropdown.Menu>
             </Dropdown>
@@ -208,7 +207,6 @@ export default function ListarArvore() {
                   </Dropdown.Menu>
              </Dropdown>
 
-       
           </Container>
         </Navbar>
  
