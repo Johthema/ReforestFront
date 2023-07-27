@@ -132,7 +132,8 @@ export default function ListarUsuario() {
     setTimeout(() => { //Uso do setTimeout para fechar o alert dos dados
       setSuccess(false);
     }, 2000);
-    window.location.reload();
+    setReloadCount(prevCount => prevCount + 1);
+    // window.location.reload();
 
   } catch(err){
     console.log(err)
