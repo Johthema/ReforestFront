@@ -61,7 +61,7 @@ export default function ListarArvore() {
     const fetchRepos = async () => {
       try {
         setLoading(true)
-        console.log("o tipo de usuario é: ",tipo)
+        console.log("o tipo de arvore é: ",tipo)
         if(tipo!='todos'){
           const response = await fetch(URL_API+"?order="+ordenar+"&role="+tipo)
           const dados = await response.json();
@@ -75,10 +75,6 @@ export default function ListarArvore() {
         setRepo(dados);
         setLoading(false)
         } 
-        //const response = await fetch(URL_API)
-        // const dados = await response.json();
-        // setInitialRepo(dados);
-        // setRepo(dados);
 
       } catch (error) {
         console.log(error)
@@ -99,10 +95,10 @@ export default function ListarArvore() {
   }
   //----------------------------------------------------------------------------Fim Função de filtros
 
-  //----------------------------------------------------------------------------Inicio função deletar usuario
-  const idUsuario = (event, nome) =>{
+  //----------------------------------------------------------------------------Inicio função deletar árvore
+  const idArvore = (event, nome) =>{
    
-    console.log("O id do usuario é: ", event)
+    console.log("O id da arvore é: ", event)
     setId(event)
     setUsuarioNome(nome)
     setShow(true)
@@ -111,7 +107,7 @@ export default function ListarArvore() {
   const DeleteUser = async (evt) => {
     
     evt.preventDefault()
-    console.log("deletando o usuario de id: ",id)
+    console.log("deletando a arvore de id: ",id)
     try{
     const response = await fetch(URL_API+"/"+id,{
       method: 'DELETE',
@@ -141,7 +137,7 @@ export default function ListarArvore() {
   
   return false
   }
-  //----------------------------------------------------------------------------Fim função deletar usuario
+  //----------------------------------------------------------------------------Fim função deletar árvore
 
 //----------------------------------Filtros --------------------------------
   const onChangeRoles=(role) =>{
@@ -193,8 +189,8 @@ export default function ListarArvore() {
 
               <Dropdown.Menu  className={Style.OpDropNotifi}>
               <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
-                <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
-                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+                {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
 
 
               </Dropdown.Menu>
@@ -240,7 +236,7 @@ export default function ListarArvore() {
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.createdAt}</h2></td>
 
                 <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id, repo.person)}><FaEdit className={Style.icoEditar} /></td>
-                <td className={Style.Deletar} value={repo._id} onClick={() => idUsuario(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
+                <td className={Style.Deletar} value={repo._id} onClick={() => idArvore(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
 
             ))}
@@ -274,7 +270,7 @@ export default function ListarArvore() {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
-            <h2 className={Style.tituloDeletar}>Deletar usuário!</h2>
+            <h2 className={Style.tituloDeletar}>Deletar árvore!</h2>
             <h5 className={Style.tituloDelet}>{nome}</h5>
           </Modal.Title>
         </Modal.Header>
@@ -293,15 +289,15 @@ export default function ListarArvore() {
       </Modal>
 
       {/* Formulario para edição do usuario selecionado */}
-      {/* <Offcanvas show={showEdit} onHide={handleCloseEdit}>
+      <Offcanvas show={showEdit} onHide={handleCloseEdit}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Editar usuário</Offcanvas.Title>
+          <Offcanvas.Title>Editar árvore</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
      
-        <CardUsuarioEdit handleShowEdit={dadosEditar} /> 
+        {/* <CardUsuarioEdit handleShowEdit={dadosEditar} />  */}
         </Offcanvas.Body>
-      </Offcanvas> */}
+      </Offcanvas>
       <Footer/>
     </div>
 
