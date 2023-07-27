@@ -4,18 +4,19 @@
     border-left: transparent;
     border-right: transparent;
     position: relative;
-	margin-top: -25px;
-    height: 95px;
+	margin-top: -15px;
+    height: 100px;
 	justify-content: center;
 	align-items: center;
 	font-size: 1.2em;
 	font-weight: bold;
 	text-decoration: none;
-    width: 100vw;
-	padding: 0.5em 1.5em; 
+    /* width: 100vw; */
+	padding: 0.5em 1.5em;
     box-shadow: 0 5px 5px -3px rgb(169, 169, 169);
-    z-index: 4 !important;
-    position: fixed !important;
+    /* z-index: 4 !important;
+    position: fixed !important; */
+
 }
 
 .navContain{
