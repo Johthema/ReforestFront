@@ -1,0 +1,141 @@
+.divFundo{
+
+    margin-top: 100px
+    }
+    .Tabela{
+        width: 80%;
+        margin: auto
+    }
+    
+    .listaItemUsuario{
+        list-style-type: none;
+        margin-top: 10px;
+        
+    }
+    
+    .itemUsuario{
+        border-bottom: 1px solid #a19f9f 
+    }
+    .FontUsuario{
+        font-size: 1rem;
+        text-decoration: none;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        font-family: var(--fontPadrao);
+    }
+    
+    .Editar{
+        cursor: pointer;
+        color: #55ACEE
+    }
+    .Editar:hover{
+     
+        background-color: #E5F4FF
+    }
+    .Deletar{
+        cursor: pointer;
+        color: #EE6755
+    }
+    .Deletar:hover{
+        cursor: pointer;
+        background-color: #FBECEA
+    }
+    
+    .icoEditar{
+       
+        color: #55ACEE
+    }
+    .icoDeletar{
+       
+        color: #EE6755
+    }
+    
+    .Busca{
+        width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+     
+    .headerTabela{
+        background-color: #2F2F2F;
+        width: 80%;
+        margin: auto;
+        border-radius: 10px 10px 0px 0px;
+    }
+    
+    .DropMENU{
+        margin-inline-start: auto;
+        display: flex
+    }
+    
+    .IconeMENU{
+        
+        --bs-btn-bg: none;
+        --bs-btn-border-color: none;
+        --bs-btn-hover-color: #55ACEE!important;
+        background-color: transparent !important;
+        color: none;
+        --bs-btn-hover-color: none;
+        --bs-btn-hover-bg: none;
+    }
+    
+    .IconeMENU2{
+        
+        --bs-btn-bg: none;
+        --bs-btn-border-color: none;
+        --bs-btn-hover-color: #55ACEE!important;
+        background-color: transparent !important;
+        color: #000;
+        --bs-btn-active-color: #000 ;
+        --bs-btn-hover-color: #000;
+        --bs-btn-hover-bg: #000;
+    }
+    
+    
+    .IconeDrop{
+        width: 20px;
+        height: 20px;
+        color: var(--secundaryTom1-color3);
+        margin-right: 10px;
+    }
+    
+    .botaoCarregamento{
+        display: block;
+        width: 50%;
+        position: fixed;
+        bottom: 0%;
+        right: 0%;
+    }
+    .tituloDeletar{
+        color: #EE6755
+    }
+    .migalhas{
+        display: flex;
+        margin-left: 10%
+    }
+    
+    
+    
+    /* =================================Responsividade===================================== */
+    @media (max-width: 800px) {
+         
+        .Tabela th:nth-child(2),
+        .Tabela td:nth-child(2) {
+        display: none;
+        }
+        .Tabela th:nth-child(4),
+        .Tabela td:nth-child(4) {
+        display: none;
+        }
+        .headerTabela{
+            width: 100%;
+        }
+        .Tabela{
+            width: 100%;
+        }
+         /* &:nth-child(0){
+            display: none
+        } */
+      
+    }
