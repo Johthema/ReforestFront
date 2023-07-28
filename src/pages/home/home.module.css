@@ -15,11 +15,12 @@
 .tituloH2{
     font-family: var(--fontPadrao);
     font-size: 24px;
-    color: gray
+    /* color: gray */
+    color: #fff
 }
 .subtituloH2{
     font-family: var(--fontPadrao);
-    color: #11FF0B;
+    /* color: #11FF0B; */
     font-size: 36px;
     font-weight: bold;
     
@@ -30,6 +31,7 @@
     display: flex;
     margin: auto;
     justify-content: center;
+    margin-top: -18px;
 }
 .DivPlantarArvoreEsquerdo{
     width: 50%;
@@ -63,10 +65,12 @@
    margin-bottom: 15%;
    color: #469444;
    --fontPadrao: "Manrope", sans-serif;
+  
 }
 .subTituloArvore{
     margin-bottom: 15%;
     --fontPadrao: "Manrope", sans-serif;
+    
 }
 /* Sessão 2 */
 .Sessao2{
@@ -159,6 +163,19 @@
     transition: 1s;
 }
 }
+
+@media (min-width: 796) {
+    .DivIndice{
+        display: none;
+    }
+}
+.DivIndice{
+    height: 150px;
+    background-color: #55acf0b3;
+}
+
+
+
  
 @media (max-width: 797px){
     .Sessao1{
@@ -201,6 +218,9 @@
     .TituloArvore, .TituloArvore2{
         font-size: 3rem;
             }
+    .DivIndice{
+        height: 150px;
+    }
 }
 
 
@@ -263,3 +283,11 @@
     background-color:#e9e9e9;
     height: 200px;
 } 
+
+
+/* .floresImgHoje{
+    height: 20vh;
+    object-fit: cover;
+    
+    margin: auto;
+} */

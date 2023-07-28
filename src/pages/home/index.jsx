@@ -12,7 +12,8 @@ import Doar from '../../assets/images/presente4.png';
 //import Doar from '../../assets/images/presente2.png';
 //import Fundotipo from '../../assets/images/fundo_floresta.png';
 import Button from 'react-bootstrap/Button';
-
+import Carousel from 'react-bootstrap/Carousel';
+import FlorestaImghoje from '../../assets/images/plantacaohoje.jpg'
 export default function Home() {
   return (
  
@@ -20,20 +21,49 @@ export default function Home() {
 
 <Header />
 
+<Carousel data-bs-theme="dark" className={Style.DivIndice}>
+      <Carousel.Item>
+      {/* <Image src={FlorestaImghoje} className={Style.floresImgHoje} alt="" /> */}
+      <div className={Style.DivInternoTitutlos}>
+      <h2 className={Style.tituloH2}>Árvores plantadas hoje</h2>
+      <h2 className={Style.subtituloH2}>8.453</h2>
+      </div>
+        {/* <Carousel.Caption>
+          <h5>First slide label</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption> */}
+      </Carousel.Item>
+      <Carousel.Item>
+      <div className={Style.DivInternoTitutlos}>
+      <h2 className={Style.tituloH2}>Árvores plantadas este mês</h2>
+      <h2 className={Style.subtituloH2}>40.453</h2>
+      </div>
+        {/* <Carousel.Caption>
+          <h5>Second slide label</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption> */}
+      </Carousel.Item>
+      <Carousel.Item>
+      <div className={Style.DivInternoTitutlos}>
+      <h2 className={Style.tituloH2}>Árvores plantadas este ano</h2>
+      <h2 className={Style.subtituloH2}>1.245,552</h2>
+      </div>
+        {/* <Carousel.Caption>
+          <h5>Third slide label</h5>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption> */}
+      </Carousel.Item>
+    </Carousel>
+
+
+
 <div className={Style.DivTitulos}>
 
-  <div className={Style.DivInternoTitutlos}>
-  <h2 className={Style.tituloH2}>Árvores plantadas hoje</h2>
-  <h2 className={Style.subtituloH2}>8.453</h2>
-  </div>
-  <div className={Style.DivInternoTitutlos}>
-  <h2 className={Style.tituloH2}>Árvores plantadas este mês</h2>
-  <h2 className={Style.subtituloH2}>40.453</h2>
-  </div>
-  <div className={Style.DivInternoTitutlos}>
-  <h2 className={Style.tituloH2}>Árvores plantadas este ano</h2>
-  <h2 className={Style.subtituloH2}>1.245,552</h2>
-  </div>
+
+ 
+ 
    
 </div>
 <section className={Style.Sessao1}>
