@@ -192,7 +192,16 @@
 
 @media (max-width:1082px) {
     .NavColaps{
-
+     
      font-size:16px
+    }
+    .responsivo{
+        background-color: #fff !important
+    }
+   .navbar-toggler{
+        background-color: #fff !important
+    }
+    .navContain{
+        background-color: #1e1d1d
     }
 }

@@ -159,16 +159,40 @@
     transition: 1s;
 }
 }
-
+ 
 @media (max-width: 797px){
     .Sessao1{
-        display: none
+        display: flex;
+        flex-wrap: wrap;
     }
+    .DivPlantarArvoreEsquerdo{
+        width: 100%;
+        display: flex;
+        margin: auto;
+        font-size: 2rem;
+    }
+    .navbar-toggler{
+        background-color: #fff !important;
+    }
+
     .Sessao2{
-        display: none
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .DivPlantarArvoreDireito{
+        width: 70%;
+        display: flex;
+        margin: auto;
+        font-size: 2rem;
     }
     .Sessao3{
-        display: none
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .ParallaxContainer{
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 
@@ -231,4 +255,4 @@
 .Sessao4{
     background-color:#e9e9e9;
     height: 200px;
-}
+} 

@@ -30,11 +30,12 @@ export default function Header() {
 
 <>
 
-      <Navbar collapseOnSelect expand="lg" bg="white" variant="corfont" className={StyleBar.headerBack}>
+      <Navbar collapseOnSelect expand="lg"  variant="corfont" className={StyleBar.headerBack}>
         <Container className={StyleBar.navContain}>
           <Navbar.Brand href="/home" className={StyleBar.Navlogo}><Image src={Logotipo} className={StyleBar.logo} alt="" /></Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav"   className={StyleBar.responsivo}/>
+
           <Navbar.Collapse id="responsive-navbar-nav" className={StyleBar.NavColaps} >
             <Nav className={StyleBar.NavMenuOp} variant="underline" >
 

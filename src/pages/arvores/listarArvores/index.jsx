@@ -159,7 +159,7 @@ export default function ListarArvore() {
     <div>
       <Header></Header>
       <Breadcrumb className={Style.migalhas}>
-        <Breadcrumb.Item href="/home">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/home">Home  </Breadcrumb.Item>
         
         <Breadcrumb.Item active>Lista de árvores.</Breadcrumb.Item>
       </Breadcrumb>

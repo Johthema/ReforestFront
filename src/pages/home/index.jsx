@@ -34,7 +34,7 @@ export default function Home() {
   <h2 className={Style.tituloH2}>Árvores plantadas este ano</h2>
   <h2 className={Style.subtituloH2}>1.245,552</h2>
   </div>
-  
+   
 </div>
 <section className={Style.Sessao1}>
   <div className={Style.DivPlantarArvoreEsquerdo}>
@@ -49,10 +49,10 @@ export default function Home() {
     <Button variant="success" className={Style.Botao}>Plantar</Button>
     </div>
   </div>
-  <div className={Style.DivPlantarArvoreDireito}>
-    <div >
+  <div >
+    
     <Image src={Logotipo} className={Style.logo} alt="" />
-    </div>
+    
   
   </div>
 </section >
