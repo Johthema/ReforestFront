@@ -61,7 +61,7 @@ export default function Header() {
             <Nav>
             <Dropdown>
                   <Dropdown.Toggle className={StyleBar.IconeMENU}>
-                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaUserCircle className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Perfil</Tooltip>} placement="left"><Nav.Link><FaUserCircle className={StyleBar.Icon} /><h5 className={StyleBar.NomePerfil}>Perfil</h5></Nav.Link></OverlayTrigger>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
@@ -72,14 +72,14 @@ export default function Header() {
             </Dropdown>
             <Dropdown>
                   <Dropdown.Toggle className={StyleBar.IconeMENU}>
-                  <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link href="#deets"  ><FaBell className={StyleBar.Icon} /></Nav.Link></OverlayTrigger>
+                  <OverlayTrigger overlay={<Tooltip id="tooltip-disabled" >Notificação</Tooltip>} placement="left"><Nav.Link><FaBell className={StyleBar.Icon} /><h5 className={StyleBar.NomeNotifi}>Notificação</h5></Nav.Link></OverlayTrigger>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className={StyleBar.OpDropNotifi}>
                     <Dropdown.Item href="#/action-1" >Esta tudo certo!</Dropdown.Item>
                   </Dropdown.Menu>
             </Dropdown>
-            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled"   >Logout</Tooltip>} placement="left"><Nav.Link onClick={handleShow} ><FaSignOutAlt className={StyleBar.IconLogout} /></Nav.Link></OverlayTrigger>
+            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled"   >Logout</Tooltip>} placement="left"><Nav.Link onClick={handleShow} ><FaSignOutAlt className={StyleBar.IconLogout} /><h5 className={StyleBar.NomeLogout}>Logout</h5></Nav.Link></OverlayTrigger>
 
             </Nav>
           </Navbar.Collapse>

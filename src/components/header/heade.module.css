@@ -190,6 +190,12 @@
     margin-left: -40px
 }
 
+@media (min-width: 1081px){
+    .NomePerfil, .NomeNotifi, .NomeLogout{
+        display: none;
+    }
+}
+
 @media (max-width:1082px) {
     .NavColaps{
      
@@ -203,5 +209,17 @@
     }
     .navContain{
         background-color: #1e1d1d
+    }
+    .Icon, .IconLogout{
+        display: none;
+    }
+    
+    .NomeNotifi, .NomePerfil, .NomeLogout{
+        color: #fff;
+    }
+    .IconeMENU{
+        display: flex;
+        margin-top: 0;
+        margin-left: -10px;
     }
 }
