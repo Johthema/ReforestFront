@@ -13,6 +13,8 @@ import Doar from '../../assets/images/presente4.png';
 //import Fundotipo from '../../assets/images/fundo_floresta.png';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
+import { FaTree, FaMapMarkedAlt, FaUsers } from 'react-icons/fa';
+
 
 export default function Home() {
   return (
@@ -128,7 +130,23 @@ export default function Home() {
  
 </section >
 <section className={Style.Sessao4}>
-<h1>Categoria/ arvores, locais, usuarios</h1>
+  
+  <h1>Categorias</h1>
+ 
+<div className={Style.DivSessao4}>
+
+
+  <div  className={Style.Catego}>
+    <FaTree className={Style.CategoIco1}/>
+  </div>
+  <div  className={Style.Catego}>
+    <FaMapMarkedAlt className={Style.CategoIco2}/>
+  </div>
+  <div  className={Style.Catego}>
+    <FaUsers className={Style.CategoIco3}/>
+  </div>
+
+  </div>
 </section>
 
 <Cards></Cards>
