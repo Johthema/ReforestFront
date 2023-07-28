@@ -198,6 +198,9 @@
         font-size: 8rem;
         font-weight: bolder;
     }
+    .TituloArvore, .TituloArvore2{
+        font-size: 3rem;
+            }
 }
 
 
