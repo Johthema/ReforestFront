@@ -13,7 +13,7 @@ import Doar from '../../assets/images/presente4.png';
 //import Fundotipo from '../../assets/images/fundo_floresta.png';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
-import FlorestaImghoje from '../../assets/images/plantacaohoje.jpg'
+
 export default function Home() {
   return (
  
