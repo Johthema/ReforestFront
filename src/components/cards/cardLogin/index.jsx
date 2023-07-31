@@ -16,10 +16,11 @@ import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import { FaListOl, FaListAlt } from "react-icons/fa";
 
-
+const URL_API=  process.env.NEXT_PUBLIC_API_URL+"signin";
+const URL_API_Curr = process.env.NEXT_PUBLIC_API_URL+"currentUser";
 export default function LoginCard(){
 
-    const URL_API=  process.env.NEXT_PUBLIC_API_URL+"signin";
+    
     // constructor(props){
     //     super(props);
     //     this.state = {
@@ -58,25 +59,26 @@ export default function LoginCard(){
 
     const router = useRouter();
 
-    function funcaoEntrar(){
-        console.log("entrou na funcao");
-        setLoadding(true)
+    // function funcaoEntrar(){
+    //     console.log("entrou na funcao");
+    //     setLoadding(true)
 
-        router.push('/home');
+    //     router.push('/home');
 
-    }
+    // }
 
 //Fomulario de envio dos requisitos de login
 
-    const onChangeLogin = (evt) => {
-        setNome(evt.target.value)
+    // const onChangeLogin = (evt) => {
+    //     setNome(evt.target.value)
        
-      }
+    //   }
 
     const enviarForm = async (evt) =>{
+        console.log("entrou na função 1")
         evt.preventDefault()
         try {
-
+            console.log("tentativa 1")
             const response = await fetch (URL_API,{
                 method: 'POST',
                 headers: {
@@ -86,8 +88,10 @@ export default function LoginCard(){
                 body: JSON.stringify({ identifier, password }),
             })
 
-            const json = await response.json()
-            console.log(response)
+            // const json = await response.json()
+            console.log(response);
+           
+            
             if(!identifier || !password){
                 setAviso(true)
             }else
@@ -95,6 +99,8 @@ export default function LoginCard(){
             if(response.status == 200){
                 setAviso(false)
                 setLoadding(true)
+
+                // fecthAllData()
     
                 router.push('/home');
             } else if(response.status == 401 || 400) {
@@ -113,6 +119,19 @@ export default function LoginCard(){
 
 
 
+
+    
+    const fecthAllData = async () => {
+        console.log("entrou na funcao permissao")
+        console.log("entrou no fetchalldata")
+        try {
+            console.log("Usou o try")
+            const response = await fetch(URL_API_Curr)
+        } catch (error) {
+            console.log("erro na permissao",error)
+        }
+    }
+   
 
 
     return (
