@@ -190,13 +190,13 @@
     margin-left: -40px
 }
 
-@media (min-width: 1081px){
+@media (min-width: 997px){
     .NomePerfil, .NomeNotifi, .NomeLogout{
         display: none;
     }
 }
 
-@media (max-width:1082px) {
+@media (max-width:997px) {
     .NavColaps{
      
      font-size:16px
