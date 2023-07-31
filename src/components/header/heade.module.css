@@ -208,7 +208,9 @@
         background-color: #fff !important
     }
     .navContain{
-        background-color: #1e1d1d
+        background-color: #1e1d1d;
+        z-index: 3;
+       
     }
     .Icon, .IconLogout{
         display: none;
