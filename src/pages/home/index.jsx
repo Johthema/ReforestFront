@@ -14,9 +14,25 @@ import Doar from '../../assets/images/presente4.png';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { FaTree, FaMapMarkedAlt, FaUsers } from 'react-icons/fa';
-
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import { useRouter } from "next/router"
 
 export default function Home() {
+  
+  const router = useRouter();
+  function NavegacaoCat(cat){
+  if(cat==1){
+      router.push('/arvores/listarArvores');
+  } else if (cat==2){
+      router.push('/locaisPlantacao/listaLocais');
+  } else if (cat==3){
+      router.push('/usuarios/listaUsuario');
+  }
+}
+
+
+
   return (
  
 <div >
@@ -130,21 +146,43 @@ export default function Home() {
  
 </section >
 <section className={Style.Sessao4}>
+  <div className={Style.DivCategorias}>
+  <h3>Categorias</h3>
+  </div>
   
-  <h1>Categorias</h1>
  
 <div className={Style.DivSessao4}>
 
-
-  <div  className={Style.Catego}>
+<OverlayTrigger overlay={
+  <Tooltip id="tooltip-disabled"   >
+  Árvores
+  </Tooltip>} placement="bottom">
+  <div  className={Style.Catego} onClick={()=>NavegacaoCat(1)}>
     <FaTree className={Style.CategoIco1}/>
   </div>
-  <div  className={Style.Catego}>
+</OverlayTrigger>
+
+<OverlayTrigger overlay={
+  <Tooltip id="tooltip-disabled"   >
+  Locais
+  </Tooltip>} placement="bottom">
+  <div  className={Style.Catego} onClick={()=>NavegacaoCat(2)}>
     <FaMapMarkedAlt className={Style.CategoIco2}/>
   </div>
-  <div  className={Style.Catego}>
+</OverlayTrigger>
+
+<OverlayTrigger overlay={
+  <Tooltip id="tooltip-disabled"   >
+  Usuários
+  </Tooltip>} placement="bottom">
+  <div  className={Style.Catego} onClick={()=>NavegacaoCat(3)}>
     <FaUsers className={Style.CategoIco3}/>
   </div>
+</OverlayTrigger>
+
+ 
+  
+ 
 
   </div>
 </section>

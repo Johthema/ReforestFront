@@ -305,25 +305,28 @@
     text-align: center;
     margin-left: 10px;
     display: flex;
-    /* margin: auto; */
     padding: 30px;
-    /* margin: auto; */
-    /* padding: 40px */
+    cursor: pointer;
+
+} 
+.DivCategorias{
+    display: flex;
+    justify-content: center;
 }
 .CategoIco1{
     width: 40px;
     height: 40px;
-    color: #469444
+    color: #4A4747
 }
 .CategoIco2{
     width: 40px;
     height: 40px;
-    color: red
+    color: #4A4747
 }
 .CategoIco3 { 
     width: 40px;
     height: 40px;
-    color: blue
+    color: #4A4747
 }
 /* .floresImgHoje{
     height: 20vh;
