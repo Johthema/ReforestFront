@@ -40,7 +40,9 @@ export default function LoginCard(){
 
     const [error, setErro] = useState(false)
     const [errorInt, setErroInterno] = useState(false)
-    const [aviso, setAviso] = useState(false)
+    const [aviso, setAviso] = useState(false);
+
+    const [token, setToken]  = useState("");
 
     const onChangeEmail = (evt) => {
         setIdentifier(evt.target.value)
@@ -86,10 +88,33 @@ export default function LoginCard(){
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({ identifier, password }),
+               
             })
+            // .then(response => {
+               
+            //     if (!response.ok) {
+            //         console.log("entrou no si")
+            //       throw new Error('Erro na requisição: ' + response.status);
+            //     }
+            //     return response.json();
+            //   })
+            //   .then(data => console.log(data))
+            //   .catch(error => console.error(error));
 
-            // const json = await response.json()
-            console.log(response);
+
+            // .then(response => response.json())
+            // .then(data => console.log("os dados: ",data))
+            // .catch(error => console.error('Ocorreu um erro na requisição:', error));
+            const json = await response.json().then(data =>{
+                console.log("o token: ",data.token),
+                setToken(data.token)
+              
+               
+            } 
+            
+            )
+           
+            // console.log(json2);
            
             
             if(!identifier || !password){
@@ -99,10 +124,10 @@ export default function LoginCard(){
             if(response.status == 200){
                 setAviso(false)
                 setLoadding(true)
-
-                // fecthAllData()
+                console.log("chegou no status 200")
+                fecthAllData()
     
-                router.push('/home');
+                //router.push('/home');
             } else if(response.status == 401 || 400) {
                 setAviso(false)
                 setErro(true)
@@ -119,13 +144,13 @@ export default function LoginCard(){
 
 
 
-
+    console.log("agora o token é: ", token)
     
     const fecthAllData = async () => {
-        console.log("entrou na funcao permissao")
+       
         console.log("entrou no fetchalldata")
         try {
-            console.log("Usou o try")
+          
             const response = await fetch(URL_API_Curr)
         } catch (error) {
             console.log("erro na permissao",error)
