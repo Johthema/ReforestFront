@@ -133,7 +133,7 @@ export default function LoginCard(){
                 inserindoToken()
                 // fecthAllData(token)
     
-                //router.push('/home');
+                // router.push('/home');
             } else if(response.status == 401 || 400) {
                 setAviso(false)
                 setErro(true)
@@ -169,6 +169,7 @@ export default function LoginCard(){
                 // body: JSON.stringify(data),
                
             })
+            router.push('/home');
             // .then(response => response.json())
             // .then(token => {
               
@@ -181,7 +182,7 @@ export default function LoginCard(){
 
 
     }
-    const [campo2, setCampo2] = useState('');
+    // const [campo2, setCampo2] = useState('');
 
     const inputCampo2 = useRef(null);
 
