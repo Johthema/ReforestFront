@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Logo from '../../../assets/images/reforestImagem.png';
 import Logot from '../../../assets/images/logo.png';
 import { useRouter } from "next/router"
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardUsuarioEdit from '../../cards/cardCadUser/index';
 import {RotateLoader } from 'react-spinners';
@@ -78,7 +78,7 @@ export default function LoginCard(){
 
     const enviarForm = async (evt) =>{
         console.log("entrou na função 1")
-        evt.preventDefault()
+        //evt.preventDefault()
         try {
             console.log("tentativa 1")
             const response = await fetch (URL_API,{
@@ -179,9 +179,27 @@ export default function LoginCard(){
             // });
 
 
-    
+
     }
-   
+    const [campo2, setCampo2] = useState('');
+
+    const inputCampo2 = useRef(null);
+
+    const handleCampo1KeyPress = (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          inputCampo2.current.focus(); // Foca no próximo campo de input
+        }
+      };
+
+
+    const handleKeyPress = (e) => {
+        
+        if (e.key === 'Enter') {
+            enviarForm()
+        }
+      };
+
 
 
     return (
@@ -210,13 +228,13 @@ export default function LoginCard(){
                     
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email/Telefone</Form.Label>
-                            <Form.Control type="email" placeholder="Digite seu email ou telefone" onChange={onChangeEmail} />
+                            <Form.Control type="email" placeholder="Digite seu email ou telefone" onChange={onChangeEmail} onKeyPress={handleCampo1KeyPress}/>
                            
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Senha</Form.Label>
-                            <Form.Control type="password" placeholder="Digite sua senha" onChange={onChangeSenha} />
+                            <Form.Control type="password" placeholder="Digite sua senha" onChange={onChangeSenha}  onKeyPress={handleKeyPress} ref={inputCampo2} />
                         </Form.Group>
                         {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
