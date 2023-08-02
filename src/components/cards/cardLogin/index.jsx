@@ -85,7 +85,8 @@ export default function LoginCard(){
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
-                    'Content-type': 'application/json'
+                    'Content-type': 'application/json',
+                   
                 },
                 body: JSON.stringify({ identifier, password }),
                
@@ -109,10 +110,14 @@ export default function LoginCard(){
                 console.log("o token: ",data.token),
                 setToken(data.token)
               
+                fecthAllData(data.token)
+                
                
             } 
             
             )
+
+           
            
             // console.log(json2);
            
@@ -125,7 +130,8 @@ export default function LoginCard(){
                 setAviso(false)
                 setLoadding(true)
                 console.log("chegou no status 200")
-                fecthAllData()
+                inserindoToken()
+                // fecthAllData(token)
     
                 //router.push('/home');
             } else if(response.status == 401 || 400) {
@@ -140,21 +146,40 @@ export default function LoginCard(){
         } catch (error) {
             console.log("retornou erro: ",error)
         }
+        
     }
-
+     
 
 
     console.log("agora o token é: ", token)
     
-    const fecthAllData = async () => {
-       
+    const fecthAllData = async (tok) => {
+        console.log("o token validado é: ", tok)
         console.log("entrou no fetchalldata")
-        try {
+       
           
-            const response = await fetch(URL_API_Curr)
-        } catch (error) {
-            console.log("erro na permissao",error)
-        }
+            // const response = await fetch(URL_API_Curr)
+            fetch (URL_API_Curr,{
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + tok
+                 // Adiciona o token JWT no cabeçalho de Authorization
+                }
+                // body: JSON.stringify(data),
+               
+            })
+            // .then(response => response.json())
+            // .then(token => {
+              
+            //   console.log("token do fetch:",token);
+            // })
+            // .catch(error => {
+            //   console.error('Ocorreu um erro na requisição:', error);
+            // });
+
+
+    
     }
    
 
