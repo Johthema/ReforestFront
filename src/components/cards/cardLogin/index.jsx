@@ -109,8 +109,9 @@ export default function LoginCard(){
             const json = await response.json().then(data =>{
                 console.log("o token: ",data.token),
                 setToken(data.token)
-              
-                fecthAllData(data.token)
+                const meuDadoString = JSON.stringify(data.token);
+                localStorage.setItem("token", meuDadoString);
+                fecthAllData(meuDadoString)
                 
                
             } 
