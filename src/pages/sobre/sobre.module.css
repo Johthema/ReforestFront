@@ -1,0 +1,18 @@
+.DivHeader{
+    height: 180px;
+    width: 100vw;
+    background: linear-gradient(#55ACEE, #295271 );
+}
+
+.FotoPerfil{
+    /* display: flex; */
+    margin-left: 10px;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    margin-top: 90px;
+    border: solid 10px;
+    border-color: #fff;
+    cursor: pointer;
+
+}
