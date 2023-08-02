@@ -22,34 +22,34 @@ const URL_API = process.env.NEXT_PUBLIC_API_URL+"currentUser";
 
 export default function Home() {
   //Variaveis 
-  const [reloadCount, setReloadCount] = useState(0);
+  //const [reloadCount, setReloadCount] = useState(0);
   //Função do usuario logado
 
-  const fecthAllData = async () => {
-    try {
+  // const fecthAllData = async () => {
+  //   try {
 
-      // setLoading(true)
-      const response = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
-      const dataCat = await response.json()
-      console.log("o usuario logado é: ", dataCat)
-      if (!dataCat)
-        throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+  //     // setLoading(true)
+  //     const response = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
+  //     const dataCat = await response.json()
+  //     console.log("o usuario logado é: ", dataCat)
+  //     if (!dataCat)
+  //       throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
     
-      //Iniciando a estrutura da requisição
+  //     //Iniciando a estrutura da requisição
 
-    } catch (error) {
-      console.log(error)
-    } finally {
-      // setLoading(false)
-    }
+  //   } catch (error) {
+  //     console.log(error)
+  //   } finally {
+  //     // setLoading(false)
+  //   }
 
-  }
+  // }
  
-  //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
-  useEffect(() => {
-    fecthAllData();
+  // //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
+  // useEffect(() => {
+  //   fecthAllData();
 
-  }, [reloadCount]);
+  // }, [reloadCount]);
 
 
 

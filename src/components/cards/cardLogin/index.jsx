@@ -109,9 +109,9 @@ export default function LoginCard(){
             const json = await response.json().then(data =>{
                 console.log("o token: ",data.token),
                 setToken(data.token)
-                const meuDadoString = JSON.stringify(data.token);
-                localStorage.setItem("token", meuDadoString);
-                fecthAllData(meuDadoString)
+                // const meuDadoString = JSON.stringify(data.token);
+                // localStorage.setItem("token", meuDadoString);
+                fecthAllData(data.token)
                 
                
             } 
@@ -170,7 +170,7 @@ export default function LoginCard(){
                 // body: JSON.stringify(data),
                
             })
-            //router.push('/home');
+            router.push('/home');
 
             // .then(response => response.json())
             // .then(token => {
