@@ -169,7 +169,8 @@ export default function LoginCard(){
                 // body: JSON.stringify(data),
                
             })
-            router.push('/home');
+            //router.push('/home');
+
             // .then(response => response.json())
             // .then(token => {
               
@@ -182,8 +183,8 @@ export default function LoginCard(){
 
 
     }
-    // const [campo2, setCampo2] = useState('');
-
+   
+//---------Função de enviar o formulario ao apertar Enter
     const inputCampo2 = useRef(null);
 
     const handleCampo1KeyPress = (e) => {
