@@ -22,7 +22,9 @@ const URL_API = process.env.NEXT_PUBLIC_API_URL+"currentUser";
 
 export default function Home() {
   //Variaveis 
-  //const [reloadCount, setReloadCount] = useState(0);
+  const [reloadCount, setReloadCount] = useState(0);
+  const [tokenI, setTokenI] = useState('');
+  const [nomeUser, setNomeUser] = useState('');
   //Função do usuario logado
 
   // const fecthAllData = async () => {
@@ -44,12 +46,66 @@ export default function Home() {
   //   }
 
   // }
- 
-  // //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
-  // useEffect(() => {
-  //   fecthAllData();
+  
+  // const tokenRecuperado = localStorage.getItem("tokenId");
+  
+  const fecthAllData = async () => {
+    //console.log("o token validado é: ", tok)
+    console.log("entrou no fetchalldata")
+   
+      
+        // const response = await fetch(URL_API)
+        const response = await fetch (URL_API,{
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + localStorage.getItem("tokenId")
+             // Adiciona o token JWT no cabeçalho de Authorization
+            }
+            // body: JSON.stringify(data),
+           
+        })
+        //router.push('/home');
 
-  // }, [reloadCount]);
+        // .then(response => response.json())
+        // .then(token => {
+          
+        // console.log("dados do token:",response);
+
+        const json = await response.json().then(data =>{
+       
+       
+          const meuDadoString = data.user;
+          setNomeUser(meuDadoString.name)
+          // console.log(meuDadoString.name)
+          //localStorage.setItem("token dados:.. ", meuDadoString);
+        
+          
+         
+      } )
+
+        //})
+        // .catch(error => {
+        //   console.error('Ocorreu um erro na requisição:', error);
+        // });
+
+
+
+}
+
+
+  //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
+  useEffect(() => {
+    setTokenI(localStorage.getItem("tokenId"))
+    console.log("tokenId: ",localStorage.getItem("tokenId"))
+    console.log();
+    fecthAllData();
+
+  }, [reloadCount]);
+
+
+
+  
 
 
 
@@ -226,7 +282,7 @@ export default function Home() {
 <Cards></Cards>
 
 <div className={Style.UserLogado}>
-<h5 className={Style.legendaUserLog}>Olá, Fulano de tal</h5>
+<h5 className={Style.legendaUserLog}>Olá, {nomeUser}</h5>
 </div>
 <Footer/>
 

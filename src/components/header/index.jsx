@@ -12,19 +12,33 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useState, useEffect } from 'react';
+import { useRouter } from "next/router"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
         FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends, FaSignOutAlt } from "react-icons/fa";
 
 
-
+        const URL_API = process.env.NEXT_PUBLIC_API_URL+"signout";
 
 export default function Header() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const router = useRouter();
 
+function logout() {
+  const response = fetch (URL_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+  console.log(response)
+  localStorage.clear();
+  router.push('/');
+
+}
 
   return (
 
@@ -99,7 +113,7 @@ export default function Header() {
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" href='/' >
+          <Button variant="primary" onClick={logout} >
             Sim
           </Button>
         </Modal.Footer>
@@ -108,3 +122,4 @@ export default function Header() {
     </>
   )
 }
+
