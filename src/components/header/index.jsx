@@ -15,6 +15,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from "next/router"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import {RotateLoader } from 'react-spinners';
 import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
         FaPlus, FaEnvira, FaMapMarkerAlt, FaUserFriends, FaSignOutAlt } from "react-icons/fa";
 
@@ -23,6 +24,7 @@ import {FaUserCircle, FaBell, FaDoorOpen, FaCog, FaChartLine, FaHistory,
 
 export default function Header() {
   const [show, setShow] = useState(false);
+  const [loaddingEncerrar,  setLoaddingEncerrar] = useState(false)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const router = useRouter();
@@ -36,7 +38,17 @@ function logout() {
   })
   console.log(response)
   localStorage.clear();
-  router.push('/');
+  setLoaddingEncerrar(true)
+
+  //const tempoEmMilissegundos = 1000;
+
+
+    setTimeout(()=>{
+      router.push('/')
+      
+  },1000)
+
+  //router.push('/');
 
 }
 
@@ -119,6 +131,15 @@ function logout() {
         </Modal.Footer>
     </Modal.Body>
     </Modal>
+
+
+    {loaddingEncerrar &&
+    <div className={StyleBar.DivSpinnerLoadding}>
+        <RotateLoader color="#36d7b7" size="14" margin="15" className={StyleBar.SpinnerLoadding} />
+    </div>
+}
+
+
     </>
   )
 }

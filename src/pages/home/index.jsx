@@ -84,10 +84,7 @@ export default function Home() {
          
       } )
 
-        //})
-        // .catch(error => {
-        //   console.error('Ocorreu um erro na requisição:', error);
-        // });
+      
 
 
 
@@ -100,6 +97,7 @@ export default function Home() {
     console.log("tokenId: ",localStorage.getItem("tokenId"))
     console.log();
     fecthAllData();
+   
 
   }, [reloadCount]);
 
