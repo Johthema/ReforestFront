@@ -224,6 +224,10 @@ export default function Home() {
 </section>
 
 <Cards></Cards>
+
+<div className={Style.UserLogado}>
+<h5>Olá, Fulano de tal</h5>
+</div>
 <Footer/>
 
 </div>

@@ -334,3 +334,18 @@
     
     margin: auto;
 } */
+  
+.UserLogado{
+    display: flex;
+    border-radius: 50px;
+    position: fixed !important;
+    bottom: 1%;
+    right: 0%;
+    height: 60px;
+    width: 18%;
+    background-color: #1e1d1d; 
+    z-index: 3;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+} 
