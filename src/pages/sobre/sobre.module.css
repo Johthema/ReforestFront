@@ -3,6 +3,11 @@
     width: 100vw;
     background: linear-gradient(#55ACEE, #295271 );
 }
+.BarHeader{
+    justify-content: center;
+    background-color: #9EC69D;
+}
+ 
 
 .FotoPerfil{
     /* display: flex; */
@@ -17,6 +22,28 @@
 
 }
 
-.FotoPerfil:hover{
-    opacity: 0.5;
+.LegendaFoto{
+    margin-left: 50px;
+    color: transparent;
+    width: 150px;
+
+}
+.FotoPerfil:hover, .LegendaFoto:hover {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+.DivInfoPess{
+    display:flex;
+    margin: auto;
+    justify-content: center;
+    margin-top: 50px
+    
+}
+.DivInfo{
+    border-right: solid 3px;
+    border-color: #55ACEE;
+    margin-right: 50px;
+    padding-right: 20px;
 }

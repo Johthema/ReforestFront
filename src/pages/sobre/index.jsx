@@ -3,9 +3,8 @@ import Style from './sobre.module.css';
 import Image from 'next/image';
 import Perfil from '../../assets/images/fotoperfil/fotoper.jpg';
 
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 export default function Sobre(){
     return(
@@ -16,9 +15,49 @@ export default function Sobre(){
         <Image src={Perfil} roundedCircle className={Style.FotoPerfil} />
            
         
-
-        </div>
        
+        </div>
+        <div>
+        <Tabs
+      defaultActiveKey="perfil"
+      transition={true}
+      id="noanim-tab-example"
+      className={Style.BarHeader}
+
+    >
+      <Tab eventKey="perfil" title="Informações Pessoais">
+       <div className={Style.DivInfoPess}>
+        <div className={Style.DivInfo}>
+            <h2>Nome/ Nome completo: </h2>
+            <h2>Sobrenome/ Razão Social: </h2>
+            <h2>Email: </h2>
+            <h2>Telefone: </h2>
+            <h2>Papel: </h2>
+            <h2>Tipo depessoa: </h2>
+        </div>
+        <div>
+            <h2>Fulano </h2>
+            <h2>Fulano de tal </h2>
+            <h2>Fulano@mail.com </h2>
+            <h2>92992525252 </h2>
+            <h2>Usuario, Administrador </h2>
+            <h2>Pessoa Física </h2>
+        </div>
+
+       </div>
+      </Tab>
+      <Tab eventKey="profile" title="Informações de Faturamento">
+        Tab content for Profile
+      </Tab>
+      <Tab eventKey="contact" title="Floresta">
+        Tab content for Contact
+      </Tab>
+    </Tabs>
+        </div>
+        {/* <h4 className={Style.LegendaFoto}>Trocar foto</h4> */}
+
+        
+        
         </>
     )
 }
