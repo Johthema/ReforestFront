@@ -226,7 +226,7 @@ export default function Home() {
 <Cards></Cards>
 
 <div className={Style.UserLogado}>
-<h5>Olá, Fulano de tal</h5>
+<h5 className={Style.legendaUserLog}>Olá, Fulano de tal</h5>
 </div>
 <Footer/>
 

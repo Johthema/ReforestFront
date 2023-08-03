@@ -342,10 +342,13 @@
     bottom: 1%;
     right: 0%;
     height: 60px;
-    width: 18%;
+    width: 15%;
     background-color: #1e1d1d; 
     z-index: 3;
     color: #fff;
     justify-content: center;
     align-items: center;
-} 
+}
+.legendaUserLog{
+    font-size: 18px;
+}
