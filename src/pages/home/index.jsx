@@ -10,7 +10,7 @@ import Doar from '../../assets/images/presente4.png';
 //import Fundotipo from '../../assets/images/fundo_floresta.png';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
-import { FaTree, FaMapMarkedAlt, FaUsers } from 'react-icons/fa';
+import { FaTree, FaMapMarkedAlt, FaUsers, FaAppleAlt } from 'react-icons/fa';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { useRouter } from "next/router";
@@ -280,7 +280,7 @@ export default function Home() {
 <Cards></Cards>
 
 <div className={Style.UserLogado}>
-<h5 className={Style.legendaUserLog}>Olá, {nomeUser}</h5>
+<h5 className={Style.legendaUserLog}><FaAppleAlt className={Style.Online}/>Olá, {nomeUser}</h5>
 </div>
 <Footer/>
 
