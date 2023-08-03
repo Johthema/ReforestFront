@@ -38,7 +38,7 @@
     display:flex;
     margin: auto;
     justify-content: center;
-    margin-top: 50px
+    margin-top: 30px
     
 }
 .DivInfo{
@@ -46,4 +46,24 @@
     border-color: #55ACEE;
     margin-right: 50px;
     padding-right: 20px;
+    color:#55ACEE
 }
+
+.DivInfoEdit{
+    display: flex;
+    margin:auto;
+    justify-content: center;
+    
+}
+
+.IconInfoEdit{
+    width: 22px;
+    height: 22px;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #55ACEE;
+    transition: 0.3s;
+    }
+.IconInfoEdit:hover{
+scale: 1.3;
+    }

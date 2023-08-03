@@ -2,7 +2,9 @@ import Header from '../../components/header/index';
 import Style from './sobre.module.css';
 import Image from 'next/image';
 import Perfil from '../../assets/images/fotoperfil/fotoper.jpg';
-
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import { FaPen } from "react-icons/fa";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
@@ -26,6 +28,26 @@ export default function Sobre(){
 
     >
       <Tab eventKey="perfil" title="Informações Pessoais">
+
+
+
+
+        <div className={Style.DivInfoEdit}>
+
+
+        <OverlayTrigger overlay={
+  <Tooltip id="tooltip-disabled"   >
+  Editar
+  </Tooltip>} placement="left">
+  <div >
+  <FaPen className={Style.IconInfoEdit}/>
+  </div>
+</OverlayTrigger>
+            
+           
+            
+            
+            </div>
        <div className={Style.DivInfoPess}>
         <div className={Style.DivInfo}>
             <h2>Nome/ Nome completo: </h2>
