@@ -14,7 +14,7 @@ const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
 export default function CardArvore() {
 
   const [reloadCount, setReloadCount] = useState(0);
-  const [dataCat, setData] = useState([]);
+  const [dados, setData] = useState([]);
 
 
   useEffect(() => {
@@ -26,11 +26,11 @@ export default function CardArvore() {
       
           const response = await fetch(URL_API)
           // const dados = await response.json();
-          const dataCat = await response.json()
-          setData(dataCat)
+          const dados = await response.json()
+          setData(dados)
         
         
-      console.log("Lista pronta: ", dataCat)
+      console.log("Lista pronta: ", dados)
 
       } catch (error) {
         console.log(error)
@@ -46,7 +46,7 @@ export default function CardArvore() {
 <>
     <Carousel data-bs-theme="dark" indicators= {""} >
 
-        {dataCat && dataCat.map((item, i = index) => (
+        {dados && dados.map((item, i = index) => (
 
     <Carousel.Item key={i} >
   
@@ -65,13 +65,11 @@ export default function CardArvore() {
           </h3>
           }
           
-         
         <div className={Style.opcoesCard}>
         <FaEdit className={Style.iconeCard}/>
         <CloseButton/>
         {/* <FaRegWindowClose className={Style.iconeCard}/> */}
         </div>
-        
     </div>
     
   </Card.Header>
@@ -79,10 +77,6 @@ export default function CardArvore() {
   <Card.Body>
     <Card.Title>{item.name}</Card.Title>
     <Image src={ImgArvore} className={Style.imgArvore} alt=""/>
-    {/* <Card.Text>
-      With supporting text below as a natural lead-in to additional content.
-    </Card.Text> */}
-    {/* <Button variant="primary">Go somewhere</Button> */}
   </Card.Body>
   <Card.Footer className="text-muted">
   <Form.Control type="number" placeholder="Quantidade" />
@@ -90,73 +84,10 @@ export default function CardArvore() {
 </Card>
 </Carousel.Item>
 
-
-
-// <tr className={Style.trUsuario} key={i} >
-//   <td className={Style.tdUsuario}><h2 key={item._id} className={Style.FontUsuario}> {item.name}</h2></td>
-//   <td className={Style.tdUsuario}><h2 key={item._id} className={Style.FontUsuario}> {item.createdAt}</h2></td>
-//   <td className={Style.Editar} value={item._id} onClick={()=> idPapelEdit(item._id, item.name)}><FaEdit className={Style.icoEditar} /></td>
-//   <td className={Style.Deletar} value={item._id} onClick={() => idUsuario(item._id, item.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
-// </tr>
-
 )
 )
 }
 
-      {/* <Carousel.Item >
-  
-        <Card className={Style.Card}>
-          <Card.Header className={Style.HeaderCard0}>
-            <div className={Style.HeaderCard}>
-                <h3 className={Style.StatusCard}>Aprovado</h3>
-                <div className={Style.opcoesCard}>
-                <FaEdit className={Style.iconeCard}/>
-                <CloseButton/>
-             
-                </div>
-                
-            </div>
-            
-          </Card.Header>
-          
-          <Card.Body>
-            <Card.Title>Tectona grandis</Card.Title>
-            <Image src={ImgArvore} className={Style.imgArvore} alt=""/>
-       
-          </Card.Body>
-          <Card.Footer className="text-muted">
-          <Form.Control type="number" placeholder="Quantidade" />
-          </Card.Footer>
-        </Card>
-      </Carousel.Item> */}
-{/* 
-      <Carousel.Item>
-
-      <Card className={Style.Card}>
-          <Card.Header className={Style.HeaderCard0}>
-            <div className={Style.HeaderCard}>
-                <h3 className={Style.StatusCard}>Aprovado</h3>
-                <div className={Style.opcoesCard}>
-                <FaEdit className={Style.iconeCard}/>
-                <CloseButton/>
-             
-                </div>
-                
-            </div>
-            
-          </Card.Header>
-          
-          <Card.Body>
-            <Card.Title>Tectona 2 grandis</Card.Title>
-            <Image src={ImgArvore} className={Style.imgArvore} alt=""/>
-          
-          </Card.Body>
-          <Card.Footer className="text-muted">
-          <Form.Control type="number" placeholder="Quantidade" />
-          </Card.Footer>
-        </Card>
-
-      </Carousel.Item> */}
     </Carousel>
 
     </>
