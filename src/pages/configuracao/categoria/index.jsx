@@ -138,12 +138,6 @@ return false
 //Editar fim---------------------------------------------------
 
 
-
-
-
-
-
-
   //Primeiro carregamengto para saber se esta tudo certo
   const fecthAllData = async () => {
     try {
