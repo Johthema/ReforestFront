@@ -16,7 +16,7 @@ import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-//import CardUsuarioEdit from '../../../components/cards/cardCadUser/cardCadEdit/index';
+import CardArvoreEdit from '../../../components/cards/cardCadArvore/cardArvoreEdit/index';
 import Footer from '../../../components/footer/index'
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
@@ -49,10 +49,10 @@ export default function ListarArvore() {
   const [showEdit, setShowEdit] = useState(false);
   const [dadosEditar, setDadosEditar] = useState([])
 
-  const handleShowEdit = (idUser, personName) =>{
+  const handleShowEdit = (idUser) =>{
     console.log("o id a passar: ", idUser)
     setShowEdit(true);
-    setDadosEditar([idUser, personName]);
+    setDadosEditar([idUser]);
   }
 
   //-----------------------------------------------------------------------Inicio Função de filtros
@@ -234,7 +234,7 @@ export default function ListarArvore() {
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.price}</h2></td>
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.createdAt}</h2></td>
 
-                <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id, repo.person)}><FaEdit className={Style.icoEditar} /></td>
+                <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id)}><FaEdit className={Style.icoEditar} /></td>
                 <td className={Style.Deletar} value={repo._id} onClick={() => idArvore(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
 
@@ -294,7 +294,7 @@ export default function ListarArvore() {
         </Offcanvas.Header>
         <Offcanvas.Body>
      
-        {/* <CardUsuarioEdit handleShowEdit={dadosEditar} />  */}
+        <CardArvoreEdit handleShowEdit={dadosEditar} /> 
         </Offcanvas.Body>
       </Offcanvas>
       <Footer/>

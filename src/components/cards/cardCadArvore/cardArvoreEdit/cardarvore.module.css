@@ -1,0 +1,37 @@
+.divCorpoArvore{
+    display: flex;
+    margin-top: 20px;
+}
+.cardArvore{
+    text-align: center;
+    width: 45vw;
+    margin: auto;
+    
+    /* position: absolute;
+    justify-content: center;
+    display: flex; */
+}
+.estiloRadio{
+    width: 70%;
+    margin: auto;
+    padding: 1.5rem;
+}
+.Preco{
+    width: 40%;
+    margin: auto;
+}
+
+.botaoCarregamento{
+    display: block;
+    width: 50%;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+}
+
+@media (max-width: 1047px) {
+    .cardArvore{
+        width: 80vw;
+      
+    }
+}
