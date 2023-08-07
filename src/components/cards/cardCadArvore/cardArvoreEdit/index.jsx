@@ -171,7 +171,7 @@ const enviarForm = async (evt) => {
       setLoading(true)
 
       const response = await fetch(URL_API+idEditavel, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           Accept: 'application/json',
           'Content-type': 'application/json'
