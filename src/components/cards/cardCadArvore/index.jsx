@@ -62,7 +62,7 @@ const onChangeNome = (evt) => {
    
   }
   const onChangeAnnualCarbonOffset = (evt) => {
-    console.log("o valor anual é: ", evt)
+    //console.log("o valor anual é: ", evt)
     setAnnualCarbonOffset(evt.target.value)
 
    
@@ -109,13 +109,46 @@ const onChangeNome = (evt) => {
   }
 
 
+    //Primeiro carregamengto para saber se esta tudo certo
+    const fecthAllData = async () => {
+    
+      try {
+  
+       
+        const response = await fetch(URL_API_CAT) //por padrão o fetch ja utiliza o GET
+        const dataCat = await response.json()
+  
+        if (!dataCat)
+          throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+        setData(dataCat)
+        console.log("categorias: ",dataCat)
+  
+        // setNome(dataCat.name)
+        //Iniciando a estrutura da requisição
+  
+      } catch (error) {
+        console.log(error)
+      } finally {
+        //setLoading(false)
+      }
+  
+    }
+   
+    //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
+    useEffect(() => {
+      fecthAllData();
+  
+    }, [reloadCount]);
+
+
 
 
 const enviarForm = async (evt) => {
 
     evt.preventDefault()
+    setLoading(true)
     try {
-      setLoading(true)
+      
 
       const response = await fetch(URL_API, {
         method: 'POST',
@@ -133,23 +166,23 @@ const enviarForm = async (evt) => {
 
       const json = await response.json()
       // console.log("::",error.response)
-      if ( name!='' && cientificName!='' && category!='' && img!='' &&
-        permanentCarbonTax!='' && annualCarbonOffset!='' && carbonOffsetPeriod!='' &&
-        treeHeight!='' && treeDiameter!='' && fruitfulTree!='' && productionPeriod!='' &&
-        harvestReplace!='' && price!='' && description!='') {
-        //setLoading(false)
-        setLoading(false)
-        setSuccess(true)
-       
-
-      } else if (response.status == 400 || response.status == 500){
+    
+       if (response.status == 400 ){
         console.log("o status é: ", response.status)
         setSuccess(false)
         setLoading(false)
-        setErroInterno(true)
-        //setErro(true)
+        // setErroInterno(true)
+        setErro(true)
         
-      } 
+      }  else if(response.status == 500){
+        setSuccess(false)
+        setLoading(false)
+        setErroInterno(true)
+      }
+      else if(response.status == 200){
+        setLoading(false)
+        setSuccess(true)
+      }
      
       // setLoading(false)
 
@@ -166,35 +199,7 @@ const enviarForm = async (evt) => {
 
 
 
-  //Primeiro carregamengto para saber se esta tudo certo
-  const fecthAllData = async () => {
-    try {
 
-     
-      const response = await fetch(URL_API_CAT) //por padrão o fetch ja utiliza o GET
-      const dataCat = await response.json()
-
-      if (!dataCat)
-        throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
-      setData(dataCat)
-      console.log("categorias: ",dataCat)
-
-      // setNome(dataCat.name)
-      //Iniciando a estrutura da requisição
-
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-    }
-
-  }
- 
-  //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
-  useEffect(() => {
-    fecthAllData();
-
-  }, [reloadCount]);
 
 
 
