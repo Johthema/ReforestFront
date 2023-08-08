@@ -13,8 +13,9 @@ import { FaListOl, FaListAlt } from "react-icons/fa";
 
 
 export default function CadastroArvore() {
-//API
+//APIs
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
+const URL_API_CAT = process.env.NEXT_PUBLIC_API_URL+"category";
 
 //variáveis de feedback
 const [loading, setLoading] = useState(false);
@@ -38,7 +39,8 @@ const [productionPeriod, setProductionPeriod] = useState('');
 const [harvestReplace, setHarvestReplace] = useState('');
 const [price, setPrice] = useState('');
 const [description, setDescription] = useState('');
-
+const [dataCat, setData] = useState([]);
+const [reloadCount, setReloadCount] = useState(0);
 
 //Funçãos de cadastro da árvore
 
@@ -162,6 +164,41 @@ const enviarForm = async (evt) => {
   const [show, setShow] = useState(true);
 
 
+
+
+  //Primeiro carregamengto para saber se esta tudo certo
+  const fecthAllData = async () => {
+    try {
+
+     
+      const response = await fetch(URL_API_CAT) //por padrão o fetch ja utiliza o GET
+      const dataCat = await response.json()
+
+      if (!dataCat)
+        throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+      setData(dataCat)
+      console.log("categorias: ",dataCat)
+
+      // setNome(dataCat.name)
+      //Iniciando a estrutura da requisição
+
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+
+  }
+ 
+  //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
+  useEffect(() => {
+    fecthAllData();
+
+  }, [reloadCount]);
+
+
+
+ 
 
   return (
     <div className={Style.divCorpoArvore}>
