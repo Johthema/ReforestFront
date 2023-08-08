@@ -186,23 +186,31 @@ const enviarForm = async (evt) => {
 
       const json = await response.json()
       // console.log("::",error.response)
-      if ( name!='' && cientificName!='' && category!='' && img!='' &&
-        permanentCarbonTax!='' && annualCarbonOffset!='' && carbonOffsetPeriod!='' &&
-        treeHeight!='' && treeDiameter!='' && fruitfulTree!='' && productionPeriod!='' &&
-        harvestReplace!='' && price!='' && description!='') {
-        //setLoading(false)
-        setLoading(false)
-        setSuccess(true)
+      // if ( name!='' && cientificName!='' && category!='' && img!='' &&
+      //   permanentCarbonTax!='' && annualCarbonOffset!='' && carbonOffsetPeriod!='' &&
+      //   treeHeight!='' && treeDiameter!='' && fruitfulTree!='' && productionPeriod!='' &&
+      //   harvestReplace!='' && price!='' && description!='') {
+      //   //setLoading(false)
+      //   setLoading(false)
+      //   setSuccess(true)
        
 
-      } else if (response.status == 400 || response.status == 500){
+      // } else
+       if (response.status == 400){
         console.log("o status é: ", response.status)
         setSuccess(false)
         setLoading(false)
-        setErroInterno(true)
-        //setErro(true)
+        //setErroInterno(true)
+        setErro(true)
         
       } 
+      else if(response.status == 500){
+        setErroInterno(true)
+      }
+      else if(response.status == 200){
+        setLoading(false)
+        setSuccess(true)
+      }
      
       // setLoading(false)
 
