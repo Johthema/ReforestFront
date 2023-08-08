@@ -66,7 +66,7 @@ export default function CardArvore() {
           }
           
         <div className={Style.opcoesCard}>
-        <FaEdit className={Style.iconeCard}/>
+        {/* <FaEdit className={Style.iconeCard}/> */}
         <CloseButton/>
         {/* <FaRegWindowClose className={Style.iconeCard}/> */}
         </div>
