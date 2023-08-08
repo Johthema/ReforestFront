@@ -293,22 +293,73 @@ const enviarForm = async (evt) => {
                 {/* <Form.Label as="legend" column sm={3}>
                     Árvore frutífera?
                 </Form.Label> */}
-                <Col>
-                    <Form.Check onClick={()=>onChangeFruitfulTree(true) }
-                    type="radio"
-                    label="Árvore frutífera"
-                    name="formHorizontalRadios"
-                    id="formHorizontalRadios1"
-                    />
-                    </Col>
-                    <Col>
-                    <Form.Check  onClick={()=>onChangeFruitfulTree(false) }
-                    type="radio"
-                    label="Árvore não frutífera"
-                    name="formHorizontalRadios"
-                    id="formHorizontalRadios2"
-                    />
-                </Col>
+                
+{data.fruitfulTree==true &&           
+ <Col>
+
+ <Form.Check checked onClick={()=>onChangeFruitfulTree(true) }
+ type="radio"
+ label="Árvore frutífera"
+ name="formHorizontalRadios"
+ id="formHorizontalRadios1"
+ />
+
+ </Col>
+ 
+}{data.fruitfulTree==true &&  
+<Col>
+ <Form.Check onClick={()=>onChangeFruitfulTree(false) }
+ type="radio"
+ label="Árvore não frutífera"
+ name="formHorizontalRadios"
+ id="formHorizontalRadios2"
+ />
+</Col>
+ 
+  }
+
+{data.fruitfulTree==false &&    
+ <Col>
+ <Form.Check onClick={()=>onChangeFruitfulTree(true) }
+ type="radio"
+ label="Árvore frutífera"
+ name="formHorizontalRadios"
+ id="formHorizontalRadios2"
+ />
+</Col>
+}{data.fruitfulTree==false &&
+<Col>
+<Form.Check checked onClick={()=>onChangeFruitfulTree(false) }
+type="radio"
+label="Árvore não frutífera"
+name="formHorizontalRadios"
+id="formHorizontalRadios2"
+/>
+</Col>
+
+}
+{/* {!data.fruitfulTree &&    
+ <Col>
+ <Form.Check onClick={()=>onChangeFruitfulTree(true) }
+ type="radio"
+ label="Árvore frutífera"
+ name="formHorizontalRadios"
+ id="formHorizontalRadios2"
+ />
+</Col>
+}{!data.fruitfulTree &&
+<Col>
+<Form.Check onClick={()=>onChangeFruitfulTree(false) }
+type="radio"
+label="Árvore não frutífera"
+name="formHorizontalRadios"
+id="formHorizontalRadios2"
+/>
+</Col>
+
+}   */}
+              
+               
             </Form.Group>
             <br/>
             <Row>
