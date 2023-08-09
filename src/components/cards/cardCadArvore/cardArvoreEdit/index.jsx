@@ -131,7 +131,8 @@ const onChangeNome = (evt) => {
       setPermanentCarbonTax(data.permanentCarbonTax)
       setCarbonOffsetPeriod(data.carbonOffsetPeriod)
       setAnnualCarbonOffset(data.setAnnualCarbonOffset)
-      setCategory(data.category)
+      setCategory(data.category.name)
+      console.log("cats name: ", data.category.name)
       setTreeHeight(data.treeHeight)
       setTreeDiameter(data.treeDiameter)
       setProductionPeriod(data.productionPeriod)
@@ -171,7 +172,8 @@ const onChangeNome = (evt) => {
   }, []);
 
 
-
+  console.log("cat2: ", data.category)
+  console.log("cat3: ", category)
 
 
 const enviarForm = async (evt) => {
@@ -279,21 +281,26 @@ const enviarForm = async (evt) => {
 
             <Form.Group as={Col} controlId="formGridState">
             <br/>
-            <Form.Select  onClick={(e)=>onChangeCategory(e.target.value) }>
-                  
+            {category &&
+            <Form.Select value={category} onClick={(e)=>onChangeCategory(e.target.value) }>
+            {dataCat && dataCat.map((item, i = index) => (
+            <option key={item._id} >{item.name}</option>
+            ))}
+            </Form.Select>
+
+            }  {!category &&
+            <Form.Select onClick={(e)=>onChangeCategory(e.target.value) }>
                         {dataCat && dataCat.map((item, i = index) => (
-
                         <option key={item._id} value={item._id}>{item.name}</option>
-
                         ))}
-                        
-                    </Form.Select>
+            </Form.Select>
+              }
             </Form.Group>
     <br/>
             <Row>
                 <Col>
                 <FloatingLabel controlId="floatingInput" label="Vida média" className="mb-3">
-                    <Form.Control placeholder="Vida média" Value={data.cientificName} onChange={onChangeProductionPeriod} />
+                    <Form.Control placeholder="Vida média" Value={data.productionPeriod} onChange={onChangeProductionPeriod} />
                 </FloatingLabel>
                 </Col>
                 <Col>
