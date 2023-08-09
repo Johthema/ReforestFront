@@ -70,11 +70,16 @@ const onChangeNome = (evt) => {
 
    
   }
-  const onChangeCategory=(cat) => {
-    // console.log("a categoria é: ", evt)
-    setCategory(cat)
+  // const onChangeCategory=(cat) => {
+  //   // console.log("a categoria é: ", evt)
+  //   setCategory(cat)
    
-  }
+  // }
+
+  const onChangeCategory = (event) => {
+    const novoValorSelecionado = event;
+    setCategory(novoValorSelecionado);
+  };
   
 
 
@@ -86,6 +91,7 @@ const onChangeNome = (evt) => {
     setTreeDiameter(evt.target.value)
    
   }
+  
   const onChangeFruitfulTree = (evt) => {
     setFruitfulTree(evt)
    
@@ -217,6 +223,7 @@ const enviarForm = async (evt) => {
         
       } 
       else if(response.status == 500){
+        setLoading(false)
         setErroInterno(true)
       }
       else if(response.status == 200){
@@ -282,19 +289,20 @@ const enviarForm = async (evt) => {
             <Form.Group as={Col} controlId="formGridState">
             <br/>
             {category &&
-            <Form.Select value={category} onClick={(e)=>onChangeCategory(e.target.value) }>
+            <Form.Select value={category} onChange={(e)=>onChangeCategory(e.target.value) } >
             {dataCat && dataCat.map((item, i = index) => (
-            <option key={item._id} >{item.name}</option>
+            <option key={item._id} value={item._id}>{item.name}</option>
             ))}
             </Form.Select>
 
-            }  {!category &&
+            }
+              {/* {!category &&
             <Form.Select onClick={(e)=>onChangeCategory(e.target.value) }>
                         {dataCat && dataCat.map((item, i = index) => (
                         <option key={item._id} value={item._id}>{item.name}</option>
                         ))}
             </Form.Select>
-              }
+              } */}
             </Form.Group>
     <br/>
             <Row>
