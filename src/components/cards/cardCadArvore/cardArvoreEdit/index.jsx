@@ -280,16 +280,12 @@ const enviarForm = async (evt) => {
             <Form.Group as={Col} controlId="formGridState">
             <br/>
             <Form.Select  onClick={(e)=>onChangeCategory(e.target.value) }>
-                        {/* <option value="64b6b5bba57d6752a6aa04b3">Categoria escolhida</option>
-                        <option value="64b6">Categoria escolhida 2</option> */}
                   
                         {dataCat && dataCat.map((item, i = index) => (
 
                         <option key={item._id} value={item._id}>{item.name}</option>
 
-                        )
-                        )
-                        }
+                        ))}
                         
                     </Form.Select>
             </Form.Group>
