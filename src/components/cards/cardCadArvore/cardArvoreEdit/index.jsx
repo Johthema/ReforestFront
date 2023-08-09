@@ -15,6 +15,7 @@ import { FaListOl, FaListAlt } from "react-icons/fa";
 export default function EditarArvore({handleShowEdit}) {
 //API
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree/";
+const URL_API_CAT = process.env.NEXT_PUBLIC_API_URL+"category";
 
 //variáveis de feedback
 
@@ -27,6 +28,7 @@ const [error, setErro] = useState(false)
 const [successDell, setSuccessDell] = useState(false);
 //Variaveis de cadastro
 const [data, setData] = useState([])
+const [dataCat, setDataCat] = useState([])
 const [name, setNome] = useState('');
 const [cientificName, setCientificName] = useState('');
 const [category, setCategory] = useState('');
@@ -137,6 +139,14 @@ const onChangeNome = (evt) => {
       setPrice(data.price)
       setImg(data.img)
       setDescription(data.description)
+
+      const response2 = await fetch(URL_API_CAT) //por padrão o fetch ja utiliza o GET
+      const dataCat = await response2.json()
+
+      if (!dataCat)
+        throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+      setDataCat(dataCat)
+      console.log("categorias: ",dataCat)
 
 
 
@@ -270,11 +280,16 @@ const enviarForm = async (evt) => {
             <Form.Group as={Col} controlId="formGridState">
             <br/>
             <Form.Select  onClick={(e)=>onChangeCategory(e.target.value) }>
-                        <option value="64b6b5bba57d6752a6aa04b3">Categoria escolhida</option>
-                        <option value="64b6">Categoria escolhida 2</option>
-                        {/* <option value="admin">Administrador</option> */}
-                        
-                        {/* <option value="3">Opção3</option> */}
+                        {/* <option value="64b6b5bba57d6752a6aa04b3">Categoria escolhida</option>
+                        <option value="64b6">Categoria escolhida 2</option> */}
+                  
+                        {dataCat && dataCat.map((item, i = index) => (
+
+                        <option key={item._id} value={item._id}>{item.name}</option>
+
+                        )
+                        )
+                        }
                         
                     </Form.Select>
             </Form.Group>
