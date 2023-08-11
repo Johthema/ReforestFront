@@ -49,10 +49,12 @@ export default function ListarArvore() {
   const [showEdit, setShowEdit] = useState(false);
   const [dadosEditar, setDadosEditar] = useState([])
 
-  const handleShowEdit = (idUser) =>{
+  const handleShowEdit = (idUser, categ) =>{
     console.log("o id a passar: ", idUser)
+    console.log("a categoria a passar: ", categ)
     setShowEdit(true);
-    setDadosEditar([idUser]);
+    setDadosEditar([idUser, categ]);
+    
   }
 
   //-----------------------------------------------------------------------Inicio Função de filtros
@@ -234,7 +236,7 @@ export default function ListarArvore() {
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.price}</h2></td>
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.createdAt}</h2></td>
 
-                <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id)}><FaEdit className={Style.icoEditar} /></td>
+                <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id, repo.category.name)}><FaEdit className={Style.icoEditar} /></td>
                 <td className={Style.Deletar} value={repo._id} onClick={() => idArvore(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
               </tr>
 

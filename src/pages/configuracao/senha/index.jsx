@@ -24,7 +24,7 @@ export default function Senha(){
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword3">
-          <FloatingLabel controlId="floatingInput" label="Rdigite novo password" className="mb-3">
+          <FloatingLabel controlId="floatingInput" label="Redigite novo password" className="mb-3">
 
           <Form.Control type="password" placeholder="Redigite novo Password" />
           </FloatingLabel>

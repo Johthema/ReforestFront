@@ -11,7 +11,7 @@ import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import { FaListOl, FaListAlt } from "react-icons/fa";
 
-
+ 
 export default function EditarArvore({handleShowEdit}) {
 //API
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree/";
@@ -19,7 +19,7 @@ const URL_API_CAT = process.env.NEXT_PUBLIC_API_URL+"category";
 
 //variáveis de feedback
 
-const [idEditavel, setIdEditavel] = useState(handleShowEdit)
+const [idEditavel, setIdEditavel] = useState(handleShowEdit[0])
 const [loading, setLoading] = useState(false);
 const [aviso, setAviso] = useState(false);
 const [errorInt, setErroInterno] = useState(false);
@@ -31,7 +31,7 @@ const [data, setData] = useState([])
 const [dataCat, setDataCat] = useState([])
 const [name, setNome] = useState('');
 const [cientificName, setCientificName] = useState('');
-const [category, setCategory] = useState('');
+const [category, setCategory] = useState(handleShowEdit[1]);
 const [img, setImg] = useState('image.jpg');
 const [permanentCarbonTax, setPermanentCarbonTax] = useState('');
 const [annualCarbonOffset, setAnnualCarbonOffset] = useState('');
@@ -43,7 +43,6 @@ const [productionPeriod, setProductionPeriod] = useState('');
 const [harvestReplace, setHarvestReplace] = useState('');
 const [price, setPrice] = useState('');
 const [description, setDescription] = useState('');
-
 
 //Funçãos de cadastro da árvore
 
@@ -77,7 +76,7 @@ const onChangeNome = (evt) => {
   // }
 
   const onChangeCategory = (event) => {
-    const novoValorSelecionado = event;
+    const novoValorSelecionado = event.target.value;
     setCategory(novoValorSelecionado);
   };
   
@@ -137,7 +136,7 @@ const onChangeNome = (evt) => {
       setPermanentCarbonTax(data.permanentCarbonTax)
       setCarbonOffsetPeriod(data.carbonOffsetPeriod)
       setAnnualCarbonOffset(data.setAnnualCarbonOffset)
-      setCategory(data.category.name)
+      // setCategory(data.category.name)
       console.log("cats name: ", data.category.name)
       setTreeHeight(data.treeHeight)
       setTreeDiameter(data.treeDiameter)
@@ -288,14 +287,16 @@ const enviarForm = async (evt) => {
 
             <Form.Group as={Col} controlId="formGridState">
             <br/>
-            {category &&
-            <Form.Select value={category} onChange={(e)=>onChangeCategory(e.target.value) } >
-            {dataCat && dataCat.map((item, i = index) => (
-            <option key={item._id} value={item._id}>{item.name}</option>
+            
+            <Form.Select value={category} onChange={onChangeCategory}>
+            {dataCat.map((opcao, i= index) => (
+              <option key={i} value={opcao._id}>
+                {opcao.name}
+              </option>
             ))}
-            </Form.Select>
+          </Form.Select>
 
-            }
+            
               {/* {!category &&
             <Form.Select onClick={(e)=>onChangeCategory(e.target.value) }>
                         {dataCat && dataCat.map((item, i = index) => (
