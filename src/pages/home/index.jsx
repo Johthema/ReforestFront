@@ -76,9 +76,10 @@ export default function Home() {
        
        
           const meuDadoString = data.user;
+          const meuIdString = data.user._id;
           setNomeUser(meuDadoString.name)
           // console.log(meuDadoString.name)
-          //localStorage.setItem("token dados:.. ", meuDadoString);
+          localStorage.setItem("idUs", meuIdString);
         
           
          
