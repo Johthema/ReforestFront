@@ -60,3 +60,12 @@
     object-fit: cover;
 
 }
+
+@media (max-width: 1211px) {
+    .Card{
+        width: 60%;
+        height: 10%;
+        margin: auto;
+        
+    }
+}
