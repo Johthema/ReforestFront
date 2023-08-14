@@ -87,9 +87,9 @@ export default function CadastrarLocal() {
     const onChangeNursery = (evt) =>{
         setNursery(false)
     }
-    const onChangeTrees = (evt) =>{
-        setTrees(evt.target.value)
-    }
+    // const onChangeTrees = (evt) =>{
+    //     setTrees(evt.target.value)
+    // }
 
     
     
@@ -125,7 +125,8 @@ export default function CadastrarLocal() {
             body: JSON.stringify({ 
                 userId, name, description, address, postalCode,
                 country, city, latitude, longitude, treesToBePlanted, hectare,
-                plantedTrees, falledTrees, limitTrees, irrigation, nursery, trees
+                plantedTrees, falledTrees, limitTrees, irrigation, nursery,
+                //  trees
             }),
           })
     
@@ -265,7 +266,7 @@ export default function CadastrarLocal() {
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Control type="file" className={Style.Preco}/>
                 </Form.Group>
-                <Form.Control placeholder="Árvores" className={Style.Preco} onChange={onChangeTrees}/>
+                {/* <Form.Control placeholder="Árvores" className={Style.Preco} onChange={onChangeTrees}/> */}
                 </Col>
              
                 </Row>
