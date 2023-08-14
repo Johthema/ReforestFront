@@ -27,13 +27,14 @@ export default function CadastrarLocal() {
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
     const [hectare, setHectare] = useState('');
-    const [treesToBePlanted, setTreesToBePlanted] = useState('');
-    const [plantedTrees, setPlantedTrees] = useState('');
+    const [treesToBePlanted, setTreesToBePlanted] = useState(0);
+    const [plantedTrees, setPlantedTrees] = useState(0);
     const [falledTrees, setFalledTrees] = useState('');
     const [limitTrees, setLimitTrees] = useState('');
     const [irrigation, setIrrigation] = useState(Boolean);
     const [nursery, setNursery] = useState(Boolean);
     const [trees, setTrees] = useState([]);
+    const [sum, setSum] = useState('');
 
     //Funçãos de cadastro da árvore
    
@@ -67,13 +68,17 @@ export default function CadastrarLocal() {
         setLongitude(evt.target.value)
     }
     const onChangeTreesToBePlanted = (evt) =>{
+        
         setTreesToBePlanted(evt.target.value)
+       
     }
     const onChangeHectare = (evt) =>{
         setHectare(evt.target.value)
     }
     const onChangePlantedTrees = (evt) =>{
+        
         setPlantedTrees(evt.target.value)
+        
     }
     const onChangeFalledTrees = (evt) =>{
         setFalledTrees(evt.target.value)
@@ -82,11 +87,25 @@ export default function CadastrarLocal() {
         setLimitTrees(evt.target.value)
     }
     const onChangeIrrigation = (evt) =>{
-        setIrrigation(false)
+        console.log("irrigacao: ", evt.target.checked)
+        if(evt.target.checked == true){
+            setIrrigation(true)
+        } else if (evt.target.checked == false) {
+            setIrrigation(false)
+        }
+        
     }
     const onChangeNursery = (evt) =>{
-        setNursery(false)
+        console.log("viveiro: ", evt.target.checked)
+        if (evt.target.checked == true){
+            setNursery(true)
+        } else if(evt.target.checked == false){
+            setNursery(false)
+        }
+        
     }
+
+
     // const onChangeTrees = (evt) =>{
     //     setTrees(evt.target.value)
     // }
