@@ -2,8 +2,9 @@ import Header from '../../../components/header/index';
 import Arvores from '../../../components/cards/cardArvore/index';
 import Style from './listalocais.module.css';
 import {useState, useEffect} from 'react';
-
-
+import Image from 'next/image';
+import Logotipo from '../../../assets/images/fundofloresta4.jpg';
+import Footer from '../../../components/footer/index'
 
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -54,15 +55,25 @@ export default function ListarLocal(){
            {dataCat && dataCat.map((item, i = index) => (
             <div className={Style.cardLocais} key={i}>
 
+              <div className={Style.divNome}>
               <h2 key={item._id}>{item.name}</h2>
-                          </div>
+              </div>
+              
 
-            )
-)
-}
+              <Image src={Logotipo} className={Style.imagemLocal} alt="" />
+              <div className={Style.divDescricao}>
+                <p>{item.description}</p>
+              </div>
+              <div>
+                icones 
+              </div>
+              
+            </div>
+
+            ))}
 
            </div>
-
+           <Footer/>
         </div>
     )
 }
