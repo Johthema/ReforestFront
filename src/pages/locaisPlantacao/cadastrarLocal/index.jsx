@@ -8,8 +8,9 @@ import Col from 'react-bootstrap/Col';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Arvores from '../../../components/cards/cardArvore/index';
 import {useState, useEffect} from 'react'
+import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
 
- 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
 export default function CadastrarLocal() {
@@ -34,7 +35,10 @@ export default function CadastrarLocal() {
     const [irrigation, setIrrigation] = useState(Boolean);
     const [nursery, setNursery] = useState(Boolean);
     const [trees, setTrees] = useState([]);
-    const [sum, setSum] = useState('');
+    const [aviso, setAviso] = useState(false);
+    const [errorInt, setErroInterno] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [resposta, setResposta] = useState('')
 
     //Funçãos de cadastro da árvore
    
@@ -68,20 +72,30 @@ export default function CadastrarLocal() {
         setLongitude(evt.target.value)
     }
     const onChangeTreesToBePlanted = (evt) =>{
+        if (evt.target.value === '' || (evt.target.value >= 0 && !isNaN(evt.target.value))) {
+          
+            setTreesToBePlanted(evt.target.value)
+          }
         
-        setTreesToBePlanted(evt.target.value)
+       
        
     }
     const onChangeHectare = (evt) =>{
         setHectare(evt.target.value)
-    }
+    }  
     const onChangePlantedTrees = (evt) =>{
-        
-        setPlantedTrees(evt.target.value)
+        if (evt.target.value === '' || (evt.target.value >= 0 && !isNaN(evt.target.value))) {
+          
+            setPlantedTrees(evt.target.value)
+          }
+       
         
     }
     const onChangeFalledTrees = (evt) =>{
-        setFalledTrees(evt.target.value)
+        if (evt.target.value === '' || (evt.target.value >= 0 && !isNaN(evt.target.value))) {
+            setFalledTrees(evt.target.value)
+          }
+        
     }
     const onChangeLimitTrees = (evt) =>{
         setLimitTrees(evt.target.value)
@@ -125,7 +139,7 @@ export default function CadastrarLocal() {
     
       }, [reloadCount]);
 
-
+      const [show, setShow] = useState(true);
 
     const enviarForm = async (evt) => {
 
@@ -147,35 +161,45 @@ export default function CadastrarLocal() {
                 plantedTrees, falledTrees, limitTrees, irrigation, nursery,
                 //  trees
             }),
+          }).then(response => response.json())
+          .then(data => {
+            //console.log(data); // Exibe a resposta do servidor no console
+            //const resp = data.message
+            setResposta(data.message)
+            if (response.status == 400 ){
+                console.log("o status é: ", response)
+               
+                setSuccess(false)
+                setLoading(false)
+                setErroInterno(true)
+                //setErro(true)
+                
+              }  else if(response.status == 500){
+                setSuccess(false)
+                setLoading(false)
+                setErroInterno(true)
+              }
+              else if(response.status == 200){
+                console.log("entrou no estatus 200")
+                setLoading(false)
+                setSuccess(true)
+              }
+             
+
+
           })
     
           const json = await response.json()
           // console.log("::",error.response)
         
-           if (response.status == 400 ){
-            console.log("o status é: ", response.status)
-            // setSuccess(false)
-            // setLoading(false)
-            // // setErroInterno(true)
-            // setErro(true)
-            
-          }  else if(response.status == 500){
-            // setSuccess(false)
-            // setLoading(false)
-            // setErroInterno(true)
-          }
-          else if(response.status == 200){
-            // setLoading(false)
-            // setSuccess(true)
-          }
-         
+
           // setLoading(false)
     
         } catch (err) {
-            // setSuccess(false)
-            // setLoading(false)
-            // setErroInterno(true)
-          console.log(err)
+            //setSuccess(false)
+            //setLoading(false)
+            //setErroInterno(true)
+          console.log("aqui é o erro: ",err)
         }
       }    
 
@@ -255,9 +279,9 @@ export default function CadastrarLocal() {
                   <Form.Control type="number"  placeholder="Árvores a plantar" onChange={onChangeTreesToBePlanted}/>
                 </Col>
             </Row>
-
+ 
             <Card.Text>
-            Total: Árvores plantadas + árvores a plantar
+            {/* Total: Árvores plantadas + árvores a plantar */}
             </Card.Text>
             <Row className={Style.estiloRadio}>
                 <Col>
@@ -301,6 +325,34 @@ export default function CadastrarLocal() {
       </Card.Body>
       {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
     </Card>
+
+
+
+
+    {success &&
+          <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+            <Spinner animation="grow" variant="success" /> Salvo com sucesso!
+          </Alert>
+        }
+      
+        {loading &&
+          <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
+            <Spinner animation="border" variant="primary" /> Aguarde, carregando...
+          </Alert>
+        }
+
+        {aviso &&
+          <Alert key="123456" variant="primary" className={Style.botaoCarregamento}  dismissible>
+            <Spinner animation="border" variant="warning" /> O nome não pode ser vazio!
+          </Alert>
+        }
+
+        {errorInt &&
+          <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+            <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, Obs:  {resposta}
+          </Alert>
+        }
+
     </>
   );
  

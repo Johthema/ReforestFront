@@ -30,3 +30,14 @@
         margin-top: 20px;
     }
 }
+
+.botaoCarregamento{
+    display: block;
+    width: 50%;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+}
+.tituloDeletar{
+    color: #EE6755
+}
