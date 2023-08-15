@@ -166,28 +166,30 @@ export default function CadastrarLocal() {
             //console.log(data); // Exibe a resposta do servidor no console
             //const resp = data.message
             setResposta(data.message)
-            if (response.status == 400 ){
-                console.log("o status é: ", response)
-               
-                setSuccess(false)
-                setLoading(false)
-                setErroInterno(true)
-                //setErro(true)
-                
-              }  else if(response.status == 500){
-                setSuccess(false)
-                setLoading(false)
-                setErroInterno(true)
-              }
-              else if(response.status == 200){
-                console.log("entrou no estatus 200")
-                setLoading(false)
-                setSuccess(true)
-              }
+           
              
 
 
           })
+
+          if (response.status == 400 ){
+            console.log("o status é: ", response)
+           
+            setSuccess(false)
+            setLoading(false)
+            setErroInterno(true)
+            //setErro(true)
+            
+          }  else if(response.status == 500){
+            setSuccess(false)
+            setLoading(false)
+            setErroInterno(true)
+          }
+          else if(response.status == 200){
+            console.log("entrou no estatus 200")
+            setLoading(false)
+            setSuccess(true)
+          }
     
           const json = await response.json()
           // console.log("::",error.response)
