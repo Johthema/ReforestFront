@@ -1,3 +1,9 @@
+.divtitulo{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    
+}
 .divLocais{
     display: flex;
     flex-wrap: wrap;
