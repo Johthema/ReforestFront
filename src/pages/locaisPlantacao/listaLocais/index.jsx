@@ -47,7 +47,17 @@ export default function ListarLocal(){
             <h1>
                 Lista de locais de plantação em atividade
             </h1>
-           <div>
+           <div className={Style.divLocais}>
+           {dataCat && dataCat.map((item, i = index) => (
+            <div className={Style.cardLocais} key={i}>
+
+<h2 key={item._id}>{item.name}</h2>
+            </div>
+
+
+)
+)
+}
 
            </div>
 

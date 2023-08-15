@@ -1,0 +1,14 @@
+.divLocais{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto
+}
+.cardLocais{
+    height: 200px;
+    width: 200px;
+    background-color: aquamarine;
+    display: flex;
+    margin: auto;
+    margin-top: 10px
+    
+}
