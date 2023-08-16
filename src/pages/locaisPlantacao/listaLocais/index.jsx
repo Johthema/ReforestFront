@@ -176,7 +176,7 @@ return false
 <Modal show={show2} onHide={handleClose2}>
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
-            <h2 className={Style.tituloDeletar}>Deletar categoria!</h2>
+            <h2 className={Style.tituloDeletar}>Deletar Local!</h2>
             <h5 className={Style.tituloDelet}>{nome}</h5>
           </Modal.Title>
         </Modal.Header>
