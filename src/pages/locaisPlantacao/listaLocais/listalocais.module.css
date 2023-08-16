@@ -20,10 +20,14 @@
     margin-top: 15px;
     border: solid 2px;
     border-color: #979797 ;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     cursor: pointer;
+    /* text-align: center; */
    
     
+}
+.HeaderLocais{
+    text-align: center;
 }
 .cardLocais:hover{
     box-shadow: 2px 2px 3px 3px #e5e5e5;
@@ -43,7 +47,35 @@
     height: 40%;
 }
 
-.divDescricao{
-    font-size: 24px;
+.divIcones{
+    background-color: #ffffff;
+    width: 108%;
+    border: solid 1px #ebeaea;
+    margin-left: -15px;
+    font-size: 20px;
+}
+.Icon1{
+    color: #116582;
+}
+.Icon2{
+    color: #040404;
+}
+.Icon3{
+    color: #118222;
+}
+.Icon4{
+    color: #3ce812;
+}
+.Icon5{
+    color: #824011;
+}
+
+.DescricaoLocais{
     margin-left: 5px;
+    text-align: center;
+}
+
+.footerCard{
+    display: flex;
+    flex-wrap: wrap;
 }

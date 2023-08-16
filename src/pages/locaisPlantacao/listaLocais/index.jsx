@@ -4,7 +4,11 @@ import Style from './listalocais.module.css';
 import {useState, useEffect} from 'react';
 import Image from 'next/image';
 import Logotipo from '../../../assets/images/fundofloresta4.jpg';
-import Footer from '../../../components/footer/index'
+import Footer from '../../../components/footer/index';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined } from "react-icons/fa";
+
 
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -50,25 +54,56 @@ export default function ListarLocal(){
                 Lista de locais de plantação em atividade
             </h1>
             </div>
+
+
+           
             
            <div className={Style.divLocais}>
-           {dataCat && dataCat.map((item, i = index) => (
-            <div className={Style.cardLocais} key={i}>
 
-              <div className={Style.divNome}>
-              <h2 key={item._id}>{item.name}</h2>
-              </div>
+           
+
+           {dataCat && dataCat.map((item, i = index) => (
+
+          <Card key={i} className={Style.cardLocais}>
+                        <Card.Header className={Style.HeaderLocais}><h4>{item.name}</h4></Card.Header>
+                        <Card.Body>
+                          {/* <Card.Title>Special title treatment</Card.Title> */}
+                          <Image src={Logotipo} className={Style.imagemLocal} alt="" />
+                          <Card.Text className={Style.DescricaoLocais}>
+                          <h5>{item.description}</h5>
+                          </Card.Text>
+                          {/* <Button variant="primary">Go somewhere</Button> */}
+                        </Card.Body>
+                        <Card.Footer className="text-muted">
+                          {/* <div className={Style.footerCard}>
+                          
+                          </div> */}
+                          <div className={Style.divIcones}><FaGlobeAmericas className={Style.Icon1}/> País: </div>
+                          <div className={Style.divIcones}><FaCity className={Style.Icon2}/> Cidade: </div>
+                          <div className={Style.divIcones}><FaTree className={Style.Icon3}/> Árvores plantadas: </div>
+                          <div className={Style.divIcones}><FaSeedling className={Style.Icon4}/> Árvores a plantar: </div>
+                          <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5}/> Hectares: </div>
+                         
+                          </Card.Footer>
+          </Card>
+
+
+            // <div className={Style.cardLocais} key={i}>
+
+            //   <div className={Style.divNome}>
+            //   <h2 key={item._id}>{item.name}</h2>
+            //   </div>
                
 
-              <Image src={Logotipo} className={Style.imagemLocal} alt="" />
-              <div className={Style.divDescricao}>
-                <p>{item.description}</p>
-              </div>
-              <div>
-                <h4></h4>
-              </div>
+            //   <Image src={Logotipo} className={Style.imagemLocal} alt="" />
+            //   <div className={Style.divDescricao}>
+            //     <p>{item.description}</p>
+            //   </div>
+            //   <div>
+            //     <h4></h4>
+            //   </div>
               
-            </div>
+            // </div>
 
             ))}
 
