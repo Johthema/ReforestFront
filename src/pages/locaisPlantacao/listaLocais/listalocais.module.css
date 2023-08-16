@@ -18,10 +18,21 @@
     /* display: flex; */
     margin: auto;
     margin-top: 15px;
-    box-shadow: 2px 2px 3px 3px #e5e5e5;
+    border: solid 2px;
+    border-color: #979797 ;
     border-radius: 15px;
     cursor: pointer;
+   
     
+}
+.cardLocais:hover{
+    box-shadow: 2px 2px 3px 3px #e5e5e5;
+    transition: 0.2s;
+    
+    /*border-color: rgb(37, 194, 76); */
+    /* background-image: linear-gradient(honeydew, #93d7e9); */
+    /* background-color: #d9f9d9 */
+    background-color: #fff;
 }
 .divNome{
     display: flex;

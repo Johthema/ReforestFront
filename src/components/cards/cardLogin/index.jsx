@@ -32,7 +32,7 @@ export default function LoginCard(){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [loadding,  setLoadding] = useState(false)
-
+    const [resposta, setResposta] = useState('')
 
     //Variaveis login
     const [identifier, setIdentifier] = useState('');
@@ -90,7 +90,18 @@ export default function LoginCard(){
                 },
                 body: JSON.stringify({ identifier, password }),
                
+            }).then(response => response.json())
+            .then(data => {
+              //console.log(data); // Exibe a resposta do servidor no console
+              //const resp = data.message
+              setResposta(data.message)
+             
+               
+  
+  
             })
+
+
             // .then(response => {
                
             //     if (!response.ok) {
@@ -113,10 +124,8 @@ export default function LoginCard(){
                 localStorage.setItem("tokenId", meuDadoString);
                 fecthAllData(data.token)
                 
-               
-            } 
-            
-            )
+                
+            })
 
            
            
@@ -321,7 +330,7 @@ export default function LoginCard(){
 
 {loadding &&
     <div className={Style.DivSpinnerLoadding}>
-        <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} />
+        <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} /> Seja bem-vindo!
     </div>
 }
 
@@ -339,7 +348,7 @@ export default function LoginCard(){
 
 {errorInt &&
   <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
-    <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, tente novamente.
+    <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, Obs: {resposta}.
   </Alert>
 }
        
