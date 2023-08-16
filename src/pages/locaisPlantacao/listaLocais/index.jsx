@@ -220,7 +220,7 @@ const handleShowEdit = (idUser) =>{
 
       <Offcanvas show={showEdit} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Editar lOCAL</Offcanvas.Title>
+          <Offcanvas.Title>Editar Local</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
      
