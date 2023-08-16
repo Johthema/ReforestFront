@@ -11,6 +11,8 @@ import { FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaEdit, F
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import Modal from 'react-bootstrap/Modal';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import CardLocalEdit from '../cadastrarLocal/cardCadLocalEdit/index';
 
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -70,7 +72,7 @@ export default function ListarLocal(){
 
   }, [reloadCount]);
 
-//------------------------------DELETAR LOCAL
+//------------------------------DELETAR LOCAL INICIO
 const idUsuario = (event, nome) =>{
    
   console.log("O id do usuario é: ", event)
@@ -114,6 +116,23 @@ const DeleteLocal = async (evt) => {
 return false
 }
 
+//---------------------------DELETAR LUGAR FIM
+
+//---------------------------EDITAR LOCAL INICIO
+const [dadosEditar, setDadosEditar] = useState('')
+
+const handleShowEdit = (idUser) =>{
+ 
+  setShowEdit(true);
+  setDadosEditar(idUser);
+  
+}
+
+
+
+
+//---------------------------EDITAR LOCAL FIM
+
 
     return(
         <div>
@@ -136,7 +155,7 @@ return false
           <Card key={i} className={Style.cardLocais}>
                         <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
                          <div className={Style.iconesAdmin}>
-                          <FaEdit className={Style.iconesAdminIcon1}/>
+                          <FaEdit className={Style.iconesAdminIcon1} onClick={()=> handleShowEdit(item._id)}/>
                           <FaTrashAlt className={Style.iconesAdminIcon2}  onClick={() => idUsuario(item._id, item.name)}/>
                           </div>
                           
@@ -172,6 +191,11 @@ return false
 
            </div>
            <Footer/>
+
+
+
+
+           
 {/* ==============Modal de deletar local============== */}
 <Modal show={show2} onHide={handleClose2}>
         <Modal.Header closeButton>
@@ -193,6 +217,16 @@ return false
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <Offcanvas show={showEdit} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Editar lOCAL</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+     
+        <CardLocalEdit  /> 
+        </Offcanvas.Body>
+      </Offcanvas>
 
 
 
