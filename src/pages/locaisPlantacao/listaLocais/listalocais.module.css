@@ -28,7 +28,43 @@
 }
 .HeaderLocais{
     text-align: center;
+    display: flex;
+    
 }
+
+
+.iconesAdmin{
+    font-size: 20px;
+    margin-inline-start: auto;
+    
+}
+/* .iconesAdmin:hover{
+    margin-inline-start: auto;
+   
+} */
+.iconesAdminIcon1{
+    cursor: pointer;
+    font-size: 23px;
+    transition: 0.2s;
+}
+.iconesAdminIcon1:hover{
+    cursor: pointer;
+    font-size: 25px;
+    transition: 0.2s;
+    color: #55ACEE
+}
+.iconesAdminIcon2{
+    cursor: pointer;
+    font-size: 23px;
+    transition: 0.2s;
+}
+.iconesAdminIcon2:hover{
+    cursor: pointer;
+    font-size: 25px;
+    transition: 0.2s;
+    color: #EE6755
+}
+
 .cardLocais:hover{
     box-shadow: 2px 2px 3px 3px #e5e5e5;
     transition: 0.2s;

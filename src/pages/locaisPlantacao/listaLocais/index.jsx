@@ -7,7 +7,7 @@ import Logotipo from '../../../assets/images/fundofloresta4.jpg';
 import Footer from '../../../components/footer/index';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined } from "react-icons/fa";
+import { FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaEdit, FaTrashAlt } from "react-icons/fa";
 
 
 export default function ListarLocal(){
@@ -65,7 +65,15 @@ export default function ListarLocal(){
            {dataCat && dataCat.map((item, i = index) => (
 
           <Card key={i} className={Style.cardLocais}>
-                        <Card.Header className={Style.HeaderLocais}><h4>{item.name}</h4></Card.Header>
+                        <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
+                         <div className={Style.iconesAdmin}>
+                          <FaEdit className={Style.iconesAdminIcon1}/>
+                          <FaTrashAlt className={Style.iconesAdminIcon2}/>
+                          </div>
+                          
+                          
+                         
+                         </Card.Header>
                         <Card.Body>
                           {/* <Card.Title>Special title treatment</Card.Title> */}
                           <Image src={Logotipo} className={Style.imagemLocal} alt="" />
@@ -85,6 +93,7 @@ export default function ListarLocal(){
                           <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5}/> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
                           <div className={Style.divBotaoPlant}>
                           <Button className={Style.botaoPlantar}>Plantar aqui</Button>
+                          
                           </div>
                           
                           </Card.Footer>
