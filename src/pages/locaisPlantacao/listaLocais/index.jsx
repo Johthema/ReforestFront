@@ -83,7 +83,10 @@ export default function ListarLocal(){
                           <div className={Style.divIcones}><FaTree className={Style.Icon3}/> Árvores plantadas: <h5 className={Style.nomeItem}>{item.plantedTrees}</h5></div>
                           <div className={Style.divIcones}><FaSeedling className={Style.Icon4}/> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
                           <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5}/> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
-                         
+                          <div className={Style.divBotaoPlant}>
+                          <Button className={Style.botaoPlantar}>Plantar aqui</Button>
+                          </div>
+                          
                           </Card.Footer>
           </Card>
 

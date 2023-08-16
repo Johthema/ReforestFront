@@ -90,16 +90,17 @@ export default function LoginCard(){
                 },
                 body: JSON.stringify({ identifier, password }),
                
-            }).then(response => response.json())
-            .then(data => {
-              //console.log(data); // Exibe a resposta do servidor no console
-              //const resp = data.message
-              setResposta(data.message)
+            })
+            // .then(response => response.json())
+            // .then(data => {
+            //   //console.log(data); // Exibe a resposta do servidor no console
+            //   //const resp = data.message
+            //   setResposta(data.message)
              
                
   
   
-            })
+            // })
 
 
             // .then(response => {
@@ -330,7 +331,8 @@ export default function LoginCard(){
 
 {loadding &&
     <div className={Style.DivSpinnerLoadding}>
-        <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} /> Seja bem-vindo!
+      
+        <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} />
     </div>
 }
 

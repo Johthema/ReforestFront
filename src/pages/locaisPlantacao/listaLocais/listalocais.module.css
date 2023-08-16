@@ -85,3 +85,18 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.divBotaoPlant{
+    display: flex;
+    justify-content: center;
+}
+.botaoPlantar{
+    margin: 10px;
+    background-color: #2F2F2F;
+    border-color: #2F2F2F
+}
+
+.botaoPlantar:hover{
+    background-color: var(--secundaryTom1-color3);
+    border-color: var(--secundaryTom1-color3);
+}
