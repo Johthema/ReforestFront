@@ -53,6 +53,7 @@
     border: solid 1px #ebeaea;
     margin-left: -15px;
     font-size: 20px;
+    display: flex;
 }
 .Icon1{
     color: #116582;
@@ -68,6 +69,11 @@
 }
 .Icon5{
     color: #824011;
+}
+
+.nomeItem{
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .DescricaoLocais{
