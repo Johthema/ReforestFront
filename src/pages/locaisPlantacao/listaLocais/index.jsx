@@ -58,14 +58,14 @@ export default function ListarLocal(){
               <div className={Style.divNome}>
               <h2 key={item._id}>{item.name}</h2>
               </div>
-              
+               
 
               <Image src={Logotipo} className={Style.imagemLocal} alt="" />
               <div className={Style.divDescricao}>
                 <p>{item.description}</p>
               </div>
               <div>
-                icones 
+                <h4></h4>
               </div>
               
             </div>
