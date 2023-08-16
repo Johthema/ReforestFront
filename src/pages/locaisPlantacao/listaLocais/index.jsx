@@ -87,24 +87,6 @@ export default function ListarLocal(){
                           </Card.Footer>
           </Card>
 
-
-            // <div className={Style.cardLocais} key={i}>
-
-            //   <div className={Style.divNome}>
-            //   <h2 key={item._id}>{item.name}</h2>
-            //   </div>
-               
-
-            //   <Image src={Logotipo} className={Style.imagemLocal} alt="" />
-            //   <div className={Style.divDescricao}>
-            //     <p>{item.description}</p>
-            //   </div>
-            //   <div>
-            //     <h4></h4>
-            //   </div>
-              
-            // </div>
-
             ))}
 
            </div>
