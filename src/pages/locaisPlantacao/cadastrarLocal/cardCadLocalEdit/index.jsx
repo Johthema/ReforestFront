@@ -175,7 +175,7 @@ export default function EditarLocal({handleShowEdit}) {
         console.log("usuario ID Logado: ", localStorage.getItem("idUs") )
         fecthAllData();
     
-      }, []);
+      }, [reloadCount]);
 
       const [show, setShow] = useState(true);
 
@@ -207,7 +207,7 @@ export default function EditarLocal({handleShowEdit}) {
             setLoading(false)
             //setErroInterno(true)
             setErro(true)
-            
+             
           } 
           else if(response.status == 500){
             setLoading(false)
@@ -216,9 +216,15 @@ export default function EditarLocal({handleShowEdit}) {
           else if(response.status == 200){
             setLoading(false)
             setSuccess(true)
+           
           }
          
           // setLoading(false)
+
+          setTimeout(() => { //Uso do setTimeout para fechar o alert dos dados
+            setSuccess(false);
+          }, 2000);
+          setReloadCount(prevCount => prevCount + 1);
     
         } catch (err) {
             setSuccess(false)
