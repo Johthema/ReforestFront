@@ -324,7 +324,7 @@ export default function EditarLocal({handleShowEdit}) {
                 onChange={onChangeNursery}
             />
                 </Col>
-
+ 
             </Row>
            
     <br/>
