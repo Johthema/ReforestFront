@@ -45,7 +45,7 @@ export default function EditarLocal({handleShowEdit}) {
     //Funçãos de cadastro da árvore
    
     const onChangeUserId = (evt) => {
-        setUserId(localStorage.getItem("tokenId"))
+        setUserId(localStorage.getItem("idUs"))
     
     }
     const onChangeNome = (evt) => {
@@ -139,10 +139,24 @@ export default function EditarLocal({handleShowEdit}) {
           if (!data)
             throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
           setData(data)
-    
+
           //Setando as variáveis com os atributos vindo da api após o data ser setado. para não passar vazio no envio do formulario
           setNome(data.name)
-          setDescription(data.description)
+          setUserId(localStorage.getItem("idUs")),
+          setDescription(data.description), 
+          setAddress(data.address), 
+          setPostalCode(data.postalCode),
+          setCountry(data.country), 
+          setCity(data.city), 
+          setLatitude(data.latitude), 
+          setLongitude(data.longitude), 
+          setTreesToBePlanted(data.treesToBePlanted), 
+          setHectare(data.hectare),
+          setPlantedTrees(data.plantedTrees), 
+          setFalledTrees(data.falledTrees), 
+          setLimitTrees(data.limitTrees), 
+          setIrrigation(data.irrigation), 
+          setNursery(data.nursery)
         //   setCientificName(data.cientificName)
         //   setPermanentCarbonTax(data.permanentCarbonTax)
         //   setCarbonOffsetPeriod(data.carbonOffsetPeriod)
@@ -179,11 +193,14 @@ export default function EditarLocal({handleShowEdit}) {
         } finally {
           setLoading(false)
         }
-    
+     
       }
         //console.log("o role que retornou é: ", roles)
       //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
       useEffect(() => {
+        //onChangeUserId()
+        setUserId(localStorage.getItem("idUs"))
+        console.log("usuario ID Logado: ", localStorage.getItem("idUs") )
         fecthAllData();
     
       }, []);
@@ -197,7 +214,7 @@ export default function EditarLocal({handleShowEdit}) {
         try {
           setLoading(true)
     
-          const response = await fetch(URL_API+idEditavel, {
+          const response = await fetch(URL_API+"/"+idEditavel, {
             method: 'PUT',
             headers: {
               Accept: 'application/json',
@@ -205,10 +222,9 @@ export default function EditarLocal({handleShowEdit}) {
             },
     
             body: JSON.stringify({ 
-                 name, cientificName, category, img,
-                 permanentCarbonTax, annualCarbonOffset, carbonOffsetPeriod,
-                 treeHeight, treeDiameter, fruitfulTree, productionPeriod,
-                 harvestReplace, price, description }),
+                userId, name, description, address, postalCode,
+                country, city, latitude, longitude, treesToBePlanted, hectare,
+                plantedTrees, falledTrees, limitTrees, irrigation, nursery }),
           })
     
           const json = await response.json()
@@ -260,10 +276,10 @@ export default function EditarLocal({handleShowEdit}) {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupLocalizacao">
             <FloatingLabel controlId="floatingInput" label="latitude" className="mb-3">
-                <Form.Control type="text" placeholder="latitude"  onChange={onChangeLatitude} value={data.latitude}/>
+                <Form.Control type="text" placeholder="latitude" value={data.latitude} onChange={onChangeLatitude} />
             </FloatingLabel>
             <FloatingLabel controlId="floatingInput" label="Longitude" className="mb-3">
-                <Form.Control type="text" placeholder="Longitude"  onChange={onChangeLongitude} value={data.longitude}/>
+                <Form.Control type="text" placeholder="Longitude" value={data.longitude} onChange={onChangeLongitude} />
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupEndereco">
