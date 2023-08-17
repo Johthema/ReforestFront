@@ -78,8 +78,6 @@ export default function EditarLocal({handleShowEdit}) {
           
             setTreesToBePlanted(evt.target.value)
           }
-        
-        
        
     }
     const onChangeHectare = (evt) =>{
@@ -144,19 +142,20 @@ export default function EditarLocal({handleShowEdit}) {
     
           //Setando as variáveis com os atributos vindo da api após o data ser setado. para não passar vazio no envio do formulario
           setNome(data.name)
-          setCientificName(data.cientificName)
-          setPermanentCarbonTax(data.permanentCarbonTax)
-          setCarbonOffsetPeriod(data.carbonOffsetPeriod)
-          setAnnualCarbonOffset(data.setAnnualCarbonOffset)
-          // setCategory(data.category.name)
-          console.log("cats name: ", data.category.name)
-          setTreeHeight(data.treeHeight)
-          setTreeDiameter(data.treeDiameter)
-          setProductionPeriod(data.productionPeriod)
-          setHarvestReplace(data.harvestReplace)
-          setPrice(data.price)
-          setImg(data.img)
           setDescription(data.description)
+        //   setCientificName(data.cientificName)
+        //   setPermanentCarbonTax(data.permanentCarbonTax)
+        //   setCarbonOffsetPeriod(data.carbonOffsetPeriod)
+        //   setAnnualCarbonOffset(data.setAnnualCarbonOffset)
+        //   // setCategory(data.category.name)
+        //   console.log("cats name: ", data.category.name)
+        //   setTreeHeight(data.treeHeight)
+        //   setTreeDiameter(data.treeDiameter)
+        //   setProductionPeriod(data.productionPeriod)
+        //   setHarvestReplace(data.harvestReplace)
+        //   setPrice(data.price)
+        //   setImg(data.img)
+          
     
           const response2 = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
           const dataCat = await response2.json()
