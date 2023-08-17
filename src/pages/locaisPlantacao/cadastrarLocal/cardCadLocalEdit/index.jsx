@@ -1,4 +1,3 @@
-//import Header from '../../../components/header/index';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Style from './cardCadLocalEdit.module.css';
@@ -119,15 +118,6 @@ export default function EditarLocal({handleShowEdit}) {
         
     }
 
-
-    // const onChangeTrees = (evt) =>{
-    //     setTrees(evt.target.value)
-    // }
-
-    
-    
-  
-    // console.log("tokenId: ",localStorage.getItem("tokenId"))
     const fecthAllData = async () => {
         try {
     
@@ -157,18 +147,6 @@ export default function EditarLocal({handleShowEdit}) {
           setLimitTrees(data.limitTrees), 
           setIrrigation(data.irrigation), 
           setNursery(data.nursery)
-        //   setCientificName(data.cientificName)
-        //   setPermanentCarbonTax(data.permanentCarbonTax)
-        //   setCarbonOffsetPeriod(data.carbonOffsetPeriod)
-        //   setAnnualCarbonOffset(data.setAnnualCarbonOffset)
-        //   // setCategory(data.category.name)
-        //   console.log("cats name: ", data.category.name)
-        //   setTreeHeight(data.treeHeight)
-        //   setTreeDiameter(data.treeDiameter)
-        //   setProductionPeriod(data.productionPeriod)
-        //   setHarvestReplace(data.harvestReplace)
-        //   setPrice(data.price)
-        //   setImg(data.img)
           
     
           const response2 = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
@@ -180,11 +158,6 @@ export default function EditarLocal({handleShowEdit}) {
           setData(dataCat)
           console.log("categorias: ",dataCat)
     
-    
-    
-        //   setRoleLocal(data.roles[0].name)
-          
-        //   console.log("o role que retornou é: ", data.roles[0].name)
     
           //Iniciando a estrutura da requisição
     
@@ -198,7 +171,6 @@ export default function EditarLocal({handleShowEdit}) {
         //console.log("o role que retornou é: ", roles)
       //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
       useEffect(() => {
-        //onChangeUserId()
         setUserId(localStorage.getItem("idUs"))
         console.log("usuario ID Logado: ", localStorage.getItem("idUs") )
         fecthAllData();
