@@ -11,10 +11,11 @@ import {useState, useEffect} from 'react'
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 
-//const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
+const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
-export default function EditarLocal() {
+export default function EditarLocal({handleShowEdit}) {
     //Variáveis de feedback
+    const [idEditavel, setIdEditavel] = useState(handleShowEdit)
     const [loading, setLoading] = useState(false);
     //Variáveis de cadastro
     const [reloadCount, setReloadCount] = useState(0);
@@ -39,6 +40,7 @@ export default function EditarLocal() {
     const [errorInt, setErroInterno] = useState(false);
     const [success, setSuccess] = useState(false);
     const [resposta, setResposta] = useState('')
+    const [data, setData] = useState([])
 
     //Funçãos de cadastro da árvore
    
@@ -77,7 +79,7 @@ export default function EditarLocal() {
             setTreesToBePlanted(evt.target.value)
           }
         
-       
+        
        
     }
     const onChangeHectare = (evt) =>{
@@ -128,82 +130,116 @@ export default function EditarLocal() {
     
   
     // console.log("tokenId: ",localStorage.getItem("tokenId"))
-
-    useEffect(() => {
-        // setTokenI(localStorage.getItem("tokenId"))
-        console.log("Id do usuario: ",localStorage.getItem("idUs"))
-        setUserId(localStorage.getItem("idUs"))
-        // console.log();
-        // fecthAllData();
-       
+    const fecthAllData = async () => {
+        try {
     
-      }, [reloadCount]);
+        //   setLoading(true)
+          const response = await fetch(URL_API+"/"+idEditavel) //por padrão o fetch ja utiliza o GET
+          const data = await response.json()
+          console.log("O conteudo: ",data);
+    
+          if (!data)
+            throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+          setData(data)
+    
+          //Setando as variáveis com os atributos vindo da api após o data ser setado. para não passar vazio no envio do formulario
+          setNome(data.name)
+          setCientificName(data.cientificName)
+          setPermanentCarbonTax(data.permanentCarbonTax)
+          setCarbonOffsetPeriod(data.carbonOffsetPeriod)
+          setAnnualCarbonOffset(data.setAnnualCarbonOffset)
+          // setCategory(data.category.name)
+          console.log("cats name: ", data.category.name)
+          setTreeHeight(data.treeHeight)
+          setTreeDiameter(data.treeDiameter)
+          setProductionPeriod(data.productionPeriod)
+          setHarvestReplace(data.harvestReplace)
+          setPrice(data.price)
+          setImg(data.img)
+          setDescription(data.description)
+    
+          const response2 = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
+          const dataCat = await response2.json()
+    
+          if (!dataCat)
+            throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+        //   setDataCat(dataCat)
+          setData(dataCat)
+          console.log("categorias: ",dataCat)
+    
+    
+    
+        //   setRoleLocal(data.roles[0].name)
+          
+        //   console.log("o role que retornou é: ", data.roles[0].name)
+    
+          //Iniciando a estrutura da requisição
+    
+        } catch (error) {
+          console.log(error)
+        } finally {
+          setLoading(false)
+        }
+    
+      }
+        //console.log("o role que retornou é: ", roles)
+      //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
+      useEffect(() => {
+        fecthAllData();
+    
+      }, []);
 
       const [show, setShow] = useState(true);
 
-    const enviarForm = async (evt) => {
+
+      const enviarForm = async (evt) => {
 
         evt.preventDefault()
-        setLoading(true)
         try {
-          
+          setLoading(true)
     
-          const response = await fetch(URL_API, {
-            method: 'POST',
+          const response = await fetch(URL_API+idEditavel, {
+            method: 'PUT',
             headers: {
               Accept: 'application/json',
               'Content-type': 'application/json'
             },
     
             body: JSON.stringify({ 
-                userId, name, description, address, postalCode,
-                country, city, latitude, longitude, treesToBePlanted, hectare,
-                plantedTrees, falledTrees, limitTrees, irrigation, nursery,
-                //  trees
-            }),
-          }).then(response => response.json())
-          .then(data => {
-            //console.log(data); // Exibe a resposta do servidor no console
-            //const resp = data.message
-            setResposta(data.message)
-           
-             
-
-
+                 name, cientificName, category, img,
+                 permanentCarbonTax, annualCarbonOffset, carbonOffsetPeriod,
+                 treeHeight, treeDiameter, fruitfulTree, productionPeriod,
+                 harvestReplace, price, description }),
           })
-
-          if (response.status == 400 ){
-            console.log("o status é: ", response)
-           
+    
+          const json = await response.json()
+       
+           if (response.status == 400){
+            console.log("o status é: ", response.status)
             setSuccess(false)
             setLoading(false)
-            setErroInterno(true)
-            //setErro(true)
+            //setErroInterno(true)
+            setErro(true)
             
-          }  else if(response.status == 500){
-            setSuccess(false)
+          } 
+          else if(response.status == 500){
             setLoading(false)
             setErroInterno(true)
           }
           else if(response.status == 200){
-            console.log("entrou no estatus 200")
             setLoading(false)
             setSuccess(true)
           }
-    
-          const json = await response.json()
-          // console.log("::",error.response)
-        
-
+         
           // setLoading(false)
     
         } catch (err) {
-            //setSuccess(false)
-            //setLoading(false)
-            //setErroInterno(true)
-          console.log("aqui é o erro: ",err)
+            setSuccess(false)
+            setLoading(false)
+            setErroInterno(true)
+          console.log(err)
         }
-      }    
+      }   
 
 
   return (
@@ -214,21 +250,21 @@ export default function EditarLocal() {
       <Card.Header>Dados do Local</Card.Header>
       <Card.Body>
 
-        <Form onSubmit={enviarForm} method='post'>
+        <Form onSubmit={enviarForm} method='put'>
             <Form.Group className="mb-3" controlId="formGrouNome">
             <FloatingLabel controlId="floatingInput" label="Nome" className="mb-3">
-                <Form.Control type="text"  placeholder="Nome"  onChange={onChangeNome} />
+                <Form.Control type="text"  placeholder="Nome"  value={data.name}  onChange={onChangeNome} />
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Control as="textarea"  rows={3}  placeholder='Descrição'  onChange={onChangeDescription}/>
+                <Form.Control as="textarea"  rows={3}  placeholder='Descrição' value={data.description}  onChange={onChangeDescription}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupLocalizacao">
             <FloatingLabel controlId="floatingInput" label="latitude" className="mb-3">
-                <Form.Control type="text" placeholder="latitude"  onChange={onChangeLatitude}/>
+                <Form.Control type="text" placeholder="latitude"  onChange={onChangeLatitude} value={data.latitude}/>
             </FloatingLabel>
             <FloatingLabel controlId="floatingInput" label="Longitude" className="mb-3">
-                <Form.Control type="text" placeholder="Longitude"  onChange={onChangeLongitude}/>
+                <Form.Control type="text" placeholder="Longitude"  onChange={onChangeLongitude} value={data.longitude}/>
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupEndereco">
@@ -236,32 +272,32 @@ export default function EditarLocal() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupCdgPostal">
             <FloatingLabel controlId="floatingInput" label="Código postal" className="mb-3">
-                <Form.Control type="text"  placeholder="Código postal"  onChange={onChangePostalCode} />
+                <Form.Control type="text"  placeholder="Código postal"  onChange={onChangePostalCode} value={data.postalCode} />
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupEndereco">
             <FloatingLabel controlId="floatingInput" label="Endereço" className="mb-3">
-                <Form.Control type="text"  placeholder="Endereço"  onChange={onChangeAddress} />
+                <Form.Control type="text"  placeholder="Endereço"  onChange={onChangeAddress} value={data.address} />
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupCidade">
             <FloatingLabel controlId="floatingInput" label="Cidade" className="mb-3">
-                <Form.Control type="text" placeholder="Cidade"  onChange={onChangeCity} />
+                <Form.Control type="text" placeholder="Cidade"  onChange={onChangeCity} value={data.city}/>
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupPais">
             <FloatingLabel controlId="floatingInput" label="País" className="mb-3">
-                <Form.Control type="text" placeholder="Pais" onChange={onChangeCountry} />
+                <Form.Control type="text" placeholder="Pais" onChange={onChangeCountry} value={data.country}/>
                 </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupHectare">
             <FloatingLabel controlId="floatingInput" label="Hectare" className="mb-3">
-                <Form.Control type="text" placeholder="Hectare" onChange={onChangeHectare} />
+                <Form.Control type="text" placeholder="Hectare" onChange={onChangeHectare} value={data.hectare}/>
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupLimite">
             <FloatingLabel controlId="floatingInput" label="limite" className="mb-3">
-                <Form.Control type="text" placeholder="Hectare" onChange={onChangeLimitTrees} />
+                <Form.Control type="text" placeholder="limite" onChange={onChangeLimitTrees} value={data.limitTrees} />
             </FloatingLabel>
             </Form.Group>
 
@@ -271,13 +307,13 @@ export default function EditarLocal() {
 
             <Row>
                 <Col>
-                  <Form.Control type="number" placeholder="Árvores derrubadas" onChange={onChangeFalledTrees}/>
+                  <Form.Control type="number" placeholder="Árvores derrubadas" onChange={onChangeFalledTrees} value={data.falledTrees}/>
                 </Col>
                 <Col>
-                  <Form.Control type="number" placeholder="Árvores ja plantadas " onChange={onChangePlantedTrees}/>
+                  <Form.Control type="number" placeholder="Árvores ja plantadas " onChange={onChangePlantedTrees} value={data.plantedTrees}/>
                 </Col>
                 <Col>
-                  <Form.Control type="number"  placeholder="Árvores a plantar" onChange={onChangeTreesToBePlanted}/>
+                  <Form.Control type="number"  placeholder="Árvores a plantar" onChange={onChangeTreesToBePlanted} value={data.treesToBePlanted}/>
                 </Col>
             </Row>
  
@@ -308,7 +344,7 @@ export default function EditarLocal() {
                 <Row>
                 <Col>
                 <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Control type="file" className={Style.Preco}/>
+                    <Form.Control type="file" className={Style.Preco} />
                 </Form.Group>
                 {/* <Form.Control placeholder="Árvores" className={Style.Preco} onChange={onChangeTrees}/> */}
                 </Col>

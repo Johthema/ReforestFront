@@ -224,7 +224,7 @@ const handleShowEdit = (idUser) =>{
         </Offcanvas.Header>
         <Offcanvas.Body>
      
-        <CardLocalEdit  /> 
+        <CardLocalEdit handleShowEdit={dadosEditar} /> 
         </Offcanvas.Body>
       </Offcanvas>
 
@@ -240,7 +240,7 @@ const handleShowEdit = (idUser) =>{
             <Spinner animation="grow" variant="success" /> Deletado com sucesso!
           </Alert>
         }
-
+ 
         {loading &&
           <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
             <Spinner animation="border" variant="primary" /> Aguarde, carregando...
