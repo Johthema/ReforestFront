@@ -158,7 +158,8 @@ export default function ListarArvore() {
 
 //===========================================[[[RENDERIZAÇÃO DA PAGINA]]]===================================================
   return (
-    <div>
+    <>
+    <div className={Style.divFundoLista}>
       <Header></Header>
       <Breadcrumb className={Style.migalhas}>
         <Breadcrumb.Item href="/home">Home  </Breadcrumb.Item>
@@ -247,6 +248,7 @@ export default function ListarArvore() {
         </Table>
 
       </div>
+     
 
       {loading && !data &&
         <Alert key="1231" variant="primary" className={Style.botaoCarregamento}>
@@ -301,7 +303,7 @@ export default function ListarArvore() {
       </Offcanvas>
       <Footer/>
     </div>
-
+    </>
   )
 
 }

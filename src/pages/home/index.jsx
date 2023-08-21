@@ -125,10 +125,11 @@ export default function Home() {
 
 
   return (
- 
-<div >
+    <>
+    <Header />
+<div className={Style.divFundoHome}>
 
-<Header />
+
 
 <Carousel data-bs-theme="dark" className={Style.DivIndice}>
       <Carousel.Item>
@@ -283,9 +284,12 @@ export default function Home() {
 <div className={Style.UserLogado}>
 <h5 className={Style.legendaUserLog}><FaAppleAlt className={Style.Online}/>Olá, {nomeUser}</h5>
 </div>
-<Footer/>
+
 
 </div>
+
+<Footer/>
+</>
 )
   
 }

@@ -11,7 +11,9 @@
     text-align: center;
     /* margin-top: 100px; */
 }
-
+.divFundoHome{
+    margin-top: 8%;
+}
 .tituloH2{
     font-family: var(--fontPadrao);
     font-size: 24px;
