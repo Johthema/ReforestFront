@@ -13,6 +13,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Modal from 'react-bootstrap/Modal';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardLocalEdit from '../cadastrarLocal/cardCadLocalEdit/index';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -133,10 +134,18 @@ console.log("no vetor: ", dadosEditar)
 
 //---------------------------EDITAR LOCAL FIM
 
-
+ 
     return(
-        <div>
-            <Header></Header>
+      <>
+       <Header></Header>
+      
+        <div className={Style.divFubdoLista}>
+        <Breadcrumb className={Style.migalhas}>
+        <Breadcrumb.Item href="/home">Home  </Breadcrumb.Item>
+        
+        <Breadcrumb.Item active>Lista de Locais.</Breadcrumb.Item>
+      </Breadcrumb>
+            
             <div className={Style.divtitulo}>
             <h1>
                 Lista de locais de plantação em atividade
@@ -190,9 +199,10 @@ console.log("no vetor: ", dadosEditar)
             ))}
 
            </div>
+           
            <Footer/>
 
-
+           
 
 
            
@@ -262,5 +272,6 @@ console.log("no vetor: ", dadosEditar)
 
 
         </div>
+        </>
     )
 }

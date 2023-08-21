@@ -11,6 +11,13 @@
     margin: auto;
     
 }
+.migalhas{
+    display: flex;
+    margin-left: 10%
+}
+.divFubdoLista{
+    margin-top: 10%;
+}
 .cardLocais{
     height: 600px;
     width: 400px;
