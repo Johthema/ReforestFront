@@ -42,11 +42,9 @@ export default function EditarLocal({handleShowEdit}) {
     const [data, setData] = useState([])
 
     //Funçãos de cadastro da árvore
-    console.log("a irrigacao esta: ", irrigation)
-    console.log("o viveiro esta: ", nursery)
 
     const onChangeUserId = (evt) => {
-        setUserId(localStorage.getItem("idUs"))
+        //setUserId('64ac0c12560efc2fb7c20ffc')
     
     }
     const onChangeNome = (evt) => {
@@ -135,6 +133,7 @@ export default function EditarLocal({handleShowEdit}) {
           //Setando as variáveis com os atributos vindo da api após o data ser setado. para não passar vazio no envio do formulario
           setNome(data.name)
           setUserId(localStorage.getItem("idUs")),
+          // setUserId('64ac0c12560efc2fb7c20ffc'), ok esse funciona
           setDescription(data.description), 
           setAddress(data.address), 
           setPostalCode(data.postalCode),
