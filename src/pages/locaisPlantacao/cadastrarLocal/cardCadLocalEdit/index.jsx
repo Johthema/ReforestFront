@@ -14,7 +14,7 @@ const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
 export default function EditarLocal({handleShowEdit}) {
     //Variáveis de feedback
-    const [idEditavel, setIdEditavel] = useState(handleShowEdit)
+    const [idEditavel, setIdEditavel] = useState(handleShowEdit[0])
     const [loading, setLoading] = useState(false);
     //Variáveis de cadastro
     const [reloadCount, setReloadCount] = useState(0);
@@ -32,8 +32,8 @@ export default function EditarLocal({handleShowEdit}) {
     const [plantedTrees, setPlantedTrees] = useState(0);
     const [falledTrees, setFalledTrees] = useState('');
     const [limitTrees, setLimitTrees] = useState('');
-    const [irrigation, setIrrigation] = useState(Boolean);
-    const [nursery, setNursery] = useState(Boolean);
+    const [irrigation, setIrrigation] = useState(handleShowEdit[1]);
+    const [nursery, setNursery] = useState(handleShowEdit[2]);
     const [trees, setTrees] = useState([]);
     const [aviso, setAviso] = useState(false);
     const [errorInt, setErroInterno] = useState(false);
@@ -42,7 +42,9 @@ export default function EditarLocal({handleShowEdit}) {
     const [data, setData] = useState([])
 
     //Funçãos de cadastro da árvore
-   
+    console.log("a irrigacao esta: ", irrigation)
+    console.log("o viveiro esta: ", nursery)
+
     const onChangeUserId = (evt) => {
         setUserId(localStorage.getItem("idUs"))
     
@@ -309,16 +311,87 @@ export default function EditarLocal({handleShowEdit}) {
                   <Form.Control type="number"  placeholder="Árvores a plantar" onChange={onChangeTreesToBePlanted} value={data.treesToBePlanted}/>
                 </Col>
             </Row>
- 
+  
             <Card.Text>
             {/* Total: Árvores plantadas + árvores a plantar */}
             </Card.Text>
+            { irrigation ==true && nursery == false &&
             <Row className={Style.estiloRadio}>
+            <Col>
+            <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Possui irrigação"
+            checked
+            onChange={onChangeIrrigation}
+        />
+            </Col>
+            <Col>
+            <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Possui viveiro"
+            onChange={onChangeNursery}
+        />
+            </Col>
+
+        </Row>
+            }
+            {irrigation == false && nursery==true && 
+            <Row className={Style.estiloRadio}>
+            <Col>
+            <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Possui irrigação"
+                      
+            onChange={onChangeIrrigation}
+        />  
+            </Col>
+            <Col>
+            <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Possui viveiro"
+            checked
+            onChange={onChangeNursery}
+        />
+            </Col>
+
+        </Row>
+            }
+            {irrigation == true && nursery==true && 
+            <Row className={Style.estiloRadio}>
+            <Col>
+            <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Possui irrigação"
+            checked            
+            onChange={onChangeIrrigation}
+        />
+            </Col>
+            <Col>
+            <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Possui viveiro"
+            checked
+            onChange={onChangeNursery}
+        />
+            </Col>
+
+        </Row>
+            }
+
+            {/* <Row className={Style.estiloRadio}>
                 <Col>
                 <Form.Check 
                 type="switch"
                 id="custom-switch"
                 label="Possui irrigação"
+                value={irrigation? true : false}
+                 
                 onChange={onChangeIrrigation}
             />
                 </Col>
@@ -327,11 +400,12 @@ export default function EditarLocal({handleShowEdit}) {
                 type="switch"
                 id="custom-switch"
                 label="Possui viveiro"
+                value={nursery}
                 onChange={onChangeNursery}
             />
                 </Col>
  
-            </Row>
+            </Row> */}
            
     <br/>
                 <Row>

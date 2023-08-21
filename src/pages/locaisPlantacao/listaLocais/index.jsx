@@ -119,16 +119,16 @@ return false
 //---------------------------DELETAR LUGAR FIM
 
 //---------------------------EDITAR LOCAL INICIO
-const [dadosEditar, setDadosEditar] = useState('')
+const [dadosEditar, setDadosEditar] = useState([])
 
-const handleShowEdit = (idUser) =>{
- 
+const handleShowEdit = (idUser, irrigacao, possuiViveiro) =>{
+console.log("os dados passados: ",idUser, irrigacao, possuiViveiro )
   setShowEdit(true);
-  setDadosEditar(idUser);
+  setDadosEditar([idUser, irrigacao, possuiViveiro]);
   
 }
 
-
+console.log("no vetor: ", dadosEditar)
 
 
 //---------------------------EDITAR LOCAL FIM
@@ -155,7 +155,7 @@ const handleShowEdit = (idUser) =>{
           <Card key={i} className={Style.cardLocais}>
                         <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
                          <div className={Style.iconesAdmin}>
-                          <FaEdit className={Style.iconesAdminIcon1} onClick={()=> handleShowEdit(item._id)}/>
+                          <FaEdit className={Style.iconesAdminIcon1} onClick={()=> handleShowEdit(item._id, item.irrigation, item.nursery)}/>
                           <FaTrashAlt className={Style.iconesAdminIcon2}  onClick={() => idUsuario(item._id, item.name)}/>
                           </div>
                           
