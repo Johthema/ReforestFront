@@ -237,8 +237,8 @@ const onChangeOrdem=(ordem) =>{
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais antigo pro recente</Dropdown.Item>
-                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais recente pro antigo</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Antigo para o recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Recente para o antigo</Dropdown.Item>
                   </Dropdown.Menu>
              </Dropdown>
 
