@@ -10,6 +10,7 @@ import Arvores from '../../../components/cards/cardArvore/index';
 import {useState, useEffect} from 'react'
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
@@ -204,11 +205,16 @@ export default function CadastrarLocal() {
           console.log("aqui é o erro: ",err)
         }
       }    
-
+ 
 
   return (
   <>
          <Header></Header>
+<div className={Style.divFundocadastro}>
+<Breadcrumb className={Style.migalhas}>
+  <Breadcrumb.Item href="/home">Home  </Breadcrumb.Item>   
+  <Breadcrumb.Item active>Cadastro de Locail.</Breadcrumb.Item>
+</Breadcrumb>
 
    
     <Card className={Style.cardArvore}>
@@ -354,7 +360,7 @@ export default function CadastrarLocal() {
             <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, Obs:  {resposta}
           </Alert>
         }
-
+</div>
     </>
   );
  

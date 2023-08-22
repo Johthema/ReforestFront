@@ -4,6 +4,13 @@
     margin: auto;
     margin-top: 20px;
 }
+.divFundocadastro{
+    margin-top: 10%
+}
+.migalhas{
+    display: flex;
+    margin-left: 10%
+}
 .estiloRadio{
     width: 70%;
     margin: auto;
