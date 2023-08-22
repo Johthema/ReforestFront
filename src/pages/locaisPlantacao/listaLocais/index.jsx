@@ -297,7 +297,7 @@ const onChangeOrdem=(ordem) =>{
                           <div className={Style.divIcones}><FaSeedling className={Style.Icon4}/> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
                           <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5}/> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
                           <div className={Style.divBotaoPlant}>
-                          <Button className={Style.botaoPlantar}>Plantar aqui</Button>
+                          <Button className={Style.botaoPlantar} href='/plantar'>Plantar aqui</Button>
                           
                           </div>
                           
