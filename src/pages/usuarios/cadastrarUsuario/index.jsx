@@ -6,7 +6,9 @@ import Footer from '../../../components/footer/index'
 
 export default function CadastrarUsuario(){
     return(
-        <div>
+        <>
+        
+        <div className={Style.divFundoCad}>
             <Header></Header>
             <Breadcrumb className={Style.migalhas}>
                 <Breadcrumb.Item href="/home">Home</Breadcrumb.Item>
@@ -19,5 +21,6 @@ export default function CadastrarUsuario(){
             <CardUsuario/>
             <Footer/>
         </div>
+        </>
     )
 }

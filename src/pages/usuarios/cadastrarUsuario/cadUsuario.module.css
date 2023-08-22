@@ -5,6 +5,10 @@
     font-family: var(--fontPadrao);
 }
 
+.divFundoCad{
+    margin-top: 10%;
+}
+
 .migalhas{
     display: flex;
     margin-left: 10%
