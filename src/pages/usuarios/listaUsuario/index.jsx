@@ -198,8 +198,10 @@ export default function ListarUsuario() {
 
 //===========================================[[[RENDERIZAÇÃO DA PAGINA]]]===================================================
   return (
-    <div>
-      <Header></Header>
+    <>
+     <Header></Header>
+    <div className={Style.divFundoLista}>
+     
       <Breadcrumb className={Style.migalhas}>
         <Breadcrumb.Item href="/home">Home</Breadcrumb.Item>
         
@@ -207,7 +209,7 @@ export default function ListarUsuario() {
       </Breadcrumb>
 
       {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
- 
+  
       <div className={Style.divFundo}>
 
         <Navbar className={Style.headerTabela}>
@@ -369,6 +371,7 @@ export default function ListarUsuario() {
       </Offcanvas>
       <Footer/>
     </div>
+    </>
 
   )
 

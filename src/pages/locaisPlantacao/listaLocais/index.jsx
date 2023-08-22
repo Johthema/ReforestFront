@@ -7,13 +7,21 @@ import Logotipo from '../../../assets/images/fundofloresta4.jpg';
 import Footer from '../../../components/footer/index';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaEdit, FaTrashAlt, FaRedoAlt } from "react-icons/fa";
+import { FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined,
+   FaEdit, FaTrashAlt, FaRedoAlt, FaFilter, FaListOl } from "react-icons/fa";
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import Modal from 'react-bootstrap/Modal';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardLocalEdit from '../cadastrarLocal/cardCadLocalEdit/index';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Dropdown from 'react-bootstrap/Dropdown';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
+
 
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -144,7 +152,7 @@ console.log("no vetor: ", dadosEditar)
         <Breadcrumb.Item href="/home">Home  </Breadcrumb.Item>
         
         <Breadcrumb.Item active>Lista de Locais.</Breadcrumb.Item>
-      </Breadcrumb>
+        </Breadcrumb>
             
             <div className={Style.divtitulo}>
             <h1>
@@ -154,7 +162,62 @@ console.log("no vetor: ", dadosEditar)
 
 
            
-            
+            <Navbar className={Style.headerTabela}>
+          <Container>
+            <InputGroup className={Style.Busca}>
+              <Form.Control
+                placeholder="Buscar por nome"
+                aria-label="Buscar por nome"
+                aria-describedby="basic-addon2"
+                // onChange={handleChange}
+              />
+          
+            </InputGroup>
+
+            <Dropdown className={Style.DropMENU}>
+              <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+             
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu  className={Style.OpDropNotifi}>
+              {/* <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
+
+
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown >
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                  <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                  
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    {/* <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item> */}
+                  </Dropdown.Menu>
+             </Dropdown>
+
+            {/* <Dropdown className={Style.DropMENU}>
+              <Dropdown.Toggle className={Style.IconeMENU}>
+                <Nav.Link><FaFilter className={Style.Icon} />Filtro</Nav.Link>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu className={Style.OpDropNotifi} onClick={(e) =>onChangeRoles(e.target.value) }>
+                <Dropdown.Item value="todos" >Todos</Dropdown.Item>
+                <Dropdown.Item value="admin">Administrador</Dropdown.Item>
+                <Dropdown.Item value="user">Usuario</Dropdown.Item>
+
+             
+              </Dropdown.Menu>
+
+            </Dropdown> */}
+          </Container>
+        </Navbar>
+
+
            <div className={Style.divLocais}>
 
            

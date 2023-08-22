@@ -18,6 +18,55 @@
 .divFubdoLista{
     margin-top: 10%;
 }
+
+.Busca{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+ 
+.headerTabela{
+    background-color: #2F2F2F;
+    width: 92.5%;
+    margin: auto;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.DropMENU{
+    margin-inline-start: auto;
+    display: flex
+}
+.IconeMENU{
+    
+    --bs-btn-bg: none;
+    --bs-btn-border-color: none;
+    --bs-btn-hover-color: #55ACEE!important;
+    background-color: transparent !important;
+    color: none;
+    --bs-btn-hover-color: none;
+    --bs-btn-hover-bg: none;
+}
+
+.IconeMENU2{
+    
+    --bs-btn-bg: none;
+    --bs-btn-border-color: none;
+    --bs-btn-hover-color: #55ACEE!important;
+    background-color: transparent !important;
+    color: #000;
+    --bs-btn-active-color: #000 ;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #000;
+}
+
+
+.IconeDrop{
+    width: 20px;
+    height: 20px;
+    color: var(--secundaryTom1-color3);
+    margin-right: 10px;
+}
+
 .cardLocais{
     height: 600px;
     width: 400px;
