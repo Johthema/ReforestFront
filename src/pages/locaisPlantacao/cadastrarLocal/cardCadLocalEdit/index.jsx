@@ -224,9 +224,11 @@ export default function EditarLocal({handleShowEdit}) {
 
           setTimeout(() => { //Uso do setTimeout para fechar o alert dos dados
             setSuccess(false);
+            window.location.reload()
+            // setReloadCount(prevCount => prevCount + 1);
           }, 2000);
-          setReloadCount(prevCount => prevCount + 1);
-    
+          
+     
         } catch (err) {
             setSuccess(false)
             setLoading(false)
