@@ -31,7 +31,7 @@ export default function ListarLocal(){
     const [name, setNome] = useState('');
     const [id, setId] = useState('');
     const [idPapel, setIdPapel] = useState('');
-
+    const [ordenar, setOrdenar] = useState('recente')
     const [loading, setLoading] = useState(false);
     const [aviso, setAviso] = useState(false);
     const [errorInt, setErroInterno] = useState(false);
@@ -57,7 +57,7 @@ export default function ListarLocal(){
     try {
 
       //setLoading(true)
-      const response = await fetch(URL_API) //por padrão o fetch ja utiliza o GET
+      const response = await fetch(URL_API+"?order="+ordenar) //por padrão o fetch ja utiliza o GET
       const dataCat = await response.json()
 
       if (!dataCat)
@@ -139,6 +139,15 @@ console.log("os dados passados: ",idUser, irrigacao, possuiViveiro )
 
 console.log("no vetor: ", dadosEditar)
 
+const onChangeOrdem=(ordem) =>{
+  setOrdenar(ordem)
+  setLoading(true)
+  setTimeout(() => { //Uso do setTimeout para fechar o alert dos dados
+    setLoading(false)
+  }, 1000);
+  setReloadCount(prevCount => prevCount + 1);
+}
+
 
 //---------------------------EDITAR LOCAL FIM
 
@@ -175,18 +184,18 @@ console.log("no vetor: ", dadosEditar)
             </InputGroup>
 
             <Dropdown className={Style.DropMENU}>
-              <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+              {/* <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
               <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
              
-              </Dropdown.Toggle>
+              </Dropdown.Toggle> */}
 
-              <Dropdown.Menu  className={Style.OpDropNotifi}>
-              {/* <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
+              {/* <Dropdown.Menu  className={Style.OpDropNotifi}>
+              <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
                 <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
-                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
 
 
-              </Dropdown.Menu>
+              </Dropdown.Menu> */}
             </Dropdown>
             <Dropdown >
                   <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
@@ -195,8 +204,8 @@ console.log("no vetor: ", dadosEditar)
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    {/* <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
-                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item> */}
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
                   </Dropdown.Menu>
              </Dropdown>
 
@@ -238,7 +247,10 @@ console.log("no vetor: ", dadosEditar)
                           {/* <Card.Title>Special title treatment</Card.Title> */}
                           <Image src={Logotipo} className={Style.imagemLocal} alt="" />
                           <Card.Text className={Style.DescricaoLocais}>
-                          <h5>{item.description}</h5>
+                            <div className={Style.divDescricao}>
+                              <h5>{item.description}</h5>
+                            </div>
+                          
                           </Card.Text>
                           {/* <Button variant="primary">Go somewhere</Button> */}
                         </Card.Body>
