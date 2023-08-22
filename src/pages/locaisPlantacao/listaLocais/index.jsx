@@ -37,7 +37,8 @@ export default function ListarLocal(){
     const [errorInt, setErroInterno] = useState(false);
     const [success, setSuccess] = useState(false);
     const [successDell, setSuccessDell] = useState(false);
-  
+    const [initialRepos, setInitialRepo] = useState([]);
+    const [repos, setRepo] = useState([]);
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
     const [show2, setShow2] = useState(false);
@@ -53,33 +54,65 @@ export default function ListarLocal(){
 
 
   //Primeiro carregamengto para saber se esta tudo certo
-  const fecthAllData = async () => {
-    try {
+  // const fecthAllData = async () => {
+  //   try {
 
-      //setLoading(true)
-      const response = await fetch(URL_API+"?order="+ordenar) //por padrão o fetch ja utiliza o GET
-      const dataCat = await response.json()
+  //     //setLoading(true)
+  //     const response = await fetch(URL_API+"?order="+ordenar) //por padrão o fetch ja utiliza o GET
+  //     const dataCat = await response.json()
 
-      if (!dataCat)
-        throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
-      setData(dataCat)
+  //     if (!dataCat)
+  //       throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+  //     setData(dataCat)
 
-      setNome(dataCat.name)
-      console.log("Lista de locais: ",dataCat)
-      //Iniciando a estrutura da requisição
+  //     setNome(dataCat.name)
+  //     console.log("Lista de locais: ",dataCat)
 
-    } catch (error) {
-      console.log(error)
-    } finally {
-    //   setLoading(false)
+
+  //     setInitialRepo(dataCat);
+  //     setRepo(dataCat);
+  //     //Iniciando a estrutura da requisição
+
+  //   } catch (error) {
+  //     console.log(error)
+  //   } finally {
+  //   //   setLoading(false)
+  //   }
+
+  // }
+
+  // useEffect(() => {
+  //   fecthAllData();
+
+  // }, [reloadCount]);
+  useEffect(() => {
+    
+    const fetchRepos = async () => {
+      try {
+        setLoading(true)
+          const response = await fetch(URL_API+"?order="+ordenar)
+          const dados = await response.json();
+        setInitialRepo(dados);
+        setRepo(dados);
+        setLoading(false)
+
+      } catch (error) {
+        console.log(error)
+        setErroInterno(true)
+      }
+    }
+    fetchRepos()
+  }, [reloadCount]);
+
+  const handleChange = ({ target }) => {
+    if (!target.value) {
+      setRepo(initialRepos)
+      return;
     }
 
+    const filterRepos = repos.filter(({ name }) => name.includes(target.value));
+    setRepo(filterRepos)
   }
-
-  useEffect(() => {
-    fecthAllData();
-
-  }, [reloadCount]);
 
 //------------------------------DELETAR LOCAL INICIO
 const idUsuario = (event, nome) =>{
@@ -178,7 +211,7 @@ const onChangeOrdem=(ordem) =>{
                 placeholder="Buscar por nome"
                 aria-label="Buscar por nome"
                 aria-describedby="basic-addon2"
-                // onChange={handleChange}
+                onChange={handleChange}
               />
           
             </InputGroup>
@@ -204,8 +237,8 @@ const onChangeOrdem=(ordem) =>{
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
-                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais antigo pro recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais recente pro antigo</Dropdown.Item>
                   </Dropdown.Menu>
              </Dropdown>
 
@@ -231,7 +264,7 @@ const onChangeOrdem=(ordem) =>{
 
            
 
-           {dataCat && dataCat.map((item, i = index) => (
+           {repos && repos.map((item, i = index) => (
 
           <Card key={i} className={Style.cardLocais}>
                         <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
