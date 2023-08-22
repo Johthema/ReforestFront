@@ -16,6 +16,9 @@ export default function Configuracao(){
     return(
         <>
         <Header></Header>
+        <div className={Style.divFundoConfig}>
+
+        
         <Breadcrumb className={Style.migalhas}>
                 <Breadcrumb.Item href="/info">Home</Breadcrumb.Item>
                 
@@ -64,7 +67,7 @@ export default function Configuracao(){
         
         </Tab> */}
         </Tabs>
-
+        </div>
         <Footer/>
         </>
     )
