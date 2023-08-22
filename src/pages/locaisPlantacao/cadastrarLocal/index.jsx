@@ -213,7 +213,7 @@ export default function CadastrarLocal() {
 <div className={Style.divFundocadastro}>
 <Breadcrumb className={Style.migalhas}>
   <Breadcrumb.Item href="/home">Home  </Breadcrumb.Item>   
-  <Breadcrumb.Item active>Cadastro de Locail.</Breadcrumb.Item>
+  <Breadcrumb.Item active>Cadastro de Local.</Breadcrumb.Item>
 </Breadcrumb>
 
    
