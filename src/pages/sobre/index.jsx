@@ -88,7 +88,7 @@ export default function Sobre(){
             </div>
        <div className={Style.DivInfoPess}>
         <div className={Style.DivInfo}>
-            <h2>Nome/ Nome completo:  </h2>
+            <h2>Nome:  </h2>
             <h2>Sobrenome/ Razão Social: </h2>
             <h2>Email: </h2>
             <h2>Telefone: </h2>
