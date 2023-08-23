@@ -112,13 +112,19 @@ export default function Home() {
 
   //Funções da categoria
   const router = useRouter();
-  function NavegacaoCat(cat){
-  if(cat==1){
+  //const onChangeNursery = (evt) =>{
+  const NavegacaoCat = (cat)=>{
+    console.log("a opcao da cat: ", cat)
+  if(cat=='1'){
       router.push('/arvores/listarArvores');
-  } else if (cat==2){
+     
+  } else if (cat=='2'){
+
       router.push('/locaisPlantacao/listaLocais');
-  } else if (cat==3){
+     
+  } else if (cat=='3'){
       router.push('/usuarios/listaUsuario');
+      
   }
 }
 
@@ -249,6 +255,9 @@ export default function Home() {
   <Tooltip id="tooltip-disabled"   >
   Árvores
   </Tooltip>} placement="bottom">
+  {/* <div  className={Style.Catego} onClick={()=>NavegacaoCat(1)}>
+    <FaTree className={Style.CategoIco1}/>
+  </div> */}
   <div  className={Style.Catego} onClick={()=>NavegacaoCat(1)}>
     <FaTree className={Style.CategoIco1}/>
   </div>
