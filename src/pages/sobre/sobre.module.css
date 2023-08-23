@@ -19,8 +19,28 @@
     margin-top: 90px;
     border: solid 10px;
     border-color: #fff;
-    cursor: pointer;
+    /* cursor: pointer; */
 
+}
+.EditFotoPerfil{
+    background-color: #295271;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    margin-left: 80px;
+    position: absolute;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.2s;
+    
+}
+.EditFotoPerfil:hover{
+    scale: 1.1;
+    transition: 0.2s;
 }
 
 .LegendaFoto{
@@ -31,7 +51,7 @@
 }
 .FotoPerfil:hover, .LegendaFoto:hover {
     color: #ffffff;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 
@@ -68,3 +88,11 @@
 .IconInfoEdit:hover{
 scale: 1.3;
     }
+
+.botaoCarregamento{
+    display: block;
+    width: 50%;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+}
