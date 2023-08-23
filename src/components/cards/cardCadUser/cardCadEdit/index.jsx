@@ -68,10 +68,10 @@ export default function EditarUsuario({handleShowEdit}) {
   const onChangeFullName = (evt) =>{
     setFullName(evt.target.value)
   }
-  const onChangeRoles=(role) =>{
-    setRolesApi(role) //Seta para a api 
-    setRoleLocal(role) //Seta localmente
-  }
+  // const onChangeRoles=(role) =>{
+  //   setRolesApi(role) //Seta para a api 
+  //   setRoleLocal(role) //Seta localmente
+  // }
 
   const [show, setShow] = useState(true);
 
@@ -134,11 +134,11 @@ export default function EditarUsuario({handleShowEdit}) {
             'Content-type': 'application/json'
           },
     
-          body: JSON.stringify({ name, surname, email, phone, password, person, roles }),
+          body: JSON.stringify({ name, surname, email, phone, password, person }),
         })
     
         const json = await response.json()
-        if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !='' && roles != ''){
+        if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
           setLoading(false)
           setSuccess(true)
         } else {
@@ -155,11 +155,11 @@ export default function EditarUsuario({handleShowEdit}) {
             'Content-type': 'application/json'
           },
     
-          body: JSON.stringify({ name, fullname, email, phone, password, person, site, roles }),
+          body: JSON.stringify({ name, fullname, email, phone, password, person, site }),
         })
     
         const json = await response.json()
-        if(name!='' && email !='' && phone !='' && password !='' && person !='' && roles != ''){
+        if(name!='' && email !='' && phone !='' && password !='' && person !='' ){
           setLoading(false)
           setSuccess(true)
         } else {
@@ -258,14 +258,14 @@ export default function EditarUsuario({handleShowEdit}) {
                             </Form.Group>
                            
                         </Row><Row>
-                            <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
+                            {/* <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
                               
                                 <Form.Select value={role}  onChange={(e) =>onChangeRoles(e.target.value) }>
                                 <option value="user">Usuário</option>
                                 <option value="admin">Administrador</option>
                                 </Form.Select>
                                
-                            </Form.Group>
+                            </Form.Group> */}
                         </Row><br />
                       
                         <Button className={Style.BotaoCad} onClick={enviarForm}>Salvar</Button>
@@ -323,14 +323,14 @@ export default function EditarUsuario({handleShowEdit}) {
                         <Row>
                             <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
 
-                            <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
+                            {/* <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
                               
                               <Form.Select value={role}  onChange={(e) =>onChangeRoles(e.target.value) }>
                               <option value="user">Usuário</option>
                               <option value="admin">Administrador</option>
                               </Form.Select>
                              
-                          </Form.Group>
+                          </Form.Group> */}
                           
                             {/* <Form.Select Value={newRole}  onChange={(e) =>onChangeRoles(e.target.value) }>
                                 <option value="user">Usuário</option>
