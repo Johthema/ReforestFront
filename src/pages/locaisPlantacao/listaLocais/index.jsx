@@ -8,7 +8,7 @@ import Footer from '../../../components/footer/index';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined,
-   FaEdit, FaTrashAlt, FaRedoAlt, FaFilter, FaListOl } from "react-icons/fa";
+   FaEdit, FaTrashAlt, FaRedoAlt, FaFilter, FaListOl, FaMapMarkedAlt, FaMapMarkerAlt } from "react-icons/fa";
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import Modal from 'react-bootstrap/Modal';
@@ -21,8 +21,9 @@ import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
+import Especie from '../../../components/cards/cardArvore/index'
 
-
+ 
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
@@ -355,12 +356,49 @@ const onChangeOrdem=(ordem) =>{
       {/* ----------------------Detalhes -------------------------------------*/}
       <Offcanvas show={showDetail} onHide={handleClose} placement={'bottom'} className={Style.modalRodape}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Editar Local</Offcanvas.Title>
+          <Offcanvas.Title>Detalhes</Offcanvas.Title>
+         
         </Offcanvas.Header>
+        <div className={Style.divHeaderDetail}>
+        </div>
+        <div className={Style.divBottomHeaderDetail}>
+          <h4>Aprovado</h4>
+        </div>
+        <div>
+          <h4>Nome do local <FaMapMarkerAlt className={Style.inconLocal}/></h4> 
+        </div>
         <Offcanvas.Body>
+          <div>
+            <div className={Style.divDetalhes}>
+                <h5 >Detalhes: </h5>
+                <h5 className={Style.itemDetalhe}>Hectare: 10km</h5>
+                <h5 className={Style.itemDetalhe}>Possui irrigação</h5>
+                <h5 className={Style.itemDetalhe}>Possui viveiro</h5>
+            </div>
+            <div className={Style.divDetalhes}>
+                <h5>Quantidade: </h5>
+                <h5 className={Style.itemDetalhe}>Total de árvore: 39</h5>
+                <h5 className={Style.itemDetalhe}>Árvores plantadas: 27 </h5>
+                <h5 className={Style.itemDetalhe}>Árvores para plantar: 12</h5>
+                <h5 className={Style.itemDetalhe}>Árvores derrubadas: 3</h5>
+            </div>
+            
+            
+            <h5>Descrição </h5>
+            <div className={Style.divDescricaoDetail}>
+
+            </div>
+           
+            
+          </div>
+          <hr/>
+            <h5>Espécies</h5>
+            <hr/>
+            <Especie/>
      
-        <CardLocalEdit handleShowEdit={dadosEditar} /> 
+        {/* <CardLocalEdit handleShowEdit={dadosEditar} />  */}
         </Offcanvas.Body>
+
       </Offcanvas>
 
 
