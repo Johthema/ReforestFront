@@ -5,3 +5,11 @@
     justify-content: center;
     margin-top: 40px
 }
+
+.botaoCarregamento{
+    display: block;
+    width: 50%;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+}
