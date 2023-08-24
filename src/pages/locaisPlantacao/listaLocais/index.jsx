@@ -42,12 +42,14 @@ export default function ListarLocal(){
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
     const [show2, setShow2] = useState(false);
+    const [showDetail, setShowDetail] = useState(false)
 
     const handleClose2 = () => setShow2(false);
 
     const handleClose = () =>{
       setShow(false)
       setShowEdit(false)
+      setShowDetail(false)
     } ;
 
     const [nome, setPapelNome] = useState('');
@@ -170,6 +172,10 @@ console.log("os dados passados: ",idUser, irrigacao, possuiViveiro )
   
 }
 
+const handleShowDetail = () =>{
+  setShowDetail(true);
+}
+
 console.log("no vetor: ", dadosEditar)
 
 const onChangeOrdem=(ordem) =>{
@@ -266,7 +272,7 @@ const onChangeOrdem=(ordem) =>{
 
            {repos && repos.map((item, i = index) => (
 
-          <Card key={i} className={Style.cardLocais}>
+          <Card key={i} className={Style.cardLocais} onClick={handleShowDetail}>
                         <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
                          <div className={Style.iconesAdmin}>
                           <FaEdit className={Style.iconesAdminIcon1} onClick={()=> handleShowEdit(item._id, item.irrigation, item.nursery)}/>
@@ -315,7 +321,7 @@ const onChangeOrdem=(ordem) =>{
 
            
 {/* ==============Modal de deletar local============== */}
-<Modal show={show2} onHide={handleClose2}>
+      <Modal show={show2} onHide={handleClose2}>
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
             <h2 className={Style.tituloDeletar}>Deletar Local!</h2>
@@ -335,7 +341,7 @@ const onChangeOrdem=(ordem) =>{
           </Button>
         </Modal.Footer>
       </Modal>
-
+      {/* ----------------------Editar -------------------------------------*/}
       <Offcanvas show={showEdit} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Editar Local</Offcanvas.Title>
@@ -346,8 +352,19 @@ const onChangeOrdem=(ordem) =>{
         </Offcanvas.Body>
       </Offcanvas>
 
+      {/* ----------------------Detalhes -------------------------------------*/}
+      <Offcanvas show={showDetail} onHide={handleClose} placement={'bottom'} className={Style.modalRodape}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Editar Local</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+     
+        <CardLocalEdit handleShowEdit={dadosEditar} /> 
+        </Offcanvas.Body>
+      </Offcanvas>
 
 
+      {/* ----------------------FeedBack do sistema -------------------------------------*/}
       {success &&
           <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
             <Spinner animation="grow" variant="success" /> Salvo com sucesso!

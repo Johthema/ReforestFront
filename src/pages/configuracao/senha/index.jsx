@@ -7,7 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 
 export default function Senha(){
-  const URL_API = process.env.NEXT_PUBLIC_API_URL+"reset";
+  const URL_API = process.env.NEXT_PUBLIC_API_URL+"change_password?token=";
 
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -44,7 +44,7 @@ export default function Senha(){
     try {
       setLoading(true)
 
-      const response = await fetch(URL_API, {
+      const response = await fetch(URL_API+localStorage.getItem("tokenId"), {
         method: 'POST',
         headers: {
           Accept: 'application/json',
