@@ -7,7 +7,7 @@
 
 .DivHeaderPage{
     background-color: #49ACC7;
-    height: 610px;
+    height: 660px;
     display: flex;
     justify-content: center;
 
@@ -17,7 +17,7 @@
     height: 600px;
     width: 60vw;
     object-fit: cover;
-    margin-top: 10px;
+    margin-top: 60px;
 }
 
 .DivTextoPage{
@@ -47,4 +47,68 @@
 }
 .botaoPlantar:hover{
     box-shadow: 2px 2px 10px 2px #767676;
+}
+
+.EstiloLogo{
+    width: 600px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.menuLogin{
+    display: flex;
+    margin-top: 20px;
+    background-color: #49ACC7;
+    padding-top: 20px;
+    border: transparent;
+    justify-content: flex-end;
+   
+}
+
+.btnItem1{
+    width: 120px;
+    height: 35px;
+    background-color: #8bc2d1;
+    /* padding: 20px; */
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #fff;
+    border: solid 3px #8bc2d1;
+    
+}
+
+
+.btnItem2{
+
+    width: 120px;
+    height: 35px;
+    border-radius: 50px;
+    border: solid 3px #8bc2d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #fff
+}
+
+.btnItem2:hover{
+    width: 120px;
+    height: 35px;
+    background-color: #8bc2d1;
+    /* padding: 20px; */
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #fff
 }
