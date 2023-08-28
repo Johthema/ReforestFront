@@ -43,7 +43,8 @@ export default function ListarLocal(){
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
     const [show2, setShow2] = useState(false);
-    const [showDetail, setShowDetail] = useState(false)
+    const [showDetail, setShowDetail] = useState(false);
+    const [dataLocal, setDataLocal] = useState('');
 
     const handleClose2 = () => setShow2(false);
 
@@ -173,7 +174,36 @@ console.log("os dados passados: ",idUser, irrigacao, possuiViveiro )
   
 }
 
-const handleShowDetail = () =>{
+
+
+
+const fecthAllData = async (idDatail) => {
+  try {
+
+    setLoading(true)
+    const response = await fetch(URL_API+"/"+idDatail) //por padrão o fetch ja utiliza o GET
+    const dadosLocal = await response.json()
+
+    if (!dadosLocal)
+      throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
+    setDataLocal(dadosLocal)
+    console.log("Dados trazidos local: ", dadosLocal )
+
+  } catch (error) {
+    console.log(error)
+  } finally {
+    setLoading(false)
+  }
+
+}
+
+
+
+const handleShowDetail = (idDetail) => {
+
+  fecthAllData(idDetail);
+  console.log("o id para delatlhar: ", idDetail)
+
   setShowDetail(true);
 }
 
@@ -273,7 +303,7 @@ const onChangeOrdem=(ordem) =>{
 
            {repos && repos.map((item, i = index) => (
 
-          <Card key={i} className={Style.cardLocais} onClick={handleShowDetail}>
+          <Card key={i} className={Style.cardLocais} onClick={()=>handleShowDetail(item._id)}>
                         <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
                          <div className={Style.iconesAdmin}>
                           <FaEdit className={Style.iconesAdminIcon1} onClick={()=> handleShowEdit(item._id, item.irrigation, item.nursery)}/>
@@ -361,11 +391,20 @@ const onChangeOrdem=(ordem) =>{
         </Offcanvas.Header>
         <div className={Style.divHeaderDetail}>
         </div>
-        <div className={Style.divBottomHeaderDetail}>
-          <h4>Aprovado</h4>
+        {dataLocal.approved == true &&
+          <div className={Style.divBottomHeaderDetail}>
+          <h4>Aprovado</h4> 
         </div>
+        }
+        
+        {dataLocal.approved == false &&
+          <div className={Style.divBottomHeaderDetail2}>
+          <h4>Em análise</h4> 
+        </div>
+        }
+        
         <div>
-          <h4>Nome do local <FaMapMarkerAlt className={Style.inconLocal}/></h4> 
+          <h4>{dataLocal.name} <FaMapMarkerAlt className={Style.inconLocal}/></h4> 
         </div>
         <Offcanvas.Body>
           <div>

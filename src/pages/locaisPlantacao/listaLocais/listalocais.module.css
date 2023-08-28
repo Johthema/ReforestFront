@@ -234,6 +234,15 @@
     margin: auto;
     justify-content: center;
 }
+.divBottomHeaderDetail2{
+    background-color: #EE6755; 
+    height: 40px;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
 
 .inconLocal{
     color: rgb(187, 5, 5)
@@ -259,3 +268,4 @@
     border: solid 1px;
     border-color: #626262;
 }
+
