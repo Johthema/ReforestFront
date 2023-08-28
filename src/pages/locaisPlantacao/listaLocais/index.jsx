@@ -22,7 +22,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Especie from '../../../components/cards/cardArvore/index'
-
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
  
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -402,11 +403,21 @@ const onChangeOrdem=(ordem) =>{
           <h4>Em análise</h4> 
         </div>
         }
-        
+
+<Offcanvas.Body>
+
+<Tabs
+      defaultActiveKey="area"
+      id="uncontrolled-tab-example"
+      className="mb-3"
+      justify
+    >
+      <Tab eventKey="area" title="Área">
+
         <div>
           <h4  className={Style.nomeLocal}>{dataLocal.name} <FaMapMarkerAlt className={Style.inconLocal}/></h4> 
         </div>
-        <Offcanvas.Body>
+     
           <div>
             <div className={Style.divDetalhes}>
                 <h5 >Detalhes: </h5>
@@ -439,12 +450,29 @@ const onChangeOrdem=(ordem) =>{
               <p>{dataLocal.description}</p>
             </div>
            
-            
-          </div>
-          <hr/>
+            <hr/>
             <h5>Espécies</h5>
             <hr/>
             <Especie/>
+          </div>
+
+
+
+      </Tab>
+      <Tab eventKey="endereco" title="Endereço">
+        Tab content for Profile
+      </Tab>
+      <Tab eventKey="contact" title="Contact" disabled>
+        Tab content for Contact
+      </Tab>
+    </Tabs>
+
+
+
+
+        
+
+       
      
         {/* <CardLocalEdit handleShowEdit={dadosEditar} />  */}
         </Offcanvas.Body>
