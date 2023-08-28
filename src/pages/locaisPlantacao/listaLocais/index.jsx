@@ -410,9 +410,20 @@ const onChangeOrdem=(ordem) =>{
           <div>
             <div className={Style.divDetalhes}>
                 <h5 >Detalhes: </h5>
-                <h5 className={Style.itemDetalhe}>Hectare: 10km</h5>
-                <h5 className={Style.itemDetalhe}>Possui irrigação</h5>
-                <h5 className={Style.itemDetalhe}>Possui viveiro</h5>
+                <h5 className={Style.itemDetalhe}>Hectare: {dataLocal.hectare}km</h5>
+                {dataLocal.irrigation == true &&
+                  <h5 className={Style.itemDetalhe}>Possui irrigação</h5>
+                }
+                {dataLocal.irrigation == false &&
+                  <h5 className={Style.itemDetalhe}>Não possui irrigação</h5>
+                }
+                {dataLocal.nursery == true &&
+                  <h5 className={Style.itemDetalhe}>Possui viveiro</h5>
+                }
+                {dataLocal.nursery == false &&
+                  <h5 className={Style.itemDetalhe}>Não possui viveiro</h5>
+                }
+                
             </div>
             <div className={Style.divDetalhes}>
                 <h5>Quantidade: </h5>
