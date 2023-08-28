@@ -460,7 +460,22 @@ const onChangeOrdem=(ordem) =>{
 
       </Tab>
       <Tab eventKey="endereco" title="Endereço">
-        Tab content for Profile
+        <div>
+
+        <div className={Style.divDetalhe}>
+               
+                <h5 className={Style.itemDetalheEnde}>País: {dataLocal.country}</h5>
+                <h5 className={Style.itemDetalheEnde}>Cidade: {dataLocal.city}</h5>
+                <h5 className={Style.itemDetalheEnde}>Endereço: {dataLocal.address}</h5>
+                <h5 className={Style.itemDetalheEnde}>CEP: {dataLocal.postalCode}</h5>
+
+             
+                
+            </div>
+
+
+
+        </div>
       </Tab>
       <Tab eventKey="contact" title="Contact" disabled>
         Tab content for Contact
