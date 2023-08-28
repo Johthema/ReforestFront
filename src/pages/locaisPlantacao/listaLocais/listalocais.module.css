@@ -244,6 +244,10 @@
     justify-content: center;
 }
 
+.nomeLocal{
+    margin-left: 15px;
+}
+
 .inconLocal{
     color: rgb(187, 5, 5)
 }
@@ -256,6 +260,8 @@
     width: 100%;
     height: 50px;
     background-color: #e2e2e2;
+    overflow: auto;
+    padding-left: 10px;
 }
 
 .itemDetalhe{

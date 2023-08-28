@@ -404,7 +404,7 @@ const onChangeOrdem=(ordem) =>{
         }
         
         <div>
-          <h4>{dataLocal.name} <FaMapMarkerAlt className={Style.inconLocal}/></h4> 
+          <h4  className={Style.nomeLocal}>{dataLocal.name} <FaMapMarkerAlt className={Style.inconLocal}/></h4> 
         </div>
         <Offcanvas.Body>
           <div>
@@ -427,16 +427,16 @@ const onChangeOrdem=(ordem) =>{
             </div>
             <div className={Style.divDetalhes}>
                 <h5>Quantidade: </h5>
-                <h5 className={Style.itemDetalhe}>Total de árvore: 39</h5>
-                <h5 className={Style.itemDetalhe}>Árvores plantadas: 27 </h5>
-                <h5 className={Style.itemDetalhe}>Árvores para plantar: 12</h5>
-                <h5 className={Style.itemDetalhe}>Árvores derrubadas: 3</h5>
+                {/* <h5 className={Style.itemDetalhe}>Total de árvore: 39</h5> */}
+                <h5 className={Style.itemDetalhe}>Árvores plantadas: {dataLocal.plantedTrees} </h5>
+                <h5 className={Style.itemDetalhe}>Árvores para plantar: {dataLocal.treesToBePlanted}</h5>
+                <h5 className={Style.itemDetalhe}>Árvores derrubadas: {dataLocal.falledTrees}</h5>
             </div>
             
             
             <h5>Descrição </h5>
             <div className={Style.divDescricaoDetail}>
-
+              <p>{dataLocal.description}</p>
             </div>
            
             
