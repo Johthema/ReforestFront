@@ -397,7 +397,8 @@ const onChangeOrdem=(ordem) =>{
          
         </Offcanvas.Header>
         <div className={Style.divHeaderDetail}>
-        <Map lat={dataLocal.latitude} lng={dataLocal.longitude} />
+        {/* <Map lat={dataLocal.latitude} lng={dataLocal.longitude} /> */}
+        <Map lat={latitude} lng={longitude} />
         </div>
         {dataLocal.approved == true &&
           <div className={Style.divBottomHeaderDetail}>
