@@ -170,6 +170,7 @@ const [dadosEditar, setDadosEditar] = useState([])
 
 const handleShowEdit = (idUser, irrigacao, possuiViveiro) =>{
 console.log("os dados passados: ",idUser, irrigacao, possuiViveiro )
+  // setShowDetail(false);  
   setShowEdit(true);
   setDadosEditar([idUser, irrigacao, possuiViveiro]);
   
@@ -304,7 +305,7 @@ const onChangeOrdem=(ordem) =>{
 
            {repos && repos.map((item, i = index) => (
 
-          <Card key={i} className={Style.cardLocais} onClick={()=>handleShowDetail(item._id)}>
+          <Card key={i} className={Style.cardLocais}>
                         <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
                          <div className={Style.iconesAdmin}>
                           <FaEdit className={Style.iconesAdminIcon1} onClick={()=> handleShowEdit(item._id, item.irrigation, item.nursery)}/>
@@ -336,7 +337,7 @@ const onChangeOrdem=(ordem) =>{
                           <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5}/> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
                           <div className={Style.divBotaoPlant}>
                           <Button className={Style.botaoPlantar} href='/plantar'>Plantar aqui</Button>
-                          
+                          <Button className={Style.botaoPlantar}  onClick={()=>handleShowDetail(item._id)}>Ver mais</Button>
                           </div>
                           
                           </Card.Footer>
@@ -456,8 +457,6 @@ const onChangeOrdem=(ordem) =>{
             <Especie/>
           </div>
 
-
-
       </Tab>
       <Tab eventKey="endereco" title="Endereço">
         <div>
@@ -468,18 +467,14 @@ const onChangeOrdem=(ordem) =>{
                 <h5 className={Style.itemDetalheEnde}>Cidade: {dataLocal.city}</h5>
                 <h5 className={Style.itemDetalheEnde}>Endereço: {dataLocal.address}</h5>
                 <h5 className={Style.itemDetalheEnde}>CEP: {dataLocal.postalCode}</h5>
-
-             
                 
             </div>
 
-
-
         </div>
       </Tab>
-      <Tab eventKey="contact" title="Contact" disabled>
+      {/* <Tab eventKey="contact" title="Contact" disabled>
         Tab content for Contact
-      </Tab>
+      </Tab> */}
     </Tabs>
 
 

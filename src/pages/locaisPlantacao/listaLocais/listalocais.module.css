@@ -84,7 +84,7 @@
     border: solid 2px;
     border-color: #979797 ;
     /* border-radius: 15px; */
-    cursor: pointer;
+    /* cursor: pointer; */
     /* text-align: center; */
    
     
@@ -109,6 +109,7 @@
     cursor: pointer;
     font-size: 23px;
     transition: 0.2s;
+   
 }
 .iconesAdminIcon1:hover{
     cursor: pointer;
