@@ -24,6 +24,7 @@ import Form from 'react-bootstrap/Form';
 import Especie from '../../../components/cards/cardArvore/index'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import Map from "../../../components/mapa/index";
  
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -47,6 +48,7 @@ export default function ListarLocal(){
     const [showDetail, setShowDetail] = useState(false);
     const [dataLocal, setDataLocal] = useState('');
 
+
     const handleClose2 = () => setShow2(false);
 
     const handleClose = () =>{
@@ -56,6 +58,9 @@ export default function ListarLocal(){
     } ;
 
     const [nome, setPapelNome] = useState('');
+
+    const latitude = -23.550520;
+    const longitude = -46.633308;
 
 
   //Primeiro carregamengto para saber se esta tudo certo
@@ -392,6 +397,7 @@ const onChangeOrdem=(ordem) =>{
          
         </Offcanvas.Header>
         <div className={Style.divHeaderDetail}>
+        <Map lat={dataLocal.latitude} lng={dataLocal.longitude} />
         </div>
         {dataLocal.approved == true &&
           <div className={Style.divBottomHeaderDetail}>
