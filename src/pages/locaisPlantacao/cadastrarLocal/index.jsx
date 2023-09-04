@@ -13,7 +13,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import axios from 'axios';
 import Image from 'next/image';
-
+import Modal from 'react-bootstrap/Modal';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
 
@@ -54,6 +54,65 @@ export default function CadastrarLocal() {
   // const handleCepChange = (event) => {
   //   setCep(event.target.value);
   // };
+
+  const [modalShow, setModalShow] = useState(false);
+  // return (
+  //   <Modal
+   
+  //     size="lg"
+  //     aria-labelledby="contained-modal-title-vcenter"
+  //     centered
+  //   >
+  //     <Modal.Header closeButton>
+  //       <Modal.Title id="contained-modal-title-vcenter">
+  //         Modal heading
+  //       </Modal.Title>
+  //     </Modal.Header>
+  //     <Modal.Body>
+  //       <h4>Centered Modal</h4>
+  //       <p>
+  //         Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+  //         dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+  //         consectetur ac, vestibulum at eros.
+  //       </p>
+  //     </Modal.Body>
+  //     <Modal.Footer>
+  //       {/* <Button onClick={props.onHide}>Close</Button> */}
+  //     </Modal.Footer>
+  //   </Modal>
+  // );
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      > 
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Modal heading
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Centered Modal</h4>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+            consectetur ac, vestibulum at eros.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+
+ 
+
+
 
 
 
@@ -439,7 +498,14 @@ export default function CadastrarLocal() {
 
               </Row>
               <br />
+              <Button variant="primary" onClick={() => setModalShow(true)}>
+                Selecione árvores
+              </Button>
 
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
               <Arvores />
 
             </Form>
@@ -450,6 +516,9 @@ export default function CadastrarLocal() {
           </Card.Body>
           {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
         </Card>
+
+        {/* ------------------------------------Escolha de arvores------------------------------------- */}
+
 
 
 
