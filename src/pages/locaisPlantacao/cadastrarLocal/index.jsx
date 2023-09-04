@@ -14,8 +14,22 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import axios from 'axios';
 import Image from 'next/image';
 import Modal from 'react-bootstrap/Modal';
+import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaListOl } from 'react-icons/fa';
+// import Card from 'react-bootstrap/Card';
+import CloseButton from 'react-bootstrap/CloseButton';
+
+
+
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
+const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL+"tree";
+
 
 export default function CadastrarLocal() {
   //Variáveis de feedback
@@ -51,6 +65,13 @@ export default function CadastrarLocal() {
   const [contador, setContador] = useState(0);
 
   const [countries, setCountries] = useState([]);
+
+  const [repos, setRepo] = useState([]);
+
+    //variáveis de filtros
+    const [initialRepos, setInitialRepo] = useState([]);
+    const [tipo, setTipo] = useState('todos')
+    const [ordenar, setOrdenar] = useState('recente')
   // const handleCepChange = (event) => {
   //   setCep(event.target.value);
   // };
@@ -81,30 +102,165 @@ export default function CadastrarLocal() {
   //     </Modal.Footer>
   //   </Modal>
   // );
+
+  useEffect(() => {
+    
+    const fetchRepos = async () => {
+      try {
+        setLoading(true)
+        console.log("o tipo de arvore é: ",tipo)
+        if(tipo!='todos'){
+          const response = await fetch(URL_API_TREE+"?order="+ordenar+"&role="+tipo)
+          const dados = await response.json();
+        setInitialRepo(dados);
+        setRepo(dados);
+        setLoading(false)
+        } else if (tipo=='todos'){
+          const response = await fetch(URL_API)
+          const dados = await response.json();
+        setInitialRepo(dados);
+        setRepo(dados);
+        setLoading(false)
+        } 
+
+      } catch (error) {
+        console.log(error)
+        setErroInterno(true)
+      }
+    }
+    fetchRepos()
+  }, [reloadCount]);
+
+
+
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
         {...props}
-        size="lg"
+        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       > 
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            Árvores disponíveis
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p>
+          <h4>Selecione quais árvores deseja plantar nesta região</h4>
+ 
+
+
+          <div className={Style.divFundo}>
+
+            <Navbar className={Style.headerTabela}>
+              <Container>
+                <InputGroup className={Style.Busca}>
+                  <Form.Control
+                    placeholder="Buscar por nome"
+                    aria-label="Buscar por nome"
+                    aria-describedby="basic-addon2"
+                    // onChange={handleChange}
+                  />
+
+                </InputGroup>
+
+                <Dropdown className={Style.DropMENU}>
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                  <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu  className={Style.OpDropNotifi}>
+                  <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
+                    {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
+
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown >
+                      <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                      <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                      
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        {/* <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                        <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item> */}
+                      </Dropdown.Menu>
+                </Dropdown>
+
+              </Container>
+            </Navbar>
+
+           
+
+              <tbody>
+ <div className={Style.divFundoModal}>
+
+ 
+                {repos.map((item,index) => (
+
+                  // <tr className={Style.trUsuario} key={index}>
+                  //   <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
+                  //   <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.cientificName}</h2></td>
+                  //   <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.price}</h2></td>
+                  //   <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.createdAt}</h2></td>
+
+                  //   <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id, repo.category.name)}><FaEdit className={Style.icoEditar} /></td>
+                  //   <td className={Style.Deletar} value={repo._id} onClick={() => idArvore(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
+                  // </tr>
+ 
+                  <Card className={Style.Card} key={index}>
+                      <Card.Header className={Style.HeaderCard0}>
+                        <div className={Style.HeaderCard}>
+                            
+                              {item.approved == true &&
+                              <h3 className={Style.StatusCard} >
+                              Aprovado
+                              </h3>
+                              }
+                              {item.approved == false &&
+                              <h3 className={Style.StatusCard2} >
+                              Reprovado
+                              </h3>
+                              }
+                              
+                            <div className={Style.opcoesCard}>
+                            {/* <FaEdit className={Style.iconeCard}/> */}
+                            <CloseButton/>
+                            {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+                            </div>
+                        </div>
+                        
+                      </Card.Header>
+                      
+                      <Card.Body>
+                        <Card.Title>{item.name}</Card.Title>
+                        {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+                      </Card.Body>
+                      <Card.Footer className="text-muted">
+                      <Form.Control type="number" placeholder="Quantidade" />
+                      </Card.Footer>
+                    </Card>
+
+                ))}
+</div>
+
+              </tbody>
+          
+
+          </div>
+
+
+
+        
+
+          {/* <Arvores /> */}
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
+        {/* <Modal.Footer>
+          <Button onClick={props.onHide}>Cancelar</Button>
+        </Modal.Footer> */}
       </Modal>
     );
   }
@@ -506,7 +662,7 @@ export default function CadastrarLocal() {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
               />
-              <Arvores />
+              {/* <Arvores /> */}
 
             </Form>
 
