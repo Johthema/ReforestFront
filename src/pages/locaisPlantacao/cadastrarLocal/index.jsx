@@ -364,27 +364,16 @@ export default function CadastrarLocal() {
                      {country.name.common} - {country.cca2}
                       </option>  */}
 
-<Form.Select  onClick={(e)=>onChangeCountry(e.target.value) }>
-{countries.map((country, i = index) => (
+                <Form.Select  onClick={(e)=>onChangeCountry(e.target.value) }>
+                  {countries.map((country, i = index) => (
+                    // <option key={item._id} value={item._id}>{item.name}</option>
+                    <option key={country.cca2} value={country.cca2}>                
+                    {country.name.common} - {country.cca2}
+                    </option>
+                          ))}
 
-  // <option key={item._id} value={item._id}>{item.name}</option>
-
-  <option key={country.cca2} value={country.cca2}>
                     
-  {country.name.common} - {country.cca2}
-   </option>
-
-
-
-
-        
-        ))}
-
-      {/* <option>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option> */}
-    </Form.Select>
+                    </Form.Select>
 
              
 
@@ -467,10 +456,10 @@ export default function CadastrarLocal() {
 
 
 
-    {success &&
-          <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
-            <Spinner animation="grow" variant="success" /> Salvo com sucesso! | <Alert.Link href="/locaisPlantacao/listaLocais">Ver lista de locais</Alert.Link>
-          </Alert>
+        {success &&
+              <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+                <Spinner animation="grow" variant="success" /> Salvo com sucesso! | <Alert.Link href="/locaisPlantacao/listaLocais">Ver lista de locais</Alert.Link>
+              </Alert>
         } 
       
         {loading &&
