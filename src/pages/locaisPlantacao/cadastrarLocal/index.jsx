@@ -7,10 +7,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Arvores from '../../../components/cards/cardArvore/index';
-import {useState, useEffect} from 'react'
+import {useState, useEffect,  useRef} from 'react'
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import axios from 'axios';
+import Image from 'next/image';
+
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
@@ -40,6 +43,82 @@ export default function CadastrarLocal() {
     const [errorInt, setErroInterno] = useState(false);
     const [success, setSuccess] = useState(false);
     const [resposta, setResposta] = useState('')
+    const [dadosEndereco, setDadosEndereco] = useState('')
+
+    const [cep, setCep] = useState('');
+    const [location, setLocation] = useState(null);
+    
+    const [contador, setContador] = useState(0);
+
+    const [countries, setCountries] = useState([]);
+    // const handleCepChange = (event) => {
+    //   setCep(event.target.value);
+    // };
+
+
+
+    useEffect(() => {
+      axios.get('https://restcountries.com/v3.1/all')
+        .then((response) => {
+          setCountries(response.data);
+          console.log("todos os paises: ", response.data)
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, []);
+
+
+ 
+    const handleSearch = async (ce) => {
+      // onChangeAddress(dadosEndereco.logradouro)
+      try {
+        const response = await axios.get(`https://viacep.com.br/ws/${ce}/json/`);
+        const data = response.data;
+        console.log("o end: ",data)
+        setDadosEndereco(data)
+        setAddress(data.logradouro)
+        setCity(data.localidade)
+        console.log("dados do cep: ", data )
+
+        if (data && data.cep) {
+          setLocation({
+            latitude: data.lat,
+            longitude: data.lon,
+          });
+        } else {
+          setLocation(null);
+        }
+      } catch (error) {
+        console.error('Error fetching geolocation data:', error);
+      }
+    };
+
+    const inputCampo2 = useRef(null);
+    const handleCampo1KeyPress = (e) => {
+      // console.log("o e: ",e)
+      // console.log("soma e: ",contador)
+      
+      // if (contador == 8){
+      //   e.preventDefault();
+      //   handleSearch()
+      //   inputCampo2.current.focus(); // Foca no próximo campo de input
+      // } else
+      // setContador(contador+1)
+      // if (e.key === 'Enter') {
+      //   e.preventDefault();
+      //   handleSearch()
+      //   inputCampo2.current.focus(); // Foca no próximo campo de input
+      // }
+    };
+
+    // const handleKeyPress = (e) => {
+        
+    //   if (e.key === 'Enter') {
+    //       enviarForm()
+    //   }
+    // };
+
 
     //Funçãos de cadastro da árvore
    
@@ -55,16 +134,32 @@ export default function CadastrarLocal() {
         setDescription(evt.target.value)
     }
     const onChangeAddress = (evt) =>{
+      console.log("o endereco é: ", evt)
         setAddress(evt.target.value)
     }
     const onChangePostalCode = (evt) =>{
+      console.log("o vet: ", evt)
         setPostalCode(evt.target.value)
+
+        if (contador == 7){
+          evt.preventDefault();
+          setCep(evt.target.value)
+          setAddress(dadosEndereco.logradouro)
+          
+          handleSearch(evt.target.value)
+          
+          inputCampo2.current.focus(); // Foca no próximo campo de input
+        } else
+        setContador(contador+1)
+
+        // setCep(evt.target.value)
+        // handleSearch()
     }
     const onChangeCity = (evt) =>{
         setCity(evt.target.value)
     }
     const onChangeCountry = (evt) =>{
-        setCountry(evt.target.value)
+        setCountry(evt)
     }
     const onChangeLatitude = (evt) =>{
         setLatitude(evt.target.value)
@@ -143,12 +238,13 @@ export default function CadastrarLocal() {
       const [show, setShow] = useState(true);
 
     const enviarForm = async (evt) => {
-
+console.log("entrou pra enviar Form")
+setAddress(dadosEndereco.logradouro)
         evt.preventDefault()
         setLoading(true)
         try {
           
-    
+          console.log("Tentou")
           const response = await fetch(URL_API, {
             method: 'POST',
             headers: {
@@ -230,9 +326,14 @@ export default function CadastrarLocal() {
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Control as="textarea"  rows={3}  placeholder='Descrição'  onChange={onChangeDescription}/>
             </Form.Group>
+            <Form.Group className="mb-3" controlId="formGroupCdgPostal">
+            <FloatingLabel controlId="floatingInput" label="Código postal" className="mb-3">
+                <Form.Control type="text"  placeholder="Código postal" onChange={onChangePostalCode} onKeyPress={handleCampo1KeyPress} maxLength={10} />
+            </FloatingLabel> 
+            </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupLocalizacao">
             <FloatingLabel controlId="floatingInput" label="latitude" className="mb-3">
-                <Form.Control type="text" placeholder="latitude"  onChange={onChangeLatitude}/>
+                <Form.Control type="text" placeholder="latitude"  onChange={onChangeLatitude} ref={inputCampo2}/>
             </FloatingLabel>
             <FloatingLabel controlId="floatingInput" label="Longitude" className="mb-3">
                 <Form.Control type="text" placeholder="Longitude"  onChange={onChangeLongitude}/>
@@ -241,29 +342,57 @@ export default function CadastrarLocal() {
             <Form.Group className="mb-3" controlId="formGroupEndereco">
             
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formGroupCdgPostal">
-            <FloatingLabel controlId="floatingInput" label="Código postal" className="mb-3">
-                <Form.Control type="text"  placeholder="Código postal"  onChange={onChangePostalCode} />
-            </FloatingLabel>
-            </Form.Group>
+
             <Form.Group className="mb-3" controlId="formGroupEndereco">
             <FloatingLabel controlId="floatingInput" label="Endereço" className="mb-3">
-                <Form.Control type="text"  placeholder="Endereço"  onChange={onChangeAddress} />
+                <Form.Control type="text"  placeholder="Endereço" value={dadosEndereco.logradouro}  onChange={onChangeAddress} />
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupCidade">
             <FloatingLabel controlId="floatingInput" label="Cidade" className="mb-3">
-                <Form.Control type="text" placeholder="Cidade"  onChange={onChangeCity} />
+                <Form.Control type="text" placeholder="Cidade" value={dadosEndereco.localidade}  onChange={onChangeCity} />
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupPais">
             <FloatingLabel controlId="floatingInput" label="País" className="mb-3">
-                <Form.Control type="text" placeholder="Pais" onChange={onChangeCountry} />
+                {/* <Form.Control type="text" placeholder="Pais" value={dadosEndereco.country} onChange={onChangeCountry} /> */}
+                {/* <Form.Select aria-label="Default select example">
+                {countries.map((country) => (
+                    <option key={country.cca2} value={country.cca2}>
+                    
+                     {country.name.common} - {country.cca2}
+                      </option>  */}
+
+<Form.Select  onClick={(e)=>onChangeCountry(e.target.value) }>
+{countries.map((country, i = index) => (
+
+  // <option key={item._id} value={item._id}>{item.name}</option>
+
+  <option key={country.cca2} value={country.cca2}>
+                    
+  {country.name.common} - {country.cca2}
+   </option>
+
+
+
+
+        
+        ))}
+
+      {/* <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option> */}
+    </Form.Select>
+
+             
+
+
                 </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupHectare">
             <FloatingLabel controlId="floatingInput" label="Hectare" className="mb-3">
-                <Form.Control type="text" placeholder="Hectare" onChange={onChangeHectare} />
+                <Form.Control type="text" placeholder="Hectare"  onChange={onChangeHectare} />
             </FloatingLabel>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupLimite">
