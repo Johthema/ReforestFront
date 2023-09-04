@@ -144,7 +144,7 @@ export default function CadastrarLocal() {
         if (contador == 7){
           evt.preventDefault();
           setCep(evt.target.value)
-          setAddress(dadosEndereco.logradouro)
+          // setAddress(dadosEndereco.logradouro)
           
           handleSearch(evt.target.value)
           
@@ -238,8 +238,8 @@ export default function CadastrarLocal() {
       const [show, setShow] = useState(true);
 
     const enviarForm = async (evt) => {
-console.log("entrou pra enviar Form")
-setAddress(dadosEndereco.logradouro)
+        console.log("entrou pra enviar Form")
+        setAddress(dadosEndereco.logradouro)
         evt.preventDefault()
         setLoading(true)
         try {
@@ -258,16 +258,17 @@ setAddress(dadosEndereco.logradouro)
                 plantedTrees, falledTrees, limitTrees, irrigation, nursery,
                 //  trees
             }),
-          }).then(response => response.json())
-          .then(data => {
-            //console.log(data); // Exibe a resposta do servidor no console
-            //const resp = data.message
-            setResposta(data.message)
+          })
+          // .then(response => response.json())
+          // .then(data => {
+          //   console.log(data); // Exibe a resposta do servidor no console
+          //   //const resp = data.message
+          //   setResposta(data.message)
            
              
 
 
-          })
+          // })
 
           if (response.status == 400 ){
             console.log("o status é: ", response)
@@ -468,9 +469,9 @@ setAddress(dadosEndereco.logradouro)
 
     {success &&
           <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
-            <Spinner animation="grow" variant="success" /> Salvo com sucesso!
+            <Spinner animation="grow" variant="success" /> Salvo com sucesso! | <Alert.Link href="/locaisPlantacao/listaLocais">Ver lista de locais</Alert.Link>
           </Alert>
-        }
+        } 
       
         {loading &&
           <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
