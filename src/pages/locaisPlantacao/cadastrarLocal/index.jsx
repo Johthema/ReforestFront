@@ -228,7 +228,11 @@ export default function CadastrarLocal() {
                               
                             <div className={Style.opcoesCard}>
                             {/* <FaEdit className={Style.iconeCard}/> */}
-                            <CloseButton/>
+                            {/* <CloseButton/> */}
+                            <Form.Check // prettier-ignore
+           
+           
+          />
                             {/* <FaRegWindowClose className={Style.iconeCard}/> */}
                             </div>
                         </div>
