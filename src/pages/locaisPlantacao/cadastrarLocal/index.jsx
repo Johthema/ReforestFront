@@ -25,6 +25,7 @@ import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaListOl } from 'rea
 import CloseButton from 'react-bootstrap/CloseButton';
 import ImgArvore from '../../../assets/images/arvore_1.jpg';
 import Pagination from 'react-bootstrap/Pagination';
+import PageItem from 'react-bootstrap/PageItem'
 
 
 
@@ -68,11 +69,14 @@ export default function CadastrarLocal() {
   const [countries, setCountries] = useState([]);
 
   const [repos, setRepo] = useState([]);
+  const [pageQtd, setPageQtd] = useState(1);
+  const [pageLimit, setPageLimit] = useState('10');
 
     //variáveis de filtros
     const [initialRepos, setInitialRepo] = useState([]);
-    const [tipo, setTipo] = useState('todos')
-    const [ordenar, setOrdenar] = useState('recente')
+    const [tipo, setTipo] = useState('todos');
+    const [ordenar, setOrdenar] = useState('recente');
+    const [contadorPage, setContadorPage] = useState('1');
   // const handleCepChange = (event) => {
   //   setCep(event.target.value);
   // };
@@ -121,14 +125,15 @@ export default function CadastrarLocal() {
         setLoading(true)
         console.log("o tipo de arvore é: ",tipo)
         if(tipo!='todos'){
-          const response = await fetch(URL_API_TREE+"?order="+ordenar+"&role="+tipo)
+          // const response = await fetch(URL_API_TREE+"?order="+ordenar+"&role="+tipo)
+          const response = await fetch(URL_API_TREE+"?page="+pageQtd+"&limit="+pageLimit) 
           const dados = await response.json();
           console.log("veja dados: ",dados)
         setInitialRepo(dados);
         setRepo(dados);
         setLoading(false)
         } else if (tipo=='todos'){
-          const response = await fetch(URL_API_TREE)
+          const response = await fetch(URL_API_TREE+"?page="+pageQtd+"&limit="+pageLimit)
           const dados = await response.json();
         setInitialRepo(dados);
         setRepo(dados);
@@ -141,7 +146,30 @@ export default function CadastrarLocal() {
       }
     }
     fetchRepos()
-  },[]);
+  },[reloadCount]);
+
+
+//-------------------------Paginação
+const paginacao = (qtd) => {
+  // setPageLimit(qtd)
+  setPageQtd(qtd)
+  setReloadCount(prevCount => prevCount + 1);
+
+}
+
+const paginaContador = (prop) => {
+  
+  if(prop == 'sum'){
+    setPageQtd(pageQtd+1)
+    setReloadCount(prevCount => prevCount + 1);
+  } else if(prop == 'sub'){
+    setPageQtd(pageQtd-1)
+    setReloadCount(prevCount => prevCount + 1);
+  }
+}
+
+
+
 
 
 //  Filtro de busca
@@ -289,6 +317,26 @@ export default function CadastrarLocal() {
                     </Card>
 
                 ))}
+                 
+                <div className={Style.divPaginacao}>
+                  <Pagination>
+                    <Pagination.First />
+                    <Pagination.Prev onClick={()=>paginaContador('sub')} />
+                    <Pagination.Item onClick={()=>paginacao(pageQtd)}  active>{pageQtd}</Pagination.Item>
+                    <Pagination.Ellipsis />
+
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+2)}>{pageQtd+2}</Pagination.Item>
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+3)}>{pageQtd+3}</Pagination.Item>
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+4)}>{pageQtd+4}</Pagination.Item>
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+5)}>{pageQtd+5}</Pagination.Item>
+                   
+
+                    <Pagination.Ellipsis />
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+20)}>{pageQtd+20}</Pagination.Item>
+                    <Pagination.Next onClick={()=>paginaContador('sum')}  />
+                    <Pagination.Last />
+                  </Pagination>
+                </div>
 </div>
 
               </tbody>
@@ -306,6 +354,7 @@ export default function CadastrarLocal() {
           <Button onClick={props.onHide}>Cancelar</Button>
         </Modal.Footer> */}
       </Modal>
+      
     );
   }
 

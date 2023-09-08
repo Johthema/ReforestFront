@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
 import Foto1 from '../../assets/images/fotopage1.png';
 import Logo from '../../assets/images/logo.png';
+import Usina from '../../assets/images/usinas.jpg';
 // import Foto2 from '../../assets/images/fotopage2.jpg';
 // import Foto3 from '../../assets/images/fotopage3.jpg';
 // import Foto4 from '../../assets/images/fotopage4.jpg';
@@ -42,6 +43,34 @@ export default function LandingPage(){
 
             <div>
             <Image src={Logo} className={Style.EstiloLogo} alt="" />
+            </div>
+
+            <div className={Style.divJustificativa}>
+                <div>
+                <Image src={Usina} className={Style.EstiloUsina} alt="" />
+                </div>
+                <div>
+                    <h4>
+                    Segundo dados da (Global Carbon Project)
+                    foram <span className={Style.texto2}>emitidos</span> cerca de <span className={Style.texto2}>34,6 bilhões</span> de toneladas de <span className={Style.texto2}>gás carbônico</span>
+                     somente no ano de 2019.
+                    </h4>
+                    <br/>
+                    <h4>
+                    Um dos fatores que levou ao
+                    número crescente de CO2 é a <span className={Style.texto2}>queimada</span> e o <span className={Style.texto2}>desmatamento</span>
+                    </h4>
+                    <br/>
+                    <h4>
+                    Somente na Amazonia foram devastadas cerca de 
+                    <span className={Style.texto2}> 10.573km2</span>
+                    </h4>
+
+                    <div className={Style.botaoSaiba}>
+                    Saiba mais
+                    </div>
+
+                </div>
             </div>
            
             </div>

@@ -26,6 +26,7 @@
     color: #fff;
     font-size: 28px;
     margin-left: 50px;
+    font-family: "Manrope", sans-serif;;
 }
 
 .texto1{
@@ -57,6 +58,7 @@
     margin: auto;
     margin-top: 20px;
 }
+
 
 .menuLogin{
     display: flex;
@@ -111,4 +113,44 @@
     margin-right: 10px;
     cursor: pointer;
     color: #fff
+}
+ 
+.divJustificativa{
+    display:flex;
+    height: 660px;
+    font-size: 28px;
+    font-family: "Manrope", sans-serif;
+    justify-content: center;
+    text-align: center;
+}
+
+.EstiloUsina{
+    height: 500px;
+    width: 50vw;
+    object-fit: cover;
+    margin-top: 60px;
+
+}
+
+.texto2{
+    color: #55ACEE;
+ }
+
+
+ .botaoSaiba{
+    margin: 20px;
+    width: 200px;
+    height: 50px;
+    background-color: #55ACEE;
+    font-size: 18px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    color: #fff;
+    margin: auto;
+}
+.botaoSaiba:hover{
+    box-shadow: 2px 2px 10px 2px #bfbfbf;
 }

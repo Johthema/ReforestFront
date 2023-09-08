@@ -171,3 +171,9 @@
     object-fit: cover;
 
 }
+
+.divPaginacao{
+    display: flex;
+    position: fixed;
+    bottom: 5px;
+}
