@@ -24,6 +24,7 @@ import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaListOl } from 'rea
 // import Card from 'react-bootstrap/Card';
 import CloseButton from 'react-bootstrap/CloseButton';
 import ImgArvore from '../../../assets/images/arvore_1.jpg';
+import Pagination from 'react-bootstrap/Pagination';
 
 
 
