@@ -87,10 +87,10 @@ export default function ListarArvore() {
   }, [reloadCount]);
 
   const handleChange = ({ target }) => {
-    if (!target.value) {
-      setRepo(initialRepos)
-      return;
-    }
+    // if (!target.value) {
+    //   setRepo(initialRepos)
+    //   return;
+    // }
 
     const filterRepos = repos.filter(({ name }) => name.includes(target.value));
     setRepo(filterRepos)

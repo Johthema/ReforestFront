@@ -23,7 +23,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaListOl } from 'react-icons/fa';
 // import Card from 'react-bootstrap/Card';
 import CloseButton from 'react-bootstrap/CloseButton';
-
+import ImgArvore from '../../../assets/images/arvore_1.jpg';
 
 
 
@@ -104,7 +104,17 @@ export default function CadastrarLocal() {
   // );
 
   useEffect(() => {
-    
+    setUserId(localStorage.getItem("idUs"))
+
+    axios.get('https://restcountries.com/v3.1/all')
+    .then((response) => {
+      setCountries(response.data);
+      console.log("todos os paises: ", response.data)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
     const fetchRepos = async () => {
       try {
         setLoading(true)
@@ -112,11 +122,12 @@ export default function CadastrarLocal() {
         if(tipo!='todos'){
           const response = await fetch(URL_API_TREE+"?order="+ordenar+"&role="+tipo)
           const dados = await response.json();
+          console.log("veja dados: ",dados)
         setInitialRepo(dados);
         setRepo(dados);
         setLoading(false)
         } else if (tipo=='todos'){
-          const response = await fetch(URL_API)
+          const response = await fetch(URL_API_TREE)
           const dados = await response.json();
         setInitialRepo(dados);
         setRepo(dados);
@@ -129,11 +140,34 @@ export default function CadastrarLocal() {
       }
     }
     fetchRepos()
-  }, [reloadCount]);
+  },[]);
+
+
+//  Filtro de busca
+  
 
 
 
   function MyVerticallyCenteredModal(props) {
+
+
+
+
+
+    
+
+    const handleChange = ({ target }) => {
+      console.log("entrou na função handle")
+      if (!target.value) {
+        setRepo(initialRepos)
+        return;
+      }
+  
+      const filterRepos = repos.filter(({ name }) => name.includes(target.value));
+      setRepo(filterRepos)
+      console.log("pesquisou o nome e setou o filtro")
+    }
+    
     return (
       <Modal
         {...props}
@@ -147,7 +181,10 @@ export default function CadastrarLocal() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Selecione quais árvores deseja plantar nesta região</h4>
+          <div className={Style.divSubtituloModal}>
+            <h4>Selecione quais tipos de árvores deseja plantar nesta região</h4>
+          </div>
+          
  
 
 
@@ -160,7 +197,7 @@ export default function CadastrarLocal() {
                     placeholder="Buscar por nome"
                     aria-label="Buscar por nome"
                     aria-describedby="basic-addon2"
-                    // onChange={handleChange}
+                    onChange={handleChange}
                   />
 
                 </InputGroup>
@@ -196,7 +233,7 @@ export default function CadastrarLocal() {
            
 
               <tbody>
- <div className={Style.divFundoModal}>
+              <div className={Style.divFundoModal}>
 
  
                 {repos.map((item,index) => (
@@ -232,7 +269,7 @@ export default function CadastrarLocal() {
                             <Form.Check // prettier-ignore
            
            
-          />
+                  />
                             {/* <FaRegWindowClose className={Style.iconeCard}/> */}
                             </div>
                         </div>
@@ -242,9 +279,11 @@ export default function CadastrarLocal() {
                       <Card.Body>
                         <Card.Title>{item.name}</Card.Title>
                         {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+                        <Image src={ImgArvore} className={Style.imgArvore} alt=""/>
                       </Card.Body>
                       <Card.Footer className="text-muted">
-                      <Form.Control type="number" placeholder="Quantidade" />
+                      {/* <Form.Control type="number" placeholder="Quantidade" /> */}
+                      <h5>Categoria: {item.category.name}</h5>
                       </Card.Footer>
                     </Card>
 
@@ -276,16 +315,16 @@ export default function CadastrarLocal() {
 
 
 
-  useEffect(() => {
-    axios.get('https://restcountries.com/v3.1/all')
-      .then((response) => {
-        setCountries(response.data);
-        console.log("todos os paises: ", response.data)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios.get('https://restcountries.com/v3.1/all')
+  //     .then((response) => {
+  //       setCountries(response.data);
+  //       console.log("todos os paises: ", response.data)
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
 
 //------------Buscar automaticamente o endereço através do cep inserido
@@ -444,15 +483,15 @@ export default function CadastrarLocal() {
 
   // console.log("tokenId: ",localStorage.getItem("tokenId"))
 
-  useEffect(() => {
-    // setTokenI(localStorage.getItem("tokenId"))
-    console.log("Id do usuario: ", localStorage.getItem("idUs"))
-    setUserId(localStorage.getItem("idUs"))
-    // console.log();
-    // fecthAllData();
+  // useEffect(() => {
+  //   // setTokenI(localStorage.getItem("tokenId"))
+  //   console.log("Id do usuario: ", localStorage.getItem("idUs"))
+  //   setUserId(localStorage.getItem("idUs"))
+  //   // console.log();
+  //   // fecthAllData();
 
 
-  }, [reloadCount]);
+  // }, [reloadCount]);
 
   const [show, setShow] = useState(true);
 
