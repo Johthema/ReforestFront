@@ -8,6 +8,7 @@ import Plantando from '../../assets/images/plantando.jpg';
 // import Foto2 from '../../assets/images/fotopage2.jpg';
 // import Foto3 from '../../assets/images/fotopage3.jpg';
 // import Foto4 from '../../assets/images/fotopage4.jpg';
+import Cards from '../../components/cards/cardHome/index';
 
 export default function LandingPage(){
     return(
@@ -83,9 +84,8 @@ export default function LandingPage(){
                     Plantar suas árvores
                     </div>
                 </div>
-                
-            
            </div>
+          
 
             <div>
             <Image src={Plantando} className={Style.EstiloPlantando} alt="" />
@@ -95,6 +95,12 @@ export default function LandingPage(){
             <div className={Style.divConectse}>
                 <h4>Conect-se para um futuro mais verde!</h4>
             </div>
+           
+                <Cards/>
+            <div className={Style.divConectse}>
+                <h4>Seja um reforest</h4>
+            </div>
+          
            
             </div>
         </div>
