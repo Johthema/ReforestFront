@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Foto1 from '../../assets/images/fotopage1.png';
 import Logo from '../../assets/images/logo.png';
 import Usina from '../../assets/images/usinas.jpg';
+import Plantando from '../../assets/images/plantando.jpg';
 // import Foto2 from '../../assets/images/fotopage2.jpg';
 // import Foto3 from '../../assets/images/fotopage3.jpg';
 // import Foto4 from '../../assets/images/fotopage4.jpg';
@@ -71,6 +72,28 @@ export default function LandingPage(){
                     </div>
 
                 </div>
+            </div>
+            <div className={Style.divlegendaPlantando}>
+                <div className={Style.divdivLegenda}>
+                    <h4>
+                        <span className={Style.EstilopLegPlantArv}>Plantar Árvores:</span> O Passaporte Verde para um Mundo Mais Saudável e Equilibrado!
+                    </h4>
+
+                    <div className={Style.botaoPlantar2}>
+                    Plantar suas árvores
+                    </div>
+                </div>
+                
+            
+           </div>
+
+            <div>
+            <Image src={Plantando} className={Style.EstiloPlantando} alt="" />
+            </div>
+
+          
+            <div className={Style.divConectse}>
+                <h4>Conect-se para um futuro mais verde!</h4>
             </div>
            
             </div>
