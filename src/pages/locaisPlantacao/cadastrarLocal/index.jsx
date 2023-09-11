@@ -70,7 +70,7 @@ export default function CadastrarLocal() {
 
   const [repos, setRepo] = useState([]);
   const [pageQtd, setPageQtd] = useState(1);
-  const [pageLimit, setPageLimit] = useState('10');
+  const [pageLimit, setPageLimit] = useState('9');
 
     //variáveis de filtros
     const [initialRepos, setInitialRepo] = useState([]);
@@ -320,21 +320,21 @@ const paginaContador = (prop) => {
                  
                 <div className={Style.divPaginacao}>
                   <Pagination>
-                    <Pagination.First />
+                    <Pagination.First onClick={()=>paginacao(1)} />
                     <Pagination.Prev onClick={()=>paginaContador('sub')} />
                     <Pagination.Item onClick={()=>paginacao(pageQtd)}  active>{pageQtd}</Pagination.Item>
                     <Pagination.Ellipsis />
 
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+2)}>{pageQtd+2}</Pagination.Item>
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+3)}>{pageQtd+3}</Pagination.Item>
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+4)}>{pageQtd+4}</Pagination.Item>
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+5)}>{pageQtd+5}</Pagination.Item>
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+2)} disabled={pageQtd >= 125}>{pageQtd+2}</Pagination.Item>
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+3)} disabled={pageQtd >= 125}>{pageQtd+3}</Pagination.Item>
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+4)} disabled={pageQtd >= 125}>{pageQtd+4}</Pagination.Item>
+                    {/* <Pagination.Item onClick={()=>paginacao(pageQtd+5)} disabled={pageQtd >= 130}>{pageQtd+5}</Pagination.Item> */}
                    
 
                     <Pagination.Ellipsis />
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+20)}>{pageQtd+20}</Pagination.Item>
-                    <Pagination.Next onClick={()=>paginaContador('sum')}  />
-                    <Pagination.Last />
+                    <Pagination.Item onClick={()=>paginacao(pageQtd+20)} disabled={pageQtd >= 125}>{pageQtd+20}</Pagination.Item>
+                    <Pagination.Next onClick={()=>paginaContador('sum')} disabled={pageQtd >= 125} />
+                    <Pagination.Last onClick={()=>paginacao(130)} disabled={pageQtd >= 125}/>
                   </Pagination>
                 </div>
 </div>
