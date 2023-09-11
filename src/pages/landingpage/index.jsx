@@ -98,7 +98,7 @@ export default function LandingPage(){
            
                 <Cards/>
             <div className={Style.divConectse}>
-                <h4>Seja um reforest</h4>
+                <h4>Seja um Reforest</h4>
             </div>
           
            
