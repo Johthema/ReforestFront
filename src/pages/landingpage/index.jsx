@@ -5,10 +5,13 @@ import Foto1 from '../../assets/images/fotopage1.png';
 import Logo from '../../assets/images/logo.png';
 import Usina from '../../assets/images/usinas.jpg';
 import Plantando from '../../assets/images/plantando.jpg';
+import Mulher from '../../assets/images/mulher.jpg';
 // import Foto2 from '../../assets/images/fotopage2.jpg';
 // import Foto3 from '../../assets/images/fotopage3.jpg';
 // import Foto4 from '../../assets/images/fotopage4.jpg';
 import Cards from '../../components/cards/cardHome/index';
+
+import {FaChartBar, FaTree, FaChartArea, FaUsers, FaChartLine, FaUserFriends, FaHeart } from "react-icons/fa";
 
 export default function LandingPage(){
     return(
@@ -99,6 +102,32 @@ export default function LandingPage(){
                 <Cards/>
             <div className={Style.divConectse}>
                 <h4>Seja um Reforest</h4>
+            </div>
+
+
+
+            <div className={Style.divlegendaPlantando}>
+                <div className={Style.div1}>
+                    <h4><FaChartBar className={Style.Icone1}/> Métrica do percentual de CO2 compensado</h4>
+                    <h4><FaTree className={Style.Icone1}/> Controle de árvores plantadas</h4>
+                    <h4><FaChartArea className={Style.Icone1}/> Controle de áreas de plantação</h4>
+                    <h4><FaUsers className={Style.Icone1}/> Conexão com outros ReForests</h4>
+                </div>
+                <div className={Style.div2}>
+
+                </div>
+                <div className={Style.div3}>
+                    <h4><FaChartLine className={Style.Icone1}/> Faturamento</h4>
+                    <h4><FaUserFriends className={Style.Icone1}/> Controle de usuários</h4>
+                    <h4><FaHeart className={Style.Icone1}/> Doação de árvores</h4>
+
+                    <div className={Style.botaoPlantar2}>
+                    Plantar suas árvores
+                    </div>
+                </div>
+           </div>
+            <div>
+            <Image src={Mulher} className={Style.EstiloMulher} alt="" />
             </div>
           
            
