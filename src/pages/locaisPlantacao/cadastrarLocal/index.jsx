@@ -31,7 +31,7 @@ import PageItem from 'react-bootstrap/PageItem'
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL+"tree";
-
+const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL+"category";
 
 export default function CadastrarLocal() {
   //Variáveis de feedback
@@ -77,6 +77,9 @@ export default function CadastrarLocal() {
     const [tipo, setTipo] = useState('todos');
     const [ordenar, setOrdenar] = useState('recente');
     const [contadorPage, setContadorPage] = useState('1');
+    const [busca, setBusca] = useState('')
+    const [categori, setCategori] = useState('');
+    const [dadosCategoria, setDadosCat] = useState([])
   // const handleCepChange = (event) => {
   //   setCep(event.target.value);
   // };
@@ -124,19 +127,29 @@ export default function CadastrarLocal() {
       try {
         setLoading(true)
         console.log("o tipo de arvore é: ",tipo)
-        if(tipo!='todos'){
-          // const response = await fetch(URL_API_TREE+"?order="+ordenar+"&role="+tipo)
-          const response = await fetch(URL_API_TREE+"?page="+pageQtd+"&limit="+pageLimit) 
+        // if(tipo!='todos'){
+        //   // const response = await fetch(URL_API_TREE+"?order="+ordenar+"&role="+tipo)
+        //   const response = await fetch(URL_API_TREE+"?search="+busca+"&page="+pageQtd+"&limit="+pageLimit) 
+        //   const dados = await response.json();
+        //   // const responseCat = await fetch(URL_API_CATEGORY)
+        //   // const dadosCat = await responseCat.json(); 
+        //   console.log("veja dados: ",dados)
+        //   //console.log("veja dados categoria: ",dadosCat)
+
+        // setInitialRepo(dados);
+        // setRepo(dados);
+        // setLoading(false)
+        // } else
+         if (tipo=='todos'){
+          const response = await fetch(URL_API_TREE+"?search="+busca+"&category="+categori+"&page="+pageQtd+"&limit="+pageLimit)
           const dados = await response.json();
-          console.log("veja dados: ",dados)
+          const responseCat = await fetch(URL_API_CATEGORY)
+          const dadosCat = await responseCat.json(); 
+          
+          console.log("veja dados categoria: ",dadosCat)
         setInitialRepo(dados);
         setRepo(dados);
-        setLoading(false)
-        } else if (tipo=='todos'){
-          const response = await fetch(URL_API_TREE+"?page="+pageQtd+"&limit="+pageLimit)
-          const dados = await response.json();
-        setInitialRepo(dados);
-        setRepo(dados);
+        setDadosCat(dadosCat);
         setLoading(false)
         } 
 
@@ -153,6 +166,7 @@ export default function CadastrarLocal() {
 const paginacao = (qtd) => {
   // setPageLimit(qtd)
   setPageQtd(qtd)
+  setLoading(true)
   setReloadCount(prevCount => prevCount + 1);
 
 }
@@ -182,20 +196,28 @@ const paginaContador = (prop) => {
 
 
 
-
-    
-
-    const handleChange = ({ target }) => {
-      console.log("entrou na função handle")
-      if (!target.value) {
-        setRepo(initialRepos)
-        return;
+    const handleCampo1KeyPress = (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        setBusca(e.target.value)
+        setLoading(true)
+        setReloadCount(prevCount => prevCount + 1);
+        console.log("os dados salvos na variavel: ",e.target.value )
       }
-  
-      const filterRepos = repos.filter(({ name }) => name.includes(target.value));
-      setRepo(filterRepos)
-      console.log("pesquisou o nome e setou o filtro")
+    };
+
+    function onChangeTodos (){
+      setBusca('')
+      setLoading(true)
+      setReloadCount(prevCount => prevCount + 1);
     }
+    const onChangeFilterCategoria=(cate)=> {
+      setCategori(cate);
+      setLoading(true)
+      setReloadCount(prevCount => prevCount + 1);
+    }
+
+
     
     return (
       <Modal
@@ -221,15 +243,17 @@ const paginaContador = (prop) => {
 
             <Navbar className={Style.headerTabela}>
               <Container>
-                <InputGroup className={Style.Busca}>
+             
+                <Form.Group className={Style.Busca}>
                   <Form.Control
+                  type="text"
                     placeholder="Buscar por nome"
-                    aria-label="Buscar por nome"
-                    aria-describedby="basic-addon2"
-                    onChange={handleChange}
+                    id="meuInput"
+                    onKeyPress={handleCampo1KeyPress}
                   />
 
-                </InputGroup>
+                </Form.Group> 
+              
 
                 <Dropdown className={Style.DropMENU}>
                   <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
@@ -238,23 +262,27 @@ const paginaContador = (prop) => {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu  className={Style.OpDropNotifi}>
-                  <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
+                  <Dropdown.Item onClick={() => onChangeTodos("todos")}>Todos</Dropdown.Item>
+                  <hr/>
+                  {dadosCategoria.map((item, index)=>(
+                    <Dropdown.Item key={index} onClick={() => onChangeFilterCategoria(item.name)}>{item.name}</Dropdown.Item>
+                  ))}
                     {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
                     <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
 
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown >
+                {/* <Dropdown >
                       <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
                       <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
                       
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        {/* <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
-                        <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item> */}
+                        <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                        <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
                       </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
 
               </Container>
             </Navbar>
