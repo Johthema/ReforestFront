@@ -10,7 +10,7 @@ import Mulher from '../../assets/images/mulher.jpg';
 // import Foto3 from '../../assets/images/fotopage3.jpg';
 // import Foto4 from '../../assets/images/fotopage4.jpg';
 import Cards from '../../components/cards/cardHome/index';
-
+import Foot from '../../components/footer/index'
 import {FaChartBar, FaTree, FaChartArea, FaUsers, FaChartLine, FaUserFriends, FaHeart } from "react-icons/fa";
 
 export default function LandingPage(){
@@ -132,7 +132,9 @@ export default function LandingPage(){
           
            
             </div>
+            <Foot/>
         </div>
+       
         </>
     )
 } 

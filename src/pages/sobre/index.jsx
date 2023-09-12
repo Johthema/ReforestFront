@@ -11,6 +11,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from 'react-bootstrap/Form';
+import { useRouter } from "next/router"
 
 export default function Sobre(){
 
@@ -46,6 +47,11 @@ export default function Sobre(){
   
     }, []);
 
+    const router = useRouter();
+
+   const EditarUser=()=>{
+    router.push('/configuracao');
+   }
     
 
     return(
@@ -74,11 +80,11 @@ export default function Sobre(){
 
 
         <OverlayTrigger overlay={
-  <Tooltip id="tooltip-disabled"   >
+  <Tooltip id="tooltip-disabled"  >
   Editar
   </Tooltip>} placement="left">
   <div >
-  <FaPen className={Style.IconInfoEdit}/>
+  <FaPen className={Style.IconInfoEdit} onClick={EditarUser}/>
   </div>
 </OverlayTrigger>
             
