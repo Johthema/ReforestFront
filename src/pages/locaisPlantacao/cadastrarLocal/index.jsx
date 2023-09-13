@@ -230,6 +230,13 @@ const paginaContador = (prop) => {
         setColecao([...colecao, evt]);
         
       };
+
+      //Remover item da coleção
+      const removerElemento = (index) => {
+        const novaColecao = [...colecao];
+        novaColecao.splice(index, 1); // Remove 1 elemento do índice especificado
+        setColecao(novaColecao);
+      };
     
       console.log("a coleção esta: ",colecao)
 
@@ -377,9 +384,14 @@ const paginaContador = (prop) => {
         {colecao.map((elemento, index) => (
         
           <li key={index} className={Style.itemColecao} >
-            <div className={Style.divcolecao}>
+            {/* <div className={Style.divcolecao} onClick={() => removerElemento(index)}>
               <h4 className={Style.itemColecao}>{elemento}</h4>
-            </div>
+            </div> */}
+
+            <Alert variant="success" onClose={() => removerElemento(index)} dismissible>
+        
+        <h4 className={Style.itemColecao}>{elemento}</h4>
+        </Alert>
             
           </li>
        
