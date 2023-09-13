@@ -391,14 +391,14 @@ const paginaContador = (prop) => {
       {colecao == '' &&
       <>
         <div className={Style.botaoPlantar1}>
-          Permito plantar estas árvores
+          Permitir plantar estas espécies
         </div>
       </>
       } 
       {colecao != '' && 
       <>
       <div className={Style.botaoPlantar2} >
-        Permito plantar estas árvores
+      Permitir plantar estas espécies
       </div>
     </>
       
