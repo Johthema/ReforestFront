@@ -113,7 +113,7 @@ export default function CadastrarLocal() {
 
   useEffect(() => {
     setUserId(localStorage.getItem("idUs"))
-
+    const minhaLista = [];
     axios.get('https://restcountries.com/v3.1/all')
     .then((response) => {
       setCountries(response.data);
@@ -193,7 +193,7 @@ const paginaContador = (prop) => {
 
   function MyVerticallyCenteredModal(props) {
 
-
+    const [minhaLista, setMinhaLista] = useState([])
 
 
     const handleCampo1KeyPress = (e) => {
@@ -217,6 +217,21 @@ const paginaContador = (prop) => {
       setReloadCount(prevCount => prevCount + 1);
     }
 
+   
+      // Estado para armazenar a coleção
+      const [colecao, setColecao] = useState([]);
+    
+      // Função para adicionar um novo elemento à coleção no último índice
+      const selecionarItem = (evt) => {
+        // Crie o novo elemento (pode ser qualquer valor ou objeto)
+        const novoElemento = `Elemento ${colecao.length + 1}`;
+        
+        // Atualize o estado da coleção adicionando o novo elemento à última posição
+        setColecao([...colecao, evt]);
+        
+      };
+    
+      console.log("a coleção esta: ",colecao)
 
     
     return (
@@ -292,6 +307,12 @@ const paginaContador = (prop) => {
               <tbody>
               <div className={Style.divFundoModal}>
 
+ <Container>
+  <Row>
+    <Col>
+
+  
+ 
  
                 {repos.map((item,index) => (
 
@@ -323,7 +344,7 @@ const paginaContador = (prop) => {
                             <div className={Style.opcoesCard}>
                             {/* <FaEdit className={Style.iconeCard}/> */}
                             {/* <CloseButton/> */}
-                            <Form.Check // prettier-ignore
+                            <Form.Check onClick={()=>selecionarItem(item.name)} // prettier-ignore
            
            
                   />
@@ -345,6 +366,34 @@ const paginaContador = (prop) => {
                     </Card>
 
                 ))}
+</Col>
+<Col>
+{/* {colecao=='' &&
+  <h4>Sem itens selecionados!</h4>
+} {colecao &&
+
+<li>
+<h4 style={{ marginBottom: '10px' }}>{colecao}</h4>
+</li>
+
+} */}
+ <ul>
+  {colecao == '' && 
+   <h4>Sem itens selecionados!</h4>
+  }
+        {colecao.map((elemento, index) => (
+          <li key={index} style={{ marginBottom: '10px' }}>
+            <div className={Style.divcolecao}>
+              <h4>{elemento}</h4>
+            </div>
+            
+          </li>
+        ))}
+      </ul>
+
+</Col>
+</Row>
+</Container>
                  
                 <div className={Style.divPaginacao}>
                   <Pagination>

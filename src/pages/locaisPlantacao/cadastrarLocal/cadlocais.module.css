@@ -107,8 +107,8 @@
     width: 70vw;
 }
 .Card{
-    width: 30%;
-    height: 30%;
+    width: 80%;
+    /* height: 30%; */
     margin: 10px;
     
 }
@@ -179,4 +179,11 @@
     position: fixed;
     bottom: 5px;
    
+}
+
+.divcolecao{
+   margin-top: 10px;
+   width: 40%;
+   background-color: #9EC69D;
+    
 }
