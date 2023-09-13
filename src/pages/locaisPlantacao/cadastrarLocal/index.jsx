@@ -367,29 +367,42 @@ const paginaContador = (prop) => {
 
                 ))}
 </Col>
-<Col>
-{/* {colecao=='' &&
-  <h4>Sem itens selecionados!</h4>
-} {colecao &&
-
-<li>
-<h4 style={{ marginBottom: '10px' }}>{colecao}</h4>
-</li>
-
-} */}
+<Col className={Style.coluna2}>
+ 
  <ul>
   {colecao == '' && 
-   <h4>Sem itens selecionados!</h4>
+ 
+   <h4>Sem itens selecionados!</h4> 
   }
         {colecao.map((elemento, index) => (
-          <li key={index} style={{ marginBottom: '10px' }}>
+        
+          <li key={index} className={Style.itemColecao} >
             <div className={Style.divcolecao}>
-              <h4>{elemento}</h4>
+              <h4 className={Style.itemColecao}>{elemento}</h4>
             </div>
             
           </li>
-        ))}
+       
+        ))
+        
+        }
+      
       </ul>
+      {colecao == '' &&
+      <>
+        <div className={Style.botaoPlantar1}>
+          Permito plantar estas árvores
+        </div>
+      </>
+      } 
+      {colecao != '' && 
+      <>
+      <div className={Style.botaoPlantar2} >
+        Permito plantar estas árvores
+      </div>
+    </>
+      
+      }
 
 </Col>
 </Row>

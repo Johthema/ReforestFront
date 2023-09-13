@@ -59,7 +59,7 @@
 
 .headerTabela{
     background-color: #2F2F2F;
-    width: 94%;
+    width: 96%;
     margin: auto;
     border-radius: 10px 10px 0px 0px;
 } 
@@ -185,5 +185,52 @@
    margin-top: 10px;
    width: 40%;
    background-color: #9EC69D;
+   justify-content: center;
+   margin: auto;
+   padding: 5px;
+   
+}
+.itemColecao{
     
+    margin-top: 10px;
+    list-style: none 
+}
+
+.botaoPlantar1{
+    margin: 20px;
+    width: 300px;
+    height: 50px;
+    background-color: rgb(188, 190, 188);
+    font-size: 18px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+   
+    color: #5a5a5a;
+    margin: auto;
+}
+/* .botaoPlantar1:hover{
+    box-shadow: 1px 1px 5px 1px #6d6d6d;
+} */
+.botaoPlantar2{
+    margin: 20px;
+    width: 300px;
+    height: 50px;
+    background-color: green;
+    font-size: 18px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    color: #fff;
+    margin: auto;
+}
+.botaoPlantar2:hover{
+    box-shadow: 1px 1px 5px 1px #6d6d6d;
+}
+
+.coluna2{
+    border-left: solid 1px #979797;
 }
