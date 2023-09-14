@@ -211,6 +211,7 @@ export default function CadastrarLocal() {
         size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className={Style.divModal}
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -280,7 +281,30 @@ export default function CadastrarLocal() {
 
                 <Container>
                   <Row>
+                  <div className={Style.divPaginacao}>
+                  <Pagination>
+                    <Pagination.First onClick={() => paginacao(1)} />
+                    <Pagination.Prev onClick={() => paginaContador('sub')} />
+                    <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                    <Pagination.Ellipsis />
+
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+               
+                    <Pagination.Ellipsis />
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                    <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                    <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+                  </Pagination>
+                </div>
                     <Col>
+
+
+
+
+<div className={Style.divItens1}>
+
 
                       {repos.map((item, index) => (
 
@@ -324,9 +348,10 @@ export default function CadastrarLocal() {
                         </Card>
 
                       ))}
+</div>
                     </Col>
                     <Col className={Style.coluna2}>
-
+<div className={Style.divItens2}>
                       <ul>
                         {colecao == '' &&
 
@@ -352,7 +377,9 @@ export default function CadastrarLocal() {
                         }
 
                       </ul>
-                      {colecao == '' &&
+                     
+</div>
+{colecao == '' &&
                         <>
                           <div className={Style.botaoPlantar1}>
                             Permitir plantar estas espécies
@@ -372,25 +399,7 @@ export default function CadastrarLocal() {
                   </Row>
                 </Container>
 
-                <div className={Style.divPaginacao}>
-                  <Pagination>
-                    <Pagination.First onClick={() => paginacao(1)} />
-                    <Pagination.Prev onClick={() => paginaContador('sub')} />
-                    <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
-                    <Pagination.Ellipsis />
-
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
-                    {/* <Pagination.Item onClick={()=>paginacao(pageQtd+5)} disabled={pageQtd >= 130}>{pageQtd+5}</Pagination.Item> */}
-
-
-                    <Pagination.Ellipsis />
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
-                    <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
-                    <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
-                  </Pagination>
-                </div>
+                
               </div>
 
             </tbody>

@@ -177,11 +177,16 @@
 
 .divPaginacao{
     display: flex;
-    position: fixed;
+    /* position: fixed; */
+    margin-left: 20px;
+    margin-top: 10px;
     bottom: 5px;
    
+   
 }
-
+/* .divModal{
+    height: 730px;
+} */
 .divcolecao{
    margin-top: 10px;
    width: 100%;
@@ -246,4 +251,13 @@
 
 .coluna2{
     border-left: solid 1px #979797;
+}
+
+.divItens1{
+    height: 400px;
+    overflow-y: auto;
+}
+.divItens2{
+    height: 400px;
+    overflow-y: auto;
 }
