@@ -637,24 +637,24 @@ export default function CadastrarLocal() {
 
             <Form onSubmit={enviarForm} method='post'>
               <Form.Group className="mb-3" controlId="formGrouNome">
-                <FloatingLabel controlId="floatingInput" label="Nome" className="mb-3">
-                  <Form.Control type="text" placeholder="Nome" onChange={onChangeNome} />
+                <FloatingLabel controlId="floatingInput" label="*Nome" className="mb-3">
+                  <Form.Control type="text" placeholder="*Nome" onChange={onChangeNome} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Control as="textarea" rows={3} placeholder='Descrição' onChange={onChangeDescription} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupCdgPostal">
-                <FloatingLabel controlId="floatingInput" label="Código postal" className="mb-3">
-                  <Form.Control type="text" placeholder="Código postal" onChange={onChangePostalCode} maxLength={10} />
+                <FloatingLabel controlId="floatingInput" label="*Código postal" className="mb-3">
+                  <Form.Control type="text" placeholder="*Código postal" onChange={onChangePostalCode} maxLength={10} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupLocalizacao">
-                <FloatingLabel controlId="floatingInput" label="latitude" className="mb-3">
-                  <Form.Control type="text" placeholder="latitude" onChange={onChangeLatitude} ref={inputCampo2} />
+                <FloatingLabel controlId="floatingInput" label="*latitude" className="mb-3">
+                  <Form.Control type="text" placeholder="*latitude" onChange={onChangeLatitude} ref={inputCampo2} />
                 </FloatingLabel>
-                <FloatingLabel controlId="floatingInput" label="Longitude" className="mb-3">
-                  <Form.Control type="text" placeholder="Longitude" onChange={onChangeLongitude} />
+                <FloatingLabel controlId="floatingInput" label="*Longitude" className="mb-3">
+                  <Form.Control type="text" placeholder="*Longitude" onChange={onChangeLongitude} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupEndereco">
@@ -662,17 +662,17 @@ export default function CadastrarLocal() {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formGroupEndereco">
-                <FloatingLabel controlId="floatingInput" label="Endereço" className="mb-3">
-                  <Form.Control type="text" placeholder="Endereço" value={dadosEndereco.logradouro} onChange={onChangeAddress} />
+                <FloatingLabel controlId="floatingInput" label="*Endereço" className="mb-3">
+                  <Form.Control type="text" placeholder="*Endereço" value={dadosEndereco.logradouro} onChange={onChangeAddress} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupCidade">
-                <FloatingLabel controlId="floatingInput" label="Cidade" className="mb-3">
-                  <Form.Control type="text" placeholder="Cidade" value={dadosEndereco.localidade} onChange={onChangeCity} />
+                <FloatingLabel controlId="floatingInput" label="*Cidade" className="mb-3">
+                  <Form.Control type="text" placeholder="*Cidade" value={dadosEndereco.localidade} onChange={onChangeCity} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupPais">
-                <FloatingLabel controlId="floatingInput" label="País" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="*País" className="mb-3">
                   {/* <Form.Control type="text" placeholder="Pais" value={dadosEndereco.country} onChange={onChangeCountry} /> */}
                   {/* <Form.Select aria-label="Default select example">
                 {countries.map((country) => (
@@ -696,13 +696,13 @@ export default function CadastrarLocal() {
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupHectare">
-                <FloatingLabel controlId="floatingInput" label="Hectare" className="mb-3">
-                  <Form.Control type="text" placeholder="Hectare" onChange={onChangeHectare} />
+                <FloatingLabel controlId="floatingInput" label="*Hectare" className="mb-3">
+                  <Form.Control type="text" placeholder="*Hectare" onChange={onChangeHectare} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupLimite">
-                <FloatingLabel controlId="floatingInput" label="limite" className="mb-3">
-                  <Form.Control type="text" placeholder="Hectare" onChange={onChangeLimitTrees} />
+                <FloatingLabel controlId="floatingInput" label="*Limite" className="mb-3">
+                  <Form.Control type="text" placeholder="*Limite" onChange={onChangeLimitTrees} />
                 </FloatingLabel>
               </Form.Group>
 
@@ -756,9 +756,13 @@ export default function CadastrarLocal() {
 
               </Row>
               <br />
+              <div>
+                <h5>Escolha as espécies de árvores que serão plantadas nesta região</h5>
               <Button variant="primary" onClick={() => setModalShow(true)}>
                 Selecione árvores
               </Button>
+              </div>
+              
 
               <MyVerticallyCenteredModal
                 show={modalShow}
