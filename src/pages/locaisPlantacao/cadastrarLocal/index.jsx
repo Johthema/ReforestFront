@@ -222,12 +222,20 @@ const paginaContador = (prop) => {
       const [colecao, setColecao] = useState([]);
     
       // Função para adicionar um novo elemento à coleção no último índice
-      const selecionarItem = (evt) => {
-        // Crie o novo elemento (pode ser qualquer valor ou objeto)
-        const novoElemento = `Elemento ${colecao.length + 1}`;
-        
-        // Atualize o estado da coleção adicionando o novo elemento à última posição
-        setColecao([...colecao, evt]);
+      const selecionarItem = (evt, event, indx) => {
+        console.log("o event check: ", event)
+
+        if(event == false){
+          removerElemento(indx)
+        } else if(event == true){
+          // Crie o novo elemento (pode ser qualquer valor ou objeto)
+          const novoElemento = `Elemento ${colecao.length + 1}`;
+                
+          // Atualize o estado da coleção adicionando o novo elemento à última posição
+          setColecao([...colecao, evt]);
+        }
+
+      
         
       };
 
@@ -239,7 +247,7 @@ const paginaContador = (prop) => {
       };
     
       console.log("a coleção esta: ",colecao)
-
+      //e.target.value
     
     return (
       <Modal
@@ -351,7 +359,7 @@ const paginaContador = (prop) => {
                             <div className={Style.opcoesCard}>
                             {/* <FaEdit className={Style.iconeCard}/> */}
                             {/* <CloseButton/> */}
-                            <Form.Check onClick={()=>selecionarItem(item.name)} // prettier-ignore
+                            <Form.Check onClick={(e)=>selecionarItem(item.name, e.target.checked, index)} // prettier-ignore
            
            
                   />
