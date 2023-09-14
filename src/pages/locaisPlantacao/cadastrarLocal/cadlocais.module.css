@@ -190,7 +190,18 @@
    /* margin: auto; */
    padding: 5px;
    border-left: solid 8px green;
+   display: flex;
    
+}
+.alertaStilo{
+    display: flex;
+}
+.alertaStiloDelete{
+    display: flex;
+    margin-inline-start: auto;
+    font-size: 24px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 .itemColecao{
     

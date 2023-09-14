@@ -20,7 +20,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { FaEdit, FaTrashAlt, FaSearch, FaFilter, FaRedoAlt, FaListOl } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt, FaSearch, FaFilter } from 'react-icons/fa';
 // import Card from 'react-bootstrap/Card';
 import CloseButton from 'react-bootstrap/CloseButton';
 import ImgArvore from '../../../assets/images/arvore_1.jpg';
@@ -222,11 +222,11 @@ const paginaContador = (prop) => {
       const [colecao, setColecao] = useState([]);
     
       // Função para adicionar um novo elemento à coleção no último índice
-      const selecionarItem = (evt, event, indx) => {
+      const selecionarItem = (evt, event, idx) => {
         console.log("o event check: ", event)
 
         if(event == false){
-          removerElemento(indx)
+          removerElemento(evt)
         } else if(event == true){
           // Crie o novo elemento (pode ser qualquer valor ou objeto)
           const novoElemento = `Elemento ${colecao.length + 1}`;
@@ -239,12 +239,11 @@ const paginaContador = (prop) => {
         
       };
 
-      //Remover item da coleção
-      const removerElemento = (index) => {
-        const novaColecao = [...colecao];
-        novaColecao.splice(index, 1); // Remove 1 elemento do índice especificado
+      const removerElemento = (elemento) => {
+        const novaColecao = colecao.filter((item) => item !== elemento);
         setColecao(novaColecao);
       };
+     
     
       console.log("a coleção esta: ",colecao)
       //e.target.value
@@ -341,7 +340,7 @@ const paginaContador = (prop) => {
                   //   <td className={Style.Deletar} value={repo._id} onClick={() => idArvore(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
                   // </tr>
  
-                  <Card className={Style.Card} key={index}>
+                  <Card className={Style.Card} key={item._id}>
                       <Card.Header className={Style.HeaderCard0}>
                         <div className={Style.HeaderCard}>
                             
@@ -359,7 +358,7 @@ const paginaContador = (prop) => {
                             <div className={Style.opcoesCard}>
                             {/* <FaEdit className={Style.iconeCard}/> */}
                             {/* <CloseButton/> */}
-                            <Form.Check onClick={(e)=>selecionarItem(item.name, e.target.checked, index)} // prettier-ignore
+                            <Form.Check onClick={(e)=>selecionarItem(item.name, e.target.checked)} // prettier-ignore
            
            
                   />
@@ -396,9 +395,10 @@ const paginaContador = (prop) => {
               <h4 className={Style.itemColecao}>{elemento}</h4>
             </div> */}
 
-            <Alert variant="success" onClose={() => removerElemento(index)} dismissible>
+            <Alert variant="success" className={Style.alertaStilo} >
         
         <h4 className={Style.itemColecao}>{elemento}</h4>
+        <FaTrashAlt onClick={() => removerElemento(elemento)} className={Style.alertaStiloDelete}/>
         </Alert>
             
           </li>
