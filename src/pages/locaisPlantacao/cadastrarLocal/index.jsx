@@ -30,8 +30,8 @@ import PageItem from 'react-bootstrap/PageItem'
 
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
-const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL+"tree";
-const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL+"category";
+const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
+const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL + "category";
 
 export default function CadastrarLocal() {
   //Variáveis de feedback
@@ -72,86 +72,48 @@ export default function CadastrarLocal() {
   const [pageQtd, setPageQtd] = useState(1);
   const [pageLimit, setPageLimit] = useState('9');
 
-    //variáveis de filtros
-    const [initialRepos, setInitialRepo] = useState([]);
-    const [tipo, setTipo] = useState('todos');
-    const [ordenar, setOrdenar] = useState('recente');
-    const [contadorPage, setContadorPage] = useState('1');
-    const [busca, setBusca] = useState('')
-    const [categori, setCategori] = useState('');
-    const [dadosCategoria, setDadosCat] = useState([])
-  // const handleCepChange = (event) => {
-  //   setCep(event.target.value);
-  // };
+  //variáveis de filtros
+  const [initialRepos, setInitialRepo] = useState([]);
+  const [tipo, setTipo] = useState('todos');
+  const [ordenar, setOrdenar] = useState('recente');
+  const [contadorPage, setContadorPage] = useState('1');
+  const [busca, setBusca] = useState('')
+  const [categori, setCategori] = useState('');
+  const [dadosCategoria, setDadosCat] = useState([])
+
 
   const [modalShow, setModalShow] = useState(false);
-  // return (
-  //   <Modal
-   
-  //     size="lg"
-  //     aria-labelledby="contained-modal-title-vcenter"
-  //     centered
-  //   >
-  //     <Modal.Header closeButton>
-  //       <Modal.Title id="contained-modal-title-vcenter">
-  //         Modal heading
-  //       </Modal.Title>
-  //     </Modal.Header>
-  //     <Modal.Body>
-  //       <h4>Centered Modal</h4>
-  //       <p>
-  //         Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-  //         dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-  //         consectetur ac, vestibulum at eros.
-  //       </p>
-  //     </Modal.Body>
-  //     <Modal.Footer>
-  //       {/* <Button onClick={props.onHide}>Close</Button> */}
-  //     </Modal.Footer>
-  //   </Modal>
-  // );
+
 
   useEffect(() => {
     setUserId(localStorage.getItem("idUs"))
     const minhaLista = [];
     axios.get('https://restcountries.com/v3.1/all')
-    .then((response) => {
-      setCountries(response.data);
-      console.log("todos os paises: ", response.data)
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((response) => {
+        setCountries(response.data);
+        console.log("todos os paises: ", response.data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     const fetchRepos = async () => {
       try {
         setLoading(true)
-        console.log("o tipo de arvore é: ",tipo)
-        // if(tipo!='todos'){
-        //   // const response = await fetch(URL_API_TREE+"?order="+ordenar+"&role="+tipo)
-        //   const response = await fetch(URL_API_TREE+"?search="+busca+"&page="+pageQtd+"&limit="+pageLimit) 
-        //   const dados = await response.json();
-        //   // const responseCat = await fetch(URL_API_CATEGORY)
-        //   // const dadosCat = await responseCat.json(); 
-        //   console.log("veja dados: ",dados)
-        //   //console.log("veja dados categoria: ",dadosCat)
-
-        // setInitialRepo(dados);
-        // setRepo(dados);
-        // setLoading(false)
-        // } else
-         if (tipo=='todos'){
-          const response = await fetch(URL_API_TREE+"?search="+busca+"&category="+categori+"&page="+pageQtd+"&limit="+pageLimit)
+        console.log("o tipo de arvore é: ", tipo)
+      
+        if (tipo == 'todos') {
+          const response = await fetch(URL_API_TREE + "?search=" + busca + "&category=" + categori + "&page=" + pageQtd + "&limit=" + pageLimit)
           const dados = await response.json();
           const responseCat = await fetch(URL_API_CATEGORY)
-          const dadosCat = await responseCat.json(); 
-          
-          console.log("veja dados categoria: ",dadosCat)
-        setInitialRepo(dados);
-        setRepo(dados);
-        setDadosCat(dadosCat);
-        setLoading(false)
-        } 
+          const dadosCat = await responseCat.json();
+
+          console.log("veja dados categoria: ", dadosCat)
+          setInitialRepo(dados);
+          setRepo(dados);
+          setDadosCat(dadosCat);
+          setLoading(false)
+        }
 
       } catch (error) {
         console.log(error)
@@ -159,38 +121,33 @@ export default function CadastrarLocal() {
       }
     }
     fetchRepos()
-  },[reloadCount]);
+  }, [reloadCount]);
 
 
-//-------------------------Paginação
-const paginacao = (qtd) => {
-  // setPageLimit(qtd)
-  setPageQtd(qtd)
-  setLoading(true)
-  setReloadCount(prevCount => prevCount + 1);
-
-}
-
-const paginaContador = (prop) => {
-  
-  if(prop == 'sum'){
-    setPageQtd(pageQtd+1)
+  //-------------------------Paginação inicio
+  const paginacao = (qtd) => {
+    // setPageLimit(qtd)
+    setPageQtd(qtd)
+    setLoading(true)
     setReloadCount(prevCount => prevCount + 1);
-  } else if(prop == 'sub'){
-    setPageQtd(pageQtd-1)
-    setReloadCount(prevCount => prevCount + 1);
+
   }
-}
 
+  const paginaContador = (prop) => {
 
+    if (prop == 'sum') {
+      setPageQtd(pageQtd + 1)
+      setReloadCount(prevCount => prevCount + 1);
+    } else if (prop == 'sub') {
+      setPageQtd(pageQtd - 1)
+      setReloadCount(prevCount => prevCount + 1);
+    }
+  }
+//-------------------------Paginação fim
 
+  //  Filtro de busca
 
-
-//  Filtro de busca
-  
-
-
-
+  //=====================================Modal escollha de árvores inicio==================================
   function MyVerticallyCenteredModal(props) {
 
     const [minhaLista, setMinhaLista] = useState([])
@@ -202,59 +159,59 @@ const paginaContador = (prop) => {
         setBusca(e.target.value)
         setLoading(true)
         setReloadCount(prevCount => prevCount + 1);
-        console.log("os dados salvos na variavel: ",e.target.value )
+        console.log("os dados salvos na variavel: ", e.target.value)
       }
     };
 
-    function onChangeTodos (){
+    function onChangeTodos() {
       setBusca('')
       setLoading(true)
       setReloadCount(prevCount => prevCount + 1);
     }
-    const onChangeFilterCategoria=(cate)=> {
+    const onChangeFilterCategoria = (cate) => {
       setCategori(cate);
       setLoading(true)
       setReloadCount(prevCount => prevCount + 1);
     }
 
-   
-      // Estado para armazenar a coleção
-      const [colecao, setColecao] = useState([]);
-    
-      // Função para adicionar um novo elemento à coleção no último índice
-      const selecionarItem = (evt, event, idx) => {
-        console.log("o event check: ", event)
 
-        if(event == false){
-          removerElemento(evt)
-        } else if(event == true){
-          // Crie o novo elemento (pode ser qualquer valor ou objeto)
-          const novoElemento = `Elemento ${colecao.length + 1}`;
-                
-          // Atualize o estado da coleção adicionando o novo elemento à última posição
-          setColecao([...colecao, evt]);
-        }
+    // Estado para armazenar a coleção
+    const [colecao, setColecao] = useState([]);
 
-      
-        
-      };
+    // Função para adicionar um novo elemento à coleção no último índice
+    const selecionarItem = (evt, event, idx) => {
+      console.log("o event check: ", event)
 
-      const removerElemento = (elemento) => {
-        const novaColecao = colecao.filter((item) => item !== elemento);
-        setColecao(novaColecao);
-      };
-     
-    
-      console.log("a coleção esta: ",colecao)
-      //e.target.value
-    
+      if (event == false) {
+        removerElemento(evt)
+      } else if (event == true) {
+        // Crie o novo elemento (pode ser qualquer valor ou objeto)
+        const novoElemento = `Elemento ${colecao.length + 1}`;
+
+        // Atualize o estado da coleção adicionando o novo elemento à última posição
+        setColecao([...colecao, evt]);
+      }
+
+
+
+    };
+
+    const removerElemento = (elemento) => {
+      const novaColecao = colecao.filter((item) => item !== elemento);
+      setColecao(novaColecao);
+    };
+
+
+    console.log("a coleção esta: ", colecao)
+    //e.target.value
+
     return (
       <Modal
         {...props}
         size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-      > 
+      >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Árvores disponíveis
@@ -264,38 +221,38 @@ const paginaContador = (prop) => {
           <div className={Style.divSubtituloModal}>
             <h4>Selecione quais tipos de árvores deseja plantar nesta região</h4>
           </div>
-          
- 
+
+
 
 
           <div className={Style.divFundo}>
 
             <Navbar className={Style.headerTabela}>
               <Container>
-             
+
                 <Form.Group className={Style.Busca}>
                   <Form.Control
-                  type="text"
+                    type="text"
                     placeholder="Buscar por nome"
                     id="meuInput"
                     onKeyPress={handleCampo1KeyPress}
                   />
 
-                </Form.Group> 
-              
+                </Form.Group>
+
 
                 <Dropdown className={Style.DropMENU}>
                   <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
-                  <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+                    <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
 
                   </Dropdown.Toggle>
 
-                  <Dropdown.Menu  className={Style.OpDropNotifi}>
-                  <Dropdown.Item onClick={() => onChangeTodos("todos")}>Todos</Dropdown.Item>
-                  <hr/>
-                  {dadosCategoria.map((item, index)=>(
-                    <Dropdown.Item key={index} onClick={() => onChangeFilterCategoria(item.name)}>{item.name}</Dropdown.Item>
-                  ))}
+                  <Dropdown.Menu className={Style.OpDropNotifi}>
+                    <Dropdown.Item onClick={() => onChangeTodos("todos")}>Todos</Dropdown.Item>
+                    <hr />
+                    {dadosCategoria.map((item, index) => (
+                      <Dropdown.Item key={index} onClick={() => onChangeFilterCategoria(item.name)}>{item.name}</Dropdown.Item>
+                    ))}
                     {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
                     <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
 
@@ -316,147 +273,130 @@ const paginaContador = (prop) => {
               </Container>
             </Navbar>
 
-           
 
-              <tbody>
+
+            <tbody>
               <div className={Style.divFundoModal}>
 
- <Container>
-  <Row>
-    <Col>
+                <Container>
+                  <Row>
+                    <Col>
 
-  
- 
- 
-                {repos.map((item,index) => (
+                      {repos.map((item, index) => (
 
-                  // <tr className={Style.trUsuario} key={index}>
-                  //   <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
-                  //   <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.cientificName}</h2></td>
-                  //   <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.price}</h2></td>
-                  //   <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.createdAt}</h2></td>
+                        <Card className={Style.Card} key={item._id}>
+                          <Card.Header className={Style.HeaderCard0}>
+                            <div className={Style.HeaderCard}>
 
-                  //   <td className={Style.Editar} value={repo._id} onClick={() => handleShowEdit(repo._id, repo.category.name)}><FaEdit className={Style.icoEditar} /></td>
-                  //   <td className={Style.Deletar} value={repo._id} onClick={() => idArvore(repo._id, repo.name)} ><FaTrashAlt className={Style.icoDeletar} /></td>
-                  // </tr>
- 
-                  <Card className={Style.Card} key={item._id}>
-                      <Card.Header className={Style.HeaderCard0}>
-                        <div className={Style.HeaderCard}>
-                            
                               {item.approved == true &&
-                              <h3 className={Style.StatusCard} >
-                              Aprovado
-                              </h3>
+                                <h3 className={Style.StatusCard} >
+                                  Aprovado
+                                </h3>
                               }
                               {item.approved == false &&
-                              <h3 className={Style.StatusCard2} >
-                              Reprovado
-                              </h3>
+                                <h3 className={Style.StatusCard2} >
+                                  Reprovado
+                                </h3>
                               }
-                              
-                            <div className={Style.opcoesCard}>
-                            {/* <FaEdit className={Style.iconeCard}/> */}
-                            {/* <CloseButton/> */}
-                            <Form.Check onClick={(e)=>selecionarItem(item.name, e.target.checked)} // prettier-ignore
-           
-           
-                  />
-                            {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+
+                              <div className={Style.opcoesCard}>
+                                {/* <FaEdit className={Style.iconeCard}/> */}
+                                {/* <CloseButton/> */}
+                                <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked)} // prettier-ignore
+
+
+                                />
+                                {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+                              </div>
                             </div>
-                        </div>
-                        
-                      </Card.Header>
-                      
-                      <Card.Body>
-                        <Card.Title>{item.name}</Card.Title>
-                        {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
-                        <Image src={ImgArvore} className={Style.imgArvore} alt=""/>
-                      </Card.Body>
-                      <Card.Footer className="text-muted">
-                      {/* <Form.Control type="number" placeholder="Quantidade" /> */}
-                      <h5>Categoria: {item.category.name}</h5>
-                      </Card.Footer>
-                    </Card>
 
-                ))}
-</Col>
-<Col className={Style.coluna2}>
- 
- <ul>
-  {colecao == '' && 
- 
-   <h4>Sem itens selecionados!</h4> 
-  }
-        {colecao.map((elemento, index) => (
-        
-          <li key={index} className={Style.itemColecao} >
-            {/* <div className={Style.divcolecao} onClick={() => removerElemento(index)}>
-              <h4 className={Style.itemColecao}>{elemento}</h4>
-            </div> */}
+                          </Card.Header>
 
-            <Alert variant="success" className={Style.alertaStilo} >
-        
-        <h4 className={Style.itemColecao}>{elemento}</h4>
-        <FaTrashAlt onClick={() => removerElemento(elemento)} className={Style.alertaStiloDelete}/>
-        </Alert>
-            
-          </li>
-       
-        ))
-        
-        }
-      
-      </ul>
-      {colecao == '' &&
-      <>
-        <div className={Style.botaoPlantar1}>
-          Permitir plantar estas espécies
-        </div>
-      </>
-      } 
-      {colecao != '' && 
-      <>
-      <div className={Style.botaoPlantar2} >
-      Permitir plantar estas espécies
-      </div>
-    </>
-      
-      }
+                          <Card.Body>
+                            <Card.Title>{item.name}</Card.Title>
+                            {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+                            <Image src={ImgArvore} className={Style.imgArvore} alt="" />
+                          </Card.Body>
+                          <Card.Footer className="text-muted">
+                            {/* <Form.Control type="number" placeholder="Quantidade" /> */}
+                            <h5>Categoria: {item.category.name}</h5>
+                          </Card.Footer>
+                        </Card>
 
-</Col>
-</Row>
-</Container>
-                 
+                      ))}
+                    </Col>
+                    <Col className={Style.coluna2}>
+
+                      <ul>
+                        {colecao == '' &&
+
+                          <h4>Sem itens selecionados!</h4>
+                        }
+                        {colecao.map((elemento, index) => (
+
+                          <li key={index} className={Style.itemColecao} >
+                            {/* <div className={Style.divcolecao} onClick={() => removerElemento(index)}>
+                <h4 className={Style.itemColecao}>{elemento}</h4>
+              </div> */}
+
+                            <Alert variant="success" className={Style.alertaStilo} >
+
+                              <h4 className={Style.itemColecao}>{elemento}</h4>
+                              <FaTrashAlt onClick={() => removerElemento(elemento)} className={Style.alertaStiloDelete} />
+                            </Alert>
+
+                          </li>
+
+                        ))
+
+                        }
+
+                      </ul>
+                      {colecao == '' &&
+                        <>
+                          <div className={Style.botaoPlantar1}>
+                            Permitir plantar estas espécies
+                          </div>
+                        </>
+                      }
+                      {colecao != '' &&
+                        <>
+                          <div className={Style.botaoPlantar2} >
+                            Permitir plantar estas espécies
+                          </div>
+                        </>
+
+                      }
+
+                    </Col>
+                  </Row>
+                </Container>
+
                 <div className={Style.divPaginacao}>
                   <Pagination>
-                    <Pagination.First onClick={()=>paginacao(1)} />
-                    <Pagination.Prev onClick={()=>paginaContador('sub')} />
-                    <Pagination.Item onClick={()=>paginacao(pageQtd)}  active>{pageQtd}</Pagination.Item>
+                    <Pagination.First onClick={() => paginacao(1)} />
+                    <Pagination.Prev onClick={() => paginaContador('sub')} />
+                    <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
                     <Pagination.Ellipsis />
 
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+2)} disabled={pageQtd >= 125}>{pageQtd+2}</Pagination.Item>
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+3)} disabled={pageQtd >= 125}>{pageQtd+3}</Pagination.Item>
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+4)} disabled={pageQtd >= 125}>{pageQtd+4}</Pagination.Item>
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
                     {/* <Pagination.Item onClick={()=>paginacao(pageQtd+5)} disabled={pageQtd >= 130}>{pageQtd+5}</Pagination.Item> */}
-                   
+
 
                     <Pagination.Ellipsis />
-                    <Pagination.Item onClick={()=>paginacao(pageQtd+20)} disabled={pageQtd >= 125}>{pageQtd+20}</Pagination.Item>
-                    <Pagination.Next onClick={()=>paginaContador('sum')} disabled={pageQtd >= 125} />
-                    <Pagination.Last onClick={()=>paginacao(130)} disabled={pageQtd >= 125}/>
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                    <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                    <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
                   </Pagination>
                 </div>
-</div>
+              </div>
 
-              </tbody>
-          
+            </tbody>
 
           </div>
 
-
-
-        
 
           {/* <Arvores /> */}
         </Modal.Body>
@@ -464,30 +404,13 @@ const paginaContador = (prop) => {
           <Button onClick={props.onHide}>Cancelar</Button>
         </Modal.Footer> */}
       </Modal>
-      
+
     );
   }
+ //=====================================Modal escollha de árvores fim==================================
 
 
- 
-
-
-
-
-
-  // useEffect(() => {
-  //   axios.get('https://restcountries.com/v3.1/all')
-  //     .then((response) => {
-  //       setCountries(response.data);
-  //       console.log("todos os paises: ", response.data)
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
-
-
-//------------Buscar automaticamente o endereço através do cep inserido
+  //------------Buscar automaticamente o endereço através do cep inserido
   const handleSearch = async (ce) => {
     // onChangeAddress(dadosEndereco.logradouro)
     try {
@@ -513,30 +436,6 @@ const paginaContador = (prop) => {
   };
 
   const inputCampo2 = useRef(null);
-  const handleCampo1KeyPress = (e) => {
-    // console.log("o e: ",e)
-    // console.log("soma e: ",contador)
-
-    // if (contador == 8){
-    //   e.preventDefault();
-    //   handleSearch()
-    //   inputCampo2.current.focus(); // Foca no próximo campo de input
-    // } else
-    // setContador(contador+1)
-    // if (e.key === 'Enter') {
-    //   e.preventDefault();
-    //   handleSearch()
-    //   inputCampo2.current.focus(); // Foca no próximo campo de input
-    // }
-  };
-
-  // const handleKeyPress = (e) => {
-
-  //   if (e.key === 'Enter') {
-  //       enviarForm()
-  //   }
-  // };
-
 
   //Funçãos de cadastro da árvore
 
@@ -747,7 +646,7 @@ const paginaContador = (prop) => {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupCdgPostal">
                 <FloatingLabel controlId="floatingInput" label="Código postal" className="mb-3">
-                  <Form.Control type="text" placeholder="Código postal" onChange={onChangePostalCode} onKeyPress={handleCampo1KeyPress} maxLength={10} />
+                  <Form.Control type="text" placeholder="Código postal" onChange={onChangePostalCode} maxLength={10} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupLocalizacao">
@@ -877,9 +776,6 @@ const paginaContador = (prop) => {
         </Card>
 
         {/* ------------------------------------Escolha de arvores------------------------------------- */}
-
-
-
 
 
         {success &&
