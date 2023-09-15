@@ -54,9 +54,7 @@ export default function CadastrarLocal() {
   const [limitTrees, setLimitTrees] = useState('');
   const [irrigation, setIrrigation] = useState(Boolean);
   const [nursery, setNursery] = useState(Boolean);
-  const [trees, setTrees] = useState([
-    {_id:"0"}
-  ]);
+  const [trees, setTrees] = useState([]);
   const [aviso, setAviso] = useState(false);
   const [errorInt, setErroInterno] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -199,6 +197,7 @@ export default function CadastrarLocal() {
       } else if (event == true) {
         // Crie o novo elemento (pode ser qualquer valor ou objeto)
         const novoElemento = `Elemento ${colecao.length + 1}`;
+        
         const novoElementoTree = `Elemento ${trees.length + 1}`;
         // Atualize o estado da coleção adicionando o novo elemento à última posição
         setColecao([...colecao, evt]);
