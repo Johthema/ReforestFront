@@ -86,6 +86,8 @@ export default function CadastrarLocal() {
 
 
   useEffect(() => {
+   
+
     setUserId(localStorage.getItem("idUs"))
     const minhaLista = [];
     axios.get('https://restcountries.com/v3.1/all')
@@ -120,9 +122,16 @@ export default function CadastrarLocal() {
         setErroInterno(true)
       }
     }
+
+   
+
+
     fetchRepos()
+    
   }, [reloadCount]);
 
+  const colec = MyVerticallyCenteredModal();
+  console.log("ta vindo: ", colec)
 
   //-------------------------Paginação inicio
   const paginacao = (qtd) => {
@@ -150,7 +159,7 @@ export default function CadastrarLocal() {
   //=====================================Modal escollha de árvores inicio==================================
   function MyVerticallyCenteredModal(props) {
 
-    const [minhaLista, setMinhaLista] = useState([])
+    // const [minhaLista, setMinhaLista] = useState([])
 
 
     const handleCampo1KeyPress = (e) => {
@@ -177,7 +186,7 @@ export default function CadastrarLocal() {
 
     // Estado para armazenar a coleção
     const [colecao, setColecao] = useState([]);
-    const [colecaoTree, setColecaoTree] = useState([]);
+    // const [colecaoTree, setColecaoTree] = useState([]);
 
     // Função para adicionar um novo elemento à coleção no último índice
     const selecionarItem = (evt, event, idTree) => {
@@ -188,11 +197,11 @@ export default function CadastrarLocal() {
       } else if (event == true) {
         // Crie o novo elemento (pode ser qualquer valor ou objeto)
         const novoElemento = `Elemento ${colecao.length + 1}`;
-        const novoElementoTree = `Elemento ${colecaoTree.length + 1}`;
+        const novoElementoTree = `Elemento ${trees.length + 1}`;
         // Atualize o estado da coleção adicionando o novo elemento à última posição
         setColecao([...colecao, evt]);
-        setColecaoTree([...colecaoTree, idTree]);
-
+        setTrees([...trees, idTree]);
+        // return colecaoTree
         
       }
 
@@ -207,7 +216,7 @@ export default function CadastrarLocal() {
 
 
     console.log("a coleção esta: ", colecao)
-    console.log("o id coleção esta: ", colecaoTree)
+    console.log("o id coleção esta: ", trees)
     //e.target.value
 
     return (
@@ -421,6 +430,10 @@ export default function CadastrarLocal() {
 
     );
   }
+
+  // const [colecaoTree, setColecaoTree] = useState([])
+  // MyVerticallyCenteredModal()
+  
  //=====================================Modal escollha de árvores fim==================================
 
 
@@ -587,7 +600,7 @@ export default function CadastrarLocal() {
           userId, name, description, address, postalCode,
           country, city, latitude, longitude, treesToBePlanted, hectare,
           plantedTrees, falledTrees, limitTrees, irrigation, nursery,
-          //  trees
+          trees
         }),
       })
       // .then(response => response.json())
