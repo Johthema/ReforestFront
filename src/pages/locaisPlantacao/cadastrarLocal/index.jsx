@@ -54,7 +54,9 @@ export default function CadastrarLocal() {
   const [limitTrees, setLimitTrees] = useState('');
   const [irrigation, setIrrigation] = useState(Boolean);
   const [nursery, setNursery] = useState(Boolean);
-  const [trees, setTrees] = useState([]);
+  const [trees, setTrees] = useState([
+    {_id:"0"}
+  ]);
   const [aviso, setAviso] = useState(false);
   const [errorInt, setErroInterno] = useState(false);
   const [success, setSuccess] = useState(false);
