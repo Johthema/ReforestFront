@@ -177,9 +177,10 @@ export default function CadastrarLocal() {
 
     // Estado para armazenar a coleção
     const [colecao, setColecao] = useState([]);
+    const [colecaoTree, setColecaoTree] = useState([]);
 
     // Função para adicionar um novo elemento à coleção no último índice
-    const selecionarItem = (evt, event, idx) => {
+    const selecionarItem = (evt, event, idTree) => {
       console.log("o event check: ", event)
 
       if (event == false) {
@@ -187,9 +188,12 @@ export default function CadastrarLocal() {
       } else if (event == true) {
         // Crie o novo elemento (pode ser qualquer valor ou objeto)
         const novoElemento = `Elemento ${colecao.length + 1}`;
-
+        const novoElementoTree = `Elemento ${colecaoTree.length + 1}`;
         // Atualize o estado da coleção adicionando o novo elemento à última posição
         setColecao([...colecao, evt]);
+        setColecaoTree([...colecaoTree, idTree]);
+
+        
       }
 
 
@@ -203,6 +207,7 @@ export default function CadastrarLocal() {
 
 
     console.log("a coleção esta: ", colecao)
+    console.log("o id coleção esta: ", colecaoTree)
     //e.target.value
 
     return (
@@ -326,7 +331,7 @@ export default function CadastrarLocal() {
                               <div className={Style.opcoesCard}>
                                 {/* <FaEdit className={Style.iconeCard}/> */}
                                 {/* <CloseButton/> */}
-                                <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked)} // prettier-ignore
+                                <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)} // prettier-ignore
 
 
                                 />
