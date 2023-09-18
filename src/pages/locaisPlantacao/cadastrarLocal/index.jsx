@@ -201,7 +201,7 @@ export default function CadastrarLocal() {
         const novoElementoTree = `Elemento ${trees.length + 1}`;
         // Atualize o estado da coleção adicionando o novo elemento à última posição
         setColecao([...colecao, evt]);
-        setTrees([...trees, idTree]);
+        setTrees([...trees, {_id: idTree}]);
         // return colecaoTree
         
       }
