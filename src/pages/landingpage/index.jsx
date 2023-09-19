@@ -12,8 +12,14 @@ import Mulher from '../../assets/images/mulher.jpg';
 import Cards from '../../components/cards/cardHome/index';
 import Foot from '../../components/footer/index'
 import {FaChartBar, FaTree, FaChartArea, FaUsers, FaChartLine, FaUserFriends, FaHeart } from "react-icons/fa";
+import Map from "../../components/mapa/index";
 
 export default function LandingPage(){
+    const latitude = -23.550520;
+    const longitude = -46.633308;
+
+
+
     return(
         <>
         <div className={Style.DivFundoladingpage}>
@@ -129,7 +135,31 @@ export default function LandingPage(){
             <div>
             <Image src={Mulher} className={Style.EstiloMulher} alt="" />
             </div>
-          
+            <div className={Style.divConectse}>
+                <h4>Regiões impactadas</h4>
+            </div>
+           
+
+            <div className={Style.divHeaderDetail}>
+        {/* <Map lat={dataLocal.latitude} lng={dataLocal.longitude} /> */}
+        <Map lat={latitude} lng={longitude} />
+        </div>
+        <div className={Style.divImpactos}>
+                <h4>Este é o impacto da nossa jornada para reflorestar o mundo.</h4>
+        </div>
+        <div className={Style.divImpactosDetail}>
+            <div className={Style.divcoluna1}>
+<div><h4> <span className={Style.subtitulo}> 33,027,503</span> <br/> Árvores plantadas </h4></div>
+<div><h4> <span className={Style.subtitulo}> 2,153</span> <br/> Membros em Equipes Net Zero </h4></div>
+<div><h4> <span className={Style.subtitulo}> 350,748</span> <br/> Árvores plantadas via API </h4></div>
+            </div>
+            <div className={Style.divcoluna2}>
+<div><h4> <span className={Style.subtitulo}> 5,241,197</span> <br/> Toneladas de CO2 compensadas</h4></div>
+<div><h4> <span className={Style.subtitulo}> 1,762,178</span> <br/> Produto Net Zero </h4></div>
+<div><h4> <span className={Style.subtitulo}> 1,138,584</span> <br/> E-mails de Árvores-Presente enviados </h4></div>
+            </div>
+        </div>
+        
            
             </div>
             <Foot/>

@@ -15,7 +15,7 @@ const Map = ({ lat, lng }) => {
     <LoadScript googleMapsApiKey="AIzaSyACBgQShSpBeW7AX_uvGJgdGwH7EF2OovI">
       <GoogleMap
         mapContainerStyle={mapStyles}
-        zoom={10}
+        zoom={3}
         center={defaultCenter}
       >
         <Marker position={defaultCenter} />
