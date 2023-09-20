@@ -149,20 +149,20 @@ export default function LandingPage(){
         </div>
         <div className={Style.divImpactosDetail}>
             <div className={Style.divcoluna1}>
-<div><h4> <span className={Style.subtitulo}> 33,027,503</span> <br/> Árvores plantadas </h4></div>
-<div><h4> <span className={Style.subtitulo}> 2,153</span> <br/> Membros em Equipes Net Zero </h4></div>
-<div><h4> <span className={Style.subtitulo}> 350,748</span> <br/> Árvores plantadas via API </h4></div>
+                <div><h4> <span className={Style.subtitulo}> 33,027,503</span> <br/> Árvores plantadas </h4></div>
+                <div><h4> <span className={Style.subtitulo}> 2,153</span> <br/> Membros em Equipes Net Zero </h4></div>
+                <div><h4> <span className={Style.subtitulo}> 350,748</span> <br/> Árvores plantadas via API </h4></div>
             </div>
             <div className={Style.divcoluna2}>
-<div><h4> <span className={Style.subtitulo}> 5,241,197</span> <br/> Toneladas de CO2 compensadas</h4></div>
-<div><h4> <span className={Style.subtitulo}> 1,762,178</span> <br/> Produto Net Zero </h4></div>
-<div><h4> <span className={Style.subtitulo}> 1,138,584</span> <br/> E-mails de Árvores-Presente enviados </h4></div>
+                <div><h4> <span className={Style.subtitulo}> 5,241,197</span> <br/> Toneladas de CO2 compensadas</h4></div>
+                <div><h4> <span className={Style.subtitulo}> 1,762,178</span> <br/> Produto Net Zero </h4></div>
+                <div><h4> <span className={Style.subtitulo}> 1,138,584</span> <br/> E-mails de Árvores-Presente enviados </h4></div>
             </div>
         </div>
         
-           
+         
             </div>
-            <Foot/>
+            <Foot/>  
         </div>
        
         </>

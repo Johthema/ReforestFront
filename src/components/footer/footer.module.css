@@ -1,14 +1,25 @@
 .fundoRodape{
-    margin-top: 40px;
+    
     background-color: #2F2F2F;
-    display: flex;
+    
     width: 100%;
     height: 290px;
     margin-bottom: 0px;
     color: #fff;
 }
+.fundoRodape2{
+    top: 80px;
+    display: flex;
+    padding-top: 180px;
+}
 .Titulo{
     color: white;
     margin: auto;
     cursor: pointer
+}
+
+.copyri{
+    color: #fff;
+    justify-content: center;
+    display: flex;
 }
