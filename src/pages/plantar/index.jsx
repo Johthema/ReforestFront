@@ -14,57 +14,75 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
 
-// const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
-const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
+const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL+"tree";
+const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
 
-export default function Plantar(){
+export default function Plantar() {
+    //Variaveis locais
     const [reloadCount, setReloadCount] = useState(0);
     const [dados, setData] = useState([]);
     const [index, setIndex] = useState(0);
 
     const latitude = -23.550520;
     const longitude = -46.633308;
-  
+
+    //Variaveis árvores
+    const [repos, setRepo] = useState([]);
+    const [dadosArvore, setDadosArvore] = useState([]);
+    const [initialRepos, setInitialRepo] = useState([]);
+    const [tipo, setTipo] = useState('todos');
+    const [ordenar, setOrdenar] = useState('recente');
+    const [contadorPage, setContadorPage] = useState('1');
+    const [busca, setBusca] = useState('')
+    const [categori, setCategori] = useState('');
+    const [dadosCategoria, setDadosCat] = useState([])
+    const [pageQtd, setPageQtd] = useState(1);
+    const [pageLimit, setPageLimit] = useState('9');
+
     const handleSelect = (selectedIndex) => {
-      setIndex(selectedIndex);
+        setIndex(selectedIndex);
     };
 
     useEffect(() => {
-    
+
         const fetchRepos = async () => {
-          try {
-            // setLoading(true)
-            //console.log("o tipo de arvore é: ",tipo)
-          
-              const response = await fetch(URL_API)
-              // const dados = await response.json();
-              const dados = await response.json()
-              setData(dados)
-            
-             
-          console.log("Lista pronta: ", dados)
-    
-          } catch (error) {
-            console.log(error)
-            // setErroInterno(true)
-          }
+            try {
+                // setLoading(true)
+                //console.log("o tipo de arvore é: ",tipo)
+
+                const response = await fetch(URL_API)
+                // const dados = await response.json();
+                const dados = await response.json()
+                setData(dados)
+
+                const responseArvore = await fetch(URL_API_TREE + "?search=" + busca + "&category=" + categori + "&page=" + pageQtd + "&limit=" + pageLimit)
+                const dadosArvore = await responseArvore.json();
+
+                setRepo(dadosArvore);
+
+                console.log("Lista pronta: ", dados)
+
+            } catch (error) {
+                console.log(error)
+                // setErroInterno(true)
+            }
         }
         fetchRepos()
-      }, [reloadCount]);
+    }, [reloadCount]);
 
 
- 
+
     return (
         <>
-        <Header></Header>
-        <div className={Style.divFundoPlantar}>
-          
-        <div className={Style.Coluna1}>
-                        
+            <Header></Header>
+            <div className={Style.divFundoPlantar}>
 
-        <Carousel data-bs-theme="dark" indicators= {""} >
+                <div className={Style.Coluna1}>
 
-            {/* {dados && dados.map((item, i = index) => (
+
+                    <Carousel data-bs-theme="dark" indicators={""} >
+
+                        {/* {dados && dados.map((item, i = index) => (
 
             <Carousel.Item key={i} >
 
@@ -105,57 +123,102 @@ export default function Plantar(){
             ))} */}
 
 
-{dados && dados.map((item, i = index) => (
-    <Carousel.Item key={i} >
-<Card key={i} className={Style.cardLocais}>
-              <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
-               <div className={Style.iconesAdmin}>
+                        {dados && dados.map((item, i = index) => (
+                            <Carousel.Item key={i} >
+                                <Card key={i} className={Style.cardLocais}>
+                                    <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
+                                        <div className={Style.iconesAdmin}>
+                                        </div>
+
+                                    </Card.Header>
+                                    <Card.Body>
+
+
+                                        <div className={Style.divHeaderDetail}>
+                                            {/* <Map lat={dataLocal.latitude} lng={dataLocal.longitude} /> */}
+                                            <Map lat={latitude} lng={longitude} />
+                                        </div>
+
+                                    </Card.Body>
+                                    <Card.Footer className="text-muted">
+
+                                        <div className={Style.divIcones}><FaGlobeAmericas className={Style.Icon1} /> País: <h5 className={Style.nomeItem}>{item.country}</h5></div>
+                                        <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>{item.city}</h5></div>
+                                        <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>{item.plantedTrees}</h5></div>
+                                        <div className={Style.divIcones}><FaSeedling className={Style.Icon4} /> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
+                                        <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
+                                        <div className={Style.divBotaoPlant}>
+                                            <Button className={Style.botaoPlantar}>Plantar aqui</Button>
+
+                                        </div>
+
+                                    </Card.Footer>
+                                </Card>
+                            </Carousel.Item>
+
+                        ))}
+
+
+                    </Carousel>
+
+                    <hr />
+
+
+
+<div className={Style.divItens1}>
+
+
+{repos.map((item, index) => (
+
+  <Card className={Style.Card} key={item._id}>
+    <Card.Header className={Style.HeaderCard0}>
+      <div className={Style.HeaderCard}>
+
+        {item.approved == true &&
+          <h3 className={Style.StatusCard} >
+            Aprovado
+          </h3>
+        }
+        {item.approved == false &&
+          <h3 className={Style.StatusCard2} >
+            Reprovado
+          </h3>
+        }
+
+        <div className={Style.opcoesCard}>
+          {/* <FaEdit className={Style.iconeCard}/> */}
+          {/* <CloseButton/> */}
+          <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)}/>
+          {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+        </div>
+      </div>
+
+    </Card.Header>
+
+    <Card.Body>
+      <Card.Title>{item.name}</Card.Title>
+      {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+      {/* <Image src={ImgArvore} className={Style.imgArvore} alt="" /> */}
+    </Card.Body>
+    <Card.Footer className="text-muted">
+      {/* <Form.Control type="number" placeholder="Quantidade" /> */}
+      <h5>Categoria: {item.category.name}</h5>
+    </Card.Footer>
+  </Card>
+
+))}
+</div>
+
+
+
+
+ 
+
                 </div>
-               
-               </Card.Header>
-              <Card.Body>
-
-                  
-              <div className={Style.divHeaderDetail}>
-                {/* <Map lat={dataLocal.latitude} lng={dataLocal.longitude} /> */}
-                <Map lat={latitude} lng={longitude} />
-              </div>
-
-              </Card.Body>
-              <Card.Footer className="text-muted">
-            
-                <div className={Style.divIcones}><FaGlobeAmericas className={Style.Icon1}/> País: <h5 className={Style.nomeItem}>{item.country}</h5></div>
-                <div className={Style.divIcones}><FaCity className={Style.Icon2}/> Cidade: <h5 className={Style.nomeItem}>{item.city}</h5></div>
-                <div className={Style.divIcones}><FaTree className={Style.Icon3}/> Árvores plantadas: <h5 className={Style.nomeItem}>{item.plantedTrees}</h5></div>
-                <div className={Style.divIcones}><FaSeedling className={Style.Icon4}/> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
-                <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5}/> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
-                <div className={Style.divBotaoPlant}>
-                <Button className={Style.botaoPlantar}>Plantar aqui</Button>
-             
-                </div>
-                
-                </Card.Footer>
-</Card>
-</Carousel.Item>
-
-  ))}
-
-
-
-
-
-
-        </Carousel>
-
-
-<hr/>
-
-
-                    </div>
-                    <div className={Style.Coluna2}>
+                <div className={Style.Coluna2}>
                     <h4 className={Style.nomeH4}>Revise seu investimento</h4>
-                        <div className={Style.divDetailCompra}>
-                            <div className={Style.divDetailhesLados}>
+                    <div className={Style.divDetailCompra}>
+                        <div className={Style.divDetailhesLados}>
                             {/* <div className={Style.legendaladoA}>
                                 <h5 className={Style.legendah5}><b>Local de plantação</b></h5>
                                 <h5 className={Style.legendah5}><b>Espécie</b></h5>
@@ -170,26 +233,26 @@ export default function Plantar(){
                                 <h5 className={Style.legendah5}>10</h5>
                                 <h5 className={Style.legendah5}>1,500 Kg</h5>
                                 <h5 className={Style.legendah5}>40€</h5>
-                            </div> */}  
-                            </div>
+                            </div> */}
+                        </div>
 
-                                <h5 className={Style.legendaH5}><b>Local de plantação</b> <span className={Style.legendaH5}>Alberton -Austrália</span></h5>
-                                <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>Tectona grandis</span></h5>
-                                <h5 className={Style.legendaH5}><b>Árvores para plantar</b><span className={Style.legendaH5}>10</span></h5>
-                                <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>1,500 Kg</span></h5>
-                                <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
-                        
+                        <h5 className={Style.legendaH5}><b>Local de plantação</b> <span className={Style.legendaH5}>Alberton -Austrália</span></h5>
+                        <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>Tectona grandis</span></h5>
+                        <h5 className={Style.legendaH5}><b>Árvores para plantar</b><span className={Style.legendaH5}>10</span></h5>
+                        <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>1,500 Kg</span></h5>
+                        <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
 
-                         <div className={Style.botaoContinuar}>
+
+                        <div className={Style.botaoContinuar}>
                             Continuar compra
                         </div>
-                        </div>
-                        
                     </div>
-                
-        </div>
-        <Foot/>
-        
+
+                </div>
+
+            </div>
+            <Foot />
+
         </>
     )
 }
