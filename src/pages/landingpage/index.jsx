@@ -67,7 +67,7 @@ export default function LandingPage(){
                      somente no ano de 2019.
                     </h4>
                     <br/>
-                    <h4>
+                    <h4> 
                     Um dos fatores que levou ao
                     número crescente de CO2 é a <span className={Style.texto2}>queimada</span> e o <span className={Style.texto2}>desmatamento</span>
                     </h4>

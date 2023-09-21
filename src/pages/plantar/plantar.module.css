@@ -1,0 +1,74 @@
+.divFundoPlantar{
+    height: 100%;
+    margin-top: 7%;
+    display: flex;
+}
+.Coluna1{
+    width: 80%;
+    height: 800px;
+    
+    
+}
+.Coluna2{
+    width: 400px;
+    background-color: #fff;
+    justify-content: center;
+    text-align: center;
+}
+
+.divDetailCompra{
+    height: 300px;
+    width: 350px;
+    margin: auto;
+    justify-content: center;
+    background-color: #E8F4E7;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.divDetailhesLados{
+    display: flex;
+}
+
+.botaoContinuar{
+    margin: 20px;
+    width: 200px;
+    height: 50px;
+    background-color: #23a454;
+    font-size: 18px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    color: #fff;
+    margin: auto;
+    margin-top: 100px;
+   
+}
+.botaoContinuar:hover{
+    box-shadow: 2px 2px 10px 2px #bfbfbf;
+}
+
+.legendaladoA{
+    text-align: left;
+    color: #ac2222
+}
+.legendaladoB{
+    font-size: 10px;
+    text-align: right;
+}
+.legendah5{
+    font-size: 1.1rem;
+}
+
+.legendaH5{
+    margin-inline-start: auto;
+    justify-content: end;
+    display: flex;
+    font-size: 1rem;
+}
+
+.nomeH4{
+color: #55ACEE
+}
