@@ -13,6 +13,8 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
+import ImgArvore from '../../assets/images/arvore_1.jpg';
+
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL+"tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
@@ -38,6 +40,7 @@ export default function Plantar() {
     const [dadosCategoria, setDadosCat] = useState([])
     const [pageQtd, setPageQtd] = useState(1);
     const [pageLimit, setPageLimit] = useState('9');
+    const [trees, setTrees] = useState([]);
 
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
@@ -69,6 +72,46 @@ export default function Plantar() {
         }
         fetchRepos()
     }, [reloadCount]);
+
+
+
+    //====================================Selecionar arvores para plantar inicio=====================
+    // Estado para armazenar a coleção
+    const [colecao, setColecao] = useState([]);
+
+
+    const selecionarItem = (evt, event, idTree) => {
+        console.log("o event check: ", event)
+  
+        if (event == false) {
+          removerElemento(evt)
+        } else if (event == true) {
+          // Crie o novo elemento (pode ser qualquer valor ou objeto)
+          const novoElemento = `Elemento ${colecao.length + 1}`;
+          
+          const novoElementoTree = `Elemento ${trees.length + 1}`;
+          // Atualize o estado da coleção adicionando o novo elemento à última posição
+          setColecao([...colecao, evt]);
+          setTrees([...trees, {_id: idTree}]);
+          // return colecaoTree
+          
+        }
+  
+      };
+
+    //------Remover elemento inicio
+      const removerElemento = (elemento) => {
+        const novaColecao = colecao.filter((item) => item !== elemento);
+        setColecao(novaColecao);
+      };
+    //--------Remover elemento fim
+
+    
+    console.log("a coleção esta: ", colecao)
+    console.log("o id coleção esta: ", trees)
+
+
+    //====================================Selecionar arvores para plantar fim========================
 
 
 
@@ -170,7 +213,7 @@ export default function Plantar() {
 
 {repos.map((item, index) => (
 
-  <Card className={Style.Card} key={item._id}>
+  <Card className={Style.CardArvore} key={item._id}>
     <Card.Header className={Style.HeaderCard0}>
       <div className={Style.HeaderCard}>
 
@@ -198,7 +241,7 @@ export default function Plantar() {
     <Card.Body>
       <Card.Title>{item.name}</Card.Title>
       {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
-      {/* <Image src={ImgArvore} className={Style.imgArvore} alt="" /> */}
+      <Image src={ImgArvore} className={Style.imgArvore} alt="" />
     </Card.Body>
     <Card.Footer className="text-muted">
       {/* <Form.Control type="number" placeholder="Quantidade" /> */}

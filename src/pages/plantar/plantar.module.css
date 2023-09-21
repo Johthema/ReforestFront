@@ -307,4 +307,12 @@ color: #55ACEE
     overflow-y: auto;
     flex-wrap: wrap;
     display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.CardArvore{
+    width: 20%;
+    /* height: 30%; */
+    margin: 10px;
 }
