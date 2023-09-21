@@ -150,7 +150,7 @@ color: #55ACEE
 
 /* CARDS LOCAL ESTILO 2 */
 .cardLocais{
-    height: 400px;
+    height: 520px;
     width: 350px;
     background-color: lavender;
     /* display: flex; */
@@ -295,4 +295,10 @@ color: #55ACEE
     flex-wrap: wrap;
     margin: auto;
     
+}
+
+.divHeaderDetail{
+    background-color: #979797;
+    height: 200px;
+    width: 100%;
 }

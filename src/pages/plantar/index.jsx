@@ -12,7 +12,7 @@ import { FaEdit, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, F
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-//import ExampleCarouselImage from 'components/ExampleCarouselImage';
+import Map from "../../components/mapa/index";
 
 // const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -21,6 +21,9 @@ export default function Plantar(){
     const [reloadCount, setReloadCount] = useState(0);
     const [dados, setData] = useState([]);
     const [index, setIndex] = useState(0);
+
+    const latitude = -23.550520;
+    const longitude = -46.633308;
   
     const handleSelect = (selectedIndex) => {
       setIndex(selectedIndex);
@@ -107,36 +110,28 @@ export default function Plantar(){
 <Card key={i} className={Style.cardLocais}>
               <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
                <div className={Style.iconesAdmin}>
-                {/* <FaEdit className={Style.iconesAdminIcon1} onClick={()=> handleShowEdit(item._id, item.irrigation, item.nursery)}/>
-                <FaTrashAlt className={Style.iconesAdminIcon2}  onClick={() => idUsuario(item._id, item.name)}/> */}
                 </div>
-                
-                
                
                </Card.Header>
               <Card.Body>
-                {/* <Card.Title>Special title treatment</Card.Title> */}
-                {/* <Image src={Logotipo} className={Style.imagemLocal} alt="" /> */}
-                {/* <Card.Text className={Style.DescricaoLocais}>
-                  <div className={Style.divDescricao}>
-                    <h5>{item.description}</h5>
-                  </div>
-                
-                </Card.Text> */}
-                {/* <Button variant="primary">Go somewhere</Button> */}
+
+                  
+              <div className={Style.divHeaderDetail}>
+                {/* <Map lat={dataLocal.latitude} lng={dataLocal.longitude} /> */}
+                <Map lat={latitude} lng={longitude} />
+              </div>
+
               </Card.Body>
               <Card.Footer className="text-muted">
-                {/* <div className={Style.footerCard}>
-                 
-                </div> */}
+            
                 <div className={Style.divIcones}><FaGlobeAmericas className={Style.Icon1}/> País: <h5 className={Style.nomeItem}>{item.country}</h5></div>
                 <div className={Style.divIcones}><FaCity className={Style.Icon2}/> Cidade: <h5 className={Style.nomeItem}>{item.city}</h5></div>
                 <div className={Style.divIcones}><FaTree className={Style.Icon3}/> Árvores plantadas: <h5 className={Style.nomeItem}>{item.plantedTrees}</h5></div>
                 <div className={Style.divIcones}><FaSeedling className={Style.Icon4}/> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
                 <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5}/> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
                 <div className={Style.divBotaoPlant}>
-                <Button className={Style.botaoPlantar} href='/plantar'>Plantar aqui</Button>
-                {/* <Button className={Style.botaoPlantar} >Ver mais</Button> */}
+                <Button className={Style.botaoPlantar}>Plantar aqui</Button>
+             
                 </div>
                 
                 </Card.Footer>
