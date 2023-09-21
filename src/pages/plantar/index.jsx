@@ -4,24 +4,48 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Style from './plantar.module.css';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-// import ExampleCarouselImage from 'components/ExampleCarouselImage';
+import Image from 'next/image';
+import Card from 'react-bootstrap/Card';
+import { FaEdit } from "react-icons/fa";
+import CloseButton from 'react-bootstrap/CloseButton';
+import Form from 'react-bootstrap/Form';
+//import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
-
-
-
-
-
+const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
 
 export default function Plantar(){
-
+    const [reloadCount, setReloadCount] = useState(0);
+    const [dados, setData] = useState([]);
     const [index, setIndex] = useState(0);
   
     const handleSelect = (selectedIndex) => {
       setIndex(selectedIndex);
     };
+
+    useEffect(() => {
+    
+        const fetchRepos = async () => {
+          try {
+            // setLoading(true)
+            //console.log("o tipo de arvore é: ",tipo)
+          
+              const response = await fetch(URL_API)
+              // const dados = await response.json();
+              const dados = await response.json()
+              setData(dados)
+            
+             
+          console.log("Lista pronta: ", dados)
+    
+          } catch (error) {
+            console.log(error)
+            // setErroInterno(true)
+          }
+        }
+        fetchRepos()
+      }, [reloadCount]);
 
 
  
@@ -32,34 +56,52 @@ export default function Plantar(){
           
         <div className={Style.Coluna1}>
                         
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-      <Carousel.Item>
-        {/* <ExampleCarouselImage text="First slide" /> */}
-        conteudo 1
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        {/* <ExampleCarouselImage text="Second slide" /> */}
-        conteudo 2
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        {/* <ExampleCarouselImage text="Third slide" /> */}
-        conteudo 3
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+
+        <Carousel data-bs-theme="dark" indicators= {""} >
+
+            {dados && dados.map((item, i = index) => (
+
+            <Carousel.Item key={i} >
+
+            <Card className={Style.Card} key={item._id}>
+            <Card.Header className={Style.HeaderCard0}>
+            <div className={Style.HeaderCard}>
+
+            {item.approved == true &&
+            <h3 className={Style.StatusCard} >
+            Aprovado
+            </h3>
+            }
+            {item.approved == false &&
+            <h3 className={Style.StatusCard2} >
+            Reprovado
+            </h3>
+            }
+            
+            <div className={Style.opcoesCard}>
+            {/* <FaEdit className={Style.iconeCard}/> */}
+            <CloseButton/>
+            {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+            </div>
+            </div>
+
+            </Card.Header>
+
+            <Card.Body>
+            <Card.Title>{item.name}</Card.Title>
+            {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+            </Card.Body>
+            <Card.Footer className="text-muted">
+            <Form.Control type="number" placeholder="Quantidade" />
+            </Card.Footer>
+            </Card>
+            </Carousel.Item>
+
+            )
+            )
+            }
+
+        </Carousel>
 
 
 

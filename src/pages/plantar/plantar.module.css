@@ -72,3 +72,78 @@
 .nomeH4{
 color: #55ACEE
 }
+
+/* =============CARDS LOCAL========== */
+
+.Card{
+    width: 30%;
+    height: 30%;
+    margin: auto;
+    
+}
+
+.HeaderCard{
+    display: flex;
+    
+}
+.HeaderCard0{
+    /* background-color: #9EC69D; */
+    background-color: #d1e7dd
+}
+
+.opcoesCard{
+    display: flex;
+    margin-inline-start: auto;
+}
+
+.iconeCard{
+    font-size: 20px;
+    margin: 3px;
+    cursor: pointer;
+    color: #fff
+}
+.StatusCard{
+    font-size: 12px;
+    width: 80px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    background-color: green;
+    color: #fff;
+    justify-self: auto;
+    justify-content: auto;
+    justify-items: auto;
+   
+}
+
+.StatusCard2{
+    font-size: 12px;
+    width: 80px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    background-color: red;
+    color: #fff;
+    justify-self: auto;
+    justify-content: auto;
+    justify-items: auto;
+   
+}
+
+.imgArvore{
+    width: 99%;
+    height: 20vh;
+    margin: auto;
+    display: flex;
+    object-fit: cover;
+
+}
+
+@media (max-width: 1211px) {
+    .Card{
+        width: 60%;
+        height: 10%;
+        margin: auto;
+        
+    }
+}
