@@ -8,12 +8,14 @@ import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaTrashAlt } from "react-icons/fa";
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 //import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
-const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
+// const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
+const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
 export default function Plantar(){
     const [reloadCount, setReloadCount] = useState(0);
@@ -59,7 +61,7 @@ export default function Plantar(){
 
         <Carousel data-bs-theme="dark" indicators= {""} >
 
-            {dados && dados.map((item, i = index) => (
+            {/* {dados && dados.map((item, i = index) => (
 
             <Carousel.Item key={i} >
 
@@ -79,9 +81,9 @@ export default function Plantar(){
             }
             
             <div className={Style.opcoesCard}>
-            {/* <FaEdit className={Style.iconeCard}/> */}
+          
             <CloseButton/>
-            {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+           
             </div>
             </div>
 
@@ -89,7 +91,7 @@ export default function Plantar(){
 
             <Card.Body>
             <Card.Title>{item.name}</Card.Title>
-            {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+           
             </Card.Body>
             <Card.Footer className="text-muted">
             <Form.Control type="number" placeholder="Quantidade" />
@@ -97,14 +99,61 @@ export default function Plantar(){
             </Card>
             </Carousel.Item>
 
-            )
-            )
-            }
+            ))} */}
+
+
+{dados && dados.map((item, i = index) => (
+    <Carousel.Item key={i} >
+<Card key={i} className={Style.cardLocais}>
+              <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
+               <div className={Style.iconesAdmin}>
+                {/* <FaEdit className={Style.iconesAdminIcon1} onClick={()=> handleShowEdit(item._id, item.irrigation, item.nursery)}/>
+                <FaTrashAlt className={Style.iconesAdminIcon2}  onClick={() => idUsuario(item._id, item.name)}/> */}
+                </div>
+                
+                
+               
+               </Card.Header>
+              <Card.Body>
+                {/* <Card.Title>Special title treatment</Card.Title> */}
+                {/* <Image src={Logotipo} className={Style.imagemLocal} alt="" /> */}
+                {/* <Card.Text className={Style.DescricaoLocais}>
+                  <div className={Style.divDescricao}>
+                    <h5>{item.description}</h5>
+                  </div>
+                
+                </Card.Text> */}
+                {/* <Button variant="primary">Go somewhere</Button> */}
+              </Card.Body>
+              <Card.Footer className="text-muted">
+                {/* <div className={Style.footerCard}>
+                 
+                </div> */}
+                <div className={Style.divIcones}><FaGlobeAmericas className={Style.Icon1}/> País: <h5 className={Style.nomeItem}>{item.country}</h5></div>
+                <div className={Style.divIcones}><FaCity className={Style.Icon2}/> Cidade: <h5 className={Style.nomeItem}>{item.city}</h5></div>
+                <div className={Style.divIcones}><FaTree className={Style.Icon3}/> Árvores plantadas: <h5 className={Style.nomeItem}>{item.plantedTrees}</h5></div>
+                <div className={Style.divIcones}><FaSeedling className={Style.Icon4}/> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
+                <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5}/> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
+                <div className={Style.divBotaoPlant}>
+                <Button className={Style.botaoPlantar} href='/plantar'>Plantar aqui</Button>
+                {/* <Button className={Style.botaoPlantar} >Ver mais</Button> */}
+                </div>
+                
+                </Card.Footer>
+</Card>
+</Carousel.Item>
+
+  ))}
+
+
+
+
+
 
         </Carousel>
 
 
-
+<hr/>
 
 
                     </div>
