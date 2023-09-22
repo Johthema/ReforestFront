@@ -24,6 +24,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
+const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL + "category";
 
 export default function Plantar() {
   //Variaveis internos
@@ -71,6 +72,10 @@ export default function Plantar() {
         const response = await fetch(URL_API)
         // const dados = await response.json();
         const dados = await response.json()
+
+        const responseCat = await fetch(URL_API_CATEGORY)
+        const dadosCat = await responseCat.json();
+        setDadosCat(dadosCat);
         setData(dados)
         if (tipo == 'todos') {
           const responseArvore = await fetch(URL_API_TREE + "?search=" + busca + "&category=" + categori + "&page=" + pageQtd + "&limit=" + pageLimit)
@@ -311,9 +316,9 @@ const onChangeFilterCategoria = (cate) => {
                   <Dropdown.Menu className={Style.OpDropNotifi}>
                     <Dropdown.Item onClick={() => onChangeTodos("todos")}>Todos</Dropdown.Item>
                     <hr />
-                    {/* {dadosCategoria.map((item, index) => (
+                    {dadosCategoria.map((item, index) => (
                       <Dropdown.Item key={index} onClick={() => onChangeFilterCategoria(item.name)}>{item.name}</Dropdown.Item>
-                    ))} */}
+                    ))}
 
                     {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
                     <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
