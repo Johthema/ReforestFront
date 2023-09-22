@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
-import { FaEdit, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaFilter, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaTrashAlt } from "react-icons/fa";
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -17,6 +17,9 @@ import ImgArvore from '../../assets/images/arvore_1.jpg';
 import Pagination from 'react-bootstrap/Pagination';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
@@ -50,6 +53,8 @@ export default function Plantar() {
   const [pageQtd, setPageQtd] = useState(1);
   const [pageLimit, setPageLimit] = useState('8');
   const [trees, setTrees] = useState([]);
+
+
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -140,7 +145,6 @@ export default function Plantar() {
 //  setColecao([...colecao, evt]);
 //  setTrees([...trees, { _id: idTree }]);
 //  // return colecaoTree
-
 
 
   };
@@ -254,6 +258,58 @@ export default function Plantar() {
 
 
           <div className={Style.divItens1}>
+
+
+
+
+          <Navbar className={Style.headerTabela}>
+              <Container>
+
+                <Form.Group className={Style.Busca}>
+                  <Form.Control
+                    type="text"
+                    placeholder="Buscar por nome"
+                    id="meuInput"
+                    // onKeyPress={handleCampo1KeyPress}
+                  />
+
+                </Form.Group>
+
+
+                <Dropdown className={Style.DropMENU}>
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                    <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className={Style.OpDropNotifi}>
+                    <Dropdown.Item onClick={() => onChangeTodos("todos")}>Todos</Dropdown.Item>
+                    <hr />
+                    {/* {dadosCategoria.map((item, index) => (
+                      <Dropdown.Item key={index} onClick={() => onChangeFilterCategoria(item.name)}>{item.name}</Dropdown.Item>
+                    ))} */}
+
+                    {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
+
+                  </Dropdown.Menu>
+                </Dropdown>
+                {/* <Dropdown >
+                      <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                      <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                      
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                        <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                      </Dropdown.Menu>
+                </Dropdown> */}
+
+              </Container>
+            </Navbar>
+
+
 
 
             {repos.map((item, index) => (
