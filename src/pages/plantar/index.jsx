@@ -118,24 +118,30 @@ export default function Plantar() {
   //====================================Selecionar arvores para plantar inicio=====================
   // Estado para armazenar a coleção
   const [colecao, setColecao] = useState([]);
+  const [especie, setEspecie] = useState('');
 
-
-  const selecionarItem = (evt, event, idTree) => {
+  const selecionarItem = (evt, idTree) => {
     console.log("o event check: ", event)
+    setEspecie(evt)
 
-    if (event == false) {
-      removerElemento(evt)
-    } else if (event == true) {
-      // Crie o novo elemento (pode ser qualquer valor ou objeto)
-      const novoElemento = `Elemento ${colecao.length + 1}`;
+    // if (event == false) {
+    //   removerElemento(evt)
+    // } else if (event == true) {
+     
 
-      const novoElementoTree = `Elemento ${trees.length + 1}`;
-      // Atualize o estado da coleção adicionando o novo elemento à última posição
-      setColecao([...colecao, evt]);
-      setTrees([...trees, { _id: idTree }]);
-      // return colecaoTree
+    // }
 
-    }
+
+ // Crie o novo elemento (pode ser qualquer valor ou objeto)
+//  const novoElemento = `Elemento ${colecao.length + 1}`;
+
+//  const novoElementoTree = `Elemento ${trees.length + 1}`;
+//  // Atualize o estado da coleção adicionando o novo elemento à última posição
+//  setColecao([...colecao, evt]);
+//  setTrees([...trees, { _id: idTree }]);
+//  // return colecaoTree
+
+
 
   };
 
@@ -252,7 +258,7 @@ export default function Plantar() {
 
             {repos.map((item, index) => (
 
-              <Card className={Style.CardArvore} key={item._id} >
+              <Card className={Style.CardArvore} key={item._id} onClick={(e) => selecionarItem(item.name, item._id)} >
                 <Card.Header className={Style.HeaderCard0}>
                   <div className={Style.HeaderCard}>
 
@@ -343,7 +349,7 @@ export default function Plantar() {
             </div>
 
             <h5 className={Style.legendaH5}><b>Local de plantação</b> <span className={Style.legendaH5}>Alberton -Austrália</span></h5>
-            <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>Tectona grandis</span></h5>
+            <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>{especie}</span></h5>
             <h5 className={Style.legendaH5}><b>Árvores para plantar</b><span className={Style.legendaH5}>10</span></h5>
             <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>1,500 Kg</span></h5>
             <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
