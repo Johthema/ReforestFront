@@ -315,6 +315,7 @@ color: #55ACEE
     width: 20%;
     /* height: 30%; */
     margin: 10px;
+    cursor: pointer;
 }
 
 /*paginação */
