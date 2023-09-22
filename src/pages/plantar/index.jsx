@@ -56,6 +56,7 @@ export default function Plantar() {
 
 
 
+
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
@@ -159,6 +160,31 @@ export default function Plantar() {
 
   console.log("a coleção esta: ", colecao)
   console.log("o id coleção esta: ", trees)
+
+//----------Filtro de busca inicio-------------------------
+const handleCampo1KeyPress = (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    setBusca(e.target.value)
+    setLoading(true)
+    setReloadCount(prevCount => prevCount + 1);
+    console.log("os dados salvos na variavel: ", e.target.value)
+  }
+};
+
+function onChangeTodos() {
+  setBusca('')
+  setLoading(true)
+  setReloadCount(prevCount => prevCount + 1);
+}
+const onChangeFilterCategoria = (cate) => {
+  setCategori(cate);
+  setLoading(true)
+  setReloadCount(prevCount => prevCount + 1);
+}
+
+//----------Filtro de busca fim----------------------------
+
 
 
   //====================================Selecionar arvores para plantar fim========================
@@ -270,7 +296,7 @@ export default function Plantar() {
                     type="text"
                     placeholder="Buscar por nome"
                     id="meuInput"
-                    // onKeyPress={handleCampo1KeyPress}
+                    onKeyPress={handleCampo1KeyPress}
                   />
 
                 </Form.Group>
