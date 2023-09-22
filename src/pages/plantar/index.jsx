@@ -130,7 +130,12 @@ export default function Plantar() {
   // Estado para armazenar a coleção
   const [colecao, setColecao] = useState([]);
   const [especie, setEspecie] = useState('');
+  const [local, setLocal] = useState('');
 
+  const selecionarLocal = (evt, idTree) => {
+    console.log("o event check: ", event)
+    setLocal(evt)
+  }
   const selecionarItem = (evt, idTree) => {
     console.log("o event check: ", event)
     setEspecie(evt)
@@ -272,7 +277,7 @@ const onChangeFilterCategoria = (cate) => {
                     <div className={Style.divIcones}><FaSeedling className={Style.Icon4} /> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
                     <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
                     <div className={Style.divBotaoPlant}>
-                      <Button className={Style.botaoPlantar}>Plantar aqui</Button>
+                      <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Plantar aqui</Button>
 
                     </div>
 
@@ -435,7 +440,7 @@ const onChangeFilterCategoria = (cate) => {
                             </div> */}
             </div>
 
-            <h5 className={Style.legendaH5}><b>Local de plantação</b> <span className={Style.legendaH5}>Alberton -Austrália</span></h5>
+            <h5 className={Style.legendaH5}><b>Local de plantação</b> <span className={Style.legendaH5}>{local}</span></h5>
             <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>{especie}</span></h5>
             <h5 className={Style.legendaH5}><b>Árvores para plantar</b><span className={Style.legendaH5}>10</span></h5>
             <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>1,500 Kg</span></h5>
