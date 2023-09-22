@@ -316,3 +316,14 @@ color: #55ACEE
     /* height: 30%; */
     margin: 10px;
 }
+
+/*paginação */
+.divPaginacao{
+    display: flex;
+    /* position: fixed; */
+    margin-left: 20px;
+    margin-top: 10px;
+    bottom: 5px;
+   
+   
+}
