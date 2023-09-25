@@ -1,3 +1,5 @@
+'use client'
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Style from './cardCadLocalEdit.module.css';
