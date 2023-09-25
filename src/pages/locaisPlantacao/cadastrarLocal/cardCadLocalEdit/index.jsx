@@ -12,7 +12,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
-export default function EditarLocal({handleShowEdit}) {
+export default function EditarLocal({handleShowEdit=["","",""]}) {
     //Variáveis de feedback
     const [idEditavel, setIdEditavel] = useState(handleShowEdit?.[0]||"")
     const [loading, setLoading] = useState(false);
