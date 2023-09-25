@@ -85,9 +85,6 @@ export default function Home() {
          
       } )
 
-      
-
-
 
 }
 
@@ -101,12 +98,6 @@ export default function Home() {
    
 
   }, [reloadCount]);
-
-
-
-  
-
-
 
 
 
@@ -173,23 +164,20 @@ export default function Home() {
       </Carousel.Item>
     </Carousel>
 
-
-
 <div className={Style.DivTitulos}>
 
 
- 
- 
-   
 </div>
 <section className={Style.Sessao1}>
   <div className={Style.DivPlantarArvoreEsquerdo}>
     <div className={Style.TextoArvoreEsquerdo}>
     <h1 className={Style.TituloArvore}>Plante uma árvore</h1>
-    <p className={Style.TextoArvore}>
+  
+    <h4 className={Style.subTituloArvore}>
     Juntos, podemos cultivar um ambiente mais saudável para as próximas gerações. 
     Plante uma árvore e seja parte da mudança positiva que nosso planeta precisa!"
-    </p>
+    </h4>
+  
     <h4 className={Style.subTituloArvore}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
     
     <Button variant="success" className={Style.Botao}>Plantar</Button>
