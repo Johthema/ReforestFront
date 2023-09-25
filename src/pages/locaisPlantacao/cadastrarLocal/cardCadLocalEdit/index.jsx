@@ -16,7 +16,7 @@ const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
 
 export default function EditarLocal({handleShowEdit}) {
     //Variáveis de feedback
-    const [idEditavel, setIdEditavel] = useState(handleShowEdit[0])
+    const [idEditavel, setIdEditavel] = useState(handleShowEdit?.[0])
     const [loading, setLoading] = useState(false);
     //Variáveis de cadastro
     const [reloadCount, setReloadCount] = useState(0);
@@ -34,8 +34,8 @@ export default function EditarLocal({handleShowEdit}) {
     const [plantedTrees, setPlantedTrees] = useState(0);
     const [falledTrees, setFalledTrees] = useState('');
     const [limitTrees, setLimitTrees] = useState('');
-    const [irrigation, setIrrigation] = useState(handleShowEdit[1]);
-    const [nursery, setNursery] = useState(handleShowEdit[2]);
+    const [irrigation, setIrrigation] = useState(handleShowEdit?.[1]);
+    const [nursery, setNursery] = useState(handleShowEdit?.[2]);
     const [trees, setTrees] = useState([]);
     const [aviso, setAviso] = useState(false);
     const [errorInt, setErroInterno] = useState(false);
