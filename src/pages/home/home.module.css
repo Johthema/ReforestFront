@@ -360,3 +360,17 @@
     margin-right: 5px;
 
 }
+
+
+/* body,html{margin:0;padding:0;height:100%;} */
+.bodi{
+  /* background:url('https://farm9.staticflickr.com/8760/17195790401_ceeeafcddb_o.jpg'); */
+  background: url(../../assets/images/plantacaoano.jpg);
+  background-size:cover;
+  font-family: 'Cabin Condensed', sans-serif;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.svg{font-weight:bold;max-width:600px;height:auto;}
