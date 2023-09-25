@@ -32,6 +32,7 @@ export default function Plantar() {
   const [aviso, setAviso] = useState(false);
   const [errorInt, setErroInterno] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [resposta, setResposta] = useState('')
 
   //Variaveis de local
   const [reloadCount, setReloadCount] = useState(0);
