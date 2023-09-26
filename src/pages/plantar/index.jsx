@@ -417,7 +417,7 @@ const onChangeFilterCategoria = (cate) => {
 
  
 
-<div className={Style.divCardArv}>
+          <div className={Style.divCardArv}>
             {repos && repos.map((item, i = index) => (
 
 
@@ -486,11 +486,11 @@ const onChangeFilterCategoria = (cate) => {
               </Pagination>
             </div>
 
-
-
           </div>
 
-
+          <p/>
+          <div className={Style.divTituloPassos}><h5>Passo 3 - Escolha a quantidade de espécie a ser plantada</h5></div>
+          <p/>
 
 
 
