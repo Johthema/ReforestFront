@@ -12,16 +12,28 @@
     background-color: #fff;
     justify-content: center;
     text-align: center;
+    
+}
+
+.divTituloPassos{
+    background-color: #dceefd;
+    height: 40px;
+    width: 100%;
+    display:flex;
 }
 
 .divDetailCompra{
-    height: 300px;
+    height: 340px;
     width: 350px;
     margin: auto;
     justify-content: center;
     background-color: #E8F4E7;
     border-radius: 10px;
     padding: 5px;
+    position:fixed;
+    margin-left: 15px;
+    margin-top: 10px;
+
 }
 
 .divDetailhesLados{
@@ -220,7 +232,7 @@ color: #55ACEE
     /*border-color: rgb(37, 194, 76); */
     /* background-image: linear-gradient(honeydew, #93d7e9); */
     /* background-color: #d9f9d9 */
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 .divNome{
     display: flex;
@@ -314,8 +326,8 @@ color: #55ACEE
 
 /* ===============ESTILO DOS CARDS ARVORES=============== */
 .divItens1{
-    height: 400px;
-    overflow-y: auto;
+    /* height: 400px;
+    overflow-y: auto; */
     flex-wrap: wrap;
     display: flex;
     margin: auto;
@@ -328,10 +340,19 @@ color: #55ACEE
     margin: 10px;
     cursor: pointer;
 }
+.CardArvore:hover{
+    /* border: solid 2px #2ccd23; */
+    box-shadow: 2px 2px 10px 2px #bfbfbf;
+}
 
+.divCardArv{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
 /*paginação */
 .divPaginacao{
-    display: flex;
+    /* display: flex; */
     /* position: fixed; */
     margin-left: 20px;
     margin-top: 10px;
@@ -388,4 +409,14 @@ color: #55ACEE
     height: 20px;
     color: var(--secundaryTom1-color3);
     margin-right: 10px;
+}
+
+.numeracaoPasso{
+    float: left;
+    width: 150px;
+    height: 40px;
+    margin: 20px;
+    shape-outside: circle(50% at 30%);
+    clip-path: circle(50% at 0%);
+    background: lightblue;
 }

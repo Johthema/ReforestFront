@@ -133,6 +133,7 @@ export default function Plantar() {
   const [especie, setEspecie] = useState('');
   const [local, setLocal] = useState('');
   const [selecionado, setSelecionado] = useState(0)
+  const [selecionadoTree, setSelecionadoTree] = useState(0)
 
   const selecionarLocal = (evt, idTree) => {
     console.log("o event check: ", event)
@@ -153,7 +154,17 @@ export default function Plantar() {
   }
   const selecionarItem = (evt, idTree) => {
     console.log("o event check: ", event)
-    setEspecie(evt)
+    
+
+    if(selecionadoTree == 0){
+      setSelecionadoTree(1)
+      setEspecie(evt)
+      
+    } else if(selecionadoTree == 1){
+      setSelecionadoTree(0)
+      setEspecie('')
+
+    }  
 
     // if (event == false) {
     //   removerElemento(evt)
@@ -222,7 +233,7 @@ const onChangeFilterCategoria = (cate) => {
       <div className={Style.divFundoPlantar}>
 
         <div className={Style.Coluna1}>
-
+<div className={Style.divTituloPassos}><h5>Passo 1 - Escolha um local de plantação</h5></div>
 
           <Carousel data-bs-theme="dark" indicators={""} >
 
@@ -347,8 +358,9 @@ const onChangeFilterCategoria = (cate) => {
 
 
           </Carousel>
-
-          <hr />
+          <p/>
+          <div className={Style.divTituloPassos}><h5>Passo 2 - Escolha uma espécie a ser plantada</h5></div>
+          <p/>
 
 
           <div className={Style.divItens1}>
@@ -405,10 +417,12 @@ const onChangeFilterCategoria = (cate) => {
 
  
 
+<div className={Style.divCardArv}>
+            {repos && repos.map((item, i = index) => (
 
-            {repos.map((item, index) => (
 
               <Card className={Style.CardArvore} key={item._id} onClick={(e) => selecionarItem(item.name, item._id)} >
+                
                 <Card.Header className={Style.HeaderCard0}>
                   <div className={Style.HeaderCard}>
 
@@ -434,7 +448,14 @@ const onChangeFilterCategoria = (cate) => {
                 </Card.Header>
 
                 <Card.Body>
+                <Card.Title>{item.name}</Card.Title>
+                  {/* {selecionadoTree == 1 && 
                   <Card.Title>{item.name}</Card.Title>
+                  }
+                  {selecionadoTree == 0 && 
+                  <Card.Title>{item.name} - Escolhido</Card.Title>
+                  } */}
+                  
                   {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
                   <Image src={ImgArvore} className={Style.imgArvore} alt="" />
                 </Card.Body>
@@ -445,9 +466,7 @@ const onChangeFilterCategoria = (cate) => {
               </Card>
 
             ))}
-
-
-
+            </div>
 
             <div className={Style.divPaginacao}>
               <Pagination>
@@ -478,8 +497,9 @@ const onChangeFilterCategoria = (cate) => {
 
         </div>
         <div className={Style.Coluna2}>
-          <h4 className={Style.nomeH4}>Revise seu investimento</h4>
+          
           <div className={Style.divDetailCompra}>
+          <h4 className={Style.nomeH4}>Revise seu investimento</h4>
             <div className={Style.divDetailhesLados}>
               {/* <div className={Style.legendaladoA}>
                                 <h5 className={Style.legendah5}><b>Local de plantação</b></h5>
