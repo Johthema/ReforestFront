@@ -159,8 +159,19 @@ color: #55ACEE
     /* border-radius: 15px; */
     /* cursor: pointer; */
     /* text-align: center; */
-   
-    
+}
+.cardLocaisSelect{
+    height: 520px;
+    width: 350px;
+    background-color: lavender;
+    /* display: flex; */
+    margin: auto;
+    margin-top: 15px;
+    border: solid 4px;
+    border-color: #2ccd23 ;
+    /* border-radius: 15px; */
+    /* cursor: pointer; */
+    /* text-align: center; */
 }
 .HeaderLocais{
     text-align: center;

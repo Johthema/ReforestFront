@@ -132,10 +132,24 @@ export default function Plantar() {
   const [colecao, setColecao] = useState([]);
   const [especie, setEspecie] = useState('');
   const [local, setLocal] = useState('');
+  const [selecionado, setSelecionado] = useState(0)
 
   const selecionarLocal = (evt, idTree) => {
     console.log("o event check: ", event)
-    setLocal(evt)
+   
+    if(selecionado == 0){
+      setSelecionado(1)
+      setLocal(evt)
+      // setSelecionado(1)
+      setTrees(idTree)
+    } else if(selecionado == 1){
+      setSelecionado(0)
+      setLocal('')
+      // setSelecionado(1)
+      setTrees('')
+    }  
+    
+    
   }
   const selecionarItem = (evt, idTree) => {
     console.log("o event check: ", event)
@@ -255,13 +269,49 @@ const onChangeFilterCategoria = (cate) => {
 
             {dados && dados.map((item, i = index) => (
               <Carousel.Item key={i} >
+                {selecionado == 0 &&
                 <Card key={i} className={Style.cardLocais}>
+                <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
+                  <div className={Style.iconesAdmin}>
+                  </div>
+
+                </Card.Header>
+                <Card.Body>
+
+
+                  <div className={Style.divHeaderDetail}>
+                    {/* <Map lat={dataLocal.latitude} lng={dataLocal.longitude} /> */}
+                    <Map lat={latitude} lng={longitude} />
+                  </div>
+
+                </Card.Body>
+                <Card.Footer className="text-muted">
+
+                  <div className={Style.divIcones}><FaGlobeAmericas className={Style.Icon1} /> País: <h5 className={Style.nomeItem}>{item.country}</h5></div>
+                  <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>{item.city}</h5></div>
+                  <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>{item.plantedTrees}</h5></div>
+                  <div className={Style.divIcones}><FaSeedling className={Style.Icon4} /> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
+                  <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
+                  <div className={Style.divBotaoPlant}>
+                    {trees == item._id &&
+                    <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Cancelar</Button>
+                    }
+                    {trees != item._id &&
+                    <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Plantar aqui</Button>
+                    }
+
+                  </div>
+
+                </Card.Footer>
+              </Card>
+                }{selecionado == 1 &&
+                <Card key={i} className={Style.cardLocaisSelect}>
                   <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
                     <div className={Style.iconesAdmin}>
                     </div>
 
                   </Card.Header>
-                  <Card.Body>
+                  <Card.Body>    
 
 
                     <div className={Style.divHeaderDetail}>
@@ -278,12 +328,19 @@ const onChangeFilterCategoria = (cate) => {
                     <div className={Style.divIcones}><FaSeedling className={Style.Icon4} /> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
                     <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
                     <div className={Style.divBotaoPlant}>
-                      <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Plantar aqui</Button>
+                    {trees == item._id &&
+                    <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Cancelar </Button>
+                    }
+                    {trees != item._id &&
+                    <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Plantar aqui</Button>
+                    }
 
                     </div>
 
                   </Card.Footer>
                 </Card>
+                }  
+                
               </Carousel.Item>
 
             ))}
