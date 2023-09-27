@@ -20,11 +20,19 @@ import Spinner from 'react-bootstrap/Spinner';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
 const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL + "category";
+
+const responsive = {
+  0: { items: 1 },
+  568: { items: 2 },
+  1024: { items: 3 },
+};
 
 export default function Plantar() {
   //Variaveis internos
@@ -224,6 +232,15 @@ const onChangeFilterCategoria = (cate) => {
 
 
   //====================================Selecionar arvores para plantar fim========================
+
+const items = [];
+
+{dados && dados.map((item, i = index) => (
+  items.push(
+    <div className="item" data-value={i}>local-{i}: {item.name}</div>
+  )
+))}
+
 
 
 
@@ -492,7 +509,13 @@ const onChangeFilterCategoria = (cate) => {
           <div className={Style.divTituloPassos}><h5>Passo 3 - Escolha a quantidade de espécie a ser plantada</h5></div>
           <p/>
 
+          
 
+          <AliceCarousel 
+          mouseTracking
+        items={items}
+        responsive={responsive}
+        controlsStrategy="alternate" />
 
 
         </div>
