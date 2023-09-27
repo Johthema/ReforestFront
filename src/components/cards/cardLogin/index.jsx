@@ -217,7 +217,7 @@ export default function LoginCard(){
 
     return (
   
-       <>
+      
       <div className={Style.divFundo}>
            
            <div className={Style.divBarra}>
@@ -324,12 +324,7 @@ export default function LoginCard(){
                 </Offcanvas>
               
     
-            
-     
-       </div>
-      
-
-{loadding &&
+                {loadding &&
     <div className={Style.DivSpinnerLoadding}>
       
         <RotateLoader color="#36d7b7" size="14" margin="15" className={Style.SpinnerLoadding} />
@@ -352,9 +347,14 @@ export default function LoginCard(){
   <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
     <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, Obs: {resposta}.
   </Alert>
-}
+}         
+     
+       </div>
+      
+
+
        
-       </>
+    
   
     );
 }
