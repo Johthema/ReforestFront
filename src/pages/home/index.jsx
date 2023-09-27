@@ -18,13 +18,14 @@ import { useState, useEffect } from 'react';
 
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"currentUser";
-
+ 
 
 export default function Home() {
   //Variaveis 
   const [reloadCount, setReloadCount] = useState(0);
   const [tokenI, setTokenI] = useState('');
   const [nomeUser, setNomeUser] = useState('');
+
   //Função do usuario logado
 
   // const fecthAllData = async () => {
@@ -85,18 +86,19 @@ export default function Home() {
          
       } )
 
-
+      
 }
-
+ 
 
   //useEffect Lida com o ciclo de vida da aplicação para não ficar em loop infinito
   useEffect(() => {
+    
     setTokenI(localStorage.getItem("tokenId"))
     console.log("tokenId: ",localStorage.getItem("tokenId"))
     console.log();
     fecthAllData();
-   
-
+    
+    
   }, [reloadCount]);
 
 
@@ -180,7 +182,7 @@ export default function Home() {
   
     <h4 className={Style.subTituloArvore}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
     
-    <Button variant="success" className={Style.Botao}>Plantar</Button>
+    <Button variant="success" className={Style.Botao} href='/plantar'>Plantar</Button>
     </div>
   </div>
   <div >
@@ -200,12 +202,12 @@ export default function Home() {
   <div className={Style.DivPlantarArvoreDireito}>
     <div className={Style.TextoArvoreDireito}>
     <h1 className={Style.TituloArvore2}>Plante amor e sustentabilidade no coração de alguém!</h1>
-    <p className={Style.TextoArvore2}>
+    <h4 className={Style.subTituloArvore2}>
     Transmita seu carinho através da natureza, cultivando um futuro mais verde juntos.
     Surpreenda com um presente que perdura por gerações, renovando esperanças e deixando um legado para o mundo.
-    </p>
-    <h4 className={Style.subTituloArvore2}>presenteie uma árvore! Um gesto eco-friendly que floresce vida e conecta almas.</h4>
-    <Button variant="success" className={Style.Botao}>Oferecer</Button>
+    </h4>
+    <h4 className={Style.subTituloArvore2}>Presenteie uma árvore! Um gesto eco-friendly que floresce vida e conecta almas.</h4>
+    <Button variant="success" className={Style.Botao} href='/plantar'>Oferecer</Button>
     </div>
   </div>
  
@@ -283,11 +285,12 @@ export default function Home() {
 </div>
 
 
-</div>
-<div className={Style.bodi}>
+ 
 
 
-<svg viewbox="0 0 100 20">
+  <div className={Style.bodi}>
+
+<svg viewbox="0 0 100 20" className={Style.svg}>
   <defs>
     <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
       <stop offset="5%" stop-color="#fff"/>
@@ -306,13 +309,16 @@ export default function Home() {
       </path>
     </pattern>
   </defs>
-  <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">ReForest</text>
-  <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.5">ReForest</text>
+  <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6" className={Style.fontReforest}>ReForest</text>
+  <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.5"className={Style.fontReforest}>ReForest</text>
 </svg>
+
+</div>
 
 
 
 </div>
+
 
 <Footer/>
 </>

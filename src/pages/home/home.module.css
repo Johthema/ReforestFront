@@ -61,6 +61,7 @@
 }
 .Botao{
     background-color: #000;
+    margin-bottom: 10px;
 }
 
 .TituloArvore{
@@ -362,7 +363,6 @@
 }
 
 
-/* body,html{margin:0;padding:0;height:100%;} */
 .bodi{
   /* background:url('https://farm9.staticflickr.com/8760/17195790401_ceeeafcddb_o.jpg'); */
   background: url(../../assets/images/plantacaoano.jpg);
@@ -372,5 +372,7 @@
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  margin:0;padding:0;height:100%;
+  font-size: 90px;
 }
-.svg{font-weight:bold;max-width:600px;height:auto;}
+.svg{font-weight:bold;max-width:1000px;height:350px;}
