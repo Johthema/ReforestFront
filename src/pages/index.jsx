@@ -3,7 +3,7 @@ import Style from './login.module.css'
 export default function Login(){
     return (
        
-        <div className={Style.divFundo}>
+        <div className={Style.divFundoTela}>
            
             <LoginCard/>
     

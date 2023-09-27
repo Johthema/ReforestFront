@@ -45,6 +45,8 @@ function logout() {
 
     setTimeout(()=>{
       router.push('/')
+     
+      
       
   },1000)
 
