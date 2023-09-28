@@ -6,6 +6,7 @@
 .Coluna1{
     width: 80%;
     height:100%;
+    margin: auto;
 }
 .Coluna2{
     width: 400px;
