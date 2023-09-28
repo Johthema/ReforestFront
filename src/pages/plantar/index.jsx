@@ -63,6 +63,7 @@ export default function Plantar() {
   const [pageQtd, setPageQtd] = useState(1);
   const [pageLimit, setPageLimit] = useState('8');
   const [trees, setTrees] = useState([]);
+  const [locId, setLoc] = useState('');
 
 
 
@@ -143,20 +144,34 @@ export default function Plantar() {
   const [selecionado, setSelecionado] = useState(0)
   const [selecionadoTree, setSelecionadoTree] = useState(0)
 
-  const selecionarLocal = (evt, idTree) => {
+  const selecionarLocal = (evt, idLoc) => {
     console.log("o event check: ", event)
-   
-    if(selecionado == 0){
-      setSelecionado(1)
+    if(locId == ''){
+      console.log("entrou na funcao idLoc == vazio")
+      //setSelecionado(1)
       setLocal(evt)
-      // setSelecionado(1)
-      setTrees(idTree)
-    } else if(selecionado == 1){
-      setSelecionado(0)
+      
+      setLoc(idLoc)
+    } else if(idLoc == locId){
+      //setSelecionado(0)
+      console.log("entrou na funcao idLoc == locid")
       setLocal('')
-      // setSelecionado(1)
+      setLoc('')
+
       setTrees('')
     }  
+   
+    // if(selecionado == 0){
+    //   setSelecionado(1)
+    //   setLocal(evt)
+      
+    //   setLoc(idLoc)
+    // } else if(selecionado == 1){
+    //   setSelecionado(0)
+    //   setLocal('')
+      
+    //   setTrees('')
+    // }  
     
     
   }
@@ -240,7 +255,7 @@ const items = [];
     // <div className="item" data-value={i}>local-{i}: {item.name}</div>
 <>
 
-    {selecionado == 0 &&
+  
       <Card key={i} className={Style.cardLocais}>
       <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
         <div className={Style.iconesAdmin}>
@@ -264,10 +279,10 @@ const items = [];
         <div className={Style.divIcones}><FaSeedling className={Style.Icon4} /> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
         <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
         <div className={Style.divBotaoPlant}>
-          {trees == item._id &&
+          {locId == item._id &&
           <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Cancelar</Button>
           }
-          {trees != item._id &&
+          {locId == '' &&
           <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Plantar aqui</Button>
           }
 
@@ -275,7 +290,8 @@ const items = [];
 
       </Card.Footer>
     </Card>
-      }{selecionado == 1 &&
+      
+      {/* {selecionado == 1 &&
       <Card key={i} className={Style.cardLocais}>
         <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
           <div className={Style.iconesAdmin}>
@@ -286,7 +302,7 @@ const items = [];
 
 
           <div className={Style.divHeaderDetail}>
-            {/* <Map lat={dataLocal.latitude} lng={dataLocal.longitude} /> */}
+          
             <Map lat={latitude} lng={longitude} />
           </div>
 
@@ -299,10 +315,10 @@ const items = [];
           <div className={Style.divIcones}><FaSeedling className={Style.Icon4} /> Árvores a plantar: <h5 className={Style.nomeItem}>{item.treesToBePlanted}</h5></div>
           <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
           <div className={Style.divBotaoPlant}>
-          {trees == item._id &&
+          {locId == item._id &&
           <Button className={Style.botaoPlantarSelect} onClick={(e) => selecionarLocal(item.name, item._id)}>Cancelar </Button>
           }
-          {trees != item._id &&
+          {locId != item._id &&
           <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Plantar aqui</Button>
           }
 
@@ -311,7 +327,7 @@ const items = [];
         </Card.Footer>
       </Card>
 
-        }
+        } */}
 </>
   )
 ))}
