@@ -160,7 +160,7 @@ color: #55ACEE
 
 /* CARDS LOCAL ESTILO 2 */
 .cardLocais{
-    height: 520px;
+    height: 480px;
     width: 350px;
     background-color: lavender;
     /* display: flex; */
@@ -245,11 +245,13 @@ color: #55ACEE
 
 .divIcones{
     background-color: #ffffff;
-    width: 108%;
+    width: 100%;
     border: solid 1px #ebeaea;
-    margin-left: -15px;
-    font-size: 20px;
+    /* margin-left: -15px; */
+    font-size: 18px;
     display: flex;
+    
+    align-items: center;
 }
 .Icon1{
     color: #116582;
@@ -276,6 +278,13 @@ color: #55ACEE
 .nomeItem{
     margin-left: auto;
     margin-right: 10px;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.textmuted{
+    width: 100%;
+    padding: 2px;
 }
 
 .DescricaoLocais{
@@ -420,4 +429,9 @@ color: #55ACEE
     shape-outside: circle(50% at 30%);
     clip-path: circle(50% at 0%);
     background: lightblue;
+}
+
+/*Estilo para carrossel*/
+.carrosselAlice{
+    width: 400px;
 }
