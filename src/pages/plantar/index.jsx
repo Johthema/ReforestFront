@@ -468,6 +468,9 @@ const items = [];
 
 
         </div>
+        {locId != '' &&
+
+        
         <div className={Style.Coluna2}>
           
           <div className={Style.divDetailCompra}>
@@ -503,8 +506,9 @@ const items = [];
           </div>
 
         </div>
-
+ }
       </div>
+   
       <Foot />
 
 
