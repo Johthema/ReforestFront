@@ -223,7 +223,7 @@ color: #55ACEE
 }
 
 .cardLocais:hover{
-    box-shadow: 2px 2px 3px 3px #e5e5e5;
+    box-shadow: 2px 2px 10px 2px #bfbfbf;
     transition: 0.2s;
     
     /*border-color: rgb(37, 194, 76); */
