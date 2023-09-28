@@ -24,15 +24,15 @@
 
 .divDetailCompra{
     height: 340px;
-    width: 350px;
+    width: 300px;
     margin: auto;
     justify-content: center;
     background-color: #E8F4E7;
     border-radius: 10px;
     padding: 5px;
     position:fixed;
-    margin-left: 15px;
-    margin-top: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
 
 }
 
@@ -68,15 +68,12 @@
     font-size: 10px;
     text-align: right;
 }
-.legendah5{
-    font-size: 1.1rem;
-}
 
 .legendaH5{
     margin-inline-start: auto;
     justify-content: end;
     display: flex;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .nomeH4{
@@ -173,13 +170,13 @@ color: #55ACEE
     /* text-align: center; */
 }
 .cardLocaisSelect{
-    height: 520px;
-    width: 350px;
+    height: 480px;
+    width: 300px;
     background-color: lavender;
     /* display: flex; */
     margin: auto;
     margin-top: 15px;
-    border: solid 4px;
+    border: solid 2px;
     border-color: #2ccd23 ;
     /* border-radius: 15px; */
     /* cursor: pointer; */
@@ -310,6 +307,16 @@ color: #55ACEE
 .botaoPlantar:hover{
     background-color: var(--secundaryTom1-color3);
     border-color: var(--secundaryTom1-color3);
+}
+.botaoPlantarSelect{
+    margin: 10px;
+    background-color: var(--secundaryTom1-color3);
+    border-color: #2F2F2F
+}
+.botaoPlantarSelect:hover{
+    margin: 10px;
+    background-color: #2F2F2F;
+    border-color: #2F2F2F
 }
 
 .botaoCarregamento{

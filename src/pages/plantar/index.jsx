@@ -276,7 +276,7 @@ const items = [];
       </Card.Footer>
     </Card>
       }{selecionado == 1 &&
-      <Card key={i} className={Style.cardLocaisSelect}>
+      <Card key={i} className={Style.cardLocais}>
         <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
           <div className={Style.iconesAdmin}>
           </div>
@@ -291,7 +291,7 @@ const items = [];
           </div>
 
         </Card.Body>
-        <Card.Footer className="text-muted">
+        <Card.Footer className={Style.textmuted}>
 
           <div className={Style.divIcones}><FaGlobeAmericas className={Style.Icon1} /> País: <h5 className={Style.nomeItem}>{item.country}</h5></div>
           <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>{item.city}</h5></div>
@@ -300,7 +300,7 @@ const items = [];
           <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
           <div className={Style.divBotaoPlant}>
           {trees == item._id &&
-          <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Cancelar </Button>
+          <Button className={Style.botaoPlantarSelect} onClick={(e) => selecionarLocal(item.name, item._id)}>Cancelar </Button>
           }
           {trees != item._id &&
           <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Plantar aqui</Button>
