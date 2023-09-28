@@ -145,21 +145,22 @@ export default function Plantar() {
   const [selecionadoTree, setSelecionadoTree] = useState(0)
   const [trees, setTrees] = useState([]);
   const [locId, setLoc] = useState('');
+  const [contadorIndex, setContadorIndex] = useState('');
 
-  const selecionarLocal = (evt, idLoc) => {
+  const selecionarLocal = (evt, idLoc, i) => {
     console.log("o event check: ", event)
     if(locId == ''){
       console.log("entrou na funcao idLoc == vazio")
       //setSelecionado(1)
       setLocal(evt)
-      
+      setContadorIndex(i)
       setLoc(idLoc)
     } else if(idLoc == locId){
       //setSelecionado(0)
       console.log("entrou na funcao idLoc == locid")
       setLocal('')
       setLoc('')
-
+      setContadorIndex(i)
       setTrees('')
     }  
    
@@ -282,10 +283,10 @@ const items = [];
         <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>{item.hectare}</h5></div>
         <div className={Style.divBotaoPlant}>
           {locId == item._id &&
-          <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Cancelar</Button>
+          <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id, i)}>Cancelar</Button>
           }
           {locId == '' &&
-          <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id)}>Plantar aqui</Button>
+          <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id, i)}>Plantar aqui</Button>
           }
 
         </div>
@@ -308,12 +309,14 @@ const items = [];
 <div className={Style.divTituloPassos}><h5>Passo 1 - Escolha um local de plantação</h5></div>
 
 <AliceCarousel 
-          mouseTracking
+        mouseTracking
         items={items}
+        activeIndex={contadorIndex-1}
         autoPlay={true}
         autoPlayInterval={3000}
         responsive={responsive}
-        controlsStrategy="alternate" />
+        keyboardNavigation="ArrowLeft"
+        controlsStrategy="responsive, default" />
 
 
 
