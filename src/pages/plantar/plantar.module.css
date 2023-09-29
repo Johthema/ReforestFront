@@ -444,7 +444,9 @@ color: #55ACEE
 .carrosselAlice{
     width: 400px;
 }
-
+.PassosTitulo{
+    display: flex;
+}
 .PassosEstilo{
     border: solid 1px;
     background-color: #116582;
