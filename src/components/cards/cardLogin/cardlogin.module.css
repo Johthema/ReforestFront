@@ -1,7 +1,7 @@
 .divFundo{
     background-color: rgb(207, 206, 206);
     width: 60vw;
-    height: 500px;
+    height: 550px;
     border-radius: 10px;
     position: relative;
     margin: auto;
@@ -39,7 +39,7 @@
     
     border-radius: 0px 0px 10px 200px;
     width: 45%;
-    height: 458px;
+    height: 508px;
     justify-content: end;
     margin-inline-start: auto;
 }
@@ -62,12 +62,14 @@
     margin: auto;
     font-size: 28px;
     display:inline-flex;
-    margin-top: 60px;
+    margin-top: 50px;
     margin-bottom: 40px;
-    margin-left: 80px;
+    /* margin-left: 80px; */
     font-family: var(--fontPadrao);
-    color: #469444
-    
+    color: #469444;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
      
 }
 
@@ -192,7 +194,7 @@ margin-inline-start: auto !important;
        
     }
     .DivForm {
-        height: 408px
+        height: 460px
     }
     .logo{
         display: flex;
