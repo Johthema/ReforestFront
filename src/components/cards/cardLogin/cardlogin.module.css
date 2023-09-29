@@ -62,7 +62,7 @@
     margin: auto;
     font-size: 28px;
     display:inline-flex;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-bottom: 40px;
     /* margin-left: 80px; */
     font-family: var(--fontPadrao);
@@ -202,6 +202,9 @@ margin-inline-start: auto !important;
     }
     .divBarra{
         height: 60px;
+    }
+    .TituloCard{
+        margin-top: 40px;
     }
     
  }
