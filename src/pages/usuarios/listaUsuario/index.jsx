@@ -300,6 +300,7 @@ export default function ListarUsuario() {
             <tr>
               <th>Nome</th>
               <th>Sobrenome/Razão social</th>
+              <th>Último Acesso</th>
               <th>Email</th>
               <th>Telefone</th>
              
@@ -316,6 +317,7 @@ export default function ListarUsuario() {
               <tr className={Style.trUsuario} key={index}>
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.name}</h2></td>
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.surname || repo.fullname}</h2></td>
+                <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.loggedAt}</h2></td>
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.email}</h2></td>
                 <td className={Style.tdUsuario}><h2 key={repo._id} className={Style.FontUsuario}> {repo.phone}</h2></td>
 

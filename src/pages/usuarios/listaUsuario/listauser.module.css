@@ -124,6 +124,8 @@ margin-top: 100px
     margin-left: 20px;
     margin-top: 10px;
     bottom: 5px;
+    justify-content: center;
+    display: flex;
 }
 
 
@@ -132,6 +134,10 @@ margin-top: 100px
      
     .Tabela th:nth-child(2),
     .Tabela td:nth-child(2) {
+    display: none;
+    }
+    .Tabela th:nth-child(3),
+    .Tabela td:nth-child(3) {
     display: none;
     }
     .Tabela th:nth-child(4),
