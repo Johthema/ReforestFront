@@ -42,6 +42,7 @@
     height: 508px;
     justify-content: end;
     margin-inline-start: auto;
+    box-shadow: -2px 0px 8px -3px #a4a1a1;
 }
 
 .Formulario{
