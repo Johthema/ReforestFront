@@ -306,7 +306,7 @@ const items = [];
       <div className={Style.divFundoPlantar}>
 
         <div className={Style.Coluna1}>
-<div className={Style.divTituloPassos}><h5>Passo 1 - Escolha um local de plantação</h5></div>
+<div className={Style.divTituloPassos}><h5><span className={Style.PassosEstilo}>1</span> - Escolha um local de plantação</h5></div>
 
 <AliceCarousel 
         mouseTracking

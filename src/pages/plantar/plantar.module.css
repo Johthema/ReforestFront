@@ -21,6 +21,7 @@
     height: 40px;
     width: 100%;
     display:flex;
+    
 }
 
 .divDetailCompra{
@@ -444,3 +445,12 @@ color: #55ACEE
     width: 400px;
 }
 
+.PassosEstilo{
+    border: solid 1px;
+    background-color: #116582;
+    justify-content: center;
+    margin: auto;
+    color: #fff;
+    padding: 10px;
+    
+}
