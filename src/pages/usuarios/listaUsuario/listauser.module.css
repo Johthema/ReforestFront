@@ -119,6 +119,12 @@ margin-top: 100px
     margin-left: 10%
 }
 
+/*paginação */
+.divPaginacao{
+    margin-left: 20px;
+    margin-top: 10px;
+    bottom: 5px;
+}
 
 
 /* =================================Responsividade===================================== */
