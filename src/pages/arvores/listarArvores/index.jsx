@@ -19,6 +19,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardArvoreEdit from '../../../components/cards/cardCadArvore/cardArvoreEdit/index';
 import Footer from '../../../components/footer/index'
 import Pagination from 'react-bootstrap/Pagination';
+import Card from 'react-bootstrap/Card';
 
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
@@ -36,7 +37,7 @@ export default function ListarArvore() {
   const [tipo, setTipo] = useState('todos')
   const [ordenar, setOrdenar] = useState('recente')
   const [pageQtd, setPageQtd] = useState(1);
-  const [pageLimit, setPageLimit] = useState('9');
+  const [pageLimit, setPageLimit] = useState('12');
 
   //variaveis do modal
   const [show, setShow] = useState(false);
@@ -239,7 +240,7 @@ export default function ListarArvore() {
           </Container>
         </Navbar>
  
-        <Table striped bordered hover className={Style.Tabela}>
+        {/* <Table striped bordered hover className={Style.Tabela}>
           <thead>
             <tr>
               <th>Nome</th>
@@ -271,9 +272,63 @@ export default function ListarArvore() {
 
 
           </tbody>
-        </Table>
+        </Table> */}
 
-        <div className={Style.divPaginacao}>
+<div className={Style.divCardArv}>
+            {repos && repos.map((item, i = index) => (
+
+
+              <Card className={Style.CardArvore} key={item._id} onClick={() => handleShowEdit(repo._id, repo.category.name)} >
+                
+                <Card.Header className={Style.HeaderCard0}>
+                  <div className={Style.HeaderCard}>
+
+                    {item.approved == true &&
+                      <h3 className={Style.StatusCard} >
+                        Aprovado
+                      </h3>
+                    }
+                    {item.approved == false &&
+                      <h3 className={Style.StatusCard2} >
+                        Reprovado
+                      </h3>
+                    }
+
+                    <div className={Style.opcoesCard}>
+                      {/* <FaEdit className={Style.iconeCard}/> */}
+                      {/* <CloseButton/> */}
+                      {/* <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)} /> */}
+                      {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+                    </div>
+                  </div>
+
+                </Card.Header>
+
+                <Card.Body>
+                <Card.Title>{item.name}</Card.Title>
+                  {/* {selecionadoTree == 1 && 
+                  <Card.Title>{item.name}</Card.Title>
+                  }
+                  {selecionadoTree == 0 && 
+                  <Card.Title>{item.name} - Escolhido</Card.Title>
+                  } */}
+                  
+                  {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+                  {/* <Image src={ImgArvore} className={Style.imgArvore} alt="" /> */}
+                </Card.Body>
+                <Card.Footer className="text-muted">
+                  {/* <Form.Control type="number" placeholder="Quantidade" /> */}
+                  <h5>Categoria: {item.category.name}</h5>
+                </Card.Footer>
+              </Card>
+
+            ))}
+            </div>
+
+
+
+      </div>
+      <div className={Style.divPaginacao}>
               <Pagination>
                 <Pagination.First onClick={() => paginacao(1)} />
                 <Pagination.Prev onClick={() => paginaContador('sub')} />
@@ -290,9 +345,6 @@ export default function ListarArvore() {
                 <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
               </Pagination>
         </div>
-
-      </div>
-     
 
       {loading && !data &&
         <Alert key="1231" variant="primary" className={Style.botaoCarregamento}>

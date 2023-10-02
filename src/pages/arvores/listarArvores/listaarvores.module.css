@@ -1,7 +1,9 @@
 .divFundo{
-
-    margin-top: 100px
-    }
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    margin: auto;
+}
 
 .divFundoLista{
     margin-top: 8%;
@@ -58,7 +60,7 @@
 
     .headerTabela{
         background-color: #2F2F2F;
-        width: 80%;
+        width: 84%;
         margin: auto;
         border-radius: 10px 10px 0px 0px;
         height: 65px;
@@ -118,6 +120,33 @@
         margin-left: 10%
     }
 
+/* ===============ESTILO DOS CARDS ARVORES=============== */
+.divItens1{
+    /* height: 400px;
+    overflow-y: auto; */
+    flex-wrap: wrap;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.CardArvore{
+    width: 20%;
+    /* height: 30%; */
+    margin: 10px;
+    cursor: pointer;
+}
+.CardArvore:hover{
+    /* border: solid 2px #2ccd23; */
+    box-shadow: 2px 2px 10px 2px #bfbfbf;
+}
+
+.divCardArv{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
 /*Paginação*/
 .divPaginacao{
     margin-left: 20px;
@@ -125,6 +154,82 @@
     bottom: 5px;
     justify-content: center;
     display: flex;
+}
+
+
+/* =============CARDS LOCAL estilo 1========== */
+
+.Card{
+    width: 30%;
+    height: 30%;
+    margin: auto;
+    
+}
+
+.HeaderCard{
+    display: flex;
+    
+}
+.HeaderCard0{
+    /* background-color: #9EC69D; */
+    background-color: #d1e7dd
+}
+
+.opcoesCard{
+    display: flex;
+    margin-inline-start: auto;
+}
+
+.iconeCard{
+    font-size: 20px;
+    margin: 3px;
+    cursor: pointer;
+    color: #fff
+}
+.StatusCard{
+    font-size: 12px;
+    width: 80px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    background-color: green;
+    color: #fff;
+    justify-self: auto;
+    justify-content: auto;
+    justify-items: auto;
+   
+}
+
+.StatusCard2{
+    font-size: 12px;
+    width: 80px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    background-color: red;
+    color: #fff;
+    justify-self: auto;
+    justify-content: auto;
+    justify-items: auto;
+   
+}
+
+.imgArvore{
+    width: 99%;
+    height: 20vh;
+    margin: auto;
+    display: flex;
+    object-fit: cover;
+
+}
+
+@media (max-width: 1211px) {
+    .Card{
+        width: 60%;
+        height: 10%;
+        margin: auto;
+        
+    }
 }
 
 
