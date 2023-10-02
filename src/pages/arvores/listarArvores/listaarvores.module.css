@@ -56,17 +56,17 @@
         color: #EE6755
     }
 
-    .Busca{
-        width: 80%;
-        margin: auto;
-        margin-bottom: 20px;
-    }
-
     .headerTabela{
-        background-color: #9ec69d;
-        width: 80%;
+        background-color: #2F2F2F;
+        width: 87%;
         margin: auto;
         border-radius: 10px 10px 0px 0px;
+        height: 65px;
+    } 
+    
+    .DropMENU{
+        margin-inline-start: auto;
+        display: flex
     }
 
     .DropMENU{
@@ -117,6 +117,15 @@
         display: flex;
         margin-left: 10%
     }
+
+/*Paginação*/
+.divPaginacao{
+    margin-left: 20px;
+    margin-top: 10px;
+    bottom: 5px;
+    justify-content: center;
+    display: flex;
+}
 
 
 

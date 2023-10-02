@@ -18,6 +18,8 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CardArvoreEdit from '../../../components/cards/cardCadArvore/cardArvoreEdit/index';
 import Footer from '../../../components/footer/index'
+import Pagination from 'react-bootstrap/Pagination';
+
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
 
@@ -33,6 +35,8 @@ export default function ListarArvore() {
   const [repos, setRepo] = useState([]);
   const [tipo, setTipo] = useState('todos')
   const [ordenar, setOrdenar] = useState('recente')
+  const [pageQtd, setPageQtd] = useState(1);
+  const [pageLimit, setPageLimit] = useState('9');
 
   //variaveis do modal
   const [show, setShow] = useState(false);
@@ -65,13 +69,15 @@ export default function ListarArvore() {
         setLoading(true)
         console.log("o tipo de arvore é: ",tipo)
         if(tipo!='todos'){
-          const response = await fetch(URL_API+"?order="+ordenar+"&role="+tipo)
+          // const response = await fetch(URL_API+"?order="+ordenar+"&role="+tipo)
+          const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit + "&order="+ordenar)
           const dados = await response.json();
         setInitialRepo(dados);
         setRepo(dados);
         setLoading(false)
         } else if (tipo=='todos'){
-          const response = await fetch(URL_API)
+          // const response = await fetch(URL_API)
+          const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit + "&order="+ordenar)
           const dados = await response.json();
         setInitialRepo(dados);
         setRepo(dados);
@@ -155,6 +161,26 @@ export default function ListarArvore() {
     setReloadCount(prevCount => prevCount + 1);
   }
   
+        //-------------------------Paginação inicio
+        const paginacao = (qtd) => {
+          // setPageLimit(qtd)
+          setPageQtd(qtd)
+          setLoading(true)
+          setReloadCount(prevCount => prevCount + 1);
+      
+        }
+      
+        const paginaContador = (prop) => {
+      
+          if (prop == 'sum') {
+            setPageQtd(pageQtd + 1)
+            setReloadCount(prevCount => prevCount + 1);
+          } else if (prop == 'sub') {
+            setPageQtd(pageQtd - 1)
+            setReloadCount(prevCount => prevCount + 1);
+          }
+        }
+        //-------------------------Paginação fim
  
 //===========================================[[[RENDERIZAÇÃO DA PAGINA]]]===================================================
   return (
@@ -166,8 +192,8 @@ export default function ListarArvore() {
         
         <Breadcrumb.Item active>Lista de árvores.</Breadcrumb.Item>
       </Breadcrumb>
-      <Arvores/>
-    <hr/>
+      {/* <Arvores/>
+    <hr/> */}
 
       {/* Primeiro carregamento será o loadingo para saber se existe algo em data */}
 
@@ -246,6 +272,24 @@ export default function ListarArvore() {
 
           </tbody>
         </Table>
+
+        <div className={Style.divPaginacao}>
+              <Pagination>
+                <Pagination.First onClick={() => paginacao(1)} />
+                <Pagination.Prev onClick={() => paginaContador('sub')} />
+                <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                <Pagination.Ellipsis />
+
+                <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+
+                <Pagination.Ellipsis />
+                <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+              </Pagination>
+        </div>
 
       </div>
      
