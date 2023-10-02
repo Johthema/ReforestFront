@@ -306,7 +306,7 @@ const items = [];
       <div className={Style.divFundoPlantar}>
 
         <div className={Style.Coluna1}>
-        <div className={Style.divTituloPassos}><h5 className={Style.PassosTitulo}><span className={Style.PassosEstilo}>1</span> - Escolha um local de plantação</h5>
+        <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>1</span><h5 className={Style.PassosTitulo}>- Escolha um local de plantação</h5>
         </div>
 
 <AliceCarousel 

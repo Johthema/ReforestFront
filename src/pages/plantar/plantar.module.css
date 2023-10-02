@@ -23,6 +23,16 @@
     display:flex;
     
 }
+.PassosEstilo{
+    border: solid 1px;
+    background-color: #116582;
+    justify-content: center;
+    height: 40px;
+    color: #fff;
+    padding: 10px;
+    
+}
+
 
 .divDetailCompra{
     height: 340px;
@@ -446,13 +456,6 @@ color: #55ACEE
 }
 .PassosTitulo{
     display: flex;
+    margin-top: 5px;
 }
-.PassosEstilo{
-    border: solid 1px;
-    background-color: #116582;
-    justify-content: center;
-    margin: auto;
-    color: #fff;
-    padding: 10px;
-    
-}
+
