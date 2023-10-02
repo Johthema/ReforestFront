@@ -434,7 +434,7 @@ const items = [];
 
             ))}
             </div>
-
+ 
             <div className={Style.divPaginacao}>
               <Pagination>
                 <Pagination.First onClick={() => paginacao(1)} />

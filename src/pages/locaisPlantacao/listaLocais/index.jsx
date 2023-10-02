@@ -25,6 +25,7 @@ import Especie from '../../../components/cards/cardArvore/index'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Map from "../../../components/mapa/index";
+import Pagination from 'react-bootstrap/Pagination';
  
 export default function ListarLocal(){
     const URL_API = process.env.NEXT_PUBLIC_API_URL+"plantingPlace";
@@ -61,6 +62,10 @@ export default function ListarLocal(){
 
     const latitude = -23.550520;
     const longitude = -46.633308;
+
+    //Variaveis de filtro
+    const [pageQtd, setPageQtd] = useState(1);
+    const [pageLimit, setPageLimit] = useState('9');
 
 
   //Primeiro carregamengto para saber se esta tudo certo
@@ -100,7 +105,9 @@ export default function ListarLocal(){
     const fetchRepos = async () => {
       try {
         setLoading(true)
-          const response = await fetch(URL_API+"?order="+ordenar)
+          // const response = await fetch(URL_API+"?order="+ordenar)
+          // const response = await fetch(URL_API+"?order="+ordenar)
+          const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit + "&order="+ordenar)
           const dados = await response.json();
         setInitialRepo(dados);
         setRepo(dados);
@@ -228,6 +235,27 @@ const onChangeOrdem=(ordem) =>{
 
 //---------------------------EDITAR LOCAL FIM
 
+      //-------------------------Paginação inicio
+      const paginacao = (qtd) => {
+        // setPageLimit(qtd)
+        setPageQtd(qtd)
+        setLoading(true)
+        setReloadCount(prevCount => prevCount + 1);
+    
+      }
+    
+      const paginaContador = (prop) => {
+    
+        if (prop == 'sum') {
+          setPageQtd(pageQtd + 1)
+          setReloadCount(prevCount => prevCount + 1);
+        } else if (prop == 'sub') {
+          setPageQtd(pageQtd - 1)
+          setReloadCount(prevCount => prevCount + 1);
+        }
+      }
+      //-------------------------Paginação fim
+
  
     return(
       <>
@@ -350,7 +378,29 @@ const onChangeOrdem=(ordem) =>{
 
             ))}
 
+
+
+
+
+
            </div>
+           <div className={Style.divPaginacao}>
+              <Pagination>
+                <Pagination.First onClick={() => paginacao(1)} />
+                <Pagination.Prev onClick={() => paginaContador('sub')} />
+                <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                <Pagination.Ellipsis />
+
+                <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+
+                <Pagination.Ellipsis />
+                <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+              </Pagination>
+        </div>
            
            <Footer/>
 
