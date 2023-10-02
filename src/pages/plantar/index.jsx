@@ -326,7 +326,8 @@ const items = [];
 
 
           <p/>
-          <div className={Style.divTituloPassos}><h5>Passo 2 - Escolha uma espécie a ser plantada</h5></div>
+          <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>2</span><h5 className={Style.PassosTitulo}>- Escolha uma espécie a ser plantada</h5></div>
+          {/* <div className={Style.divTituloPassos}><h5>Passo 2 - Escolha uma espécie a ser plantada</h5></div> */}
           <p/>
 
 
@@ -456,7 +457,8 @@ const items = [];
           </div>
 
           <p/>
-          <div className={Style.divTituloPassos}><h5>Passo 3 - Escolha a quantidade de espécie a ser plantada</h5></div>
+          <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>3</span><h5 className={Style.PassosTitulo}>- Escolha a quantidade de espécie a ser plantada</h5></div>
+          
           <p/>
 
           
