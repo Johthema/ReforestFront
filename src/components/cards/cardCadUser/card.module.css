@@ -4,12 +4,16 @@
     /* margin-left: 50px; */
     width: 100%;
     justify-content: center;
-    margin-inline: auto;;
+    margin-inline: auto;
 }
 
 .ColunaSm9{
     width: 600px;
 }
+.ColunaSm3{
+    display: none;
+}
+
 
 .OpcaoCad{
     

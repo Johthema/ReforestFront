@@ -202,7 +202,7 @@ export default function EditarUsuario({handleShowEdit}) {
       {/* {success && 
       <p>Cadastro realizado com sucesso!</p>} */}
       <Row className={Style.RowDiv}>
-        <Col sm={3}>
+        <Col sm={3} className={Style.ColunaSm3}>
           <Nav variant="pills" className="flex-column">
             {handleShowEdit[1] == 'PF' &&
             <Nav.Item>

@@ -35,10 +35,10 @@ export default function Configuracao(){
             <Informacao/> 
         </Tab>
        
-        <Tab eventKey="password" title="Senha" >
+        {/* <Tab eventKey="password" title="Senha" >
             <Senha/>
         
-        </Tab>
+        </Tab> */}
         </Tabs>
        
         <hr/>
