@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
-import { FaEdit, FaFilter, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaFilter, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaTrashAlt, FaRegWindowClose } from "react-icons/fa";
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -147,6 +147,9 @@ export default function Plantar() {
   const [locId, setLoc] = useState('');
   const [contadorIndex, setContadorIndex] = useState('');
 
+  const [treeId, setreeId] = useState('');
+  const [contadorTreeIndex, setContadorTreeIndex] = useState('');
+
   const selecionarLocal = (evt, idLoc, i) => {
     console.log("o event check: ", event)
     if(locId == ''){
@@ -163,51 +166,28 @@ export default function Plantar() {
       setContadorIndex(i)
       setTrees('')
     }  
-   
-    // if(selecionado == 0){
-    //   setSelecionado(1)
-    //   setLocal(evt)
-      
-    //   setLoc(idLoc)
-    // } else if(selecionado == 1){
-    //   setSelecionado(0)
-    //   setLocal('')
-      
-    //   setTrees('')
-    // }  
     
     
   }
-  const selecionarItem = (evt, idTree) => {
+  const selecionarEspecie = (evt, idTree, i) => {
     console.log("o event check: ", event)
+
+
+
+    if(treeId == ''){
+      console.log("entrou na funcao idLoc == vazio")
     
-
-    if(selecionadoTree == 0){
-      setSelecionadoTree(1)
       setEspecie(evt)
-      
-    } else if(selecionadoTree == 1){
-      setSelecionadoTree(0)
+      setContadorTreeIndex(i)
+      setreeId(idTree)
+    } else if(idTree == treeId){
+   
+      console.log("entrou na funcao idLoc == locid")
       setEspecie('')
-
+      
+      setContadorTreeIndex(i)
+      setreeId('')
     }  
-
-    // if (event == false) {
-    //   removerElemento(evt)
-    // } else if (event == true) {
-     
-
-    // }
-
-
- // Crie o novo elemento (pode ser qualquer valor ou objeto)
-//  const novoElemento = `Elemento ${colecao.length + 1}`;
-
-//  const novoElementoTree = `Elemento ${trees.length + 1}`;
-//  // Atualize o estado da coleção adicionando o novo elemento à última posição
-//  setColecao([...colecao, evt]);
-//  setTrees([...trees, { _id: idTree }]);
-//  // return colecaoTree
 
 
   };
@@ -313,7 +293,7 @@ const items = [];
         mouseTracking
         items={items}
         activeIndex={contadorIndex-1}
-        autoPlay={true}
+        // autoPlay={true}
         autoPlayInterval={3000}
         responsive={responsive}
         keyboardNavigation="ArrowLeft"
@@ -389,7 +369,7 @@ const items = [];
             {repos && repos.map((item, i = index) => (
 
 
-              <Card className={Style.CardArvore} key={item._id} onClick={(e) => selecionarItem(item.name, item._id)} >
+              <Card className={Style.CardArvore} key={item._id}  >
                 
                 <Card.Header className={Style.HeaderCard0}>
                   <div className={Style.HeaderCard}>
@@ -409,7 +389,7 @@ const items = [];
                       {/* <FaEdit className={Style.iconeCard}/> */}
                       {/* <CloseButton/> */}
                       {/* <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)} /> */}
-                      {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+                      {/* <FaRegWindowClose className={Style.iconeCard} onClick={(e) => selecionarItem(item.name, item._id)}/> */}
                     </div>
                   </div>
 
@@ -430,6 +410,17 @@ const items = [];
                 <Card.Footer className="text-muted">
                   {/* <Form.Control type="number" placeholder="Quantidade" /> */}
                   <h5>Categoria: {item.category.name}</h5>
+                  
+                  
+                  {treeId == item._id &&
+                  <Button className={Style.botaoPlantar} onClick={(e) => selecionarEspecie(item.name, item._id)}>Cancelar espécie </Button>
+              
+                  }
+                  {treeId == '' &&
+                  <Button className={Style.botaoPlantar} onClick={(e) => selecionarEspecie(item.name, item._id, i)}>Selecionar espécie</Button>
+                    // <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id, i)}>Plantar aqui</Button>
+                  }
+
                 </Card.Footer>
               </Card>
 
