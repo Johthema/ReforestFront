@@ -279,7 +279,7 @@ export default function ListarArvore() {
             {repos && repos.map((item, i = index) => (
 
 
-              <Card className={Style.CardArvore} key={item._id} onClick={() => handleShowEdit(repos._id, repos.category.name)} >
+              <Card className={Style.CardArvore} key={item._id} value={repos._id} onClick={() => handleShowEdit(item._id, item.category.name)} >
                 
                 <Card.Header className={Style.HeaderCard0}>
                   <div className={Style.HeaderCard}>
