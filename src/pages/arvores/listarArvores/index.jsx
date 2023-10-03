@@ -109,6 +109,7 @@ export default function ListarArvore() {
   const idArvore = (event, nome) =>{
    
     console.log("O id da arvore é: ", event)
+    setShowEdit(false)
     setId(event)
     setUsuarioNome(nome)
     setShow(true)
@@ -279,7 +280,7 @@ export default function ListarArvore() {
             {repos && repos.map((item, i = index) => (
 
 
-              <Card className={Style.CardArvore} key={item._id} value={repos._id} onClick={() => handleShowEdit(item._id, item.category.name)} >
+              <Card className={Style.CardArvore} key={item._id} value={repos._id}  >
                 
                 <Card.Header className={Style.HeaderCard0}>
                   <div className={Style.HeaderCard}>
@@ -296,10 +297,10 @@ export default function ListarArvore() {
                     }
 
                     <div className={Style.opcoesCard}>
-                      {/* <FaEdit className={Style.iconeCard}/> */}
+                      <FaEdit className={Style.iconesAdminIcon1} onClick={() => handleShowEdit(item._id, item.category.name)}/>
                       {/* <CloseButton/> */}
                       {/* <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)} /> */}
-                      {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+                      <FaTrashAlt onClick={() => idArvore(item._id, item.name)} className={Style.iconesAdminIcon2}/>
                     </div>
                   </div>
 
