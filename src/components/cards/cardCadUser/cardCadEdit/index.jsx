@@ -87,7 +87,7 @@ export default function EditarUsuario({handleShowEdit}) {
 
       if (!data)
         throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
-      setData(data)
+      setData(data.user)
 
       //Setando as variáveis com os atributos vindo da api após o data ser setado. para não passar vazio no envio do formulario
       setNome(data.name)
