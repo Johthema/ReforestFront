@@ -53,7 +53,7 @@ export default function Configuracao(){
         <Tab eventKey="perm" title="Papel e Permissões">
           <Permissao/>
         </Tab>
-        <Tab eventKey="cat" title="Categoria">
+        <Tab eventKey="cat" title="Categoria de espécie">
            <Categoria/>
            
         </Tab>
