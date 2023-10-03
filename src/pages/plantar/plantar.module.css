@@ -368,7 +368,7 @@ color: #55ACEE
     width: 300px;
     /* height: 30%; */
     margin: 40px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .CardArvore:hover{
     /* border: solid 2px #2ccd23; */
