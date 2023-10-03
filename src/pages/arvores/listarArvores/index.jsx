@@ -20,7 +20,8 @@ import CardArvoreEdit from '../../../components/cards/cardCadArvore/cardArvoreEd
 import Footer from '../../../components/footer/index'
 import Pagination from 'react-bootstrap/Pagination';
 import Card from 'react-bootstrap/Card';
-
+import Image from 'next/image';
+import ImgArvore from '../../../assets/images/arvore_1.jpg';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
 
@@ -278,7 +279,7 @@ export default function ListarArvore() {
             {repos && repos.map((item, i = index) => (
 
 
-              <Card className={Style.CardArvore} key={item._id} onClick={() => handleShowEdit(repo._id, repo.category.name)} >
+              <Card className={Style.CardArvore} key={item._id} onClick={() => handleShowEdit(repos._id, repos.category.name)} >
                 
                 <Card.Header className={Style.HeaderCard0}>
                   <div className={Style.HeaderCard}>
@@ -314,7 +315,7 @@ export default function ListarArvore() {
                   } */}
                   
                   {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
-                  {/* <Image src={ImgArvore} className={Style.imgArvore} alt="" /> */}
+                  <Image src={ImgArvore} className={Style.imgArvore} alt="" />
                 </Card.Body>
                 <Card.Footer className="text-muted">
                   {/* <Form.Control type="number" placeholder="Quantidade" /> */}
