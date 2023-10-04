@@ -17,7 +17,8 @@
 }
 
 .divTituloPassos{
-    background-color: #dceefd;
+    /* background-color: #dceefd; */
+    background-color: #c8dfe7;
     height: 40px;
     width: 100%;
     display:flex;
@@ -41,7 +42,8 @@
     width: 300px;
     margin: auto;
     justify-content: center;
-    background-color: #E8F4E7;
+    /* background-color: #E8F4E7; */
+    background-color: #c8dfe7;
     border-radius: 10px;
     padding: 5px;
     position:fixed;

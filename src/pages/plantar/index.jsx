@@ -632,7 +632,7 @@ const items = [];
         <div className={Style.Coluna2}>
           
           <div className={Style.divDetailCompra}>
-          <h4 className={Style.nomeH4}>Revise seu investimento</h4>
+          <h4 className={Style.nomeH4}>Pronto para plantar?</h4>
             <div className={Style.divDetailhesLados}>
               {/* <div className={Style.legendaladoA}>
                                 <h5 className={Style.legendah5}><b>Local de plantação</b></h5>
@@ -653,13 +653,13 @@ const items = [];
 
             <h5 className={Style.legendaH5}><b>Local de plantação</b> <span className={Style.legendaH5}>{local}</span></h5>
             <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>{especie}</span></h5>
-            <h5 className={Style.legendaH5}><b>Árvores para plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
+            <h5 className={Style.legendaH5}><b>Quantidade a plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
             <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>1,500 Kg</span></h5>
             <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
 
 
             <div className={Style.botaoContinuar}>
-              Continuar compra
+              Plantar agora
             </div>
           </div>
 
