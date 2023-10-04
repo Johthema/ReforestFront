@@ -62,16 +62,16 @@ export default function Plantar() {
   const [categori, setCategori] = useState('');
   const [dadosCategoria, setDadosCat] = useState([])
   const [pageQtd, setPageQtd] = useState(1);
-  const [pageLimit, setPageLimit] = useState('8');
+  const [pageLimit, setPageLimit] = useState('6');
   // const [trees, setTrees] = useState([]);
   // const [locId, setLoc] = useState('');
 
 
 
 
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
+  // const handleSelect = (selectedIndex) => {
+  //   setIndex(selectedIndex);
+  // };
 
   useEffect(() => {
 
@@ -139,7 +139,7 @@ export default function Plantar() {
 
   //====================================Selecionar arvores para plantar inicio=====================
   // Estado para armazenar a coleção
-  const [colecao, setColecao] = useState([]);
+  // const [colecao, setColecao] = useState([]);
   const [especie, setEspecie] = useState('');
   const [local, setLocal] = useState('');
   const [selecionado, setSelecionado] = useState(0)
@@ -194,15 +194,15 @@ export default function Plantar() {
   };
 
   //------Remover elemento inicio
-  const removerElemento = (elemento) => {
-    const novaColecao = colecao.filter((item) => item !== elemento);
-    setColecao(novaColecao);
-  };
+  // const removerElemento = (elemento) => {
+  //   const novaColecao = colecao.filter((item) => item !== elemento);
+  //   setColecao(novaColecao);
+  // };
   //--------Remover elemento fim
 
 
-  console.log("a coleção esta: ", colecao)
-  console.log("o id coleção esta: ", trees)
+  // console.log("a coleção esta: ", colecao)
+  // console.log("o id coleção esta: ", trees)
 
 //----------Filtro de busca inicio-------------------------
 const handleCampo1KeyPress = (e) => {
@@ -461,12 +461,15 @@ const items = [];
           <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>3</span><h5 className={Style.PassosTitulo}>- Escolha a quantidade de espécie a ser plantada</h5></div>
           
           <p/>
+
+{/* Resolver o problema de renderização inicio */}
+
+
 <div className={Style.divCardsQuantidade}>
 <Card style={{ width: '18rem' }} className={Style.CardQtd}>
       
       <Card.Body>
-        
-        <Card.Text>
+       
           <div className={Style.divIconeEstrela}>
           <FaStar className={Style.Estrelas}/>
         <FaStar className={Style.Estrelas}/>
@@ -481,8 +484,6 @@ const items = [];
           </div>
           
           
-          
-        </Card.Text>
         <div className={Style.divBotaoPlant}>
         <Button className={Style.botaoPlantar}>Selecionar </Button>
         </div>
@@ -495,7 +496,6 @@ const items = [];
       
       <Card.Body>
         
-        <Card.Text>
           <div className={Style.divIconeEstrela}>
           <FaStar className={Style.Estrelas}/>
         <FaStar className={Style.Estrelas}/>
@@ -511,7 +511,7 @@ const items = [];
           
           
           
-        </Card.Text>
+       
         <div className={Style.divBotaoPlant}>
         <Button className={Style.botaoPlantar}>Selecionar </Button>
         </div>
@@ -523,7 +523,7 @@ const items = [];
       
       <Card.Body>
         
-        <Card.Text>
+       
           <div className={Style.divIconeEstrela}>
           <FaStar className={Style.Estrelas}/>
         <FaStar className={Style.Estrelas}/>
@@ -539,7 +539,7 @@ const items = [];
           
           
           
-        </Card.Text>
+      
         <div className={Style.divBotaoPlant}>
         <Button className={Style.botaoPlantar}>Selecionar </Button>
         </div>
@@ -548,6 +548,11 @@ const items = [];
     </Card>
 
 </div>
+
+
+{/* Resolver o problema de renderização fim */}
+
+
 <div className={Style.EspecQtd}>
 <h4>Especificar quantidade</h4>
     <FloatingLabel
@@ -555,12 +560,12 @@ const items = [];
         label="Quantidade"
         className="mb-3"
       >
-        <Form.Control type="number" placeholder="8"  className={Style.caixaQtd}/>
+        <Form.Control type="number"  className={Style.caixaQtd}/>
       </FloatingLabel>
 
 </div>
 
-<br/>
+<p/>
 
 
         </div>
