@@ -515,7 +515,13 @@ const items = [];
           
           
         <div className={Style.divBotaoPlant}>
-        <Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2)}>Selecionar </Button>
+        
+{qtdEspec == '' && 
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2)}>Selecionar </Button>
+} {qtdEspec != '' &&
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2)}>Cancelar </Button>
+}
+
         </div>
         
       </Card.Body>
@@ -543,7 +549,12 @@ const items = [];
           
        
         <div className={Style.divBotaoPlant}>
-        <Button className={Style.botaoPlantar} onClick={() => selecionarQtd(5)} >Selecionar </Button>
+        {qtdEspec == '' && 
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5)}>Selecionar </Button>
+} {qtdEspec != '' &&
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5)}>Cancelar </Button>
+}
+
         </div>
         
       </Card.Body>
@@ -571,7 +582,11 @@ const items = [];
           
       
         <div className={Style.divBotaoPlant}>
-        <Button className={Style.botaoPlantar} onClick={() => selecionarQtd(10)}>Selecionar </Button>
+        {qtdEspec == '' && 
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(10)}>Selecionar </Button>
+} {qtdEspec != '' &&
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(10)}>Cancelar </Button>
+}
         </div>
         
       </Card.Body>
