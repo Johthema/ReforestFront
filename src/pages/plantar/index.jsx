@@ -149,6 +149,8 @@ export default function Plantar() {
   const [contadorIndex, setContadorIndex] = useState('');
 
   const [treeId, setreeId] = useState('');
+  const [compCo2, setCompCo2] = useState('');
+  const [compCo2Tot, setCompCo2Tot] = useState('');
   const [contadorTreeIndex, setContadorTreeIndex] = useState('');
 
   const [qtdEspec, setQtdEspec] = useState('');
@@ -173,7 +175,7 @@ export default function Plantar() {
     
     
   }
-  const selecionarEspecie = (evt, idTree, i) => {
+  const selecionarEspecie = (evt, idTree, i, compCo2, compCo2To ) => {
     console.log("o event check: ", event)
 
 
@@ -184,6 +186,8 @@ export default function Plantar() {
       setEspecie(evt)
       setContadorTreeIndex(i)
       setreeId(idTree)
+      setCompCo2(compCo2)
+      setCompCo2Tot(compCo2To)
     } else if(idTree == treeId){
    
       console.log("entrou na funcao idLoc == locid")
@@ -191,6 +195,8 @@ export default function Plantar() {
       
       setContadorTreeIndex(i)
       setreeId('')
+      setCompCo2('')
+      setCompCo2Tot('')
     }  
 
 
@@ -454,7 +460,7 @@ const items = [];
                   {/* <Form.Control type="number" placeholder="Quantidade" /> */}
                   <h5>Categoria: {item.category.name}</h5>
                   <h5>Compensação: {item.carbonOffset}kg/ano</h5>
-                  <h5>toda vida util: {item.lifeTimeCarbon}</h5>
+                  {/* <h5>toda vida util: {item.lifeTimeCarbon}</h5> */}
                   
                   
                   {treeId == item._id &&
@@ -462,7 +468,7 @@ const items = [];
               
                   }
                   {treeId == '' &&
-                  <Button className={Style.botaoPlantar} onClick={(e) => selecionarEspecie(item.name, item._id, i)}>Selecionar espécie</Button>
+                  <Button className={Style.botaoPlantar} onClick={(e) => selecionarEspecie(item.name, item._id, i, item.carbonOffset, item.lifeTimeCarbon)}>Selecionar espécie</Button>
                     // <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id, i)}>Plantar aqui</Button>
                   }
 
@@ -515,9 +521,9 @@ const items = [];
         
           <div className={Style.divLegQtd}>
             <h1 className={Style.legQtd}>1+</h1>
-            Compensação anual: 1kg de CO2
+            Compensação anual: {compCo2}kg de CO2
             <p/>
-            compensação em vida útil: 200kg de CO2
+            compensação em vida útil: {compCo2Tot}kg de CO2
 
           </div>
           
@@ -550,9 +556,9 @@ const items = [];
         
           <div className={Style.divLegQtd}>
             <h1 className={Style.legQtd}>3+</h1>
-            Compensação anual: 5kg de CO2
+            Compensação anual: {compCo2*3}kg de CO2
             <p/>
-            compensação em vida útil: 200kg de CO2
+            compensação em vida útil: {compCo2Tot*3}kg de CO2
           </div>
           
           
@@ -585,9 +591,9 @@ const items = [];
         
           <div className={Style.divLegQtd}>
             <h1 className={Style.legQtd}>5+</h1>
-            Compensação anual: 5kg de CO2
+            Compensação anual: {compCo2*5}kg de CO2
             <p/>
-            compensação em vida útil: 200kg de CO2
+            compensação em vida útil: {compCo2Tot*5}kg de CO2
           </div>
           
           
