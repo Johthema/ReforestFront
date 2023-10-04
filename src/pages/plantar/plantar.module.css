@@ -109,7 +109,7 @@ color: #55ACEE
 }
 .HeaderCard0{
     /* background-color: #9EC69D; */
-    background-color: #d1e7dd
+    background-color: #116582
 }
 
 .opcoesCard{
@@ -349,7 +349,7 @@ color: #55ACEE
 }
 
 .divHeaderDetail{
-    background-color: #979797;
+    background-color: #116582;
     height: 200px;
     width: 100%;
 }
@@ -436,7 +436,13 @@ color: #55ACEE
     --bs-btn-hover-bg: #000;
 }
 
-
+.LegendaAviso{
+    
+    margin: auto;
+    justify-content: center;
+    color: #979797;
+    text-align: center;
+}
 .IconeDrop{
     width: 20px;
     height: 20px;
@@ -461,5 +467,52 @@ color: #55ACEE
 .PassosTitulo{
     display: flex;
     margin-top: 5px;
+}
+
+/*Cards quantidade*/
+.divCardsQuantidade{
+    display: flex;
+    justify-content: center;
+    font-family: var(--fontPadrao);
+}
+
+.CardQtd{
+background-color: #116582;
+margin-left: 20px;
+
+}
+.CardQtd:hover{
+    box-shadow: 2px 2px 10px 2px #bfbfbf;    
+}
+
+
+.Estrelas{
+    font-size: 12px;
+}
+.divIconeEstrela{
+    text-align: center;
+    color: lightblue
+}
+.IconePlantaQtd{
+    font-size: 38px;
+}
+.divLegQtd{
+    margin: auto;
+    text-align: center;
+    color: #ffffff;
+}
+.legQtd{
+    font-size: 9rem;
+}
+
+.EspecQtd{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+}
+.caixaQtd{
+    width: 100%;
+  
 }
 

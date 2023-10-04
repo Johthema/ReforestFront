@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
-import { FaEdit, FaFilter, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaTrashAlt, FaRegWindowClose } from "react-icons/fa";
+import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaTrashAlt, FaLeaf, FaRegWindowClose } from "react-icons/fa";
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -22,6 +22,7 @@ import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
@@ -288,8 +289,8 @@ const items = [];
         <div className={Style.Coluna1}>
         <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>1</span><h5 className={Style.PassosTitulo}>- Escolha um local de plantação</h5>
         </div>
-
-<AliceCarousel 
+{dados != '' &&
+        <AliceCarousel 
         mouseTracking
         items={items}
         activeIndex={contadorIndex-1}
@@ -297,7 +298,16 @@ const items = [];
         autoPlayInterval={3000}
         responsive={responsive}
         keyboardNavigation="ArrowLeft"
-        controlsStrategy="responsive, default" />
+        controlsStrategy="responsive, default"
+        />
+}{dados == '' &&
+<div className={Style.LegendaAviso}>
+   <h4>Não existe nenhum lugar de plantação!</h4>
+   <Button className={Style.botaoPlantar} href='/locaisPlantacao/cadastrarLocal'>Cadastrar Lugar</Button>
+</div>
+
+}
+
 
 
 
@@ -451,14 +461,106 @@ const items = [];
           <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>3</span><h5 className={Style.PassosTitulo}>- Escolha a quantidade de espécie a ser plantada</h5></div>
           
           <p/>
-
+<div className={Style.divCardsQuantidade}>
+<Card style={{ width: '18rem' }} className={Style.CardQtd}>
+      
+      <Card.Body>
+        
+        <Card.Text>
+          <div className={Style.divIconeEstrela}>
+          <FaStar className={Style.Estrelas}/>
+        <FaStar className={Style.Estrelas}/>
+          <FaLeaf className={Style.IconePlantaQtd}/>
+        <FaStar className={Style.Estrelas}/>
+        <FaStar className={Style.Estrelas}/>
+          </div>
+        
+          <div className={Style.divLegQtd}>
+            <h1 className={Style.legQtd}>2+</h1>
+            Compensará o total de 5kg de CO2
+          </div>
           
+          
+          
+        </Card.Text>
+        <div className={Style.divBotaoPlant}>
+        <Button className={Style.botaoPlantar}>Selecionar </Button>
+        </div>
+        
+      </Card.Body>
+    </Card>
 
-          {/* <AliceCarousel 
-          mouseTracking
-        items={items}
-        responsive={responsive}
-        controlsStrategy="alternate" /> */}
+
+    <Card style={{ width: '18rem' }} className={Style.CardQtd}>
+      
+      <Card.Body>
+        
+        <Card.Text>
+          <div className={Style.divIconeEstrela}>
+          <FaStar className={Style.Estrelas}/>
+        <FaStar className={Style.Estrelas}/>
+          <FaLeaf className={Style.IconePlantaQtd}/>
+        <FaStar className={Style.Estrelas}/>
+        <FaStar className={Style.Estrelas}/>
+          </div>
+        
+          <div className={Style.divLegQtd}>
+            <h1 className={Style.legQtd}>5+</h1>
+            Compensará o total de 15kg de CO2
+          </div>
+          
+          
+          
+        </Card.Text>
+        <div className={Style.divBotaoPlant}>
+        <Button className={Style.botaoPlantar}>Selecionar </Button>
+        </div>
+        
+      </Card.Body>
+    </Card>
+
+    <Card style={{ width: '18rem' }} className={Style.CardQtd}>
+      
+      <Card.Body>
+        
+        <Card.Text>
+          <div className={Style.divIconeEstrela}>
+          <FaStar className={Style.Estrelas}/>
+        <FaStar className={Style.Estrelas}/>
+          <FaLeaf className={Style.IconePlantaQtd}/>
+        <FaStar className={Style.Estrelas}/>
+        <FaStar className={Style.Estrelas}/>
+          </div>
+        
+          <div className={Style.divLegQtd}>
+            <h1 className={Style.legQtd}>10+</h1>
+            Compensará o total de 25kg de CO2
+          </div>
+          
+          
+          
+        </Card.Text>
+        <div className={Style.divBotaoPlant}>
+        <Button className={Style.botaoPlantar}>Selecionar </Button>
+        </div>
+        
+      </Card.Body>
+    </Card>
+
+</div>
+<div className={Style.EspecQtd}>
+<h4>Especificar quantidade</h4>
+    <FloatingLabel
+        controlId="floatingInput"
+        label="Quantidade"
+        className="mb-3"
+      >
+        <Form.Control type="number" placeholder="8"  className={Style.caixaQtd}/>
+      </FloatingLabel>
+
+</div>
+
+<br/>
 
 
         </div>
