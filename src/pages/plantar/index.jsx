@@ -152,6 +152,7 @@ export default function Plantar() {
   const [contadorTreeIndex, setContadorTreeIndex] = useState('');
 
   const [qtdEspec, setQtdEspec] = useState('');
+  const [idEspQtd, setIdQtde] = useState('');
 
   const selecionarLocal = (evt, idLoc, i) => {
     console.log("o event check: ", event)
@@ -195,14 +196,16 @@ export default function Plantar() {
 
   };
 
-  const selecionarQtd = (qtd) => {
+  const selecionarQtd = (qtd, id) => {
 
-    
+    console.log("o id do card: ", id)
 
     if(qtdEspec == ''){
       setQtdEspec(qtd)
+      setIdQtde(id)
     } else if (qtdEspec == qtd){
       setQtdEspec('')
+      setIdQtde('')
     }
 
     // if(treeId == ''){
@@ -496,7 +499,7 @@ const items = [];
 
 
 <div className={Style.divCardsQuantidade}>
-<Card style={{ width: '18rem' }} className={Style.CardQtd}>
+<Card style={{ width: '18rem' }} className={Style.CardQtd} >
       
       <Card.Body>
        
@@ -517,9 +520,9 @@ const items = [];
         <div className={Style.divBotaoPlant}>
         
 {qtdEspec == '' && 
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2)}>Selecionar </Button>
-} {qtdEspec != '' &&
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2)}>Cancelar </Button>
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2, 1)}>Selecionar </Button>
+} {qtdEspec != ''  && idEspQtd==1 &&
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2, 1)}>Cancelar </Button>
 }
 
         </div>
@@ -528,7 +531,7 @@ const items = [];
     </Card>
 
 
-    <Card style={{ width: '18rem' }} className={Style.CardQtd}>
+    <Card style={{ width: '18rem' }} className={Style.CardQtd} >
       
       <Card.Body>
         
@@ -550,9 +553,9 @@ const items = [];
        
         <div className={Style.divBotaoPlant}>
         {qtdEspec == '' && 
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5)}>Selecionar </Button>
-} {qtdEspec != '' &&
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5)}>Cancelar </Button>
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5, 2)}>Selecionar </Button>
+} {qtdEspec != '' && idEspQtd==2 &&
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5, 2)}>Cancelar </Button>
 }
 
         </div>
@@ -560,7 +563,7 @@ const items = [];
       </Card.Body>
     </Card>
 
-    <Card style={{ width: '18rem' }} className={Style.CardQtd}>
+    <Card style={{ width: '18rem' }} className={Style.CardQtd} >
       
       <Card.Body>
         
@@ -583,9 +586,9 @@ const items = [];
       
         <div className={Style.divBotaoPlant}>
         {qtdEspec == '' && 
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(10)}>Selecionar </Button>
-} {qtdEspec != '' &&
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(10)}>Cancelar </Button>
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(10, 3)}>Selecionar </Button>
+} {qtdEspec != ''  && idEspQtd==3 &&
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(10, 3)}>Cancelar </Button>
 }
         </div>
         
