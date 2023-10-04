@@ -197,7 +197,13 @@ export default function Plantar() {
 
   const selecionarQtd = (qtd) => {
 
-    setQtdEspec(qtd)
+    
+
+    if(qtdEspec == ''){
+      setQtdEspec(qtd)
+    } else if (qtdEspec == qtd){
+      setQtdEspec('')
+    }
 
     // if(treeId == ''){
     //   console.log("entrou na funcao idLoc == vazio")
@@ -486,7 +492,7 @@ const items = [];
           
           <p/>
 
-{/* Resolver o problema de renderização inicio */}
+{/*======================================= Inserir quantidade espécie para plantar Início============================== */}
 
 
 <div className={Style.divCardsQuantidade}>
@@ -573,8 +579,8 @@ const items = [];
 
 </div>
 
+{/*======================================= Inserir quantidade espécie para plantar Fim============================== */}
 
-{/* Resolver o problema de renderização fim */}
 
 
 <div className={Style.EspecQtd}>
