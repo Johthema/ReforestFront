@@ -151,6 +151,8 @@ export default function Plantar() {
   const [treeId, setreeId] = useState('');
   const [contadorTreeIndex, setContadorTreeIndex] = useState('');
 
+  const [qtdEspec, setQtdEspec] = useState('');
+
   const selecionarLocal = (evt, idLoc, i) => {
     console.log("o event check: ", event)
     if(locId == ''){
@@ -189,6 +191,28 @@ export default function Plantar() {
       setContadorTreeIndex(i)
       setreeId('')
     }  
+
+
+  };
+
+  const selecionarQtd = (qtd) => {
+
+    setQtdEspec(qtd)
+
+    // if(treeId == ''){
+    //   console.log("entrou na funcao idLoc == vazio")
+    
+    //   setEspecie(evt)
+    //   setContadorTreeIndex(i)
+    //   setreeId(idTree)
+    // } else if(idTree == treeId){
+   
+    //   console.log("entrou na funcao idLoc == locid")
+    //   setEspecie('')
+      
+    //   setContadorTreeIndex(i)
+    //   setreeId('')
+    // }  
 
 
   };
@@ -485,7 +509,7 @@ const items = [];
           
           
         <div className={Style.divBotaoPlant}>
-        <Button className={Style.botaoPlantar}>Selecionar </Button>
+        <Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2)}>Selecionar </Button>
         </div>
         
       </Card.Body>
@@ -513,7 +537,7 @@ const items = [];
           
        
         <div className={Style.divBotaoPlant}>
-        <Button className={Style.botaoPlantar}>Selecionar </Button>
+        <Button className={Style.botaoPlantar} onClick={() => selecionarQtd(5)} >Selecionar </Button>
         </div>
         
       </Card.Body>
@@ -541,7 +565,7 @@ const items = [];
           
       
         <div className={Style.divBotaoPlant}>
-        <Button className={Style.botaoPlantar}>Selecionar </Button>
+        <Button className={Style.botaoPlantar} onClick={() => selecionarQtd(10)}>Selecionar </Button>
         </div>
         
       </Card.Body>
@@ -596,7 +620,7 @@ const items = [];
 
             <h5 className={Style.legendaH5}><b>Local de plantação</b> <span className={Style.legendaH5}>{local}</span></h5>
             <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>{especie}</span></h5>
-            <h5 className={Style.legendaH5}><b>Árvores para plantar</b><span className={Style.legendaH5}>10</span></h5>
+            <h5 className={Style.legendaH5}><b>Árvores para plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
             <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>1,500 Kg</span></h5>
             <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
 
