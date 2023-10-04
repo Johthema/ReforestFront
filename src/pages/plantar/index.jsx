@@ -453,6 +453,8 @@ const items = [];
                 <Card.Footer className="text-muted">
                   {/* <Form.Control type="number" placeholder="Quantidade" /> */}
                   <h5>Categoria: {item.category.name}</h5>
+                  <h5>Compensação: {item.carbonOffset}kg/ano</h5>
+                  <h5>toda vida util: {item.lifeTimeCarbon}</h5>
                   
                   
                   {treeId == item._id &&
@@ -491,7 +493,7 @@ const items = [];
           </div>
 
           <p/>
-          <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>3</span><h5 className={Style.PassosTitulo}>- Escolha a quantidade de espécie a ser plantada</h5></div>
+          <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>3</span><h5 className={Style.PassosTitulo}>- Escolha a quantidade da espécie a ser plantada</h5></div>
           
           <p/>
 
@@ -512,17 +514,20 @@ const items = [];
           </div>
         
           <div className={Style.divLegQtd}>
-            <h1 className={Style.legQtd}>2+</h1>
-            Compensará o total de 5kg de CO2
+            <h1 className={Style.legQtd}>1+</h1>
+            Compensação anual: 1kg de CO2
+            <p/>
+            compensação em vida útil: 200kg de CO2
+
           </div>
           
           
         <div className={Style.divBotaoPlant}>
         
 {qtdEspec == '' && 
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2, 1)}>Selecionar </Button>
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(1, 1)}>Selecionar </Button>
 } {qtdEspec != ''  && idEspQtd==1 &&
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(2, 1)}>Cancelar </Button>
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(1, 1)}>Cancelar </Button>
 }
 
         </div>
@@ -535,6 +540,41 @@ const items = [];
       
       <Card.Body>
         
+          <div className={Style.divIconeEstrela}>
+          <FaStar className={Style.Estrelas}/>
+        <FaStar className={Style.Estrelas}/>
+          <FaLeaf className={Style.IconePlantaQtd}/>
+        <FaStar className={Style.Estrelas}/>
+        <FaStar className={Style.Estrelas}/>
+          </div>
+        
+          <div className={Style.divLegQtd}>
+            <h1 className={Style.legQtd}>3+</h1>
+            Compensação anual: 5kg de CO2
+            <p/>
+            compensação em vida útil: 200kg de CO2
+          </div>
+          
+          
+          
+       
+        <div className={Style.divBotaoPlant}>
+        {qtdEspec == '' && 
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(3, 2)}>Selecionar </Button>
+} {qtdEspec != '' && idEspQtd==2 &&
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(3, 2)}>Cancelar </Button>
+}
+
+        </div>
+        
+      </Card.Body>
+    </Card>
+
+    <Card style={{ width: '18rem' }} className={Style.CardQtd} >
+      
+      <Card.Body>
+        
+       
           <div className={Style.divIconeEstrela}>
           <FaStar className={Style.Estrelas}/>
         <FaStar className={Style.Estrelas}/>
@@ -545,40 +585,9 @@ const items = [];
         
           <div className={Style.divLegQtd}>
             <h1 className={Style.legQtd}>5+</h1>
-            Compensará o total de 15kg de CO2
-          </div>
-          
-          
-          
-       
-        <div className={Style.divBotaoPlant}>
-        {qtdEspec == '' && 
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5, 2)}>Selecionar </Button>
-} {qtdEspec != '' && idEspQtd==2 &&
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5, 2)}>Cancelar </Button>
-}
-
-        </div>
-        
-      </Card.Body>
-    </Card>
-
-    <Card style={{ width: '18rem' }} className={Style.CardQtd} >
-      
-      <Card.Body>
-        
-       
-          <div className={Style.divIconeEstrela}>
-          <FaStar className={Style.Estrelas}/>
-        <FaStar className={Style.Estrelas}/>
-          <FaLeaf className={Style.IconePlantaQtd}/>
-        <FaStar className={Style.Estrelas}/>
-        <FaStar className={Style.Estrelas}/>
-          </div>
-        
-          <div className={Style.divLegQtd}>
-            <h1 className={Style.legQtd}>10+</h1>
-            Compensará o total de 25kg de CO2
+            Compensação anual: 5kg de CO2
+            <p/>
+            compensação em vida útil: 200kg de CO2
           </div>
           
           
@@ -586,9 +595,9 @@ const items = [];
       
         <div className={Style.divBotaoPlant}>
         {qtdEspec == '' && 
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(10, 3)}>Selecionar </Button>
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5, 3)}>Selecionar </Button>
 } {qtdEspec != ''  && idEspQtd==3 &&
-<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(10, 3)}>Cancelar </Button>
+<Button className={Style.botaoPlantar}onClick={() => selecionarQtd(5, 3)}>Cancelar </Button>
 }
         </div>
         
