@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
-import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaTrashAlt, FaLeaf, FaRegWindowClose } from "react-icons/fa";
+import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaRegWindowClose } from "react-icons/fa";
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -529,11 +529,11 @@ const items = [];
       <Card.Body>
        
           <div className={Style.divIconeEstrela}>
-          <FaStar className={Style.Estrelas}/>
+          <FaAppleAlt className={Style.Estrelas}/>     
         <FaStar className={Style.Estrelas}/>
           <FaLeaf className={Style.IconePlantaQtd}/>
         <FaStar className={Style.Estrelas}/>
-        <FaStar className={Style.Estrelas}/>
+        <FaAppleAlt className={Style.Estrelas}/>
           </div>
         
           <div className={Style.divLegQtd}>
@@ -564,11 +564,11 @@ const items = [];
       <Card.Body>
         
           <div className={Style.divIconeEstrela}>
-          <FaStar className={Style.Estrelas}/>
+          <FaAppleAlt className={Style.Estrelas}/>
         <FaStar className={Style.Estrelas}/>
           <FaLeaf className={Style.IconePlantaQtd}/>
         <FaStar className={Style.Estrelas}/>
-        <FaStar className={Style.Estrelas}/>
+        <FaAppleAlt className={Style.Estrelas}/>
           </div>
         
           <div className={Style.divLegQtd}>
@@ -599,11 +599,11 @@ const items = [];
         
        
           <div className={Style.divIconeEstrela}>
-          <FaStar className={Style.Estrelas}/>
+          <FaAppleAlt className={Style.Estrelas}/>
         <FaStar className={Style.Estrelas}/>
           <FaLeaf className={Style.IconePlantaQtd}/>
         <FaStar className={Style.Estrelas}/>
-        <FaStar className={Style.Estrelas}/>
+        <FaAppleAlt className={Style.Estrelas}/>
           </div>
         
           <div className={Style.divLegQtd}>
