@@ -323,12 +323,16 @@ const items = [];
   return (
     <>
       <Header></Header>
+
      
-      <Breadcrumb className={Style.migalhas}>
+      {/* <Breadcrumb className={Style.migalhas}>
         <Breadcrumb.Item href="/home">Home  </Breadcrumb.Item>
         
         <Breadcrumb.Item active>Plantar.</Breadcrumb.Item>
-        </Breadcrumb>
+        </Breadcrumb> */}
+        <div className={Style.barraCabecalho}>
+        <h1 className={Style.legandaCabecalho}><b>Juntos pela Natureza:</b> Plante a Semente da Esperança e Ajude a Reflorestar o Nosso Futuro!</h1>
+        </div>
       
       <div className={Style.divFundoPlantar}>
 

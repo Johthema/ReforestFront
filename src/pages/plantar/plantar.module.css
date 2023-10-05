@@ -9,6 +9,26 @@
     margin-top: 10%;
     margin-left: 10%
 }
+
+.barraCabecalho{
+    height: 200px;
+    width: 100%;
+    /* background-color: #116582; */
+    display: flex;
+    color: #fff;
+    flex-wrap: wrap;
+    text-align: center;
+    background: linear-gradient(#ffff, #116582);
+    
+}
+.legandaCabecalho{
+    margin: auto;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 2%;
+    font-family: var(--fontPadrao);
+}
+
 .Coluna1{
     width: 80%;
     height:100%;
@@ -44,7 +64,7 @@
 
 
 .divDetailCompra{
-    height: 340px;
+    height: 250px;
     width: 300px;
     margin: auto;
     justify-content: center;
@@ -75,7 +95,7 @@
     cursor: pointer;
     color: #fff;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 30px;
    
 }
 .botaoContinuar:hover{
