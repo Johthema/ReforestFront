@@ -79,7 +79,7 @@ export default function Plantar() {
       try {
         setLoading(true)
         //console.log("o tipo de arvore é: ",tipo)
-
+       
         const response = await fetch(URL_API)
         // const dados = await response.json();
         const dados = await response.json()
@@ -156,6 +156,8 @@ export default function Plantar() {
 
   const [qtdEspec, setQtdEspec] = useState('');
   const [idEspQtd, setIdQtde] = useState('');
+
+  
 
   const selecionarLocal = (evt, idLoc, i) => {
     console.log("o event check: ", event)
@@ -363,12 +365,6 @@ const items = [];
 </div>
 
 }
-
-
-
-
-
-
 
 
           <p/>
@@ -680,10 +676,15 @@ const items = [];
             <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>{compCo2Anual}Kg</span></h5>
             <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
 
+{ local !== '' && especie !== '' && qtdEspec !== '' &&  (
+  <div className={Style.botaoContinuar}>
+  Plantar agora
+</div>
+)
+  }
 
-            <div className={Style.botaoContinuar}>
-              Plantar agora
-            </div>
+
+            
           </div>
 
         </div>
