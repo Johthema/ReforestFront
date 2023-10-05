@@ -150,6 +150,7 @@ export default function Plantar() {
 
   const [treeId, setreeId] = useState('');
   const [compCo2, setCompCo2] = useState('');
+  const [compCo2Anual, setCompCo2Anual] = useState('');
   const [compCo2Tot, setCompCo2Tot] = useState('');
   const [contadorTreeIndex, setContadorTreeIndex] = useState('');
 
@@ -209,9 +210,12 @@ export default function Plantar() {
     if(qtdEspec == ''){
       setQtdEspec(qtd)
       setIdQtde(id)
+      setCompCo2Anual(qtd*compCo2)
+
     } else if (qtdEspec == qtd){
       setQtdEspec('')
       setIdQtde('')
+      setCompCo2Anual('')
     }
 
     // if(treeId == ''){
@@ -673,7 +677,7 @@ const items = [];
             <h5 className={Style.legendaH5}><b>Local de plantação</b> <span className={Style.legendaH5}>{local}</span></h5>
             <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>{especie}</span></h5>
             <h5 className={Style.legendaH5}><b>Quantidade a plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
-            <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>1,500 Kg</span></h5>
+            <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>{compCo2Anual}Kg</span></h5>
             <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
 
 
