@@ -23,7 +23,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
@@ -323,10 +323,19 @@ const items = [];
   return (
     <>
       <Header></Header>
+     
+      <Breadcrumb className={Style.migalhas}>
+        <Breadcrumb.Item href="/home">Home  </Breadcrumb.Item>
+        
+        <Breadcrumb.Item active>Plantar.</Breadcrumb.Item>
+        </Breadcrumb>
+      
       <div className={Style.divFundoPlantar}>
 
+     
+
         <div className={Style.Coluna1}>
-        <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>1</span><h5 className={Style.PassosTitulo}>- Escolha um local de plantação</h5>
+        <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>1</span><h5 className={Style.PassosTitulo}>- Selecione um local de plantação</h5>
         </div>
 {dados != '' &&
         <AliceCarousel 
@@ -355,7 +364,7 @@ const items = [];
 
 
           <p/>
-          <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>2</span><h5 className={Style.PassosTitulo}>- Escolha uma espécie a ser plantada</h5></div>
+          <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>2</span><h5 className={Style.PassosTitulo}>- Selecione uma espécie a ser plantada</h5></div>
           {/* <div className={Style.divTituloPassos}><h5>Passo 2 - Escolha uma espécie a ser plantada</h5></div> */}
           <p/>
 
@@ -499,7 +508,7 @@ const items = [];
           </div>
 
           <p/>
-          <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>3</span><h5 className={Style.PassosTitulo}>- Escolha a quantidade da espécie a ser plantada</h5></div>
+          <div className={Style.divTituloPassos}><span className={Style.PassosEstilo}>3</span><h5 className={Style.PassosTitulo}>- Selecione a quantidade da espécie a ser plantada</h5></div>
           
           <p/>
 
