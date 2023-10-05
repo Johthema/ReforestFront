@@ -238,6 +238,15 @@ export default function Plantar() {
 
   };
 
+  const onChangeQtdEspecific = (evt) => {
+    
+    const novaQtd = evt.target.value
+    setQtdEspec(novaQtd)
+    // setIdQtde(id)
+    setCompCo2Anual(novaQtd*compCo2)
+   
+  }
+
   //------Remover elemento inicio
   // const removerElemento = (elemento) => {
   //   const novaColecao = colecao.filter((item) => item !== elemento);
@@ -314,7 +323,7 @@ const items = [];
           {locId == '' &&
           <Button className={Style.botaoPlantar} onClick={(e) => selecionarLocal(item.name, item._id, i)}>Plantar aqui</Button>
           }
-
+ 
         </div>
 
       </Card.Footer>
@@ -636,7 +645,7 @@ const items = [];
         label="Quantidade"
         className="mb-3"
       >
-        <Form.Control type="number"  className={Style.caixaQtd}/>
+        <Form.Control type="number"  className={Style.caixaQtd} onChange={onChangeQtdEspecific} />
       </FloatingLabel>
 
 </div>
