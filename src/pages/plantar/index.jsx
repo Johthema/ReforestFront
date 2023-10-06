@@ -1,12 +1,12 @@
 import Header from '../../components/header/index'
-import Foot from '../../components/footer/index'
+import Foot from '../../components/footer/index' 
 import Container from 'react-bootstrap/Container';
 import Style from './plantar.module.css';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
 import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, 
-  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf} from "react-icons/fa";
+  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaEdit} from "react-icons/fa";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
@@ -737,7 +737,7 @@ const items = [];
     <div className={Style.MarcacaoPassoChkt}>
     <h5>1</h5>
     </div>
-    <h5 className={Style.tituloMarcacao}> <b>Dados do contribuinte</b></h5>
+    <h5 className={Style.tituloMarcacao}> <b>Dados do contribuinte</b> <FaEdit className={Style.editarDados} href="/configuracao"/></h5>
   </div>
   
   <div className={Style.divDadosContribuinte}>

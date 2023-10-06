@@ -51,6 +51,7 @@
         font-family: var(--fontPadrao);
         margin: auto;
         display: flex;
+        cursor: pointer;
     }
 
 
@@ -626,6 +627,9 @@ margin: 10px;
     border-radius: 100%;
 
 }
+.editarDados{
+    cursor: pointer;
+}
 .divMarcacao{
     display: flex;
 }
@@ -638,6 +642,7 @@ margin: 10px;
     color: #fff;
     display: flex;
     align-items: center;
+    
 }
 .tituloMarcacao{
     margin-top: 6px;
