@@ -11,6 +11,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
 import ImgArvore from '../../assets/images/arvore_1.jpg';
+import ImgProfile from '../../assets/images/fotoperfil/fotoper.jpg';
 import Pagination from 'react-bootstrap/Pagination';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
@@ -22,6 +23,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
+
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
@@ -724,10 +726,56 @@ const items = [];
       <Offcanvas show={showCheckOut} onHide={handleClose} >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Informações pessoais</Offcanvas.Title>
+        <hr/>
         </Offcanvas.Header>
         <Offcanvas.Body>
+<div>
+  <div className={Style.divFotoPerfil}>
+  <Image src={ImgProfile} className={Style.FotoPerfil} />
+  </div>
+  <div className={Style.divMarcacao}>
+    <div className={Style.MarcacaoPassoChkt}>
+    <h5>1</h5>
+    </div>
+    <h5 className={Style.tituloMarcacao}> <b>Dados do contribuinte</b></h5>
+  </div>
+  
+  <div className={Style.divDadosContribuinte}>
+    <h5>Nome completo: <i>Fulano de tal</i> </h5>
+    <h5>Endereço: <i>Rua dos Pinhais 222</i> </h5>
+    <h5>Código postal: <i>69o6o1o1</i> </h5>
+    <h5>Cidade: <i>Manaós</i> </h5>
+    <h5>País: <i>Braziill</i> </h5>
+  </div>
+
+</div>
+{/* ----------------Forma de pagamento------------------ */}
+<div>
+  {/* <div className={Style.divFotoPerfil}>
+  <Image src={ImgProfile} className={Style.FotoPerfil} />
+  </div> */}
+  <div className={Style.divMarcacao}>
+    <div className={Style.MarcacaoPassoChkt}>
+    <h5>2</h5>
+    </div>
+    <h5 className={Style.tituloMarcacao}> <b>Forma de pagamento</b></h5>
+  </div>
+  
+  {/* <div className={Style.divDadosContribuinte}>
+    <h5><b>Nome completo:</b> Fulano de tal </h5>
+    <h5><b>Endereço:</b> Rua dos Pinhais 222 </h5>
+    <h5><b>Código postal:</b> 69o6o1o1 </h5>
+    <h5><b>Cidade:</b> Manaós </h5>
+    <h5><b>País:</b> Braziill </h5>
+  </div> */}
+
+</div>
 
 
+
+
+
+{/* 
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
         <Form.Control
@@ -763,7 +811,7 @@ const items = [];
       <InputGroup>
         <InputGroup.Text>With textarea</InputGroup.Text>
         <Form.Control as="textarea" aria-label="With textarea" />
-      </InputGroup>
+      </InputGroup> */}
 
 
 
