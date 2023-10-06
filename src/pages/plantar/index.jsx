@@ -23,7 +23,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
-
+import { useRouter } from "next/router"
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
@@ -72,7 +72,7 @@ export default function Plantar() {
   const handleClose = () => setShowCheckOut(false);
   const handleShow = () => setShowCheckOut(true);
 
-
+  const router = useRouter();
   // const handleSelect = (selectedIndex) => {
   //   setIndex(selectedIndex);
   // };
@@ -335,8 +335,9 @@ const items = [];
 
   )
 ))}
-
-
+function editarDadosRota() {
+  router.push('/configuracao');
+}
 
 
   return (
@@ -737,7 +738,7 @@ const items = [];
     <div className={Style.MarcacaoPassoChkt}>
     <h5>1</h5>
     </div>
-    <h5 className={Style.tituloMarcacao}> <b>Dados do contribuinte</b> <FaEdit className={Style.editarDados} href="/configuracao"/></h5>
+    <h5 className={Style.tituloMarcacao}> <b>Dados do contribuinte</b> <FaEdit className={Style.editarDados} onClick={editarDadosRota}/></h5>
   </div>
   
   <div className={Style.divDadosContribuinte}>
