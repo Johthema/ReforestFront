@@ -685,19 +685,21 @@ const items = [];
             <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>{compCo2Anual}Kg</span></h5>
             <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
 
-{ local !== '' && especie !== '' && qtdEspec !== '' &&  (
-  <div className={Style.botaoContinuar}>
-  Plantar agora
-</div>
-)
-  }
-
-
-            
+            { local !== '' && especie !== '' && qtdEspec !== '' &&  (
+              <div className={Style.botaoContinuar}>
+              Plantar agora
+            </div>
+            )
+              }
+    
           </div>
-
+          
         </div>
+        
+
+        
  }
+ <div className={Style.divRevisaoRespons}></div>
       </div>
    
       <Foot />
