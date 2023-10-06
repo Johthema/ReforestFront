@@ -664,3 +664,7 @@ margin: 10px;
     font-family: var(--fontPadrao);
     
 }
+
+.divMetodoPagamento{
+    display: flex;
+}

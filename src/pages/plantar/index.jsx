@@ -759,8 +759,31 @@ function editarDadosRota() {
   
   <div className={Style.divDadosContribuinte}>
     <h5>Selecione o método de pagamento</h5>
-   <div>
+   <div className={Style.divMetodoPagamento}>
+<div>
+<Form>
+      {['radio'].map((type) => (
+        <div key={`inline-${type}`} className="mb-3">
+          <Form.Check
+            inline
+            label="Cartão de crédito"
+            name="group1"
+            type={type}
+            id={`inline-${type}-1`}
+          />
+          <Form.Check
+            inline
+            label="PayPal"
+            name="group1"
+            type={type}
+            id={`inline-${type}-2`}
+          />
 
+        </div>
+      ))}
+    </Form>
+    </div>
+<div></div>
    </div>
   </div>
 
