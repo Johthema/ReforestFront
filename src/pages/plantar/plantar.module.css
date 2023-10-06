@@ -615,6 +615,10 @@ margin: 10px;
 }
 
 /*ESTILO DO CHECKOUT*/
+
+.BaaraLateralCanvas{ 
+    width: 500px !important;
+}
 .divFotoPerfil{
     display: flex;
     margin: auto;
@@ -652,7 +656,7 @@ margin: 10px;
     /* text-align: center; */
     border-left: solid 1.5px #2F2F2F;
     flex-wrap: wrap;
-    width: 80%;
+    width: 90%;
     margin-left: 20px;
     height: 230px;
     padding-left: 25px;

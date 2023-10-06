@@ -713,8 +713,6 @@ function editarDadosRota() {
             <div className={Style.botaoPlantarResponsivo} onClick={handleShow}>Plantar Agora</div>
             )
               }
-  {/* <FaSeedling/>
-  <FaShoppingBasket/> */}
  </div>
 }
       </div>
@@ -724,7 +722,7 @@ function editarDadosRota() {
 
 {/* FORMULARIO CHECKOUT */}
 
-      <Offcanvas show={showCheckOut} onHide={handleClose} >
+      <Offcanvas show={showCheckOut} onHide={handleClose} className={Style.BaaraLateralCanvas}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Informações pessoais</Offcanvas.Title>
         <hr/>
@@ -752,9 +750,6 @@ function editarDadosRota() {
 </div>
 {/* ----------------Forma de pagamento------------------ */}
 <div>
-  {/* <div className={Style.divFotoPerfil}>
-  <Image src={ImgProfile} className={Style.FotoPerfil} />
-  </div> */}
   <div className={Style.divMarcacao}>
     <div className={Style.MarcacaoPassoChkt}>
     <h5>2</h5>
@@ -762,13 +757,12 @@ function editarDadosRota() {
     <h5 className={Style.tituloMarcacao}> <b>Forma de pagamento</b></h5>
   </div>
   
-  {/* <div className={Style.divDadosContribuinte}>
-    <h5><b>Nome completo:</b> Fulano de tal </h5>
-    <h5><b>Endereço:</b> Rua dos Pinhais 222 </h5>
-    <h5><b>Código postal:</b> 69o6o1o1 </h5>
-    <h5><b>Cidade:</b> Manaós </h5>
-    <h5><b>País:</b> Braziill </h5>
-  </div> */}
+  <div className={Style.divDadosContribuinte}>
+    <h5>Selecione o método de pagamento</h5>
+   <div>
+
+   </div>
+  </div>
 
 </div>
 
