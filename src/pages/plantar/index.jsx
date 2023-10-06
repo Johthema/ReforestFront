@@ -28,6 +28,8 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
@@ -70,7 +72,11 @@ export default function Plantar() {
   // const [trees, setTrees] = useState([]);
   // const [locId, setLoc] = useState('');
 
+  //Variáveis de checkout
+  const [showCheckOut, setShowCheckOut] = useState(false);
 
+  const handleClose = () => setShowCheckOut(false);
+  const handleShow = () => setShowCheckOut(true);
 
 
   // const handleSelect = (selectedIndex) => {
@@ -690,7 +696,7 @@ const items = [];
             <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
 
             { local !== '' && especie !== '' && qtdEspec !== '' &&  (
-              <div className={Style.botaoContinuar}>
+              <div className={Style.botaoContinuar} onClick={handleShow}>
               Plantar agora
             </div>
             )
@@ -709,7 +715,7 @@ const items = [];
  <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
  { local !== '' && especie !== '' && qtdEspec !== '' &&  (
             //  <Button variant="success">Plantar agora</Button>
-            <div className={Style.botaoPlantarResponsivo}>Plantar Agora</div>
+            <div className={Style.botaoPlantarResponsivo} onClick={handleShow}>Plantar Agora</div>
             )
               }
   {/* <FaSeedling/>
@@ -719,6 +725,60 @@ const items = [];
       </div>
    
       <Foot />
+
+
+{/* FORMULARIO CHECKOUT */}
+
+      <Offcanvas show={showCheckOut} onHide={handleClose} backdrop="static">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Informações pessoais</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+
+
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+        <Form.Control
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+        />
+      </InputGroup>
+
+      <InputGroup className="mb-3">
+        <Form.Control
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
+      </InputGroup>
+
+      <Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
+      <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon3">
+          https://example.com/users/
+        </InputGroup.Text>
+        <Form.Control id="basic-url" aria-describedby="basic-addon3" />
+      </InputGroup>
+
+      <InputGroup className="mb-3">
+        <InputGroup.Text>$</InputGroup.Text>
+        <Form.Control aria-label="Amount (to the nearest dollar)" />
+        <InputGroup.Text>.00</InputGroup.Text>
+      </InputGroup>
+
+      <InputGroup>
+        <InputGroup.Text>With textarea</InputGroup.Text>
+        <Form.Control as="textarea" aria-label="With textarea" />
+      </InputGroup>
+
+
+
+
+          
+        </Offcanvas.Body>
+      </Offcanvas>
 
 
 
