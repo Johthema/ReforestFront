@@ -1,19 +1,12 @@
 import Header from '../../components/header/index'
 import Foot from '../../components/footer/index'
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Style from './plantar.module.css';
 import { useState, useEffect } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
 import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, 
-  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaRegWindowClose,
-  FaOutdent,
-  FaShoppingBasket
-} from "react-icons/fa";
-import CloseButton from 'react-bootstrap/CloseButton';
+  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf} from "react-icons/fa";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
@@ -27,7 +20,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
 
@@ -729,7 +721,7 @@ const items = [];
 
 {/* FORMULARIO CHECKOUT */}
 
-      <Offcanvas show={showCheckOut} onHide={handleClose} backdrop="static">
+      <Offcanvas show={showCheckOut} onHide={handleClose} >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Informações pessoais</Offcanvas.Title>
         </Offcanvas.Header>
