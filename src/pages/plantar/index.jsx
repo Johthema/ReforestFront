@@ -8,7 +8,11 @@ import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
-import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaRegWindowClose } from "react-icons/fa";
+import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, 
+  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaRegWindowClose,
+  FaOutdent,
+  FaShoppingBasket
+} from "react-icons/fa";
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -346,7 +350,7 @@ const items = [];
         <Breadcrumb.Item active>Plantar.</Breadcrumb.Item>
         </Breadcrumb> */}
         <div className={Style.barraCabecalho}>
-        <h1 className={Style.legandaCabecalho}><b>Juntos pela Natureza:</b> Plante a Semente da Esperança e Ajude a Reflorestar o Nosso Futuro!</h1>
+        <h1 className={Style.legendaCabecalho}><b>Juntos pela Natureza:</b> Plante a Semente da Esperança e Ajude a Reflorestar o Nosso Futuro!</h1>
         </div>
       
       <div className={Style.divFundoPlantar}>
@@ -543,9 +547,9 @@ const items = [];
         
           <div className={Style.divLegQtd}>
             <h1 className={Style.legQtd}>1+</h1>
-            Compensação anual: {compCo2}kg de CO2
+            Compensação anual: {compCo2*1}kg de CO2
             <p/>
-            compensação em vida útil: {compCo2Tot}kg de CO2
+            compensação em vida útil: {compCo2Tot*1}kg de CO2
 
           </div>
           
@@ -699,7 +703,19 @@ const items = [];
 
         
  }
- <div className={Style.divRevisaoRespons}></div>
+  {locId != '' &&
+ <div className={Style.divRevisaoRespons}>
+ <h5 className={Style.legendaH5}><b>Quantidade a plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
+ <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
+ { local !== '' && especie !== '' && qtdEspec !== '' &&  (
+            //  <Button variant="success">Plantar agora</Button>
+            <div className={Style.botaoPlantarResponsivo}>Plantar Agora</div>
+            )
+              }
+  {/* <FaSeedling/>
+  <FaShoppingBasket/> */}
+ </div>
+}
       </div>
    
       <Foot />

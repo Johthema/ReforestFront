@@ -4,37 +4,63 @@
     display: flex;
 }
 
+@media (min-width: 1349px){
+    .divRevisaoRespons{
+        display: none;
+    }
+}
+
+
 @media (max-width: 1350px){
     .Coluna2{
         display: none;
     
     }
 
-    .divRevisaoRespons{
-     /* height: 100px;
-     width: 100px;
-     border-radius: 100%;
-     background-color: #116582;    */
+    .legendaH5{
+        padding-left: 10px;
+        margin-right: 10px;
+    }
 
+    .divRevisaoRespons{
      height: 100px;
      width: 100%;
      margin: auto;
      justify-content: center;
-     /* background-color: #E8F4E7; */
      background-color: #c8dfe7;
      border-radius: 10px;
-     
-     /* position:fixed; */
      margin-bottom: inherit;
      bottom: 0px;
      position: fixed;
      top: 110px;
+     right: 0px;
+     z-index: 10;
+     /* padding: 10px; */
+    }
 
-
+    .botaoPlantarResponsivo{
+        width: 100%;
+        height: 48px;
+        background-color: #118222;
+        margin-bottom: inherit;
+        justify-content: center;
+        color: #fff;
+        align-items: center;
+        text-align: center;
+        font-size: 18px;
+        font-family: var(--fontPadrao);
+        margin: auto;
+        display: flex;
     }
 
 
+
 }
+@media (max-width: 730px){
+    .barraCabecalho .legendaCabecalho{
+        font-size: 1.4rem;
+    }
+    }
 
 .migalhas{
     display: flex;
@@ -53,7 +79,7 @@
     background: linear-gradient(#ffff, #116582);
     
 }
-.legandaCabecalho{
+.legendaCabecalho{
     margin: auto;
     justify-content: center;
     font-size: 2rem;
@@ -98,7 +124,8 @@
 
 .divDetailCompra{
     height: 300px;
-    width: 290px;
+    /* width: 290px; */
+    width: 98%;
     margin: auto;
     justify-content: center;
     /* background-color: #E8F4E7; */
@@ -468,7 +495,7 @@ color: #55ACEE
 
 .headerTabela{
     background-color: #2F2F2F;
-    width: 96%;
+    width: 100%;
     margin: auto;
     border-radius: 10px 10px 0px 0px;
     height: 65px;
