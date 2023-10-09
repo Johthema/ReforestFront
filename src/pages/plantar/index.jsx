@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
 import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, 
-  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaEdit} from "react-icons/fa";
+  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaEdit, FaCcVisa, FaCcMastercard, FaCcPaypal} from "react-icons/fa";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
@@ -339,6 +339,16 @@ function editarDadosRota() {
   setLoading(true)
   router.push('/configuracao');
 }
+
+
+
+//Forma de pagameneto
+const [formPag, setFormPag] = useState('');
+const formaPagamento=(formPg)=>{
+  console.log("a forma de pagamento escolhida foi: ", formPg)
+  setFormPag(formPg)
+}
+console.log("no momento o pagamento é via: ", formPag)
 
 
   return (
@@ -689,11 +699,12 @@ function editarDadosRota() {
             <h5 className={Style.legendaH5}><b>Espécie</b><span className={Style.legendaH5}>{especie}</span></h5>
             <h5 className={Style.legendaH5}><b>Quantidade a plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
             <h5 className={Style.legendaH5}><b>Compensação total de CO2</b><span className={Style.legendaH5}>{compCo2Anual}Kg</span></h5>
-            <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
+            <hr/>
+            <h5 className={Style.legendaH5}><b>Total</b><span className={Style.legendaH5}>40€</span></h5>
 
             { local !== '' && especie !== '' && qtdEspec !== '' &&  (
               <div className={Style.botaoContinuar} onClick={handleShow}>
-              Plantar agora
+              Continuar
             </div>
             )
               }
@@ -708,10 +719,11 @@ function editarDadosRota() {
   {locId != '' &&
  <div className={Style.divRevisaoRespons}>
  <h5 className={Style.legendaH5}><b>Quantidade a plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
- <h5 className={Style.legendaH5}><b>Valor total</b><span className={Style.legendaH5}>40€</span></h5>
+ <hr/>
+ <h5 className={Style.legendaH5}><b>Total</b><span className={Style.legendaH5}>40€</span></h5>
  { local !== '' && especie !== '' && qtdEspec !== '' &&  (
             //  <Button variant="success">Plantar agora</Button>
-            <div className={Style.botaoPlantarResponsivo} onClick={handleShow}>Plantar Agora</div>
+            <div className={Style.botaoPlantarResponsivo} onClick={handleShow}>Continuar</div>
             )
               }
  </div>
@@ -771,13 +783,15 @@ function editarDadosRota() {
             name="group1"
             type={type}
             id={`inline-${type}-1`}
+            onClick={()=>formaPagamento(1)}
           />
           <Form.Check
             inline
-            label="PayPal"
+            label="Multibanco"
             name="group1"
             type={type}
             id={`inline-${type}-2`}
+            onClick={()=>formaPagamento(2)}
           />
 
         </div>
@@ -786,6 +800,62 @@ function editarDadosRota() {
     </div>
 <div></div>
    </div>
+
+
+
+   {formPag == '1' &&
+
+<div className={Style.divPagamentoCartao}>
+  <div className={Style.divCardsCartao}>
+    <FaCcVisa className={Style.cartaoPagamento}/>
+    <FaCcMastercard className={Style.cartaoPagamento}/>
+    <FaCcPaypal className={Style.cartaoPagamento}/></div>
+<InputGroup className="mb-3">
+<InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+<Form.Control
+  placeholder="Username"
+  aria-label="Username"
+  aria-describedby="basic-addon1"
+/>
+</InputGroup>
+
+<InputGroup className="mb-3">
+<Form.Control
+  placeholder="Recipient's username"
+  aria-label="Recipient's username"
+  aria-describedby="basic-addon2"
+/>
+<InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
+</InputGroup>
+
+<Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
+<InputGroup className="mb-3">
+<InputGroup.Text id="basic-addon3">
+  https://example.com/users/
+</InputGroup.Text>
+<Form.Control id="basic-url" aria-describedby="basic-addon3" />
+</InputGroup>
+
+<InputGroup className="mb-3">
+<InputGroup.Text>$</InputGroup.Text>
+<Form.Control aria-label="Amount (to the nearest dollar)" />
+<InputGroup.Text>.00</InputGroup.Text>
+</InputGroup>
+
+<InputGroup>
+<InputGroup.Text>With textarea</InputGroup.Text>
+<Form.Control as="textarea" aria-label="With textarea" />
+</InputGroup>
+
+</div>
+}
+{formPag == '2' &&(
+  <h5>Pagamento multibanco</h5>
+)
+
+}
+
+
   </div>
 
 </div>
@@ -793,44 +863,6 @@ function editarDadosRota() {
 
 
 
-
-{/* 
-        <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
-      </InputGroup>
-
-      <InputGroup className="mb-3">
-        <Form.Control
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
-      </InputGroup>
-
-      <Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon3">
-          https://example.com/users/
-        </InputGroup.Text>
-        <Form.Control id="basic-url" aria-describedby="basic-addon3" />
-      </InputGroup>
-
-      <InputGroup className="mb-3">
-        <InputGroup.Text>$</InputGroup.Text>
-        <Form.Control aria-label="Amount (to the nearest dollar)" />
-        <InputGroup.Text>.00</InputGroup.Text>
-      </InputGroup>
-
-      <InputGroup>
-        <InputGroup.Text>With textarea</InputGroup.Text>
-        <Form.Control as="textarea" aria-label="With textarea" />
-      </InputGroup> */}
 
 
 

@@ -668,3 +668,21 @@ margin: 10px;
 .divMetodoPagamento{
     display: flex;
 }
+.divPagamentoCartao{
+    width: 90%;
+}
+
+.divCardsCartao{
+    display: flex;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+}
+
+.cartaoPagamento{
+    display: flex;
+    text-align: center;
+    font-size: 28px;
+    margin-left: 5px;
+    
+}
