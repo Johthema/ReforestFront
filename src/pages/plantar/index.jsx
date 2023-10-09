@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
 import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, 
-  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaEdit, FaCcVisa, FaCcMastercard, FaCcPaypal} from "react-icons/fa";
+  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaEdit, FaCcVisa, FaCcMastercard, FaCcPaypal, FaInfoCircle} from "react-icons/fa";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
@@ -23,7 +23,13 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
+
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
@@ -348,7 +354,11 @@ const formaPagamento=(formPg)=>{
   console.log("a forma de pagamento escolhida foi: ", formPg)
   setFormPag(formPg)
 }
-console.log("no momento o pagamento é via: ", formPag)
+const renderTooltip = (props) => (
+  <Tooltip id="button-tooltip" {...props}>
+    3 dígitos de segurança nomarmente encontrados no verso do cartão. Alguns modelos podem apresentar 4 dígitos.
+  </Tooltip>
+);
 
 
   return (
@@ -719,7 +729,7 @@ console.log("no momento o pagamento é via: ", formPag)
   {locId != '' &&
  <div className={Style.divRevisaoRespons}>
  <h5 className={Style.legendaH5}><b>Quantidade a plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
- <hr/>
+<hr/>
  <h5 className={Style.legendaH5}><b>Total</b><span className={Style.legendaH5}>40€</span></h5>
  { local !== '' && especie !== '' && qtdEspec !== '' &&  (
             //  <Button variant="success">Plantar agora</Button>
@@ -770,7 +780,7 @@ console.log("no momento o pagamento é via: ", formPag)
     <h5 className={Style.tituloMarcacao}> <b>Forma de pagamento</b></h5>
   </div>
   
-  <div className={Style.divDadosContribuinte}>
+  <div className={Style.divDadosContribuintePasso2}>
     <h5>Selecione o método de pagamento</h5>
    <div className={Style.divMetodoPagamento}>
 <div>
@@ -806,46 +816,75 @@ console.log("no momento o pagamento é via: ", formPag)
    {formPag == '1' &&
 
 <div className={Style.divPagamentoCartao}>
-  <div className={Style.divCardsCartao}>
-    <FaCcVisa className={Style.cartaoPagamento}/>
-    <FaCcMastercard className={Style.cartaoPagamento}/>
-    <FaCcPaypal className={Style.cartaoPagamento}/></div>
-<InputGroup className="mb-3">
-<InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-<Form.Control
-  placeholder="Username"
-  aria-label="Username"
-  aria-describedby="basic-addon1"
-/>
-</InputGroup>
+<Form>
+      <Row className="mb-3">
+        <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Label>Número cartão</Form.Label>
+          <Form.Control placeholder="xxxx xxxx xxxx xx" />
+        </Form.Group>
 
-<InputGroup className="mb-3">
-<Form.Control
-  placeholder="Recipient's username"
-  aria-label="Recipient's username"
-  aria-describedby="basic-addon2"
-/>
-<InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
-</InputGroup>
+        <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Label>Validade</Form.Label>
+          <Form.Control placeholder="xx/xx/xxxx" />
+        </Form.Group>
+      </Row>
 
-<Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
-<InputGroup className="mb-3">
-<InputGroup.Text id="basic-addon3">
-  https://example.com/users/
-</InputGroup.Text>
-<Form.Control id="basic-url" aria-describedby="basic-addon3" />
-</InputGroup>
+      <Form.Group className="mb-3" controlId="formGridAddress1">
+        <Form.Label>Nome do Titular</Form.Label>
+        <Form.Control placeholder="Inserir nome como descrito no cartão" />
+      </Form.Group>
 
-<InputGroup className="mb-3">
-<InputGroup.Text>$</InputGroup.Text>
-<Form.Control aria-label="Amount (to the nearest dollar)" />
-<InputGroup.Text>.00</InputGroup.Text>
-</InputGroup>
+      
+      
+      <Row className="mb-3">
+      <InputGroup className="mb-3" as={Col}>
+      <Form.Label>Cód. de Segurança</Form.Label>
+        <Form.Control
+          placeholder="000"
+          maxLength={4}
+        />
+         <OverlayTrigger
+      placement="right"
+      delay={{ show: 250, hide: 400 }}
+      overlay={renderTooltip}
+    >
+       <Button variant="outline-secondary" id="button-addon2">
+          <FaInfoCircle/>
+        </Button>
 
-<InputGroup>
-<InputGroup.Text>With textarea</InputGroup.Text>
-<Form.Control as="textarea" aria-label="With textarea" />
-</InputGroup>
+    </OverlayTrigger>
+
+        {/* <Button variant="outline-secondary" id="button-addon2">
+          <FaInfoCircle/>
+        </Button> */}
+      </InputGroup>
+
+        <Form.Group as={Col} controlId="formGridState">
+          <Form.Label>Parcelas</Form.Label>
+          <Form.Select defaultValue="Choose...">
+            <option>À Vista</option>
+            <option>Em 2x de $2,50 sem juros</option>
+            <option>Em 3x de $2,50 sem juros</option>
+            <option>Em 4x de $2,50 sem juros</option>
+            <option>Em 5x de $2,50</option>
+            <option>Em 6x de $2,50</option>
+            <option>Em 7x de $2,50</option>
+            <option>Em 8x de $2,50</option>
+            <option>Em 9x de $2,50</option>
+            <option>Em 10x de $2,50</option>
+            
+           
+          </Form.Select>
+        </Form.Group>
+
+      
+      </Row>
+
+
+      <Button className={Style.botaoContinuar} type="submit">
+        Plantar agora
+      </Button>
+    </Form>
 
 </div>
 }

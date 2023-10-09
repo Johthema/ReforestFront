@@ -23,7 +23,7 @@
     }
 
     .divRevisaoRespons{
-     height: 100px;
+     height: 125px;
      width: 100%;
      margin: auto;
      justify-content: center;
@@ -41,7 +41,7 @@
     .botaoPlantarResponsivo{
         width: 100%;
         height: 48px;
-        background-color: #118222;
+        background-color: #40cd28;
         margin-bottom: inherit;
         justify-content: center;
         color: #fff;
@@ -149,20 +149,24 @@
     margin: 20px;
     width: 200px;
     height: 50px;
-    background-color: #23a454;
+    background-color: #40cd28;
     font-size: 18px;
-    border-radius: 50px;
+    border-radius: 10px;
+    border-color: #40cd28;
     justify-content: center;
     align-items: center;
     display: flex;
     cursor: pointer;
     color: #fff;
     margin: auto;
-    margin-top: 70px;
+    margin-top: 60px;
+
    
 }
 .botaoContinuar:hover{
     box-shadow: 2px 2px 10px 2px #bfbfbf;
+    background-color: #35a222;
+    border-color: #40cd28;
 }
 
 
@@ -664,6 +668,18 @@ margin: 10px;
     font-family: var(--fontPadrao);
     
 }
+.divDadosContribuintePasso2{
+    /* text-align: center; */
+    border-left: solid 1.5px #2F2F2F;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: 20px;
+    height: 325px;
+    padding-left: 25px;
+    font-size: 18px;
+    font-family: var(--fontPadrao);
+    
+}
 
 .divMetodoPagamento{
     display: flex;
@@ -685,4 +701,8 @@ margin: 10px;
     font-size: 28px;
     margin-left: 5px;
     
+}
+
+.divNumeroCartao{
+    display: flex;
 }
