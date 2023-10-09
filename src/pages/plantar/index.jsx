@@ -36,7 +36,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
 const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL + "category";
-const URL_API_Usuario=  process.env.NEXT_PUBLIC_API_URL+"currentUser/";
+const URL_API_Usuario=  process.env.NEXT_PUBLIC_API_URL+"user/";
 
 const responsive = {
   0: { items: 1 },
@@ -102,26 +102,12 @@ export default function Plantar() {
         setLoading(true)
         //console.log("o tipo de arvore é: ",tipo)
 
-        
-        const responseUser = await fetch (URL_API_Usuario,{
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("tokenId")
-           // Adiciona o token JWT no cabeçalho de Authorization
-          }
-      })
 
-      const json = await responseUser.json().then(data =>{
-        const meuDadoString = data.user;
-        const meuIdString = data.user._id;
-        setDadosUsuario(meuDadoString.name)
-        setDadosUsuarioEndereco(meuDadoString.creationData)
-        
-
-        console.log("O conteudo: ", meuDadoString);
-    } )
-
+    const responseUser = await fetch(URL_API_Usuario+"/"+localStorage.getItem("idUs")) //por padrão o fetch ja utiliza o GET
+        const dadosUsuario = await responseUser.json()
+        setDadosUsuario(dadosUsuario.user)
+        setDadosUsuarioEndereco(dadosUsuario.user.creationData)
+        console.log("O conteudo: ", dadosUsuario);
         
        
         const response = await fetch(URL_API)
@@ -813,7 +799,7 @@ const renderTooltip = (props) => (
   </div>
   
   <div className={Style.divDadosContribuinte}>
-    <h5>Nome completo: <i>{dadosUsuario}</i> </h5>
+    <h5>Nome completo: <i>{dadosUsuario.name}</i> </h5>
     <h5>Endereço: <i>Rua dos Pinhais 222</i> </h5>
     <h5>Código postal: <i>{dadosUsuarioEndereco.postal}</i> </h5>
     <h5>Cidade: <i>{dadosUsuarioEndereco.city}</i> </h5>
