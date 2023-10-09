@@ -84,6 +84,7 @@ export default function Plantar() {
   const router = useRouter();
   const [idUsuario, setIdUsuario] = useState('');
   const [dadosUsuario, setDadosUsuario] = useState('');
+  const [dadosUsuarioEndereco, setDadosUsuarioEndereco] = useState('');
   // const handleSelect = (selectedIndex) => {
   //   setIndex(selectedIndex);
   // };
@@ -115,7 +116,10 @@ export default function Plantar() {
         const meuDadoString = data.user;
         const meuIdString = data.user._id;
         setDadosUsuario(meuDadoString.name)
-       
+        setDadosUsuarioEndereco(meuDadoString.creationData)
+        
+
+        console.log("O conteudo: ", meuDadoString);
     } )
 
         
@@ -811,9 +815,9 @@ const renderTooltip = (props) => (
   <div className={Style.divDadosContribuinte}>
     <h5>Nome completo: <i>{dadosUsuario}</i> </h5>
     <h5>Endereço: <i>Rua dos Pinhais 222</i> </h5>
-    <h5>Código postal: <i>69o6o1o1</i> </h5>
-    <h5>Cidade: <i>Manaós</i> </h5>
-    <h5>País: <i>Braziill</i> </h5>
+    <h5>Código postal: <i>{dadosUsuarioEndereco.postal}</i> </h5>
+    <h5>Cidade: <i>{dadosUsuarioEndereco.city}</i> </h5>
+    <h5>País: <i>{dadosUsuarioEndereco.country}</i> </h5>
   </div>
 
 </div>
