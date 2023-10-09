@@ -36,6 +36,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
 const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL + "category";
+const URL_API_Usuario=  process.env.NEXT_PUBLIC_API_URL+"currentUser/";
 
 const responsive = {
   0: { items: 1 },
@@ -81,16 +82,43 @@ export default function Plantar() {
   const handleShow = () => setShowCheckOut(true);
 
   const router = useRouter();
+  const [idUsuario, setIdUsuario] = useState('');
+  const [dadosUsuario, setDadosUsuario] = useState('');
   // const handleSelect = (selectedIndex) => {
   //   setIndex(selectedIndex);
   // };
 
+
+
+ 
+
   useEffect(() => {
+    setIdUsuario(localStorage.getItem("idUs"))
+    console.log("Id usuario: ",localStorage.getItem("idUs"))
 
     const fetchRepos = async () => {
       try {
         setLoading(true)
         //console.log("o tipo de arvore é: ",tipo)
+
+        
+        const responseUser = await fetch (URL_API_Usuario,{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem("tokenId")
+           // Adiciona o token JWT no cabeçalho de Authorization
+          }
+      })
+
+      const json = await responseUser.json().then(data =>{
+        const meuDadoString = data.user;
+        const meuIdString = data.user._id;
+        setDadosUsuario(meuDadoString.name)
+       
+    } )
+
+        
        
         const response = await fetch(URL_API)
         // const dados = await response.json();
@@ -100,6 +128,7 @@ export default function Plantar() {
         const dadosCat = await responseCat.json();
         setDadosCat(dadosCat);
         setData(dados)
+        
         if (tipo == 'todos') {
           const responseArvore = await fetch(URL_API_TREE + "?search=" + busca + "&category=" + categori + "&page=" + pageQtd + "&limit=" + pageLimit)
           const dadosArvore = await responseArvore.json();
@@ -758,7 +787,7 @@ const renderTooltip = (props) => (
 <h5 className={Style.H5Parabens}>Parabéns! você está a um passo de <b>renovar</b> o mundo.</h5>
   </div>
   <div className={Style.divFotoPerfil}>
-  <Image src={ImgProfile} className={Style.FotoPerfil} />
+  <Image src={ImgProfile} className={Style.FotoPerfil} alt="" />
   </div>
 
 
@@ -780,7 +809,7 @@ const renderTooltip = (props) => (
   </div>
   
   <div className={Style.divDadosContribuinte}>
-    <h5>Nome completo: <i>Fulano de tal</i> </h5>
+    <h5>Nome completo: <i>{dadosUsuario}</i> </h5>
     <h5>Endereço: <i>Rua dos Pinhais 222</i> </h5>
     <h5>Código postal: <i>69o6o1o1</i> </h5>
     <h5>Cidade: <i>Manaós</i> </h5>
@@ -926,7 +955,7 @@ const renderTooltip = (props) => (
 
 
 <div className={Style.divLogossl}>
-  <Image src={Certifidado1} className={Style.certifidado1} />
+  <Image src={Certifidado1} className={Style.certifidado1} alt="" />
   </div>
 
   </div>
