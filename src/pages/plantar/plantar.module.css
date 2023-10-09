@@ -724,3 +724,27 @@ margin: 10px;
     font-size: 28px;
     justify-content: center;
 }
+
+.divRevisaoCheck{
+    height: 125px;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+    background-color: #f1f2f3;
+    border-radius: 10px;
+    /* margin-bottom: inherit; */
+    /* bottom: 0px; */
+    /* position: fixed; */
+    /* top: 110px; */
+    right: 0px;
+    /* z-index: 10; */
+    padding: 10px;
+    margin-bottom: 10px;
+   }
+   .legendaH5Check{
+    margin-inline-start: auto;
+    justify-content: end;
+    display: flex;
+    font-size: 0.9rem;
+    color:#2ccd23
+}

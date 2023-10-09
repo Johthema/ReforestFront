@@ -756,6 +756,18 @@ const renderTooltip = (props) => (
   <div className={Style.divFotoPerfil}>
   <Image src={ImgProfile} className={Style.FotoPerfil} />
   </div>
+
+
+  <div className={Style.divRevisaoCheck}>
+ <h5 className={Style.legendaH5}><b>Local de plantação</b><span className={Style.legendaH5}>{local}</span></h5>
+ <h5 className={Style.legendaH5}><b>Quantidade a plantar</b><span className={Style.legendaH5}>{qtdEspec}</span></h5>
+<hr/>
+ <h5 className={Style.legendaH5Check}><b>Total</b><span className={Style.legendaH5Check}>40€</span></h5>
+ 
+ </div>
+
+
+
   <div className={Style.divMarcacao}>
     <div className={Style.MarcacaoPassoChkt}>
     <h5>1</h5>
