@@ -753,6 +753,9 @@ const renderTooltip = (props) => (
         </Offcanvas.Header>
         <Offcanvas.Body>
 <div>
+  <div className={Style.divParabens}>
+<h5 className={Style.H5Parabens}>Parabens! você está a um passo de <b>transformar</b> o mundo.</h5>
+  </div>
   <div className={Style.divFotoPerfil}>
   <Image src={ImgProfile} className={Style.FotoPerfil} />
   </div>
