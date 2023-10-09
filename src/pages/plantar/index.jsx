@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
 import ImgArvore from '../../assets/images/arvore_1.jpg';
 import ImgProfile from '../../assets/images/fotoperfil/fotoper.jpg';
+import Certifidado1 from '../../assets/images/secure2.png';
 import Pagination from 'react-bootstrap/Pagination';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
@@ -102,7 +103,7 @@ export default function Plantar() {
         if (tipo == 'todos') {
           const responseArvore = await fetch(URL_API_TREE + "?search=" + busca + "&category=" + categori + "&page=" + pageQtd + "&limit=" + pageLimit)
           const dadosArvore = await responseArvore.json();
-
+ 
           setRepo(dadosArvore);
 
           console.log("Lista pronta: ", dados)
@@ -754,7 +755,7 @@ const renderTooltip = (props) => (
         <Offcanvas.Body>
 <div>
   <div className={Style.divParabens}>
-<h5 className={Style.H5Parabens}>Parabens! você está a um passo de <b>transformar</b> o mundo.</h5>
+<h5 className={Style.H5Parabens}>Parabéns! você está a um passo de <b>renovar</b> o mundo.</h5>
   </div>
   <div className={Style.divFotoPerfil}>
   <Image src={ImgProfile} className={Style.FotoPerfil} />
@@ -923,6 +924,10 @@ const renderTooltip = (props) => (
 
 }
 
+
+<div className={Style.divLogossl}>
+  <Image src={Certifidado1} className={Style.certifidado1} />
+  </div>
 
   </div>
 
