@@ -336,6 +336,7 @@ const items = [];
   )
 ))}
 function editarDadosRota() {
+  setLoading(true)
   router.push('/configuracao');
 }
 
