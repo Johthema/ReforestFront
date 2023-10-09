@@ -674,7 +674,7 @@ margin: 10px;
     flex-wrap: wrap;
     width: 90%;
     margin-left: 20px;
-    height: 325px;
+    height: 365px;
     padding-left: 25px;
     font-size: 18px;
     font-family: var(--fontPadrao);
@@ -705,4 +705,22 @@ margin: 10px;
 
 .divNumeroCartao{
     display: flex;
+}
+
+.divSelecionarPagamento{
+    display: flex;
+    
+}
+
+.divOpPagamento{
+    border: solid 2px #118222;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+.divCartoes{
+    display: flex;
+    font-size: 28px;
+    justify-content: center;
 }

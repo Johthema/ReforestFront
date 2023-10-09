@@ -6,7 +6,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Card from 'react-bootstrap/Card';
 import { FaStar, FaFilter, FaGlobeAmericas, FaCity, FaTree, 
-  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaEdit, FaCcVisa, FaCcMastercard, FaCcPaypal, FaInfoCircle} from "react-icons/fa";
+  FaSeedling, FaRulerCombined, FaAppleAlt, FaLeaf, FaEdit,
+   FaCcVisa, FaCcMastercard, FaCcPaypal, FaInfoCircle, FaBold, FaMediumM} from "react-icons/fa";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Map from "../../components/mapa/index";
@@ -786,7 +787,12 @@ const renderTooltip = (props) => (
 <div>
 <Form>
       {['radio'].map((type) => (
-        <div key={`inline-${type}`} className="mb-3">
+        <div key={`inline-${type}`} className={Style.divSelecionarPagamento}>
+          <div className={Style.divOpPagamento}>
+            <div className={Style.divCartoes}>
+            <FaCcMastercard className={Style.cartaoPagamento}/> <FaCcPaypal className={Style.cartaoPagamento}/> <FaCcVisa className={Style.cartaoPagamento}/>
+            </div>
+            
           <Form.Check
             inline
             label="Cartão de crédito"
@@ -795,6 +801,11 @@ const renderTooltip = (props) => (
             id={`inline-${type}-1`}
             onClick={()=>formaPagamento(1)}
           />
+          </div>
+          <div className={Style.divOpPagamento}>
+          <div className={Style.divCartoes}>
+          <FaMediumM className={Style.cartaoPagamento}/><FaBold className={Style.cartaoPagamento}/> 
+            </div>
           <Form.Check
             inline
             label="Multibanco"
@@ -803,6 +814,9 @@ const renderTooltip = (props) => (
             id={`inline-${type}-2`}
             onClick={()=>formaPagamento(2)}
           />
+          </div>
+          
+         
 
         </div>
       ))}
