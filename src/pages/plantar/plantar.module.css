@@ -666,7 +666,6 @@ margin: 10px;
     padding-left: 25px;
     font-size: 18px;
     font-family: var(--fontPadrao);
-    
 }
 .divDadosContribuintePasso2{
     /* text-align: center; */
@@ -685,7 +684,9 @@ margin: 10px;
     display: flex;
 }
 .divPagamentoCartao{
-    width: 90%;
+    
+    margin-top: 10px;
+
 }
 
 .divCardsCartao{
