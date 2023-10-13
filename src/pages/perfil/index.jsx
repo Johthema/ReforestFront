@@ -13,7 +13,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Form from 'react-bootstrap/Form';
 import { useRouter } from "next/router"
 
-export default function Sobre(){
+export default function PerfilUsuario(){
 
   const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
     //Primeiro carregamengto para saber se esta tudo certo
