@@ -31,12 +31,17 @@ import Row from 'react-bootstrap/Row';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
+import React from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
+import CheckoutForm from "../checkout/index";
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
 const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL + "category";
 const URL_API_Usuario=  process.env.NEXT_PUBLIC_API_URL+"user/";
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const responsive = {
   0: { items: 1 },
@@ -45,6 +50,9 @@ const responsive = {
 };
 
 export default function Plantar() {
+  //variaveis de checkout
+  const [clientSecret, setClientSecret] = React.useState("");
+
   //Variaveis internos
   const [loading, setLoading] = useState('')
   const [aviso, setAviso] = useState(false);
@@ -91,7 +99,7 @@ export default function Plantar() {
 
 
 
- 
+  
 
   useEffect(() => {
     setIdUsuario(localStorage.getItem("idUs"))
@@ -118,6 +126,17 @@ export default function Plantar() {
         const dadosCat = await responseCat.json();
         setDadosCat(dadosCat);
         setData(dados)
+
+
+        const responseCheck = await fetch("/api/create-payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+        })
+          .then((res) => res.json())
+          .then((data) => setClientSecret(data.clientSecret));
+
+
         
         if (tipo == 'todos') {
           const responseArvore = await fetch(URL_API_TREE + "?search=" + busca + "&category=" + categori + "&page=" + pageQtd + "&limit=" + pageLimit)
@@ -164,6 +183,15 @@ export default function Plantar() {
     }
   }
   //-------------------------Paginação fim
+
+  //aparencia strip checkout
+  const appearance = {
+    theme: 'stripe',
+  };
+  const options = {
+    clientSecret,
+    appearance,
+  };
 
 
 
@@ -938,7 +966,13 @@ const renderTooltip = (props) => (
 </div>
 }
 {formPag == '2' &&(
-  <h5>Pagamento multibanco</h5>
+   <div className="App">
+   {clientSecret && (
+     <Elements options={options} stripe={stripePromise}>
+       <CheckoutForm />
+     </Elements>
+   )}
+ </div>
 )
 
 }
