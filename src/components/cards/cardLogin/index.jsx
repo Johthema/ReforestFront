@@ -91,33 +91,7 @@ export default function LoginCard(){
                 body: JSON.stringify({ identifier, password }),
                
             })
-            // .then(response => response.json())
-            // .then(data => {
-            //   //console.log(data); // Exibe a resposta do servidor no console
-            //   //const resp = data.message
-            //   setResposta(data.message)
-             
-               
-  
-  
-            // })
-
-
-            // .then(response => {
-               
-            //     if (!response.ok) {
-            //         console.log("entrou no si")
-            //       throw new Error('Erro na requisição: ' + response.status);
-            //     }
-            //     return response.json();
-            //   })
-            //   .then(data => console.log(data))
-            //   .catch(error => console.error(error));
-
-
-            // .then(response => response.json())
-            // .then(data => console.log("os dados: ",data))
-            // .catch(error => console.error('Ocorreu um erro na requisição:', error));
+         
             const json = await response.json().then(data =>{
                 console.log("o token: ",data.token),
                 setToken(data.token)
