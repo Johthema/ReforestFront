@@ -31,7 +31,11 @@ import Row from 'react-bootstrap/Row';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
+import React from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
+import CheckoutForm from "../checkout/index";
 
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
@@ -44,7 +48,14 @@ const responsive = {
   1024: { items: 3 },
 };
 
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const stripePromise=  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
 export default function Plantar() {
+  //variaveis do checkout 
+  const [clientSecret, setClientSecret] = useState("");
+
+
   //Variaveis internos
   const [loading, setLoading] = useState('')
   const [aviso, setAviso] = useState(false);
@@ -118,6 +129,19 @@ export default function Plantar() {
         const dadosCat = await responseCat.json();
         setDadosCat(dadosCat);
         setData(dados)
+
+
+         // Create PaymentIntent as soon as the page loads
+      const responseCheck = await fetch("../api/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+
+
+
         
         if (tipo == 'todos') {
           const responseArvore = await fetch(URL_API_TREE + "?search=" + busca + "&category=" + categori + "&page=" + pageQtd + "&limit=" + pageLimit)
@@ -380,6 +404,16 @@ const renderTooltip = (props) => (
     3 dígitos de segurança nomarmente encontrados no verso do cartão. Alguns modelos podem apresentar 4 dígitos.
   </Tooltip>
 );
+
+
+
+const appearance = {
+  theme: 'stripe',
+};
+const options = {
+  clientSecret,
+  appearance,
+};
 
 
   return (
@@ -938,7 +972,14 @@ const renderTooltip = (props) => (
 </div>
 }
 {formPag == '2' &&(
-  <h5>Pagamento multibanco</h5>
+  <div>
+    {clientSecret && (
+      
+        <Elements options={options} stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
+      )}
+  </div>
 )
 
 }
