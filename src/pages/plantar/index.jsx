@@ -394,7 +394,7 @@ function editarDadosRota() {
 
 
 //Forma de pagameneto
-const [formPag, setFormPag] = useState('');
+const [formPag, setFormPag] = useState('1');
 const formaPagamento=(formPg)=>{
   console.log("a forma de pagamento escolhida foi: ", formPg)
   setFormPag(formPg)
@@ -868,6 +868,7 @@ const options = {
             name="group1"
             type={type}
             id={`inline-${type}-1`}
+            checked
             onClick={()=>formaPagamento(1)}
           />
           </div>
@@ -899,7 +900,14 @@ const options = {
    {formPag == '1' &&
 
 <div className={Style.divPagamentoCartao}>
-<Form>
+{clientSecret && (
+      
+      <Elements options={options} stripe={stripePromise}>
+        <CheckoutForm />
+      </Elements>
+    )}
+
+{/* <Form>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Número cartão</Form.Label>
@@ -937,9 +945,6 @@ const options = {
 
     </OverlayTrigger>
 
-        {/* <Button variant="outline-secondary" id="button-addon2">
-          <FaInfoCircle/>
-        </Button> */}
       </InputGroup>
 
         <Form.Group as={Col} controlId="formGridState">
@@ -967,18 +972,13 @@ const options = {
       <Button className={Style.botaoContinuar} type="submit">
         Plantar agora
       </Button>
-    </Form>
+    </Form> */}
 
 </div>
 }
 {formPag == '2' &&(
   <div>
-    {clientSecret && (
-      
-        <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
-        </Elements>
-      )}
+   <h4>Outra forma de pagamento</h4>
   </div>
 )
 
