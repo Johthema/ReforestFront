@@ -43,16 +43,16 @@ export default function CheckoutForm() {
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case "succeeded":
-          setMessage("Payment succeeded!");
+          setMessage("Pagamento realizado com sucesso!");
           break;
         case "processing":
-          setMessage("Your payment is processing.");
+          setMessage("Pagamento em processamento.");
           break;
         case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
+          setMessage("Seu pagamento não foi bem-sucedido, tente novamente.");
           break;
         default:
-          setMessage("Something went wrong.");
+          setMessage("Algo deu errado.");
           break;
       }
     });
@@ -73,7 +73,8 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000",
+        // return_url: "http://localhost:3000",
+        return_url: "http://localhost:3000/plantar",
       },
     });
 
@@ -85,7 +86,7 @@ export default function CheckoutForm() {
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
-      setMessage("An unexpected error occurred.");
+      setMessage("Um erro inesperado ocorreu.");
     }
 
     setIsLoading(false);
