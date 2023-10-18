@@ -8,7 +8,8 @@
 //         </>
 //     )
 // }
-
+import Button from 'react-bootstrap/Button';
+import Style from './checkout.module.css'
 import {useState, useEffect} from 'react'
 import React from "react";
 import {
@@ -101,11 +102,14 @@ export default function CheckoutForm() {
         onChange={(e) => setEmail(e.target.value)}
       />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      {/* <button disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
-      </button>
+      </button> */}
+       <Button className={Style.botaoContinuar} type="submit" disabled={isLoading || !stripe || !elements} id="submit">
+        Plantar agora
+      </Button>
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>

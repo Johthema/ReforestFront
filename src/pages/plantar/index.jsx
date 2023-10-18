@@ -851,7 +851,7 @@ const options = {
   </div>
   
   <div className={Style.divDadosContribuintePasso2}>
-    <h5>Selecione o método de pagamento</h5>
+    
    <div className={Style.divMetodoPagamento}>
 <div>
 <Form>
