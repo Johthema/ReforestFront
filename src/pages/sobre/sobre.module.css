@@ -145,3 +145,28 @@
     font-size: 18px;
     margin-bottom: 0px;
 }
+
+.divVAlores{
+    display: flex;
+    width: 80%;
+    margin-top: 20px;
+    margin: auto;
+    
+}
+
+.divMissao{
+    width: 33%;
+    height: 320px;
+    background-color: #116582;
+
+}
+.divVisao{
+    width: 33%;
+    height: 320px;
+    background-color: #194553;
+}
+.divValor{
+    width: 33%;
+    height: 320px;
+    background-color: #26c92e;
+}

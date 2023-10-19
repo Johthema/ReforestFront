@@ -80,8 +80,20 @@ export default function Sobre (){
                     <Image src={ImgArvore} className={Style.divImagem} alt="" />
                 </div>
                 
-                
+            </div>
+            <br/>
 
+            <div className={Style.divVAlores}>
+                <div className={Style.divMissao}>
+                    
+1
+                </div>
+                <div className={Style.divVisao}>
+2
+                </div>
+                <div className={Style.divValor}>
+3
+                </div>
             </div>
             <Footer/>
         </div>
