@@ -44,3 +44,54 @@
     background-color: var(--secundaryTom1-color3);
     border-color: var(--secundaryTom1-color3);
 }
+
+.divPropMetd{
+    display: flex;
+    width: 80%;
+    height: 400px;
+    background-color: aliceblue;
+    margin: auto;
+    justify-content: center;
+}
+
+.divProposta{
+    margin: auto;
+    text-align: justify;
+    padding: 10px;
+}
+.divMetodo{
+    margin: auto;
+    text-align: justify;
+    padding: 10px;
+}
+
+.divTituloLugaresPlant{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.divProva1{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+}
+.divIcone{
+    height: 140px;
+    width: 10%;
+    background-color: aquamarine;
+}
+.divImagem{
+    height: 140px;
+    width: 10%;
+    background-color: rgb(242, 145, 19);
+}
+.Prova1{
+    background-color:#ebe9e9;
+    height: 140px;
+    width: 80%;
+   
+    margin: auto;
+    justify-content: center;
+}
