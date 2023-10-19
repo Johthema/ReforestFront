@@ -4,7 +4,7 @@ import Footer from '../../components/footer/index';
 import Button from 'react-bootstrap/Button';
 import Image from 'next/image';
 import ImgArvore from '../../assets/images/arvore_1.jpg';
-import { FaDice, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined} from "react-icons/fa";
+import { FaDice, FaGlobeAmericas, FaCity, FaTree, FaBinoculars, FaAnchor, FaRulerCombined, FaCrosshairs} from "react-icons/fa";
 
 export default function Sobre (){
     return(
@@ -85,13 +85,15 @@ export default function Sobre (){
 
             <div className={Style.divVAlores}>
                 <div className={Style.divMissao}>
-                    
+                    <FaCrosshairs/>
 1
                 </div>
                 <div className={Style.divVisao}>
+                    <FaBinoculars/>
 2
                 </div>
                 <div className={Style.divValor}>
+                    <FaAnchor/>
 3
                 </div>
             </div>
