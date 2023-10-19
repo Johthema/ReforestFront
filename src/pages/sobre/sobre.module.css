@@ -78,18 +78,22 @@
     justify-content: center;
 }
 .divIcone{
-    height: 140px;
+    height: 130px;
     width: 10%;
-    background-color: aquamarine;
+    background-color: rgb(238, 71, 71);
+}
+.Icone{
+    font-size: 6rem;
+
 }
 .divImagem{
-    height: 140px;
+    height: 130px;
     width: 10%;
-    background-color: rgb(242, 145, 19);
+   
 }
 .Prova1{
     background-color:#ebe9e9;
-    height: 140px;
+    height: 130px;
     width: 80%;
    
     margin: auto;

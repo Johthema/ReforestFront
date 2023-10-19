@@ -2,6 +2,10 @@ import Style from './sobre.module.css';
 import Header from '../../components/header/index';
 import Footer from '../../components/footer/index';
 import Button from 'react-bootstrap/Button';
+import Image from 'next/image';
+import ImgArvore from '../../assets/images/arvore_1.jpg';
+import { FaDice } from "react-icons/fa";
+
 export default function Sobre (){
     return(
         <div className={Style.barraCabelho}>
@@ -32,10 +36,14 @@ export default function Sobre (){
                     <h3>Alguns lugares de plantação</h3>
                 </div>
                 <div className={Style.divProva1}>
-                    <div className={Style.divIcone}></div>
+                    <div className={Style.divIcone}>
+                    <FaDice className={Style.Icone}/>
+                    </div>
                     <div className={Style.Prova1}>
-                    </div>   
-                    <div className={Style.divImagem}></div>
+                        
+                    </div>    
+                    {/* <div className={Style.divImagem}></div> */}
+                    <Image src={ImgArvore} className={Style.divImagem} alt="" />
                        
                 </div>
                 
