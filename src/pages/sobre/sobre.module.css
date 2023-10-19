@@ -36,13 +36,13 @@
 
 .botaoPlantar{
     margin: 10px;
-    background-color: #2F2F2F;
-    border-color: #2F2F2F
+    background-color: #2F2F2F !important;
+    border-color: #2F2F2F !important;
 }
 
 .botaoPlantar:hover{
-    background-color: var(--secundaryTom1-color3);
-    border-color: var(--secundaryTom1-color3);
+    background-color: var(--secundaryTom1-color3) !important;
+    border-color: var(--secundaryTom1-color3) !important;
 }
 
 .divPropMetd{
