@@ -157,16 +157,25 @@
 .divMissao{
     width: 33%;
     height: 320px;
-    background-color: #116582;
+    background-color: #ebe9e9;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 
 }
 .divVisao{
     width: 33%;
     height: 320px;
-    background-color: #194553;
+    background-color: #55acf0b3;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 .divValor{
     width: 33%;
     height: 320px;
-    background-color: #26c92e;
+    background-color: #ebe9e9;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }

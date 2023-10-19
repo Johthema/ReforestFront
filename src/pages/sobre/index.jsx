@@ -86,15 +86,15 @@ export default function Sobre (){
             <div className={Style.divVAlores}>
                 <div className={Style.divMissao}>
                     <FaCrosshairs/>
-1
+                        <h2>Missão</h2>
                 </div>
                 <div className={Style.divVisao}>
                     <FaBinoculars/>
-2
+                        <h2>Visão</h2>
                 </div>
                 <div className={Style.divValor}>
                     <FaAnchor/>
-3
+                        <h2>Valor</h2>
                 </div>
             </div>
             <Footer/>
