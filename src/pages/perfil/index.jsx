@@ -1,10 +1,10 @@
 import Header from '../../components/header/index';
-import Style from './sobre.module.css';
+import Style from './perfil.module.css';
 import {useEffect, useState} from 'react'
 import Image from 'next/image';
 import Perfil from '../../assets/images/fotoperfil/fotoper.jpg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import Tooltip from 'react-bootstrap/Tooltip'; 
 import { FaPen, FaCamera, FaImage } from "react-icons/fa";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -13,7 +13,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Form from 'react-bootstrap/Form';
 import { useRouter } from "next/router"
 
-export default function Sobre(){
+export default function PerfilUser(){
 
   const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
     //Primeiro carregamengto para saber se esta tudo certo
