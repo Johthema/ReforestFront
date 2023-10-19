@@ -49,6 +49,36 @@ export default function Sobre (){
                     </div>    
                     <Image src={ImgArvore} className={Style.divImagem} alt="" />
                 </div>
+                <br/>
+                <div className={Style.divProva1}>
+                    <div className={Style.divIcone}>
+                    <FaDice className={Style.Icone}/>
+                    </div>
+                    <div className={Style.Prova1}>
+                       
+                        <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>Manaus</h5></div>
+                        <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>20</h5></div>
+                        <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>400</h5></div>
+
+
+                    </div>    
+                    <Image src={ImgArvore} className={Style.divImagem} alt="" />
+                </div>
+                <br/>
+                <div className={Style.divProva1}>
+                    <div className={Style.divIcone}>
+                    <FaDice className={Style.Icone}/>
+                    </div>
+                    <div className={Style.Prova1}>
+                       
+                        <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>Manaus</h5></div>
+                        <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>20</h5></div>
+                        <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>400</h5></div>
+
+
+                    </div>    
+                    <Image src={ImgArvore} className={Style.divImagem} alt="" />
+                </div>
                 
                 
 
