@@ -4,7 +4,7 @@ import Footer from '../../components/footer/index';
 import Button from 'react-bootstrap/Button';
 import Image from 'next/image';
 import ImgArvore from '../../assets/images/arvore_1.jpg';
-import { FaDice } from "react-icons/fa";
+import { FaDice, FaGlobeAmericas, FaCity, FaTree, FaSeedling, FaRulerCombined} from "react-icons/fa";
 
 export default function Sobre (){
     return(
@@ -21,30 +21,33 @@ export default function Sobre (){
             </div>
             <div className={Style.divPropMetd}>
                 <div className={Style.divProposta}>
-                    <h2>Nossa proposta</h2>
+                    <h2 className={Style.legendaProposta}>Nossa proposta</h2>
                     <p> Estabelecer um programa de reflorestamento para combater a degradação ambiental,
                          promover a conservação da biodiversidade e reduzir as emissões de carbono em uma determinada área.</p>
                 </div>
                 <div className={Style.divMetodo}>
-                    <h2>Nosso método</h2>
+                    <h2 className={Style.legendaMetodo}>Nosso método</h2>
                     <p> Nosso metodo é Estabelecer um programa de reflorestamento para combater a degradação ambiental,
                          promover a conservação da biodiversidade e reduzir as emissões de carbono em uma determinada área.</p>
                 </div>
             </div>
             <div className={Style.divProvaSocial}>
                 <div className={Style.divTituloLugaresPlant}>
-                    <h3>Alguns lugares de plantação</h3>
+                    <h3 className={Style.legendaMetodo}>Alguns lugares de plantação</h3>
                 </div>
                 <div className={Style.divProva1}>
                     <div className={Style.divIcone}>
                     <FaDice className={Style.Icone}/>
                     </div>
                     <div className={Style.Prova1}>
-                        
-                    </div>    
-                    {/* <div className={Style.divImagem}></div> */}
-                    <Image src={ImgArvore} className={Style.divImagem} alt="" />
                        
+                        <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>Manaus</h5></div>
+                        <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>20</h5></div>
+                        <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>400</h5></div>
+
+
+                    </div>    
+                    <Image src={ImgArvore} className={Style.divImagem} alt="" />
                 </div>
                 
                 

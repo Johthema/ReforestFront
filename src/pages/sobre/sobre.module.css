@@ -30,7 +30,7 @@
 .divTitleSubTit{
     margin: auto;
     justify-content: center;
-    margin-top: 130px;
+    margin-top: 125px;
 }
 
 
@@ -49,7 +49,7 @@
     display: flex;
     width: 80%;
     height: 400px;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     margin: auto;
     justify-content: center;
 }
@@ -65,6 +65,13 @@
     padding: 10px;
 }
 
+.legendaProposta{
+    color: #55acf0b3;
+}
+.legendaMetodo{
+    color: #55acf0b3;
+}
+
 .divTituloLugaresPlant{
     display: flex;
     margin: auto;
@@ -78,7 +85,7 @@
     justify-content: center;
 }
 .divIcone{
-    height: 130px;
+    height: 125px;
     width: 10%;
     background-color: rgb(238, 71, 71);
 }
@@ -87,15 +94,54 @@
 
 }
 .divImagem{
-    height: 130px;
+    height: 125px;
     width: 10%;
    
 }
 .Prova1{
     background-color:#ebe9e9;
-    height: 130px;
+    height: 125px;
     width: 80%;
    
     margin: auto;
     justify-content: center;
+}
+
+.divIcones{
+    background-color: #ebe9e9;
+    width: 100%;
+    border: solid 1px #ebe9e9;
+    /* margin-left: -15px; */
+    font-size: 18px;
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+}
+.Icon1{
+    color: #116582;
+    margin-right: 5px;
+}
+.Icon2{
+    margin-right: 5px;
+    color: #040404;
+}
+.Icon3{
+    margin-right: 5px;
+    color: #118222;
+}
+.Icon4{
+    margin-right: 5px;
+    color: #3ce812;
+}
+.Icon5{
+    margin-right: 5px;
+    color: #824011;
+}
+
+
+.nomeItem{
+    margin-left: auto;
+    margin-right: 10px;
+    font-size: 18px;
+    margin-bottom: 0px;
 }
