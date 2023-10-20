@@ -161,6 +161,7 @@
     margin: auto;
     display: flex;
     justify-content: center;
+   
 
 }
 .divVisao{
@@ -170,6 +171,7 @@
     margin: auto;
     display: flex;
     justify-content: center;
+    
 }
 .divValor{
     width: 33%;
@@ -178,4 +180,10 @@
     margin: auto;
     display: flex;
     justify-content: center;
+   
+}
+
+.Icones{
+    font-size: 5rem;
+    margin-top: 5px;
 }

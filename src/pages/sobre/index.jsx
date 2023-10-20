@@ -85,16 +85,22 @@ export default function Sobre (){
 
             <div className={Style.divVAlores}>
                 <div className={Style.divMissao}>
-                    <FaCrosshairs/>
+                    <div>
+                        <FaCrosshairs className={Style.Icones}/>
                         <h2>Missão</h2>
+                    </div>
                 </div>
                 <div className={Style.divVisao}>
-                    <FaBinoculars/>
+                    <div>
+                        <FaBinoculars className={Style.Icones}/>
                         <h2>Visão</h2>
+                    </div>
                 </div>
                 <div className={Style.divValor}>
-                    <FaAnchor/>
+                    <div>
+                        <FaAnchor className={Style.Icones}/>
                         <h2>Valor</h2>
+                    </div>
                 </div>
             </div>
             <Footer/>
