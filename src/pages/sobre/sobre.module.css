@@ -116,16 +116,17 @@
 }
 .divImagem{
     height: 125px;
-    width: 10%;
+    width: 150px;
+    object-fit: cover;
    
 }
 .Prova1{
     background-color:#ebe9e9;
     height: 125px;
     width: 80%;
-   
+   display: grid;
     margin: auto;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .divIcones{
@@ -135,7 +136,7 @@
     /* margin-left: -15px; */
     font-size: 18px;
     display: flex;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     align-items: center;
 }
 .Icon1{
