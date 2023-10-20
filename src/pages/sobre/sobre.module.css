@@ -19,6 +19,12 @@
   
 }
 
+.divQuemsomos{
+   margin: auto;
+    text-align: center;
+    width: 80%;
+}
+
 .subtituloCabecalho{
     margin: auto;
     justify-content: center;

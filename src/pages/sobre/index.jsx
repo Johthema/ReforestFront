@@ -19,6 +19,18 @@ export default function Sobre (){
                 </div>
               
             </div>
+            <div className={Style.divQuemsomos}>
+            <h2 className={Style.legendaProposta}>Quem somos</h2>
+            <h5>
+
+            A Reforest é uma empresa dedicada à restauração da floresta e diminuição de CO2 do planeta, 
+            comprometida com a promoção da sustentabilidade ambiental e da preservação da biodiversidade. 
+            Somos uma equipe de profissionais apaixonados e comprometidos, unidos por uma visão compartilhada 
+            de um mundo mais verde e saudável. Através de nossos esforços incansáveis, inovação constante e parcerias estratégicas, 
+            buscamos fazer a diferença positiva no planeta.
+
+            </h5>
+            </div>
             <div className={Style.divPropMetd}>
                 <div className={Style.divProposta}>
                     <h2 className={Style.legendaProposta}>Nossa proposta</h2>
