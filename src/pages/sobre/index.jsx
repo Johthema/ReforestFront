@@ -85,21 +85,45 @@ export default function Sobre (){
 
             <div className={Style.divVAlores}>
                 <div className={Style.divMissao}>
-                    <div>
+                    <div className={Style.divIntMissao}>
                         <FaCrosshairs className={Style.Icones}/>
                         <h2>Missão</h2>
+                        <p>
+                        Nosso compromisso é contribuir para a saúde do planeta, 
+                        protegendo a biodiversidade e fornecendo soluções reflorestamento para
+                        as gerações presentes e futuras. Colaborando com comunidades locais para promover
+                        o equilíbrio entre o desenvolvimento humano e a preservação do meio ambiente.
+                        </p>
+                        
                     </div>
+                   
                 </div>
                 <div className={Style.divVisao}>
-                    <div>
+                    <div className={Style.divIntVisao}>
                         <FaBinoculars className={Style.Icones}/>
                         <h2>Visão</h2>
+                        <p>
+                        Nossa visão é ser líder global na restauração de ecossistemas, 
+                        reconhecidos por nossa excelência em práticas de reflorestamento neutralizando o gás carbônico.  
+                        Contribuindo para a mitigação das mudanças climáticas e a melhoria da qualidade de vida
+                        de todas as formas de vida na Terra. 
+                        </p>
                     </div>
                 </div>
                 <div className={Style.divValor}>
-                    <div>
+                    <div className={Style.divIntValor}>
                         <FaAnchor className={Style.Icones}/>
                         <h2>Valor</h2>
+                        <p>
+                            <ul>
+                                <li>Sustentabilidade</li>
+                                <li>Responsabilidade ambiental</li>
+                                <li>Inovação</li>
+                                <li>Colaboração</li>
+                                <li>Compromisso com resultados</li>
+                            </ul>
+                            
+                        </p>
                     </div>
                 </div>
             </div>

@@ -161,9 +161,10 @@
     margin: auto;
     display: flex;
     justify-content: center;
-   
+    overflow: auto;
 
 }
+
 .divVisao{
     width: 33%;
     height: 320px;
@@ -171,6 +172,7 @@
     margin: auto;
     display: flex;
     justify-content: center;
+    overflow: auto;
     
 }
 .divValor{
@@ -180,7 +182,23 @@
     margin: auto;
     display: flex;
     justify-content: center;
+    overflow: auto;
    
+}
+.divIntValor{
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}
+.divIntMissao{
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+.divIntVisao{
+    margin: auto;
+    justify-content: center;
+    text-align: center;
 }
 
 .Icones{
