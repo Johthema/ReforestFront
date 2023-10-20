@@ -52,6 +52,27 @@
     /* background-color: aliceblue; */
     margin: auto;
     justify-content: center;
+    /* flex-wrap: wrap; */
+}
+@media (max-width: 989px ){
+    .divPropMetd{
+        display: flex;
+        width: 80%;
+        height: 400px;
+        /* background-color: aliceblue; */
+        margin: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .divObjetivos{
+        display: flex;
+        width: 40%;
+        margin-top: 20px;
+        margin: auto;
+        flex-wrap: wrap;
+       
+        
+    }
 }
 
 .divProposta{
@@ -146,7 +167,7 @@
     margin-bottom: 0px;
 }
 
-.divVAlores{
+.divObjetivos{
     display: flex;
     width: 80%;
     margin-top: 20px;
@@ -154,7 +175,7 @@
     
 }
 
-.divMissao{
+/* .divMissao{
     width: 33%;
     height: 320px;
     background-color: #ebe9e9;
@@ -184,22 +205,35 @@
     justify-content: center;
     overflow: auto;
    
-}
+} */
 .divIntValor{
     margin: auto;
     text-align: center;
     justify-content: center;
-}
-.divIntMissao{
-    margin: auto;
-    justify-content: center;
-    text-align: center;
+    background-color: #ebe9e9;
+    width: 400px;
+    height: 320px;
+    overflow: auto;
 }
 .divIntVisao{
     margin: auto;
     justify-content: center;
     text-align: center;
+    background-color: #55acf0b3;
+    width: 400px;
+    height: 320px;
+    overflow: auto;
 }
+.divIntMissao{
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    background-color: #ebe9e9;
+    width: 400px;
+    height: 320px;
+    overflow: auto;
+}
+
 
 .Icones{
     font-size: 5rem;

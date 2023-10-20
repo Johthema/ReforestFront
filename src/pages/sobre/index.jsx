@@ -83,8 +83,8 @@ export default function Sobre (){
             </div>
             <br/>
 
-            <div className={Style.divVAlores}>
-                <div className={Style.divMissao}>
+            <div className={Style.divObjetivos}>
+                
                     <div className={Style.divIntMissao}>
                         <FaCrosshairs className={Style.Icones}/>
                         <h2>Missão</h2>
@@ -97,8 +97,8 @@ export default function Sobre (){
                         
                     </div>
                    
-                </div>
-                <div className={Style.divVisao}>
+              
+               
                     <div className={Style.divIntVisao}>
                         <FaBinoculars className={Style.Icones}/>
                         <h2>Visão</h2>
@@ -109,8 +109,8 @@ export default function Sobre (){
                         de todas as formas de vida na Terra. 
                         </p>
                     </div>
-                </div>
-                <div className={Style.divValor}>
+                
+                
                     <div className={Style.divIntValor}>
                         <FaAnchor className={Style.Icones}/>
                         <h2>Valor</h2>
@@ -125,7 +125,7 @@ export default function Sobre (){
                             
                         </p>
                     </div>
-                </div>
+               
             </div>
             <Footer/>
         </div>
