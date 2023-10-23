@@ -7,8 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
 import Image from 'next/image';
-// import ImgArvore from '../../assets/images/arvore_1.jpg';
-import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined} from "react-icons/fa";
+import ImgUser from '../../assets/images/fotoperfil/fotoper.jpg';
+import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined, FaHistorys} from "react-icons/fa";
 
 export default function Hist_restauracao(){
     return(
@@ -35,8 +35,18 @@ export default function Hist_restauracao(){
                 </Col>
                 <Col sm={9}>
                 <Tab.Content>
-                    <Tab.Pane eventKey="first">
-                        Pagina com histórico de restauração de usuario
+                    <Tab.Pane eventKey="first" className={Style.paginaRestore}>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Fulano de tal</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
                     </Tab.Pane>
                     <Tab.Pane eventKey="two">
                         Pagina com histórico de restauração de arvores
