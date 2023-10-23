@@ -47,6 +47,28 @@ export default function Hist_restauracao(){
                             </div>
                             
                         </div>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Fulano de tal</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Fulano de tal</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
                     </Tab.Pane>
                     <Tab.Pane eventKey="two">
                         Pagina com histórico de restauração de arvores

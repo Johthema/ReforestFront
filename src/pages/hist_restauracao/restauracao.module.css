@@ -38,10 +38,12 @@
 }
 
 .BotaoRest{
-    background-color: #459543 !important;
+    background-color: rgb(237, 238, 238) !important;
     border-color: #459543 !important;
+    color: #459543 !important;
 }
 .BotaoRest:hover{
-    background-color: #2c612b !important;
+    background-color: #459543!important;
     border-color: #2c612b  !important;
+    color: #ffffff !important;
 }
