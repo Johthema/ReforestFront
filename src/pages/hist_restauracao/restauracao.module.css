@@ -57,3 +57,12 @@
     margin: auto;
     margin-bottom: 12px;
 }
+
+/*Paginação*/
+.divPaginacao{
+    margin-left: 20px;
+    margin-top: 10px;
+    bottom: 5px;
+    justify-content: center;
+    display: flex;
+}

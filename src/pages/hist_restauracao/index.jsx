@@ -1,5 +1,6 @@
 import Header from '../../components/header/index';
 import Footer from '../../components/footer/index';
+import {useState} from 'react'
 import Style from './restauracao.module.css';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
@@ -11,8 +12,38 @@ import ImgUser from '../../assets/images/fotoperfil/fotoper.jpg';
 import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined, FaHistorys} from "react-icons/fa";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
+import Pagination from 'react-bootstrap/Pagination';
 
 export default function Hist_restauracao(){
+
+    const [loading, setLoading] = useState(false);
+
+        //Variaveis de filtro
+        const [pageQtd, setPageQtd] = useState(1);
+        const [pageLimit, setPageLimit] = useState('9');
+
+      //-------------------------Paginação inicio
+      const paginacao = (qtd) => {
+        // setPageLimit(qtd)
+        setPageQtd(qtd)
+        setLoading(true)
+        setReloadCount(prevCount => prevCount + 1);
+    
+      }
+    
+      const paginaContador = (prop) => {
+    
+        if (prop == 'sum') {
+          setPageQtd(pageQtd + 1)
+          setReloadCount(prevCount => prevCount + 1);
+        } else if (prop == 'sub') {
+          setPageQtd(pageQtd - 1)
+          setReloadCount(prevCount => prevCount + 1);
+        }
+      }
+      //-------------------------Paginação fim
+
+
     return(
         <>
         <Header/>
@@ -81,6 +112,24 @@ export default function Hist_restauracao(){
                             </div>
                             
                         </div>
+                        <div className={Style.divPaginacao}>
+                            <Pagination>
+                                <Pagination.First onClick={() => paginacao(1)} />
+                                <Pagination.Prev onClick={() => paginaContador('sub')} />
+                                <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                                <Pagination.Ellipsis />
+
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+
+                                <Pagination.Ellipsis />
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                                <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                                <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+                            </Pagination>
+                        </div>
+
                     </Tab.Pane>
                     <Tab.Pane eventKey="two">
                         Pagina com histórico de restauração de arvores
