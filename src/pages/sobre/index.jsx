@@ -53,46 +53,36 @@ export default function Sobre (){
                     <FaDice className={Style.Icone}/>
                     </div>
                     <div className={Style.Prova1}>
-                       
                         <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>Manaus</h5></div>
                         <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>20</h5></div>
                         <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>400</h5></div>
-
-
+                    </div>
+                    <Image src={ImgArvore} className={Style.divImagem} alt="" />
+                </div>
+                <br/>
+                <div className={Style.divProva1}>
+                    <div className={Style.divIcone}>
+                        <FaDice className={Style.Icone}/>
+                    </div>
+                    <div className={Style.Prova1}>
+                        <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>Manaus</h5></div>
+                        <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>20</h5></div>
+                        <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>400</h5></div>
                     </div>    
                     <Image src={ImgArvore} className={Style.divImagem} alt="" />
                 </div>
                 <br/>
                 <div className={Style.divProva1}>
                     <div className={Style.divIcone}>
-                    <FaDice className={Style.Icone}/>
+                        <FaDice className={Style.Icone}/>
                     </div>
                     <div className={Style.Prova1}>
-                       
                         <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>Manaus</h5></div>
                         <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>20</h5></div>
                         <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>400</h5></div>
-
-
                     </div>    
-                    <Image src={ImgArvore} className={Style.divImagem} alt="" />
+                        <Image src={ImgArvore} className={Style.divImagem} alt="" />
                 </div>
-                <br/>
-                <div className={Style.divProva1}>
-                    <div className={Style.divIcone}>
-                    <FaDice className={Style.Icone}/>
-                    </div>
-                    <div className={Style.Prova1}>
-                       
-                        <div className={Style.divIcones}><FaCity className={Style.Icon2} /> Cidade: <h5 className={Style.nomeItem}>Manaus</h5></div>
-                        <div className={Style.divIcones}><FaTree className={Style.Icon3} /> Árvores plantadas: <h5 className={Style.nomeItem}>20</h5></div>
-                        <div className={Style.divIcones}><FaRulerCombined className={Style.Icon5} /> Hectares: <h5 className={Style.nomeItem}>400</h5></div>
-
-
-                    </div>    
-                    <Image src={ImgArvore} className={Style.divImagem} alt="" />
-                </div>
-                
             </div>
             <br/>
 
@@ -110,8 +100,6 @@ export default function Sobre (){
                         
                     </div>
                    
-              
-               
                     <div className={Style.divIntVisao}>
                         <FaBinoculars className={Style.Icones}/>
                         <h2>Visão</h2>
@@ -122,7 +110,6 @@ export default function Sobre (){
                         de todas as formas de vida na Terra. 
                         </p>
                     </div>
-                
                 
                     <div className={Style.divIntValor}>
                         <FaAnchor className={Style.Icones}/>
@@ -135,10 +122,8 @@ export default function Sobre (){
                                 <li>Colaboração</li>
                                 <li>Compromisso com resultados</li>
                             </ul>
-                            
                         </p>
                     </div>
-               
             </div>
             <Footer/>
         </div>
