@@ -9,6 +9,8 @@ import Button from 'react-bootstrap/Button';
 import Image from 'next/image';
 import ImgUser from '../../assets/images/fotoperfil/fotoper.jpg';
 import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined, FaHistorys} from "react-icons/fa";
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
 
 export default function Hist_restauracao(){
     return(
@@ -36,7 +38,17 @@ export default function Hist_restauracao(){
                 <Col sm={9}>
                 <Tab.Content>
                     <Tab.Pane eventKey="first" className={Style.paginaRestore}>
+                    <InputGroup className={Style.Busca}>
+                            <Form.Control
+                                placeholder="Buscar por nome"
+                                aria-label="Buscar por nome"
+                                aria-describedby="basic-addon2"
+                              
+                            />
+                    
+                        </InputGroup>
                         <div className={Style.divUsuarios}>
+                       
                             <Image src={ImgUser} className={Style.imgArvore} alt="" />
                             <div className={Style.divDadosUsuario}>
                                 <h5>Nome: Fulano de tal</h5>
@@ -56,7 +68,7 @@ export default function Hist_restauracao(){
                             <div className={Style.divDadosUsuario}>
                                 <Button className={Style.BotaoRest}>Restaurar</Button>
                             </div>
-                            
+                             
                         </div>
                         <div className={Style.divUsuarios}>
                             <Image src={ImgUser} className={Style.imgArvore} alt="" />
