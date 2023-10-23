@@ -21,7 +21,7 @@ export default function Sobre (){
             </div>
             <div className={Style.divQuemsomos}>
             <h2 className={Style.legendaProposta}>Quem somos</h2>
-            <h5>
+            <p>
 
             A Reforest é uma empresa dedicada à restauração da floresta e diminuição de CO2 do planeta, 
             comprometida com a promoção da sustentabilidade ambiental e da preservação da biodiversidade. 
@@ -29,18 +29,19 @@ export default function Sobre (){
             de um mundo mais verde e saudável. Através de nossos esforços incansáveis, inovação constante e parcerias estratégicas, 
             buscamos fazer a diferença positiva no planeta.
 
-            </h5>
+            </p>
             </div>
             <div className={Style.divPropMetd}>
                 <div className={Style.divProposta}>
                     <h2 className={Style.legendaProposta}>Nossa proposta</h2>
-                    <p> Estabelecer um programa de reflorestamento para combater a degradação ambiental,
+                    <p> Nossa proposta é estabelecer um programa de reflorestamento para combater a degradação ambiental,
                          promover a conservação da biodiversidade e reduzir as emissões de carbono em uma determinada área.</p>
                 </div>
                 <div className={Style.divMetodo}>
                     <h2 className={Style.legendaMetodo}>Nosso método</h2>
-                    <p> Nosso metodo é Estabelecer um programa de reflorestamento para combater a degradação ambiental,
-                         promover a conservação da biodiversidade e reduzir as emissões de carbono em uma determinada área.</p>
+                    <p> Nosso metodo é dispor áreas de plantação para pessoas no mundo inteiro que tenham interesse em plantar
+                        e unir partes interessadas de forma virtual.
+                    </p>
                 </div>
             </div>
             <div className={Style.divProvaSocial}>
