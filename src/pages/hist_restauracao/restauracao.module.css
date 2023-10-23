@@ -41,6 +41,7 @@
     background-color: rgb(237, 238, 238) !important;
     border-color: #459543 !important;
     color: #459543 !important;
+    border-radius: 20px;
 }
 .BotaoRest:hover{
     background-color: #459543!important;
