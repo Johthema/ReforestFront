@@ -159,7 +159,7 @@ export default function Hist_restauracao(){
                         </div>
 
                     </Tab.Pane>
-                    <Tab.Pane eventKey="two">
+                    <Tab.Pane eventKey="two" className={Style.paginaRestore}>
                         
                     <InputGroup className={Style.Busca}>
                             <Form.Control
@@ -225,7 +225,7 @@ export default function Hist_restauracao(){
 
 
                     </Tab.Pane>
-                    <Tab.Pane eventKey="tree">
+                    <Tab.Pane eventKey="tree" className={Style.paginaRestore}>
                         
 
                     <InputGroup className={Style.Busca}>
@@ -292,7 +292,7 @@ export default function Hist_restauracao(){
 
                     </Tab.Pane>
 
-                    <Tab.Pane eventKey="four">
+                    <Tab.Pane eventKey="four" className={Style.paginaRestore}>
                         
 
                         <InputGroup className={Style.Busca}>
@@ -359,7 +359,7 @@ export default function Hist_restauracao(){
     
                         </Tab.Pane>
 
-                        <Tab.Pane eventKey="five">
+                        <Tab.Pane eventKey="five" className={Style.paginaRestore}>
                         
 
                         <InputGroup className={Style.Busca}>
