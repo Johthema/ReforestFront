@@ -9,7 +9,7 @@ import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
 import Image from 'next/image';
 import ImgUser from '../../assets/images/fotoperfil/fotoper.jpg';
-import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined, FaHistorys} from "react-icons/fa";
+import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined, FaHistorys, FaTh, FaFolderMinus, FaBoxes, FaUserShield} from "react-icons/fa";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Pagination from 'react-bootstrap/Pagination';
@@ -63,6 +63,12 @@ export default function Hist_restauracao(){
                     <Nav.Item>
                     <Nav.Link eventKey="tree"><FaMapMarkerAlt/> Restaurar Locais</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="four"><FaBoxes/> Restaurar Categorias</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                    <Nav.Link eventKey="five"><FaUserShield/> Restaurar Funções de usuário</Nav.Link>
+                    </Nav.Item>
                    
                 </Nav>
                 </Col>
@@ -77,7 +83,7 @@ export default function Hist_restauracao(){
                               
                             />
                     
-                        </InputGroup>
+                    </InputGroup>
                         <div className={Style.divUsuarios}>
                        
                             <Image src={ImgUser} className={Style.imgArvore} alt="" />
@@ -112,6 +118,28 @@ export default function Hist_restauracao(){
                             </div>
                             
                         </div>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Fulano de tal</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Fulano de tal</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
                         <div className={Style.divPaginacao}>
                             <Pagination>
                                 <Pagination.First onClick={() => paginacao(1)} />
@@ -132,11 +160,272 @@ export default function Hist_restauracao(){
 
                     </Tab.Pane>
                     <Tab.Pane eventKey="two">
-                        Pagina com histórico de restauração de arvores
+                        
+                    <InputGroup className={Style.Busca}>
+                            <Form.Control
+                                placeholder="Buscar por nome"
+                                aria-label="Buscar por nome"
+                                aria-describedby="basic-addon2"
+                              
+                            />
+                    
+                    </InputGroup>
+                        <div className={Style.divUsuarios}>
+                       
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Anona Shirimoia</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Anona Shirimoia</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                             
+                        </div>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Anona Shirimoia</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
+                        <div className={Style.divPaginacao}>
+                            <Pagination>
+                                <Pagination.First onClick={() => paginacao(1)} />
+                                <Pagination.Prev onClick={() => paginaContador('sub')} />
+                                <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                                <Pagination.Ellipsis />
+
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+
+                                <Pagination.Ellipsis />
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                                <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                                <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+                            </Pagination>
+                        </div>
+
+
+
                     </Tab.Pane>
                     <Tab.Pane eventKey="tree">
-                        Pagina com histórico de restauração de locais
+                        
+
+                    <InputGroup className={Style.Busca}>
+                            <Form.Control
+                                placeholder="Buscar por nome"
+                                aria-label="Buscar por nome"
+                                aria-describedby="basic-addon2"
+                              
+                            />
+                    
+                    </InputGroup>
+                        <div className={Style.divUsuarios}>
+                       
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Lugar nenhum</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Anona Shirimoia</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                             
+                        </div>
+                        <div className={Style.divUsuarios}>
+                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                            <div className={Style.divDadosUsuario}>
+                                <h5>Nome: Anona Shirimoia</h5>
+                                <h5>Data de exclusão: 15/10/2023</h5>
+                            </div>
+                            <div className={Style.divDadosUsuario}>
+                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                            </div>
+                            
+                        </div>
+                        <div className={Style.divPaginacao}>
+                            <Pagination>
+                                <Pagination.First onClick={() => paginacao(1)} />
+                                <Pagination.Prev onClick={() => paginaContador('sub')} />
+                                <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                                <Pagination.Ellipsis />
+
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+
+                                <Pagination.Ellipsis />
+                                <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                                <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                                <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+                            </Pagination>
+                        </div>
+
+
                     </Tab.Pane>
+
+                    <Tab.Pane eventKey="four">
+                        
+
+                        <InputGroup className={Style.Busca}>
+                                <Form.Control
+                                    placeholder="Buscar por nome"
+                                    aria-label="Buscar por nome"
+                                    aria-describedby="basic-addon2"
+                                  
+                                />
+                        
+                        </InputGroup>
+                            <div className={Style.divUsuarios}>
+                           
+                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                <div className={Style.divDadosUsuario}>
+                                    <h5>Nome: Frutifera</h5>
+                                    <h5>Data de exclusão: 15/10/2023</h5>
+                                </div>
+                                <div className={Style.divDadosUsuario}>
+                                    <Button className={Style.BotaoRest}>Restaurar</Button>
+                                </div>
+                                
+                            </div>
+                            <div className={Style.divUsuarios}>
+                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                <div className={Style.divDadosUsuario}>
+                                    <h5>Nome: Anona Shirimoia</h5>
+                                    <h5>Data de exclusão: 15/10/2023</h5>
+                                </div>
+                                <div className={Style.divDadosUsuario}>
+                                    <Button className={Style.BotaoRest}>Restaurar</Button>
+                                </div>
+                                 
+                            </div>
+                            <div className={Style.divUsuarios}>
+                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                <div className={Style.divDadosUsuario}>
+                                    <h5>Nome: Anona Shirimoia</h5>
+                                    <h5>Data de exclusão: 15/10/2023</h5>
+                                </div>
+                                <div className={Style.divDadosUsuario}>
+                                    <Button className={Style.BotaoRest}>Restaurar</Button>
+                                </div>
+                                
+                            </div>
+                            <div className={Style.divPaginacao}>
+                                <Pagination>
+                                    <Pagination.First onClick={() => paginacao(1)} />
+                                    <Pagination.Prev onClick={() => paginaContador('sub')} />
+                                    <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                                    <Pagination.Ellipsis />
+    
+                                    <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                                    <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                                    <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+    
+                                    <Pagination.Ellipsis />
+                                    <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                                    <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                                    <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+                                </Pagination>
+                            </div>
+    
+    
+                        </Tab.Pane>
+
+                        <Tab.Pane eventKey="five">
+                        
+
+                        <InputGroup className={Style.Busca}>
+                                <Form.Control
+                                    placeholder="Buscar por nome"
+                                    aria-label="Buscar por nome"
+                                    aria-describedby="basic-addon2"
+                                  
+                                />
+                        
+                        </InputGroup>
+                            <div className={Style.divUsuarios}>
+                           
+                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                <div className={Style.divDadosUsuario}>
+                                    <h5>Nome: Administrador</h5>
+                                    <h5>Data de exclusão: 15/10/2023</h5>
+                                </div>
+                                <div className={Style.divDadosUsuario}>
+                                    <Button className={Style.BotaoRest}>Restaurar</Button>
+                                </div>
+                                
+                            </div>
+                            <div className={Style.divUsuarios}>
+                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                <div className={Style.divDadosUsuario}>
+                                    <h5>Nome: Anona Shirimoia</h5>
+                                    <h5>Data de exclusão: 15/10/2023</h5>
+                                </div>
+                                <div className={Style.divDadosUsuario}>
+                                    <Button className={Style.BotaoRest}>Restaurar</Button>
+                                </div>
+                                 
+                            </div>
+                            <div className={Style.divUsuarios}>
+                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                <div className={Style.divDadosUsuario}>
+                                    <h5>Nome: Anona Shirimoia</h5>
+                                    <h5>Data de exclusão: 15/10/2023</h5>
+                                </div>
+                                <div className={Style.divDadosUsuario}>
+                                    <Button className={Style.BotaoRest}>Restaurar</Button>
+                                </div>
+                                
+                            </div>
+                            <div className={Style.divPaginacao}>
+                                <Pagination>
+                                    <Pagination.First onClick={() => paginacao(1)} />
+                                    <Pagination.Prev onClick={() => paginaContador('sub')} />
+                                    <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                                    <Pagination.Ellipsis />
+    
+                                    <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                                    <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                                    <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+    
+                                    <Pagination.Ellipsis />
+                                    <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                                    <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                                    <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+                                </Pagination>
+                            </div>
+    
+    
+                        </Tab.Pane>
+
                 </Tab.Content>
                 </Col>
             </Row>
