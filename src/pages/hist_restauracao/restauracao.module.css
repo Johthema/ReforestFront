@@ -13,6 +13,7 @@
     width: 100%;
     height: 70vh;
     overflow: auto;
+    border-left: solid 1px #bed6f9;
 }
 
 .imgArvore{
