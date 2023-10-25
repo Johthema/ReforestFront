@@ -40,7 +40,7 @@ import CheckoutForm from "../checkout/index";
 const URL_API_TREE = process.env.NEXT_PUBLIC_API_URL + "tree";
 const URL_API = process.env.NEXT_PUBLIC_API_URL + "plantingPlace";
 const URL_API_CATEGORY = process.env.NEXT_PUBLIC_API_URL + "category";
-const URL_API_Usuario=  process.env.NEXT_PUBLIC_API_URL+"user/";
+const URL_API_Usuario=  process.env.NEXT_PUBLIC_API_URL+"user";
 
 const responsive = {
   0: { items: 1 },
@@ -116,7 +116,7 @@ export default function Plantar() {
 
     const responseUser = await fetch(URL_API_Usuario+"/"+localStorage.getItem("idUs")) //por padrão o fetch ja utiliza o GET
         const dadosUsuario = await responseUser.json()
-        setDadosUsuario(dadosUsuario.user)
+        setDadosUsuario(dadosUsuario.user.name)
         setDadosUsuarioEndereco(dadosUsuario.user.creationData)
         console.log("O conteudo: ", dadosUsuario);
         
