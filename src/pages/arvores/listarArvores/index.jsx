@@ -24,6 +24,7 @@ import Image from 'next/image';
 import ImgArvore from '../../../assets/images/arvore_1.jpg';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"tree";
+const URL_API_IMG = process.env.NEXT_PUBLIC_API_IMG_URL
 
 
 export default function ListarArvore() {
@@ -53,7 +54,10 @@ export default function ListarArvore() {
   const [reloadCount, setReloadCount] = useState(0);
   //Variáveis editar usuario
   const [showEdit, setShowEdit] = useState(false);
-  const [dadosEditar, setDadosEditar] = useState([])
+  const [dadosEditar, setDadosEditar] = useState([]);
+
+  //Variaveis de imagem
+  const [nomeImagem, setNomeImagem] = useState('');
 
   const handleShowEdit = (idUser, categ) =>{
     console.log("o id a passar: ", idUser)
@@ -74,6 +78,12 @@ export default function ListarArvore() {
           // const response = await fetch(URL_API+"?order="+ordenar+"&role="+tipo)
           const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit + "&order="+ordenar)
           const dados = await response.json();
+          //IMAGEM
+          // const dadosImag = dados.img.filename  
+          // setNomeImagem(dadosImag)
+
+         
+
         setInitialRepo(dados);
         setRepo(dados);
         setLoading(false)
@@ -81,6 +91,12 @@ export default function ListarArvore() {
           // const response = await fetch(URL_API)
           const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit + "&order="+ordenar)
           const dados = await response.json();
+          // const dadosImag = dados.img  
+          // console.log("as imagens: ", dados)
+          // setNomeImagem(dadosImag)
+
+
+          
         setInitialRepo(dados);
         setRepo(dados);
         setLoading(false)
@@ -93,7 +109,7 @@ export default function ListarArvore() {
     }
     fetchRepos()
   }, [reloadCount]);
-
+//  console.log("nome imagens: ", nomeImagem)
   const handleChange = ({ target }) => {
     if (!target.value) {
       setRepo(initialRepos)
@@ -316,7 +332,17 @@ export default function ListarArvore() {
                   } */}
                   
                   {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+                  
                   <Image src={ImgArvore} className={Style.imgArvore} alt="" />
+                 {item.img &&
+                 
+                 <>
+                 <p>{item.img.filename}</p> 
+                 {/* <Image src={URL_API_IMG+item.img.filename} className={Style.imgArvore} alt="" /> */}
+                 <Image value={URL_API_IMG+item.img.filename} className={Style.imgArvore} alt="" />
+                 </>
+                 
+                 }
                 </Card.Body>
                 <Card.Footer className="text-muted">
                   {/* <Form.Control type="number" placeholder="Quantidade" /> */}
