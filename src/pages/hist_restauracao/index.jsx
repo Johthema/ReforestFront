@@ -33,6 +33,7 @@ export default function Hist_restauracao(){
         const [nome, setUsuarioNome] = useState('');
         const [reloadCount, setReloadCount] = useState(0);
 
+        const [opcaoElemento, setOpcaoElemento] = useState(0);
       //-------------------------Paginação inicio
       const paginacao = (qtd) => {
         // setPageLimit(qtd)
@@ -78,7 +79,9 @@ export default function Hist_restauracao(){
       }, [reloadCount]);
 
 
-
+function opcao(elemento){
+    setOpcaoElemento(elemento);
+}
 
     return(
         <>
@@ -87,8 +90,15 @@ export default function Hist_restauracao(){
         <div className={Style.divBannerRestauracao}>
             <h5 className={Style.tituloBanner}><FaTrashAlt/>Reveja e restaure itens excluídos<FaTrashRestoreAlt/></h5>
             <div className={Style.divBotoesBanner}>
-                <Button className={Style.botaoBanner}>Home</Button> <Button className={Style.botaoBanner}>Ver lista de fdfdsfdsfd</Button>
-            </div>
+            <Button className={Style.botaoBanner}>Home</Button>    
+                {opcaoElemento == 1 &&
+                
+                <>
+                 <Button className={Style.botaoBanner} eventKey="first">Ver lista de usuário</Button>
+                </>
+                
+                }
+                </div>
         </div>
 
         <div className={Style.divFundoRestauracao}>
@@ -101,19 +111,19 @@ export default function Hist_restauracao(){
                 <Col sm={3}>
                 <Nav variant="pills" className="flex-column">
                     <Nav.Item>
-                    <Nav.Link eventKey="first"><FaUserClock/> Restaurar Usuarios</Nav.Link>
+                    <Nav.Link eventKey="first" onClick={()=>opcao(1)}><FaUserClock/> Restaurar Usuarios</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="two"><FaTree/> Restaurar Árvores</Nav.Link>
+                    <Nav.Link eventKey="two" onClick={()=>opcao(2)}><FaTree/> Restaurar Árvores</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="tree"><FaMapMarkerAlt/> Restaurar Locais</Nav.Link>
+                    <Nav.Link eventKey="tree" onClick={()=>opcao(3)}><FaMapMarkerAlt/> Restaurar Locais</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="four"><FaShapes/> Restaurar Categorias</Nav.Link>
+                    <Nav.Link eventKey="four" onClick={()=>opcao(4)}><FaShapes/> Restaurar Categorias</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="five"><FaUserShield/> Restaurar Funções de usuário</Nav.Link>
+                    <Nav.Link eventKey="five" onClick={()=>opcao(5)}><FaUserShield/> Restaurar Funções de usuário</Nav.Link>
                     </Nav.Item>
                    
                 </Nav>
