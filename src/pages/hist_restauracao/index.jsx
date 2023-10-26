@@ -1,6 +1,6 @@
 import Header from '../../components/header/index';
 import Footer from '../../components/footer/index';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Style from './restauracao.module.css';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
@@ -14,6 +14,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Pagination from 'react-bootstrap/Pagination';
 
+const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
+
 export default function Hist_restauracao(){
 
     const [loading, setLoading] = useState(false);
@@ -21,6 +23,14 @@ export default function Hist_restauracao(){
         //Variaveis de filtro
         const [pageQtd, setPageQtd] = useState(1);
         const [pageLimit, setPageLimit] = useState('9');
+
+        //variáveis de filtros
+        const [initialRepos, setInitialRepo] = useState([]);
+        const [repos, setRepo] = useState([]);
+        const [tipo, setTipo] = useState('todos')
+        const [ordenar, setOrdenar] = useState('recente')
+        const [nome, setUsuarioNome] = useState('');
+        const [reloadCount, setReloadCount] = useState(0);
 
       //-------------------------Paginação inicio
       const paginacao = (qtd) => {
@@ -44,10 +54,44 @@ export default function Hist_restauracao(){
       //-------------------------Paginação fim
 
 
+      useEffect(() => {
+    
+        const fetchRepos = async () => {
+          try {
+            // setLoading(true)
+            // console.log("o tipo de usuario é: ",tipo)
+            const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit+"&isDeleted=true")
+            const dados = await response.json();
+        //   setInitialRepo(dados);
+          setRepo(dados);
+        //   setLoading(false)
+
+
+         
+          } catch (error) {
+            console.log(error)
+            // setErroInterno(true)
+          }
+        }
+        fetchRepos()
+      }, [reloadCount]);
+
+
+
+
     return(
         <>
         <Header/>
+
+
+
         <div className={Style.divFundoRestauracao}>
+
+       
+
+
+
+     
             
 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
@@ -74,91 +118,58 @@ export default function Hist_restauracao(){
                 </Col>
                 <Col sm={9}>
                 <Tab.Content>
-                    <Tab.Pane eventKey="first" className={Style.paginaRestore}>
-                    <InputGroup className={Style.Busca}>
-                            <Form.Control
-                                placeholder="Buscar por nome"
-                                aria-label="Buscar por nome"
-                                aria-describedby="basic-addon2"
-                              
-                            />
-                    
-                    </InputGroup>
-                        <div className={Style.divUsuarios}>
-                       
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Fulano de tal</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                            
-                        </div>
-                        <div className={Style.divUsuarios}>
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Fulano de tal</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                             
-                        </div>
-                        <div className={Style.divUsuarios}>
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Fulano de tal</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                            
-                        </div>
-                        <div className={Style.divUsuarios}>
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Fulano de tal</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                            
-                        </div>
-                        <div className={Style.divUsuarios}>
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Fulano de tal</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                            
-                        </div>
-                        <div className={Style.divPaginacao}>
-                            <Pagination>
-                                <Pagination.First onClick={() => paginacao(1)} />
-                                <Pagination.Prev onClick={() => paginaContador('sub')} />
-                                <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
-                                <Pagination.Ellipsis />
 
-                                <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
-                                <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
-                                <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+                <Tab.Pane eventKey="first" className={Style.paginaRestore}>
+ <InputGroup className={Style.Busca}>
+         <Form.Control
+             placeholder="Buscar por nome"
+             aria-label="Buscar por nome"
+             aria-describedby="basic-addon2"
+           
+         />
+ 
+ </InputGroup>
+ {repos.map((repo,index) => (
+    <>
+     <div className={Style.divUsuarios}>
+    
+         <Image src={ImgUser} className={Style.imgArvore} alt="" />
+         <div className={Style.divDadosUsuario}>
+             <h5>Nome: {repo.name}</h5>
+             <h5>Data de exclusão: {repo.deletedAt}</h5>
+         </div>
+         <div className={Style.divDadosUsuario}>
+             <Button className={Style.BotaoRest}>Restaurar</Button>
+         </div>
+         
+     </div>
+    
+         
+    
+    
+     </>
+   ))}
+    <div className={Style.divPaginacao}>
+         <Pagination>
+             <Pagination.First onClick={() => paginacao(1)} />
+             <Pagination.Prev onClick={() => paginaContador('sub')} />
+             <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+             <Pagination.Ellipsis />
 
-                                <Pagination.Ellipsis />
-                                <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
-                                <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
-                                <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
-                            </Pagination>
-                        </div>
+             <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+             <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+             <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
 
-                    </Tab.Pane>
+             <Pagination.Ellipsis />
+             <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+             <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+             <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+         </Pagination>
+     </div>
+ </Tab.Pane>
+
+
+                   
                     <Tab.Pane eventKey="two" className={Style.paginaRestore}>
                         
                     <InputGroup className={Style.Busca}>
