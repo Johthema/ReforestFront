@@ -10,10 +10,14 @@ import Button from 'react-bootstrap/Button';
 import Image from 'next/image';
 import ImgUser from '../../assets/images/fotoperfil/fotoper.jpg';
 import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined, FaHistorys, FaShapes,
-    FaTrashRestoreAlt, FaTrashAlt, FaBoxes, FaUserShield} from "react-icons/fa";
+    FaTrashRestoreAlt, FaTrashAlt, FaBoxes, FaUserShield,
+    FaEdit, FaSearch, FaFilter, FaRedoAlt, FaListOl} from "react-icons/fa";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Pagination from 'react-bootstrap/Pagination';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
 
@@ -28,7 +32,7 @@ export default function Hist_restauracao(){
         //variáveis de filtros
         const [initialRepos, setInitialRepo] = useState([]);
         const [repos, setRepo] = useState([]);
-        const [tipo, setTipo] = useState('todos')
+        const [tipo, setTipo] = useState('')
         const [ordenar, setOrdenar] = useState('recente')
         const [nome, setUsuarioNome] = useState('');
         const [reloadCount, setReloadCount] = useState(0);
@@ -38,7 +42,7 @@ export default function Hist_restauracao(){
         const [opcaoElemento, setOpcaoElemento] = useState(1);
       //-------------------------Paginação inicio
       const paginacao = (qtd) => {
-        // setPageLimit(qtd)
+        // setPageLimit(qtd) 
         setPageQtd(qtd)
         setLoading(true)
         setReloadCount(prevCount => prevCount + 1);
@@ -64,13 +68,11 @@ export default function Hist_restauracao(){
           try {
             // setLoading(true)
             // console.log("o tipo de usuario é: ",tipo)
-            const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit+"&search="+busca+"&isDeleted=true")
+            const response = await fetch(URL_API+"?page="+pageQtd+"&limit="+pageLimit+"&search="+busca+"&role="+tipo+"&isDeleted=true")
             const dados = await response.json();
         //   setInitialRepo(dados);
           setRepo(dados);
         //   setLoading(false)""
-
-
          
           } catch (error) {
             console.log(error)
@@ -110,6 +112,19 @@ const onChangeBusca = (evt) => {
      setReloadCount(prevCount => prevCount + 1);
     }
   };
+
+
+  const onChangeRoles=(role) =>{
+    setTipo(role)
+    // setLoading(true)
+    setReloadCount(prevCount => prevCount + 1);
+  }
+
+  const onChangeOrdem=(ordem) =>{
+    setOrdenar(ordem)
+    // setLoading(true)
+    setReloadCount(prevCount => prevCount + 1);
+  }
 
 
 
@@ -180,7 +195,7 @@ const onChangeBusca = (evt) => {
                 <Tab.Content>
 
                 <Tab.Pane eventKey="first" className={Style.paginaRestore}>
- <InputGroup className={Style.Busca}>
+ {/* <InputGroup className={Style.Busca}>
          <Form.Control
              placeholder="Buscar por nome"
              aria-label="Buscar por nome"
@@ -189,7 +204,52 @@ const onChangeBusca = (evt) => {
              onKeyPress={handleCampo1KeyPress}
          />
  
- </InputGroup>
+ </InputGroup> */}
+
+
+<Navbar className={Style.headerTabela}>
+          <Container>
+            <InputGroup className={Style.Busca}>
+              <Form.Control
+                placeholder="Buscar por nome"
+                aria-label="Buscar por nome"
+                aria-describedby="basic-addon2"
+                onChange={onChangeBusca}
+                onKeyPress={handleCampo1KeyPress}
+              />
+
+            </InputGroup>
+
+            <Dropdown className={Style.DropMENU}>
+              <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu  className={Style.OpDropNotifi}>
+              <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown >
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                  <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                  
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                  </Dropdown.Menu>
+             </Dropdown>
+
+          </Container>
+        </Navbar>
+
+
+
  {repos.map((repo,index) => (
     <>
      <div className={Style.divUsuarios}>
