@@ -231,23 +231,23 @@ export default function EditarUsuario({handleShowEdit}) {
                         <Col>
 
                             <FloatingLabel controlId="floatingInput" label="*Nome" className="mb-3">
-                                <Form.Control placeholder='*Nome' type='text' name='name' Value={data.name} onChange={onChangeNome} />
+                                <Form.Control placeholder='*Nome' type='text' name='name' Value={name} onChange={onChangeNome} />
                             </FloatingLabel>
                         </Col>
                         <Col>
                             <FloatingLabel controlId="floatingInput" label="*Sobrenome" className="mb-3">
-                                <Form.Control placeholder='Sobrenome' type='text' name='*sobrenome' Value={data.surname} onChange={onChangeSurname} />
+                                <Form.Control placeholder='Sobrenome' type='text' name='*sobrenome' Value={surname} onChange={onChangeSurname} />
                             </FloatingLabel>
                         </Col>
                     </Row><Row>
                             <Form.Group className="mb-3" controlId="formGroupEmail">
                                 <FloatingLabel controlId="floatingInput" label="*Email" className="mb-3">
-                                    <Form.Control type="email" placeholder='*Email' name='email' Value={data.email} onChange={onChangeEmail} />
+                                    <Form.Control type="email" placeholder='*Email' name='email' Value={email} onChange={onChangeEmail} />
                                 </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPhone">
                                 <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                                    <Form.Control type="text" placeholder='*Telefone' name='phone' Value={data.phone} maxLength={14} onChange={onChangePhone} />
+                                    <Form.Control type="text" placeholder='*Telefone' name='phone' Value={phone} maxLength={14} onChange={onChangePhone} />
                                 </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -290,19 +290,19 @@ export default function EditarUsuario({handleShowEdit}) {
                            <Col>
                             
                             <FloatingLabel controlId="floatingInput" label="Razão social(opcional)" className="mb-3">
-                              <Form.Control placeholder='Razão social(opcional)' Value={data.fullname}  onChange={onChangeFullName} />
+                              <Form.Control placeholder='Razão social(opcional)' Value={fullname}  onChange={onChangeFullName} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="*Nome completo" className="mb-3">
-                              <Form.Control placeholder='*Nome completo' Value={data.name} onChange={onChangeNome} />
+                              <Form.Control placeholder='*Nome completo' Value={name} onChange={onChangeNome} />
                             </FloatingLabel>
 
                             <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                              <Form.Control placeholder='*Telefone' Value={data.phone} onChange={onChangePhone} maxLength={14} />
+                              <Form.Control placeholder='*Telefone' Value={phone} onChange={onChangePhone} maxLength={14} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="Site(opcional)" className="mb-3">
-                              <Form.Control placeholder='Site(opcional)' Value={data.site}  onChange={onChangeSite}/>
+                              <Form.Control placeholder='Site(opcional)' Value={site}  onChange={onChangeSite}/>
                             </FloatingLabel>
 
                             </Col>
@@ -310,7 +310,7 @@ export default function EditarUsuario({handleShowEdit}) {
                         <Row>
                             <Form.Group className="mb-3" controlId="formGroupEmail">
                                 <FloatingLabel controlId="floatingInput" label="*Email" className="mb-3">
-                                  <Form.Control type="email" placeholder='*Email' Value={data.email} onChange={onChangeEmail}/>
+                                  <Form.Control type="email" placeholder='*Email' Value={email} onChange={onChangeEmail}/>
                                 </FloatingLabel>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formGroupPassword">

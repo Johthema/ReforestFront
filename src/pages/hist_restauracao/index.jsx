@@ -33,7 +33,7 @@ export default function Hist_restauracao(){
         const [nome, setUsuarioNome] = useState('');
         const [reloadCount, setReloadCount] = useState(0);
 
-        const [opcaoElemento, setOpcaoElemento] = useState(0);
+        const [opcaoElemento, setOpcaoElemento] = useState(1);
       //-------------------------Paginação inicio
       const paginacao = (qtd) => {
         // setPageLimit(qtd)
@@ -90,30 +90,30 @@ function opcao(elemento){
         <div className={Style.divBannerRestauracao}>
             <h5 className={Style.tituloBanner}><FaTrashAlt/>Reveja e restaure itens excluídos<FaTrashRestoreAlt/></h5>
             <div className={Style.divBotoesBanner}>
-            <Button className={Style.botaoBanner}>Home</Button>    
+            <Button className={Style.botaoBanner} href='/home'>Home</Button>    
                 {opcaoElemento == 1 &&
                     <>
-                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Úsuário</Button>
+                    <Button className={Style.botaoBanner} href='/usuarios/listaUsuario'>Ver lista de Usuários</Button>
                     </>
                 }
                 {opcaoElemento == 2 &&
                     <>
-                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Árvores</Button>
+                    <Button className={Style.botaoBanner} href='/arvores/listarArvores'>Ver lista de Árvores</Button>
                     </>
                 }
                 {opcaoElemento == 3 &&
                     <>
-                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Locais</Button>
+                    <Button className={Style.botaoBanner} href='/locaisPlantacao/listaLocais'>Ver lista de Locais</Button>
                     </>
                 }
                 {opcaoElemento == 4 &&
                     <>
-                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Categorias</Button>
+                    <Button className={Style.botaoBanner} href='/configuracao'>Ver lista de Categorias</Button>
                     </>
                 }
                 {opcaoElemento == 5 &&
                     <>
-                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Funções</Button>
+                    <Button className={Style.botaoBanner} href='/configuracao'>Ver lista de Funções</Button>
                     </>
                 }
             </div>
