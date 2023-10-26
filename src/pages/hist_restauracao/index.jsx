@@ -86,6 +86,9 @@ export default function Hist_restauracao(){
 
         <div className={Style.divBannerRestauracao}>
             <h5 className={Style.tituloBanner}><FaTrashAlt/>Reveja e restaure itens excluídos<FaTrashRestoreAlt/></h5>
+            <div className={Style.divBotoesBanner}>
+                <Button className={Style.botaoBanner}>Home</Button> <Button className={Style.botaoBanner}>Ver lista de fdfdsfdsfd</Button>
+            </div>
         </div>
 
         <div className={Style.divFundoRestauracao}>
