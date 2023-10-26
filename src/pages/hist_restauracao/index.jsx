@@ -32,6 +32,8 @@ export default function Hist_restauracao(){
         const [ordenar, setOrdenar] = useState('recente')
         const [nome, setUsuarioNome] = useState('');
         const [reloadCount, setReloadCount] = useState(0);
+        const [busca, setBusca] = useState('')
+        const [buscaTexto, setBuscaTexto] = useState('')
 
         const [opcaoElemento, setOpcaoElemento] = useState(1);
       //-------------------------Paginação inicio
@@ -62,11 +64,11 @@ export default function Hist_restauracao(){
           try {
             // setLoading(true)
             // console.log("o tipo de usuario é: ",tipo)
-            const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit+"&isDeleted=true")
+            const response = await fetch(URL_API + "?page=" + pageQtd + "&limit=" + pageLimit+"&search="+busca+"&isDeleted=true")
             const dados = await response.json();
         //   setInitialRepo(dados);
           setRepo(dados);
-        //   setLoading(false)
+        //   setLoading(false)""
 
 
          
@@ -82,6 +84,34 @@ export default function Hist_restauracao(){
 function opcao(elemento){
     setOpcaoElemento(elemento);
 }
+
+function Restaurar(){
+
+}
+
+const onChangeBusca = (evt) => {
+    setBuscaTexto(evt.target.value)
+    // setBusca(buscaTexto) 
+    // if (!evt.value ) {
+    //     setRepo(initialRepos)
+    //     setTipo('todos')
+    //     setBuscaTexto('')
+    //     setReloadCount(prevCount => prevCount + 1);
+    //     return;
+    //   }
+    
+  }
+
+  const handleCampo1KeyPress = (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        setBusca(buscaTexto)
+     
+     setReloadCount(prevCount => prevCount + 1);
+    }
+  };
+
+
 
     return(
         <>
@@ -155,7 +185,8 @@ function opcao(elemento){
              placeholder="Buscar por nome"
              aria-label="Buscar por nome"
              aria-describedby="basic-addon2"
-           
+             onChange={onChangeBusca}
+             onKeyPress={handleCampo1KeyPress}
          />
  
  </InputGroup>
@@ -169,7 +200,7 @@ function opcao(elemento){
              <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo.deletedAt}</h5>
          </div>
          <div className={Style.divDadosUsuario}>
-             <Button className={Style.BotaoRest}>Restaurar</Button>
+             <Button className={Style.BotaoRest} onClick={()=>Restaurar()}>Restaurar</Button>
          </div>
          
      </div>
