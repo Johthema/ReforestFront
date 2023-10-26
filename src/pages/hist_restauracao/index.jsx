@@ -9,7 +9,8 @@ import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
 import Image from 'next/image';
 import ImgUser from '../../assets/images/fotoperfil/fotoper.jpg';
-import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined, FaHistorys, FaTh, FaFolderMinus, FaBoxes, FaUserShield} from "react-icons/fa";
+import {FaMapMarkerAlt, FaTree, FaUserClock, FaRulerCombined, FaHistorys, FaShapes,
+    FaTrashRestoreAlt, FaTrashAlt, FaBoxes, FaUserShield} from "react-icons/fa";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Pagination from 'react-bootstrap/Pagination';
@@ -83,16 +84,14 @@ export default function Hist_restauracao(){
         <>
         <Header/>
 
-
+        <div className={Style.divBannerRestauracao}>
+            <h5 className={Style.tituloBanner}><FaTrashAlt/>Reveja e restaure itens excluídos<FaTrashRestoreAlt/></h5>
+        </div>
 
         <div className={Style.divFundoRestauracao}>
-
-       
-
+           
 
 
-     
-            
 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
             <Row className={Style.containerTab}>
@@ -108,7 +107,7 @@ export default function Hist_restauracao(){
                     <Nav.Link eventKey="tree"><FaMapMarkerAlt/> Restaurar Locais</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="four"><FaBoxes/> Restaurar Categorias</Nav.Link>
+                    <Nav.Link eventKey="four"><FaShapes/> Restaurar Categorias</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                     <Nav.Link eventKey="five"><FaUserShield/> Restaurar Funções de usuário</Nav.Link>
@@ -135,8 +134,8 @@ export default function Hist_restauracao(){
     
          <Image src={ImgUser} className={Style.imgArvore} alt="" />
          <div className={Style.divDadosUsuario}>
-             <h5>Nome: {repo.name}</h5>
-             <h5>Data de exclusão: {repo.deletedAt}</h5>
+             <h5><span className={Style.itemSpan}><b>Nome:</b></span> {repo.name}</h5>
+             <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo.deletedAt}</h5>
          </div>
          <div className={Style.divDadosUsuario}>
              <Button className={Style.BotaoRest}>Restaurar</Button>

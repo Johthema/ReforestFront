@@ -182,7 +182,7 @@ export default function Home() {
   
     <h4 className={Style.subTituloArvore}>Faça a diferença hoje! Plante uma árvore e deixe sua marca no mundo. Contribua para um futuro mais verde e sustentável.</h4>
     
-    <Button variant="success" className={Style.Botao} href='/plantar'>Plantar</Button>
+    <Button variant="success" className={Style.Botao} href='/plantar'>Quero Plantar</Button>
     </div>
   </div>
   <div >
@@ -207,7 +207,7 @@ export default function Home() {
     Surpreenda com um presente que perdura por gerações, renovando esperanças e deixando um legado para o mundo.
     </h4>
     <h4 className={Style.subTituloArvore2}>Presenteie uma árvore! Um gesto eco-friendly que floresce vida e conecta almas.</h4>
-    <Button variant="success" className={Style.Botao} href='/plantar'>Oferecer</Button>
+    <Button variant="success" className={Style.Botao} href='/plantar'>Quero Oferecer</Button>
     </div>
   </div>
  
