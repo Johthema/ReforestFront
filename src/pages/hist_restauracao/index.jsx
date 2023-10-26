@@ -92,13 +92,31 @@ function opcao(elemento){
             <div className={Style.divBotoesBanner}>
             <Button className={Style.botaoBanner}>Home</Button>    
                 {opcaoElemento == 1 &&
-                
-                <>
-                 <Button className={Style.botaoBanner} eventKey="first">Ver lista de usuário</Button>
-                </>
-                
+                    <>
+                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Úsuário</Button>
+                    </>
                 }
-                </div>
+                {opcaoElemento == 2 &&
+                    <>
+                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Árvores</Button>
+                    </>
+                }
+                {opcaoElemento == 3 &&
+                    <>
+                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Locais</Button>
+                    </>
+                }
+                {opcaoElemento == 4 &&
+                    <>
+                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Categorias</Button>
+                    </>
+                }
+                {opcaoElemento == 5 &&
+                    <>
+                    <Button className={Style.botaoBanner} eventKey="first">Ver lista de Funções</Button>
+                    </>
+                }
+            </div>
         </div>
 
         <div className={Style.divFundoRestauracao}>
