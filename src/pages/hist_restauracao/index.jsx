@@ -141,7 +141,7 @@ function opcao(elemento){
                     <Nav.Link eventKey="four" onClick={()=>opcao(4)}><FaShapes/> Restaurar Categorias</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="five" onClick={()=>opcao(5)}><FaUserShield/> Restaurar Funções de usuário</Nav.Link>
+                    <Nav.Link eventKey="five" onClick={()=>opcao(5)}><FaUserShield/> Restaurar Papel de usuário</Nav.Link>
                     </Nav.Item>
                    
                 </Nav>
