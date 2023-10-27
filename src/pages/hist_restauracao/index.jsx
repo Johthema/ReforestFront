@@ -251,19 +251,19 @@ const onChangeBusca = (evt) => {
                 <Col sm={3} className={Style.Coluna1tab}>
                 <Nav variant="pills" className="flex-column">
                     <Nav.Item>
-                    <Nav.Link eventKey="first" onClick={()=>opcao(1)}><FaUserClock/> Restaurar Usuarios</Nav.Link>
+                    <Nav.Link eventKey="first" onClick={()=>opcao(1)} className={Style.OpcaoCad}><FaUserClock/> Restaurar Usuarios</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="two" onClick={()=>opcao(2)}><FaTree/> Restaurar Árvores</Nav.Link>
+                    <Nav.Link eventKey="two" onClick={()=>opcao(2)} className={Style.OpcaoCad}><FaTree/> Restaurar Árvores</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="tree" onClick={()=>opcao(3)}><FaMapMarkerAlt/> Restaurar Locais</Nav.Link>
+                    <Nav.Link eventKey="tree" onClick={()=>opcao(3)} className={Style.OpcaoCad}><FaMapMarkerAlt/> Restaurar Locais</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="four" onClick={()=>opcao(4)}><FaShapes/> Restaurar Categorias</Nav.Link>
+                    <Nav.Link eventKey="four" onClick={()=>opcao(4)} className={Style.OpcaoCad}><FaShapes/> Restaurar Categorias</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                    <Nav.Link eventKey="five" onClick={()=>opcao(5)}><FaUserShield/> Restaurar Papel de usuário</Nav.Link>
+                    <Nav.Link eventKey="five" onClick={()=>opcao(5)} className={Style.OpcaoCad}><FaUserShield/> Restaurar Papel de usuário</Nav.Link>
                     </Nav.Item>
                    
                 </Nav>
