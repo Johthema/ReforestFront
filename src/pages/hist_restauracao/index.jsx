@@ -207,7 +207,7 @@ const onChangeBusca = (evt) => {
  </InputGroup> */}
 
 
-<Navbar className={Style.headerTabela}>
+        <Navbar className={Style.headerTabela}>
           <Container>
             <InputGroup className={Style.Busca}>
               <Form.Control
@@ -293,7 +293,7 @@ const onChangeBusca = (evt) => {
                    
                     <Tab.Pane eventKey="two" className={Style.paginaRestore}>
                         
-                    <InputGroup className={Style.Busca}>
+                    {/* <InputGroup className={Style.Busca}>
                             <Form.Control
                                 placeholder="Buscar por nome"
                                 aria-label="Buscar por nome"
@@ -301,7 +301,47 @@ const onChangeBusca = (evt) => {
                               
                             />
                     
-                    </InputGroup>
+                    </InputGroup> */}
+                            <Navbar className={Style.headerTabela}>
+          <Container>
+            <InputGroup className={Style.Busca}>
+              <Form.Control
+                placeholder="Buscar por nome"
+                aria-label="Buscar por nome"
+                aria-describedby="basic-addon2"
+                onChange={onChangeBusca}
+                onKeyPress={handleCampo1KeyPress}
+              />
+
+            </InputGroup>
+
+            <Dropdown className={Style.DropMENU}>
+              <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu  className={Style.OpDropNotifi}>
+              <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown >
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                  <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                  
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                  </Dropdown.Menu>
+             </Dropdown>
+
+          </Container>
+        </Navbar>
                         <div className={Style.divUsuarios}>
                        
                             <Image src={ImgUser} className={Style.imgArvore} alt="" />
@@ -314,28 +354,8 @@ const onChangeBusca = (evt) => {
                             </div>
                             
                         </div>
-                        <div className={Style.divUsuarios}>
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Anona Shirimoia</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                             
-                        </div>
-                        <div className={Style.divUsuarios}>
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Anona Shirimoia</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                            
-                        </div>
+                       
+                      
                         <div className={Style.divPaginacao}>
                             <Pagination>
                                 <Pagination.First onClick={() => paginacao(1)} />
@@ -360,15 +380,46 @@ const onChangeBusca = (evt) => {
                     <Tab.Pane eventKey="tree" className={Style.paginaRestore}>
                         
 
-                    <InputGroup className={Style.Busca}>
-                            <Form.Control
-                                placeholder="Buscar por nome"
-                                aria-label="Buscar por nome"
-                                aria-describedby="basic-addon2"
-                              
-                            />
-                    
-                    </InputGroup>
+                    <Navbar className={Style.headerTabela}>
+          <Container>
+            <InputGroup className={Style.Busca}>
+              <Form.Control
+                placeholder="Buscar por nome"
+                aria-label="Buscar por nome"
+                aria-describedby="basic-addon2"
+                onChange={onChangeBusca}
+                onKeyPress={handleCampo1KeyPress}
+              />
+
+            </InputGroup>
+
+            <Dropdown className={Style.DropMENU}>
+              <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu  className={Style.OpDropNotifi}>
+              <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown >
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                  <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                  
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                  </Dropdown.Menu>
+             </Dropdown>
+
+          </Container>
+        </Navbar>
                         <div className={Style.divUsuarios}>
                        
                             <Image src={ImgUser} className={Style.imgArvore} alt="" />
@@ -381,28 +432,8 @@ const onChangeBusca = (evt) => {
                             </div>
                             
                         </div>
-                        <div className={Style.divUsuarios}>
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Anona Shirimoia</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                             
-                        </div>
-                        <div className={Style.divUsuarios}>
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Anona Shirimoia</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
-                            </div>
-                            
-                        </div>
+                      
+                        
                         <div className={Style.divPaginacao}>
                             <Pagination>
                                 <Pagination.First onClick={() => paginacao(1)} />
@@ -427,15 +458,46 @@ const onChangeBusca = (evt) => {
                     <Tab.Pane eventKey="four" className={Style.paginaRestore}>
                         
 
-                        <InputGroup className={Style.Busca}>
-                                <Form.Control
-                                    placeholder="Buscar por nome"
-                                    aria-label="Buscar por nome"
-                                    aria-describedby="basic-addon2"
-                                  
-                                />
-                        
-                        </InputGroup>
+                    <Navbar className={Style.headerTabela}>
+          <Container>
+            <InputGroup className={Style.Busca}>
+              <Form.Control
+                placeholder="Buscar por nome"
+                aria-label="Buscar por nome"
+                aria-describedby="basic-addon2"
+                onChange={onChangeBusca}
+                onKeyPress={handleCampo1KeyPress}
+              />
+
+            </InputGroup>
+
+            <Dropdown className={Style.DropMENU}>
+              <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu  className={Style.OpDropNotifi}>
+              <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown >
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                  <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                  
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                  </Dropdown.Menu>
+             </Dropdown>
+
+          </Container>
+        </Navbar>
                             <div className={Style.divUsuarios}>
                            
                                 <Image src={ImgUser} className={Style.imgArvore} alt="" />
@@ -448,28 +510,8 @@ const onChangeBusca = (evt) => {
                                 </div>
                                 
                             </div>
-                            <div className={Style.divUsuarios}>
-                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                                <div className={Style.divDadosUsuario}>
-                                    <h5>Nome: Anona Shirimoia</h5>
-                                    <h5>Data de exclusão: 15/10/2023</h5>
-                                </div>
-                                <div className={Style.divDadosUsuario}>
-                                    <Button className={Style.BotaoRest}>Restaurar</Button>
-                                </div>
-                                 
-                            </div>
-                            <div className={Style.divUsuarios}>
-                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                                <div className={Style.divDadosUsuario}>
-                                    <h5>Nome: Anona Shirimoia</h5>
-                                    <h5>Data de exclusão: 15/10/2023</h5>
-                                </div>
-                                <div className={Style.divDadosUsuario}>
-                                    <Button className={Style.BotaoRest}>Restaurar</Button>
-                                </div>
-                                
-                            </div>
+                           
+                           
                             <div className={Style.divPaginacao}>
                                 <Pagination>
                                     <Pagination.First onClick={() => paginacao(1)} />
@@ -494,15 +536,46 @@ const onChangeBusca = (evt) => {
                         <Tab.Pane eventKey="five" className={Style.paginaRestore}>
                         
 
-                        <InputGroup className={Style.Busca}>
-                                <Form.Control
-                                    placeholder="Buscar por nome"
-                                    aria-label="Buscar por nome"
-                                    aria-describedby="basic-addon2"
-                                  
-                                />
-                        
-                        </InputGroup>
+                        <Navbar className={Style.headerTabela}>
+          <Container>
+            <InputGroup className={Style.Busca}>
+              <Form.Control
+                placeholder="Buscar por nome"
+                aria-label="Buscar por nome"
+                aria-describedby="basic-addon2"
+                onChange={onChangeBusca}
+                onKeyPress={handleCampo1KeyPress}
+              />
+
+            </InputGroup>
+
+            <Dropdown className={Style.DropMENU}>
+              <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+              <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu  className={Style.OpDropNotifi}>
+              <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown >
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                  <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                  
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                  </Dropdown.Menu>
+             </Dropdown>
+
+          </Container>
+        </Navbar>
                             <div className={Style.divUsuarios}>
                            
                                 <Image src={ImgUser} className={Style.imgArvore} alt="" />
@@ -515,28 +588,8 @@ const onChangeBusca = (evt) => {
                                 </div>
                                 
                             </div>
-                            <div className={Style.divUsuarios}>
-                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                                <div className={Style.divDadosUsuario}>
-                                    <h5>Nome: Anona Shirimoia</h5>
-                                    <h5>Data de exclusão: 15/10/2023</h5>
-                                </div>
-                                <div className={Style.divDadosUsuario}>
-                                    <Button className={Style.BotaoRest}>Restaurar</Button>
-                                </div>
-                                 
-                            </div>
-                            <div className={Style.divUsuarios}>
-                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                                <div className={Style.divDadosUsuario}>
-                                    <h5>Nome: Anona Shirimoia</h5>
-                                    <h5>Data de exclusão: 15/10/2023</h5>
-                                </div>
-                                <div className={Style.divDadosUsuario}>
-                                    <Button className={Style.BotaoRest}>Restaurar</Button>
-                                </div>
-                                
-                            </div>
+                            
+                           
                             <div className={Style.divPaginacao}>
                                 <Pagination>
                                     <Pagination.First onClick={() => paginacao(1)} />
