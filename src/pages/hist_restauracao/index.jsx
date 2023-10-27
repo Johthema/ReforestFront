@@ -171,7 +171,7 @@ const onChangeBusca = (evt) => {
 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="first"  >
             <Row className={Style.containerTab}>
-                <Col sm={3}>
+                <Col sm={3} className={Style.Coluna1tab}>
                 <Nav variant="pills" className="flex-column">
                     <Nav.Item>
                     <Nav.Link eventKey="first" onClick={()=>opcao(1)}><FaUserClock/> Restaurar Usuarios</Nav.Link>

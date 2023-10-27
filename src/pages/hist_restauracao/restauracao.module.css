@@ -179,3 +179,33 @@
     color: var(--secundaryTom1-color3);
     margin-right: 10px;
 }
+
+
+@media (max-width: 967px) {
+    .divUsuarios{
+        /* background-color: aquamarine; */
+        width: 100%;
+        height: 120px;
+        display: flex;
+        border-bottom: solid 1px #55acf0b3;
+        /* border-left: solid 3px #0d6efd; */
+        margin: auto;
+        background-image: linear-gradient(to right,#55acf0b3 1%, rgb(237, 238, 238) 50%  );
+        border-radius: 10px 0px 0px 10px;
+        margin-bottom: 10px;
+    
+    }
+    .containerTab{
+        width: 100%;
+    }
+    .containerTab2{
+        width: 100%;
+    }
+    .Coluna1tab{ 
+        width: 100%;
+        text-align: center;
+    }
+    .divBannerRestauracao{
+        height: 250px;
+    }
+}
