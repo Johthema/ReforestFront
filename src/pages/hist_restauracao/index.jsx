@@ -40,6 +40,9 @@ export default function Hist_restauracao(){
         const [buscaTexto, setBuscaTexto] = useState('')
 
         const [opcaoElemento, setOpcaoElemento] = useState(1);
+
+        //Variaveis restauração
+        const [idUsuario, setIdUsuario] = useState('');
       //-------------------------Paginação inicio
       const paginacao = (qtd) => {
         // setPageLimit(qtd) 
@@ -87,9 +90,75 @@ function opcao(elemento){
     setOpcaoElemento(elemento);
 }
 
-function Restaurar(){
+// function Restaurar(){
 
-}
+// }
+
+
+
+const Restaurar = async (evt) => {
+    
+    // evt.preventDefault()
+    try{
+    //   setLoading(true)
+    //   if(person == 'PF'){
+        const response = await fetch(URL_API+"/"+evt,{
+          method: 'PATCH',
+          headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+    
+        //   body: JSON.stringify({ name, surname, email, phone, password, person }),
+        })
+    
+        // const json = await response.json()
+        // if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
+        //   setLoading(false)
+        //   setSuccess(true)
+        // } else {
+        //   setLoading(false)
+        //   setErro(true)
+        // }
+
+    //   } else if(person == 'PJ') {
+
+    //     const response = await fetch(URL_API+idEditavel,{
+    //       method: 'PUT',
+    //       headers:{
+    //         Accept: 'application/json',
+    //         'Content-type': 'application/json'
+    //       },
+    
+    //       body: JSON.stringify({ name, fullname, email, phone, password, person, site }),
+    //     })
+    
+    //     const json = await response.json()
+    //     if(name!='' && email !='' && phone !='' && password !='' && person !='' ){
+    //       setLoading(false)
+    //       setSuccess(true)
+    //     } else {
+    //       setLoading(false)
+    //       setErro(true)
+    //     }
+
+    //   }
+
+   
+    // setTimeout(()=>{
+    //   setSuccess(false)
+    // },1000)
+    
+  } catch(err){
+    console.log("O erro retornado: ",err)
+    // setLoading(false)
+    // setErroInterno(true)
+  }
+  return false
+  }
+
+
+
 
 const onChangeBusca = (evt) => {
     setBuscaTexto(evt.target.value)
@@ -260,7 +329,7 @@ const onChangeBusca = (evt) => {
              <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo.deletedAt}</h5>
          </div>
          <div className={Style.divDadosUsuario}>
-             <Button className={Style.BotaoRest} onClick={()=>Restaurar()}>Restaurar</Button>
+             <Button className={Style.BotaoRest} onClick={()=>Restaurar(repo._id)}>Restaurar</Button>
          </div>
          
      </div>
