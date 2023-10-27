@@ -276,6 +276,8 @@ const onChangeBusca = (evt) => {
  </InputGroup> */}
 
 
+
+
         <Navbar className={Style.headerTabela}>
           <Container>
             <InputGroup className={Style.Busca}>
@@ -313,11 +315,8 @@ const onChangeBusca = (evt) => {
                     <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
                   </Dropdown.Menu>
              </Dropdown>
-
           </Container>
         </Navbar>
-
-
 
  {repos.map((repo,index) => (
     <>
@@ -334,9 +333,7 @@ const onChangeBusca = (evt) => {
          
      </div>
     
-         
-    
-    
+
      </>
    ))}
     <div className={Style.divPaginacao}>

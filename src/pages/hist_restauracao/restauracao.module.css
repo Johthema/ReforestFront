@@ -139,7 +139,10 @@
     /* border-radius: 10px 10px 0px 0px; */
     height: 65px;
     margin-bottom: 5px;
+    display: flex;
+    position: sticky;
 } 
+
 
 .DropMENU{
     margin-inline-start: auto;
