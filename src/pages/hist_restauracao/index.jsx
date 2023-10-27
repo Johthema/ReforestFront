@@ -45,7 +45,7 @@ export default function Hist_restauracao(){
         const [busca, setBusca] = useState('')
         const [buscaTexto, setBuscaTexto] = useState('')
 
-        const [opcaoElemento, setOpcaoElemento] = useState(1);
+        const [opcaoElemento, setOpcaoElemento] = useState('1');
 
         //Variaveis restauração
         const [idUsuario, setIdUsuario] = useState('');
@@ -53,8 +53,11 @@ export default function Hist_restauracao(){
         const [showPermissao, setShowPermissao] = useState(false);
         const [dadosPermissao, setDadosPermissao] = useState([]);
         const [showEdit, setShowEdit] = useState(false);
+
+        const [caminho, setCaminho] = useState('/usuarios/listaUsuario');
         //Função do modal
         const handleClose = () => setShowPermissao(false);
+       
 
         const handleShowEdit = (idElemento, nome) =>{
             // console.log("o id a passar: ", idUser)
@@ -112,6 +115,25 @@ export default function Hist_restauracao(){
 
 function opcao(elemento){
     setOpcaoElemento(elemento);
+    if(opcaoElemento == 1){
+        setCaminho('/usuarios/listaUsuario')
+
+    } else if(opcaoElemento == 2){
+        setCaminho('/arvores/listarArvores')
+
+    } else 
+    if(opcaoElemento == 3){
+        setCaminho('/locaisPlantacao/listaLocais')
+
+    } else 
+    if(opcaoElemento == 4){
+        setCaminho('/configuracao')
+
+    } else 
+    if(opcaoElemento == 5){
+        setCaminho('/configuracao')
+
+    }
 }
 
 // function Restaurar(){
@@ -199,7 +221,7 @@ const onChangeBusca = (evt) => {
             <Button className={Style.botaoBanner} href='/home'>Home</Button>    
                 {opcaoElemento == 1 &&
                     <>
-                    <Button className={Style.botaoBanner} href='/usuarios/listaUsuario'>Ver lista de Usuários</Button>
+                    <Button className={Style.botaoBanner} href='/usuarios/listaUsuario' >Ver lista de Usuários</Button>
                     </>
                 }
                 {opcaoElemento == 2 &&
@@ -686,7 +708,7 @@ const onChangeBusca = (evt) => {
       <Modal show={showPermissao} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
-            <h2 className={Style.tituloDeletar}>Restaurar!</h2>
+            <h2 className={Style.tituloDeletar}>Restauração!</h2>
             <h5 className={Style.tituloDelet}>{nome}</h5>
           </Modal.Title>
         </Modal.Header>
@@ -699,7 +721,7 @@ const onChangeBusca = (evt) => {
             Cancelar
           </Button>
           <Button variant="primary" onClick={()=>Restaurar(idUsuario)} >
-           Restaurar
+           Sim, Restaurar
           </Button>
         </Modal.Footer>
       </Modal>
@@ -710,7 +732,7 @@ const onChangeBusca = (evt) => {
 
         {success &&
           <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
-            <Spinner animation="grow" variant="success" />Ítem restaurado com sucesso! | <Alert.Link href="/locaisPlantacao/listaLocais">Ver lista</Alert.Link>
+            <Spinner animation="grow" variant="success" />Ítem restaurado com sucesso! | <Alert.Link href={caminho}>Ver lista</Alert.Link>
           </Alert>
         }
 
