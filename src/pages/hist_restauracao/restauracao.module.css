@@ -190,6 +190,9 @@
     bottom: 0%;
     right: 0%;
     z-index: 15;
+} 
+.tituloDeletar{
+    color: #459543
 }
 
 @media (max-width: 967px) {

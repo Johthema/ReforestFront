@@ -56,11 +56,12 @@ export default function Hist_restauracao(){
         //Função do modal
         const handleClose = () => setShowPermissao(false);
 
-        const handleShowEdit = (idElemento) =>{
+        const handleShowEdit = (idElemento, nome) =>{
             // console.log("o id a passar: ", idUser)
             // console.log("a categoria a passar: ", categ)
             setIdUsuario(idElemento)
             setShowPermissao(true);
+            setUsuarioNome(nome)
             // setDadosEditar([idElemento, categ]);
             
           }
@@ -319,7 +320,7 @@ const onChangeBusca = (evt) => {
              <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo.deletedAt}</h5>
          </div>
          <div className={Style.divDadosUsuario}>
-             <Button className={Style.BotaoRest} onClick={()=>handleShowEdit(repo._id)}>Restaurar</Button>
+             <Button className={Style.BotaoRest} onClick={()=>handleShowEdit(repo._id, repo.name)}>Restaurar</Button>
          </div>
          
      </div>
@@ -691,7 +692,7 @@ const onChangeBusca = (evt) => {
         </Modal.Header>
         <Modal.Body>
 
-          <h4><FaRedoAlt />Deseja mesmo restaurar o ítem: {} </h4>
+          <h4><FaRedoAlt />Deseja mesmo restaurar este ítem: </h4>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
