@@ -714,7 +714,7 @@ const onChangeBusca = (evt) => {
         </Modal.Header>
         <Modal.Body>
 
-          <h4><FaRedoAlt />Deseja mesmo restaurar este ítem: </h4>
+          <h4><FaRedoAlt />Deseja mesmo restaurar este ítem? </h4>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
