@@ -1,11 +1,26 @@
 .divFundoRestauracao{
     margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
 .containerTab{
-    width: 100%;
+    width: 80%;
     /* background-color: rgba(241, 241, 241, 0.775); */
+}
+.containerTab2{
+    width: 75%;
+    padding-left: 0px
+    /* background-color: rgba(241, 241, 241, 0.775); */
+}
+
+.containerPrincipal{
+    width: 60%;
+    justify-content: center;
+    margin: auto;
 }
 
 .divBannerRestauracao{

@@ -169,7 +169,7 @@ const onChangeBusca = (evt) => {
 
 
 
-                <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
+                <Tab.Container id="left-tabs-example" defaultActiveKey="first"  >
             <Row className={Style.containerTab}>
                 <Col sm={3}>
                 <Nav variant="pills" className="flex-column">
@@ -191,7 +191,7 @@ const onChangeBusca = (evt) => {
                    
                 </Nav>
                 </Col>
-                <Col sm={9}>
+                <Col sm={9} className={Style.containerTab2}>
                 <Tab.Content>
 
                 <Tab.Pane eventKey="first" className={Style.paginaRestore}>
