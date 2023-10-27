@@ -20,7 +20,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown'; 
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
-import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Modal from 'react-bootstrap/Modal';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
 
@@ -49,6 +49,23 @@ export default function Hist_restauracao(){
 
         //Variaveis restauração
         const [idUsuario, setIdUsuario] = useState('');
+        //Variaveis de modal
+        const [showPermissao, setShowPermissao] = useState(false);
+        const [dadosPermissao, setDadosPermissao] = useState([]);
+        const [showEdit, setShowEdit] = useState(false);
+        //Função do modal
+        const handleClose = () => setShowPermissao(false);
+
+        const handleShowEdit = (idElemento) =>{
+            // console.log("o id a passar: ", idUser)
+            // console.log("a categoria a passar: ", categ)
+            setIdUsuario(idElemento)
+            setShowPermissao(true);
+            // setDadosEditar([idElemento, categ]);
+            
+          }
+
+
       //-------------------------Paginação inicio
       const paginacao = (qtd) => {
         // setPageLimit(qtd) 
@@ -107,7 +124,7 @@ const Restaurar = async (evt) => {
     // evt.preventDefault()
     try{
     setLoading(true)
-    //   if(person == 'PF'){
+   
         const response = await fetch(URL_API+"/"+evt,{
           method: 'PATCH',
           headers:{
@@ -119,43 +136,9 @@ const Restaurar = async (evt) => {
         })
         setLoading(false)
         setSuccess(true)
+        setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
-        // const json = await response.json()
-        // if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
-        //   setLoading(false)
-        //   setSuccess(true)
-        // } else {
-        //   setLoading(false)
-        //   setErro(true)
-        // }
-
-    //   } else if(person == 'PJ') {
-
-    //     const response = await fetch(URL_API+idEditavel,{
-    //       method: 'PUT',
-    //       headers:{
-    //         Accept: 'application/json',
-    //         'Content-type': 'application/json'
-    //       },
-    
-    //       body: JSON.stringify({ name, fullname, email, phone, password, person, site }),
-    //     })
-    
-    //     const json = await response.json()
-    //     if(name!='' && email !='' && phone !='' && password !='' && person !='' ){
-    //       setLoading(false)
-    //       setSuccess(true)
-    //     } else {
-    //       setLoading(false)
-    //       setErro(true)
-    //     }
-
-    //   }
-
-   
-    // setTimeout(()=>{
-    //   setSuccess(false)
-    // },1000)
+      
     
   } catch(err){
     console.log("O erro retornado: ",err)
@@ -336,7 +319,7 @@ const onChangeBusca = (evt) => {
              <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo.deletedAt}</h5>
          </div>
          <div className={Style.divDadosUsuario}>
-             <Button className={Style.BotaoRest} onClick={()=>Restaurar(repo._id)}>Restaurar</Button>
+             <Button className={Style.BotaoRest} onClick={()=>handleShowEdit(repo._id)}>Restaurar</Button>
          </div>
          
      </div>
@@ -698,6 +681,32 @@ const onChangeBusca = (evt) => {
 
 
 
+      {/* Modal de exclusão de usuario */}
+      <Modal show={showPermissao} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-sm">
+            <h2 className={Style.tituloDeletar}>Restaurar!</h2>
+            <h5 className={Style.tituloDelet}>{nome}</h5>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
+          <h4><FaRedoAlt />Deseja mesmo restaurar o ítem: {} </h4>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={()=>Restaurar(idUsuario)} >
+           Restaurar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
+
+
+
         {success &&
           <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
             <Spinner animation="grow" variant="success" />Ítem restaurado com sucesso! | <Alert.Link href="/locaisPlantacao/listaLocais">Ver lista</Alert.Link>
@@ -721,7 +730,7 @@ const onChangeBusca = (evt) => {
             <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, Obs:  {resposta}
           </Alert>
         }
-
+ 
         </>
     )
 }
