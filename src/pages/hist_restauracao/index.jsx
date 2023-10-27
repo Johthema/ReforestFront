@@ -708,7 +708,7 @@ const onChangeBusca = (evt) => {
       <Modal show={showPermissao} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
-            <h2 className={Style.tituloDeletar}>Restauração!</h2>
+            <h2 className={Style.tituloDeletar}>Restauração.</h2>
             <h5 className={Style.tituloDelet}>{nome}</h5>
           </Modal.Title>
         </Modal.Header>
