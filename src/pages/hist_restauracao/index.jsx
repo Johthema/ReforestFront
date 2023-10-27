@@ -17,13 +17,19 @@ import Form from 'react-bootstrap/Form';
 import Pagination from 'react-bootstrap/Pagination';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Dropdown from 'react-bootstrap/Dropdown'; 
+import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
 
 export default function Hist_restauracao(){
-
+    //variaveis do sistema
     const [loading, setLoading] = useState(false);
+    const [aviso, setAviso] = useState(false);
+    const [errorInt, setErroInterno] = useState(false);
+    const [success, setSuccess] = useState(false);
 
         //Variaveis de filtro
         const [pageQtd, setPageQtd] = useState(1);
@@ -69,17 +75,17 @@ export default function Hist_restauracao(){
     
         const fetchRepos = async () => {
           try {
-            // setLoading(true)
+            setLoading(true)
             // console.log("o tipo de usuario é: ",tipo)
             const response = await fetch(URL_API+"?page="+pageQtd+"&limit="+pageLimit+"&search="+busca+"&role="+tipo+"&isDeleted=true")
             const dados = await response.json();
         //   setInitialRepo(dados);
           setRepo(dados);
-        //   setLoading(false)""
+       setLoading(false)
          
           } catch (error) {
             console.log(error)
-            // setErroInterno(true)
+            setErroInterno(true)
           }
         }
         fetchRepos()
@@ -94,13 +100,13 @@ function opcao(elemento){
 
 // }
 
-
+const [show, setShow] = useState(true);
 
 const Restaurar = async (evt) => {
     
     // evt.preventDefault()
     try{
-    //   setLoading(true)
+    setLoading(true)
     //   if(person == 'PF'){
         const response = await fetch(URL_API+"/"+evt,{
           method: 'PATCH',
@@ -111,7 +117,9 @@ const Restaurar = async (evt) => {
     
         //   body: JSON.stringify({ name, surname, email, phone, password, person }),
         })
-    
+        setLoading(false)
+        setSuccess(true)
+        setReloadCount(prevCount => prevCount + 1);
         // const json = await response.json()
         // if(name!='' && surname!='' && email !='' && phone !='' && password !='' && person !=''){
         //   setLoading(false)
@@ -151,8 +159,8 @@ const Restaurar = async (evt) => {
     
   } catch(err){
     console.log("O erro retornado: ",err)
-    // setLoading(false)
-    // setErroInterno(true)
+    setLoading(false)
+    setErroInterno(true)
   }
   return false
   }
@@ -687,6 +695,33 @@ const onChangeBusca = (evt) => {
         </div>
         
         <Footer/>
+
+
+
+        {success &&
+          <Alert key="1232" variant="success" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+            <Spinner animation="grow" variant="success" />Ítem restaurado com sucesso! | <Alert.Link href="/locaisPlantacao/listaLocais">Ver lista</Alert.Link>
+          </Alert>
+        }
+
+        {loading &&
+          <Alert key="12345" variant="primary" className={Style.botaoCarregamento}>
+            <Spinner animation="border" variant="primary" /> Aguarde, carregando...
+          </Alert>
+        }
+
+        {aviso &&
+          <Alert key="123456" variant="primary" className={Style.botaoCarregamento} dismissible>
+            <Spinner animation="border" variant="warning" /> O nome não pode ser vazio!
+          </Alert>
+        }
+
+        {errorInt &&
+          <Alert key="1234" variant="danger" className={Style.botaoCarregamento} onClose={() => setShow(false)} dismissible>
+            <Spinner animation="grow" variant="danger" /> Ops! algo deu errado com o servidor, Obs:  {resposta}
+          </Alert>
+        }
+
         </>
     )
 }
