@@ -227,7 +227,7 @@ const onChangeBusca = (evt) => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu  className={Style.OpDropNotifi}>
-              <Dropdown.Item onClick={() => onChangeRoles("todos")}>Todos</Dropdown.Item>
+              <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
                 <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
                 <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
 
