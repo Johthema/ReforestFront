@@ -120,7 +120,7 @@ export default function Plantar() {
         setDadosUsuarioEndereco(dadosUsuario.creationData)
         console.log("O conteudo: ", dadosUsuario);
         
-       
+         
         const response = await fetch(URL_API)
         // const dados = await response.json();
         const dados = await response.json()
