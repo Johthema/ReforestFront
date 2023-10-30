@@ -46,9 +46,9 @@ export default function CheckoutForm() {
       switch (paymentIntent.status) {
         case "succeeded": 
           // setMessage("Pagamento realizado com sucesso!");
-          // break;
+          break;
         case "processing":
-          setMessage("Pagamento em processamento.");
+          // setMessage("Pagamento em processamento.");
           break;
         case "requires_payment_method":
           setMessage("Seu pagamento não foi bem-sucedido, tente novamente.");
