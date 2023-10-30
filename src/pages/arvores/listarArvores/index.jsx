@@ -69,7 +69,7 @@ export default function ListarArvore() {
 
   //-----------------------------------------------------------------------Inicio Função de filtros
   useEffect(() => {
-    
+     
     const fetchRepos = async () => {
       try {
         setLoading(true)
@@ -337,7 +337,7 @@ export default function ListarArvore() {
                  {item.img &&
                  
                  <>
-                 <p>{item.img.filename}</p> 
+                 <p>{URL_API_IMG + item.img.filename}</p> 
                  {/* <Image src={URL_API_IMG+item.img.filename} className={Style.imgArvore} alt="" /> */}
                  <Image value={URL_API_IMG+item.img.filename} className={Style.imgArvore} alt="" />
                  </>
@@ -416,7 +416,7 @@ export default function ListarArvore() {
       </Modal>
 
       {/* Formulario para edição do usuario selecionado */}
-      <Offcanvas show={showEdit} onHide={handleCloseEdit}>
+      <Offcanvas show={showEdit} onHide={handleCloseEdit} className={Style.barraLateralEdit}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Editar árvore</Offcanvas.Title>
         </Offcanvas.Header>

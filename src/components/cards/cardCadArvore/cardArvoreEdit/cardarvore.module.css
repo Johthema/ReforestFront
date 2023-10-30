@@ -34,4 +34,9 @@
         width: 80vw;
       
     }
+    .Labels{
+        font-size: 12px;
+        flex-flow: wrap;
+    }
 }
+

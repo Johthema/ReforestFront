@@ -244,12 +244,22 @@
 
 }
 
+.barraLateralEdit{
+    width: 35% !important;
+}
+
 @media (max-width: 1211px) {
     .Card{
         width: 60%;
         height: 10%;
         margin: auto;
         
+    }
+    .barraLateralEdit{
+        width: 50% !important;
+    }
+    .CardArvore{
+        width: 90%;
     }
 }
 
@@ -275,5 +285,11 @@
          /* &:nth-child(0){
             display: none
         } */
+        .barraLateralEdit{
+            width: 100% !important;
+        }
+        .CardArvore{
+            width: 90%;
+        }
       
     }

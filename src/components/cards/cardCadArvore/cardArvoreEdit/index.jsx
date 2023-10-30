@@ -269,17 +269,17 @@ const enviarForm = async (evt) => {
 
             <Row>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Taxa padrão" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="Taxa padrão" className={Style.Labels}>
                     <Form.Control placeholder="Taxa padrão" Value={data.permanentCarbonTax} onChange={onChangePermanentCarbonTax} />
                 </FloatingLabel>
                 </Col>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Período" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="Período" className={Style.Labels}>
                     <Form.Control placeholder="Período" Value={data.carbonOffsetPeriod} onChange={onChangeCarbonOffsetPeriod} />
                 </FloatingLabel>
                 </Col>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Taxa anual" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="Taxa anual" className={Style.Labels}>
                     <Form.Control placeholder="Taxa anual" Value={data.annualCarbonOffset} onChange={onChangeAnnualCarbonOffset} />
                 </FloatingLabel>
                 </Col>
@@ -308,17 +308,17 @@ const enviarForm = async (evt) => {
     <br/>
             <Row>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Vida média" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="Vida média" className={Style.Labels}>
                     <Form.Control placeholder="Vida média" Value={data.productionPeriod} onChange={onChangeProductionPeriod} />
                 </FloatingLabel>
                 </Col>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Altura" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="Altura" className={Style.Labels}>
                     <Form.Control placeholder="Altura " Value={data.treeHeight} onChange={onChangeTreeHeight} />
                 </FloatingLabel>
                 </Col>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Diâmetro" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="Diâmetro" className={Style.Labels}>
                     <Form.Control placeholder="Diâmetro" Value={data.treeDiameter} onChange={onChangeTreeDiameter}/>
                 </FloatingLabel>
                 </Col>
@@ -399,12 +399,12 @@ id="formHorizontalRadios2"
             <br/>
             <Row>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Período de produção" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="Período de produção" className={Style.Labels}>
                 <Form.Control placeholder="Período de produção" Value={data.productionPeriod} onChange={onChangeProductionPeriod} />
                 </FloatingLabel>
                 </Col>
                 <Col>
-                <FloatingLabel controlId="floatingInput" label="Tempo de colheita" className="mb-3">
+                <FloatingLabel controlId="floatingInput" label="Tempo de colheita" className={Style.Labels}>
                 <Form.Control placeholder="Tempo de colheita" Value={data.harvestReplace} onChange={onChangeHarvestReplace} />
                 </FloatingLabel>
                 </Col>
@@ -413,7 +413,7 @@ id="formHorizontalRadios2"
 <br/>
                 <Row>
                 <Col>
-                <Form.Group controlId="formFile" className="mb-3">
+                <Form.Group controlId="formFile" className={Style.Labels}>
                     <Form.Control type="file" className={Style.Preco} Value={data.img} onChange={onChangeImg}/>
                 </Form.Group>
                 <Form.Control placeholder="Preço" className={Style.Preco} Value={data.price} onChange={onChangePrice}/>
@@ -421,7 +421,7 @@ id="formHorizontalRadios2"
              
                 </Row>
             <br/>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <Form.Group className={Style.Labels} controlId="exampleForm.ControlTextarea1">
                    
                     <Form.Control as="textarea" rows={3}  placeholder='Descrição' Value={data.description} onChange={onChangeDescription}/>
                 </Form.Group>
