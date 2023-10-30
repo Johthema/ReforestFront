@@ -46,7 +46,7 @@ const responsive = {
   0: { items: 1 },
   568: { items: 2 },
   1024: { items: 3 },
-};
+}; 
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 // const stripePromise=  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
@@ -116,8 +116,8 @@ export default function Plantar() {
 
     const responseUser = await fetch(URL_API_Usuario+"/"+localStorage.getItem("idUs")) //por padrão o fetch ja utiliza o GET
         const dadosUsuario = await responseUser.json()
-        setDadosUsuario(dadosUsuario.user.name)
-        setDadosUsuarioEndereco(dadosUsuario.user.creationData)
+        setDadosUsuario(dadosUsuario.name)
+        setDadosUsuarioEndereco(dadosUsuario.creationData)
         console.log("O conteudo: ", dadosUsuario);
         
        
