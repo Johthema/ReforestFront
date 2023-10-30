@@ -61,6 +61,14 @@
     .barraCabecalho .legendaCabecalho{
         font-size: 1.4rem;
     }
+    .divFundoPlantar .Coluna1{
+        width: 100%;
+        height:100%;
+        margin: auto;
+    }
+    .PassosTitulo{
+        font-size: 1.09rem;
+    }
     }
 
 .migalhas{
@@ -563,7 +571,7 @@ color: #55ACEE
 }
 .PassosTitulo{
     display: flex;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 /*Cards quantidade*/
