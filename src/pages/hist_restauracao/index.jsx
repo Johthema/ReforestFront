@@ -23,6 +23,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Modal from 'react-bootstrap/Modal';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
+const URL_API_LUGAR = process.env.NEXT_PUBLIC_API_URL+"plantingPlace"
 
 export default function Hist_restauracao(){
     //variaveis do sistema
@@ -37,7 +38,14 @@ export default function Hist_restauracao(){
 
         //variáveis de filtros
         const [initialRepos, setInitialRepo] = useState([]);
+        
         const [repos, setRepo] = useState([]);
+        const [reposArv, setReposArv] = useState([]);
+        const [reposLoc, setReposLoc] = useState([]);
+        const [reposCat, setReposCat] = useState([]);
+        const [reposRes, setReposRes] = useState([]);
+
+
         const [tipo, setTipo] = useState('')
         const [ordenar, setOrdenar] = useState('recente')
         const [nome, setUsuarioNome] = useState('');
@@ -60,19 +68,23 @@ export default function Hist_restauracao(){
        
 
         const handleShowEdit = (idElemento, nome) =>{
-            // console.log("o id a passar: ", idUser)
-            // console.log("a categoria a passar: ", categ)
-            setIdUsuario(idElemento)
-            setShowPermissao(true);
-            setUsuarioNome(nome)
-            // setDadosEditar([idElemento, categ]);
+            
+            if (idElemento == 1){
+              setIdUsuario(idElemento)
+              setShowPermissao(true);
+              setUsuarioNome(nome)
+            }
+            if (idElemento == 2){
+             
+              setShowPermissao(true);
+              // setUsuarioNome(nome)
+            }
             
           }
 
 
       //-------------------------Paginação inicio
       const paginacao = (qtd) => {
-        // setPageLimit(qtd) 
         setPageQtd(qtd)
         setLoading(true)
         setReloadCount(prevCount => prevCount + 1);
@@ -98,11 +110,20 @@ export default function Hist_restauracao(){
           try {
             setLoading(true)
             // console.log("o tipo de usuario é: ",tipo)
+            //Request para usuario
             const response = await fetch(URL_API+"?page="+pageQtd+"&limit="+pageLimit+"&search="+busca+"&role="+tipo+"&isDeleted=true")
             const dados = await response.json();
-        //   setInitialRepo(dados);
-          setRepo(dados);
-       setLoading(false)
+
+            setRepo(dados);
+            setLoading(false)
+
+             //Request para lugar
+             const responseArvore = await fetch(URL_API_LUGAR+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
+             const dadosArvores = await responseArvore.json();
+ 
+             setReposLoc(dadosArvores);
+             console.log("A lista de arvores: ", dadosArvores)
+             setLoading(false)
          
           } catch (error) {
             console.log(error)
@@ -136,15 +157,11 @@ function opcao(elemento){
     }
 }
 
-// function Restaurar(){
-
-// }
 
 const [show, setShow] = useState(true);
 
 const Restaurar = async (evt) => {
     
-    // evt.preventDefault()
     try{
     setLoading(true)
    
@@ -155,14 +172,13 @@ const Restaurar = async (evt) => {
             'Content-type': 'application/json'
           },
     
-        //   body: JSON.stringify({ name, surname, email, phone, password, person }),
         })
         setLoading(false)
         setSuccess(true)
         setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
       
-    
+       
   } catch(err){
     console.log("O erro retornado: ",err)
     setLoading(false)
@@ -176,14 +192,6 @@ const Restaurar = async (evt) => {
 
 const onChangeBusca = (evt) => {
     setBuscaTexto(evt.target.value)
-    // setBusca(buscaTexto) 
-    // if (!evt.value ) {
-    //     setRepo(initialRepos)
-    //     setTipo('todos')
-    //     setBuscaTexto('')
-    //     setReloadCount(prevCount => prevCount + 1);
-    //     return;
-    //   }
     
   }
 
@@ -422,18 +430,25 @@ const onChangeBusca = (evt) => {
 
           </Container>
         </Navbar>
-                        <div className={Style.divUsuarios}>
-                       
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Anona Shirimoia</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
+                        
+                         {reposLoc.map((repo2,index) => (
+                            <>
+                            <div className={Style.divUsuarios}>
+                            
+                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                <div className={Style.divDadosUsuario}>
+                                    <h5><span className={Style.itemSpan}><b>Nome:</b></span> {repo2.name}</h5>
+                                    <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo2.deletedAt}</h5>
+                                </div>
+                                <div className={Style.divDadosUsuario}>
+                                    <Button className={Style.BotaoRest} onClick={()=>handleShowEdit(repo2._id, repo2.name)}>Restaurar</Button>
+                                </div>
+                                
                             </div>
                             
-                        </div>
+
+                            </>
+                          ))}
                        
                       
                         <div className={Style.divPaginacao}>
@@ -709,7 +724,7 @@ const onChangeBusca = (evt) => {
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
             <h2 className={Style.tituloDeletar}>Restauração.</h2>
-            <h5 className={Style.tituloDelet}>{nome}</h5>
+            {/* <h5 className={Style.tituloDelet}>{nome}</h5> */}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
