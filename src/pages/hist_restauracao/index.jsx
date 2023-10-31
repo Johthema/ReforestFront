@@ -205,8 +205,8 @@ export default function Hist_restauracao() {
     try {
       setLoading(true)
 
-      if(opcaoElemento === 1){
-        const response = await fetch(URL_API + "/" + evt+ {
+      if(opcaoElemento == 1){
+        const response = await fetch(URL_API + "/" + evt, {
           method: 'PATCH',
           headers: {
             Accept: 'application/json',
@@ -219,8 +219,8 @@ export default function Hist_restauracao() {
         setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
         
-      } else if(opcaoElemento === 2){
-        const response = await fetch(URL_API_ARVORE + "/" + evt+ {
+      } else if(opcaoElemento == 2){
+        const response = await fetch(URL_API_ARVORE + "/" + evt, {
           method: 'PATCH',
           headers: {
             Accept: 'application/json',
