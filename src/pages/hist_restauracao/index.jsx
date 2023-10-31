@@ -23,8 +23,8 @@ import Spinner from 'react-bootstrap/Spinner';
 import Modal from 'react-bootstrap/Modal';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
-const URL_API_LUGAR = process.env.NEXT_PUBLIC_API_URL+"plantingPlace"
 const URL_API_ARVORE = process.env.NEXT_PUBLIC_API_URL+"tree"
+const URL_API_LUGAR = process.env.NEXT_PUBLIC_API_URL+"plantingPlace"
 const URL_API_CATEGORIA = process.env.NEXT_PUBLIC_API_URL+"category"
 const URL_API_PAPEL = process.env.NEXT_PUBLIC_API_URL+"role"
 
@@ -133,6 +133,13 @@ export default function Hist_restauracao(){
  
              setReposLoc(dadosLugar);
              setLoading(false)
+
+              //Request para categoria
+              const responseCat = await fetch(URL_API_CATEGORIA+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
+              const dadosCategoria = await responseCat.json();
+  
+              setReposCat(dadosCategoria);
+              setLoading(false)
          
           } catch (error) {
             console.log(error)
@@ -608,18 +615,22 @@ const onChangeBusca = (evt) => {
 
           </Container>
         </Navbar>
-                            <div className={Style.divUsuarios}>
-                           
-                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                                <div className={Style.divDadosUsuario}>
-                                    <h5>Nome: Frutifera</h5>
-                                    <h5>Data de exclusão: 15/10/2023</h5>
-                                </div>
-                                <div className={Style.divDadosUsuario}>
-                                    <Button className={Style.BotaoRest}>Restaurar</Button>
-                                </div>
-                                
-                            </div>
+                            {reposCat.map((repo4,index) => (
+                              <>
+                              <div className={Style.divUsuarios}>
+                              
+                                  <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                  <div className={Style.divDadosUsuario}>
+                                      <h5><span className={Style.itemSpan}><b>Nome:</b></span> {repo4.name}</h5>
+                                      <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo4.deletedAt}</h5>
+                                  </div>
+                                  <div className={Style.divDadosUsuario}>
+                                      <Button className={Style.BotaoRest} onClick={()=>handleShowEdit(repo4._id, repo4.name)}>Restaurar</Button>
+                                  </div>
+                                  
+                              </div>
+                            </>
+                          ))}
                            
                            
                             <div className={Style.divPaginacao}>
