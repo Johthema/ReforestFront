@@ -369,7 +369,7 @@ export default function Hist_restauracao() {
                     </>
                   ))}
 
-                  {reposCat == '' &&
+                  {repos == '' &&
                     <div className={Style.divSemItensDeletados}>
                       <h4>Não existe itens deletados para mostrar</h4>
                     </div>
@@ -737,7 +737,7 @@ export default function Hist_restauracao() {
                       <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
                       <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
                     </Pagination>
-                  </div>
+                  </div>  
 
 
                 </Tab.Pane>
