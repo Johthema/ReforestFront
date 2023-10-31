@@ -195,6 +195,13 @@
     color: #459543
 }
 
+.divSemItensDeletados{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    color: #717171;
+}
+
 @media (max-width: 967px) {
     .divUsuarios{
         /* background-color: aquamarine; */
@@ -207,7 +214,6 @@
         background-image: linear-gradient(to right,#55acf0b3 1%, rgb(237, 238, 238) 50%  );
         border-radius: 10px 0px 0px 10px;
         margin-bottom: 10px;
-    
     }
     .containerTab{
         width: 100%;

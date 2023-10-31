@@ -720,6 +720,12 @@ const onChangeBusca = (evt) => {
                               </div>
                               </>
                             ))}
+                            {reposPap == '' &&
+                            <div className={Style.divSemItensDeletados}>
+                              <h4>Não existe itens deletados para mostrar</h4>
+                            </div>
+                            
+                            }
                             
                            
                             <div className={Style.divPaginacao}>
