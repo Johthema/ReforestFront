@@ -44,7 +44,7 @@ export default function CadastrarLocal() {
   const [address, setAddress] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState('BR');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [hectare, setHectare] = useState('');
@@ -81,7 +81,7 @@ export default function CadastrarLocal() {
   const [categori, setCategori] = useState('');
   const [dadosCategoria, setDadosCat] = useState([])
 
-
+  
   const [modalShow, setModalShow] = useState(false);
 
 
@@ -709,7 +709,7 @@ export default function CadastrarLocal() {
                      {country.name.common} - {country.cca2}
                       </option>  */}
 
-                  <Form.Select onClick={(e) => onChangeCountry(e.target.value)}>
+                  <Form.Select onClick={(e) => onChangeCountry(e.target.value)} value={country}>
                     {countries.map((country, i = index) => (
                       // <option key={item._id} value={item._id}>{item.name}</option>
                       <option key={country.cca2} value={country.cca2}>
