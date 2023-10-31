@@ -24,6 +24,9 @@ import Modal from 'react-bootstrap/Modal';
 
 const URL_API = process.env.NEXT_PUBLIC_API_URL+"user";
 const URL_API_LUGAR = process.env.NEXT_PUBLIC_API_URL+"plantingPlace"
+const URL_API_ARVORE = process.env.NEXT_PUBLIC_API_URL+"tree"
+const URL_API_CATEGORIA = process.env.NEXT_PUBLIC_API_URL+"category"
+const URL_API_PAPEL = process.env.NEXT_PUBLIC_API_URL+"role"
 
 export default function Hist_restauracao(){
     //variaveis do sistema
@@ -117,12 +120,18 @@ export default function Hist_restauracao(){
             setRepo(dados);
             setLoading(false)
 
-             //Request para lugar
-             const responseArvore = await fetch(URL_API_LUGAR+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
+             //Request para arvores
+             const responseArvore = await fetch(URL_API_ARVORE+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
              const dadosArvores = await responseArvore.json();
  
-             setReposLoc(dadosArvores);
-             console.log("A lista de arvores: ", dadosArvores)
+             setReposArv(dadosArvores);
+             setLoading(false)
+
+             //Request para lugar
+             const responseLugar = await fetch(URL_API_LUGAR+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
+             const dadosLugar = await responseLugar.json();
+ 
+             setReposLoc(dadosLugar);
              setLoading(false)
          
           } catch (error) {
@@ -431,7 +440,7 @@ const onChangeBusca = (evt) => {
           </Container>
         </Navbar>
                         
-                         {reposLoc.map((repo2,index) => (
+                         {reposArv.map((repo2,index) => (
                             <>
                             <div className={Style.divUsuarios}>
                             
@@ -515,18 +524,24 @@ const onChangeBusca = (evt) => {
 
           </Container>
         </Navbar>
-                        <div className={Style.divUsuarios}>
-                       
-                            <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                            <div className={Style.divDadosUsuario}>
-                                <h5>Nome: Lugar nenhum</h5>
-                                <h5>Data de exclusão: 15/10/2023</h5>
-                            </div>
-                            <div className={Style.divDadosUsuario}>
-                                <Button className={Style.BotaoRest}>Restaurar</Button>
+        {reposLoc.map((repo3,index) => (
+                            <>
+                            <div className={Style.divUsuarios}>
+                            
+                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                <div className={Style.divDadosUsuario}>
+                                    <h5><span className={Style.itemSpan}><b>Nome:</b></span> {repo3.name}</h5>
+                                    <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo3.deletedAt}</h5>
+                                </div>
+                                <div className={Style.divDadosUsuario}>
+                                    <Button className={Style.BotaoRest} onClick={()=>handleShowEdit(repo3._id, repo3.name)}>Restaurar</Button>
+                                </div>
+                                
                             </div>
                             
-                        </div>
+
+                            </>
+                          ))}
                       
                         
                         <div className={Style.divPaginacao}>
