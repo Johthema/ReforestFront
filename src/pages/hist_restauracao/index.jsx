@@ -74,31 +74,10 @@ export default function Hist_restauracao() {
 
   const handleShowEdit = (idElemento, nome) => {
 
-    if (opcaoElemento == 1) {
-      setIdItem(idElemento)
+    setIdItem(idElemento)
       setShowPermissao(true);
       setItemNome(nome)
-    }
-    if (opcaoElemento == 2) {
-      setIdItem(idElemento)
-      setShowPermissao(true);
-      setItemNome(nome);
-    }
-    if (opcaoElemento == 3) {
-      setIdItem(idElemento)
-      setShowPermissao(true);
-      setItemNome(nome);
-    }
-    if (opcaoElemento == 4) {
-      setIdItem(idElemento)
-      setShowPermissao(true);
-      setItemNome(nome);
-    }
-    if (opcaoElemento == 5) {
-      setIdItem(idElemento)
-      setShowPermissao(true);
-      setItemNome(nome);
-    }
+
 
   }
 
@@ -205,6 +184,8 @@ export default function Hist_restauracao() {
     try {
       setLoading(true)
 
+      
+
       if(opcaoElemento == 1){
         const response = await fetch(URL_API + "/" + evt, {
           method: 'PATCH',
@@ -232,11 +213,47 @@ export default function Hist_restauracao() {
         setSuccess(true)
         setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
+      } else if(opcaoElemento == 3){
+        const response = await fetch(URL_API_LOCAIS + "/" + evt, {
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+  
+        })
+        setLoading(false)
+        setSuccess(true)
+        setShowPermissao(false)
+        setReloadCount(prevCount => prevCount + 1);
+      } else if(opcaoElemento == 4){
+        const response = await fetch(URL_API_CATEGORIA + "/" + evt, {
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+  
+        })
+        setLoading(false)
+        setSuccess(true)
+        setShowPermissao(false)
+        setReloadCount(prevCount => prevCount + 1);
+      } else if(opcaoElemento == 5){
+        const response = await fetch(URL_API_PAPEL + "/" + evt, {
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+  
+        })
+        setLoading(false)
+        setSuccess(true)
+        setShowPermissao(false)
+        setReloadCount(prevCount => prevCount + 1);
       }
-
-
-     
-
+      
 
     } catch (err) {
       console.log("O erro retornado: ", err)
