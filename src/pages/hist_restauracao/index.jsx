@@ -61,7 +61,7 @@ export default function Hist_restauracao() {
   const [opcaoElemento, setOpcaoElemento] = useState('1');
 
   //Variaveis restauração
-  const [idUsuario, setIdUsuario] = useState('');
+  const [idItem, setIdItem] = useState('');
   //Variaveis de modal
   const [showPermissao, setShowPermissao] = useState(false);
   const [dadosPermissao, setDadosPermissao] = useState([]);
@@ -75,23 +75,27 @@ export default function Hist_restauracao() {
   const handleShowEdit = (idElemento, nome) => {
 
     if (opcaoElemento == 1) {
-      setIdUsuario(idElemento)
+      setIdItem(idElemento)
       setShowPermissao(true);
       setItemNome(nome)
     }
     if (opcaoElemento == 2) {
+      setIdItem(idElemento)
       setShowPermissao(true);
       setItemNome(nome);
     }
     if (opcaoElemento == 3) {
+      setIdItem(idElemento)
       setShowPermissao(true);
       setItemNome(nome);
     }
     if (opcaoElemento == 4) {
+      setIdItem(idElemento)
       setShowPermissao(true);
       setItemNome(nome);
     }
     if (opcaoElemento == 5) {
+      setIdItem(idElemento)
       setShowPermissao(true);
       setItemNome(nome);
     }
@@ -201,18 +205,37 @@ export default function Hist_restauracao() {
     try {
       setLoading(true)
 
-      const response = await fetch(URL_API + "/" + evt, {
-        method: 'PATCH',
-        headers: {
-          Accept: 'application/json',
-          'Content-type': 'application/json'
-        },
+      if(opcaoElemento === 1){
+        const response = await fetch(URL_API + "/" + evt+ {
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+  
+        })
+        setLoading(false)
+        setSuccess(true)
+        setShowPermissao(false)
+        setReloadCount(prevCount => prevCount + 1);
+        
+      } else if(opcaoElemento === 2){
+        const response = await fetch(URL_API_ARVORE + "/" + evt+ {
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+  
+        })
+        setLoading(false)
+        setSuccess(true)
+        setShowPermissao(false)
+        setReloadCount(prevCount => prevCount + 1);
+      }
 
-      })
-      setLoading(false)
-      setSuccess(true)
-      setShowPermissao(false)
-      setReloadCount(prevCount => prevCount + 1);
+
+     
 
 
     } catch (err) {
@@ -777,7 +800,7 @@ export default function Hist_restauracao() {
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" onClick={() => Restaurar(idUsuario)} >
+          <Button variant="primary" onClick={() => Restaurar(idItem)} >
             Sim, Restaurar
           </Button>
         </Modal.Footer>
