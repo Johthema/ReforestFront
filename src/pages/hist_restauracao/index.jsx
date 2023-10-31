@@ -27,7 +27,7 @@ const URL_API_ARVORE = process.env.NEXT_PUBLIC_API_URL+"tree"
 const URL_API_LUGAR = process.env.NEXT_PUBLIC_API_URL+"plantingPlace"
 const URL_API_CATEGORIA = process.env.NEXT_PUBLIC_API_URL+"category"
 const URL_API_PAPEL = process.env.NEXT_PUBLIC_API_URL+"role"
-
+ 
 export default function Hist_restauracao(){
     //variaveis do sistema
     const [loading, setLoading] = useState(false);
@@ -46,7 +46,7 @@ export default function Hist_restauracao(){
         const [reposArv, setReposArv] = useState([]);
         const [reposLoc, setReposLoc] = useState([]);
         const [reposCat, setReposCat] = useState([]);
-        const [reposRes, setReposRes] = useState([]);
+        const [reposPap, setReposPap] = useState([]);
 
 
         const [tipo, setTipo] = useState('')
@@ -120,26 +120,33 @@ export default function Hist_restauracao(){
             setRepo(dados);
             setLoading(false)
 
-             //Request para arvores
-             const responseArvore = await fetch(URL_API_ARVORE+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
-             const dadosArvores = await responseArvore.json();
- 
-             setReposArv(dadosArvores);
-             setLoading(false)
+            //Request para arvores
+            const responseArvore = await fetch(URL_API_ARVORE+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
+            const dadosArvores = await responseArvore.json();
 
-             //Request para lugar
-             const responseLugar = await fetch(URL_API_LUGAR+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
-             const dadosLugar = await responseLugar.json();
- 
-             setReposLoc(dadosLugar);
-             setLoading(false)
+            setReposArv(dadosArvores);
+            setLoading(false)
 
-              //Request para categoria
-              const responseCat = await fetch(URL_API_CATEGORIA+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
-              const dadosCategoria = await responseCat.json();
-  
-              setReposCat(dadosCategoria);
-              setLoading(false)
+            //Request para lugar
+            const responseLugar = await fetch(URL_API_LUGAR+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
+            const dadosLugar = await responseLugar.json();
+
+            setReposLoc(dadosLugar);
+            setLoading(false)
+
+            //Request para categoria
+            const responseCat = await fetch(URL_API_CATEGORIA+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
+            const dadosCategoria = await responseCat.json();
+
+            setReposCat(dadosCategoria);
+            setLoading(false)
+
+            //Request para categoria
+            const responsePapel = await fetch(URL_API_PAPEL+"?page="+pageQtd+"&limit="+pageLimit+"&isDeleted=true")
+            const dadosPapel = await responsePapel.json();
+
+            setReposPap(dadosPapel);
+            setLoading(false)
          
           } catch (error) {
             console.log(error)
@@ -531,7 +538,7 @@ const onChangeBusca = (evt) => {
 
           </Container>
         </Navbar>
-        {reposLoc.map((repo3,index) => (
+                          {reposLoc.map((repo3,index) => (
                             <>
                             <div className={Style.divUsuarios}>
                             
@@ -630,7 +637,7 @@ const onChangeBusca = (evt) => {
                                   
                               </div>
                             </>
-                          ))}
+                            ))}
                            
                            
                             <div className={Style.divPaginacao}>
@@ -697,18 +704,22 @@ const onChangeBusca = (evt) => {
 
           </Container>
         </Navbar>
-                            <div className={Style.divUsuarios}>
-                           
-                                <Image src={ImgUser} className={Style.imgArvore} alt="" />
-                                <div className={Style.divDadosUsuario}>
-                                    <h5>Nome: Administrador</h5>
-                                    <h5>Data de exclusão: 15/10/2023</h5>
-                                </div>
-                                <div className={Style.divDadosUsuario}>
-                                    <Button className={Style.BotaoRest}>Restaurar</Button>
-                                </div>
-                                
-                            </div>
+                            {reposPap.map((repo5,index) => (
+                              <>
+                              <div className={Style.divUsuarios}>
+                              
+                                  <Image src={ImgUser} className={Style.imgArvore} alt="" />
+                                  <div className={Style.divDadosUsuario}>
+                                      <h5><span className={Style.itemSpan}><b>Nome:</b></span> {repo5.name}</h5>
+                                      <h5><span className={Style.itemSpan}><b>Data de exclusão:</b></span> {repo5.deletedAt}</h5>
+                                  </div>
+                                  <div className={Style.divDadosUsuario}>
+                                      <Button className={Style.BotaoRest} onClick={()=>handleShowEdit(repo5._id, repo5.name)}>Restaurar</Button>
+                                  </div>
+                                  
+                              </div>
+                              </>
+                            ))}
                             
                            
                             <div className={Style.divPaginacao}>
@@ -737,13 +748,8 @@ const onChangeBusca = (evt) => {
             </Row>
             </Tab.Container>
 
-
-
-        </div>
-        
+        </div>        
         <Footer/>
-
-
 
       {/* Modal de exclusão de usuario */}
       <Modal show={showPermissao} onHide={handleClose}>

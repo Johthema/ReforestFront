@@ -154,8 +154,8 @@ return false
 
       if (!data)
         throw 'problema na requisição' //Aqui será tratado o erro de requisição. Porém é melhor tratar pelo status(200, 400, 500)
-      setData(data.roles)
-
+      // setData(data.roles)
+      setData(data)
       setNome(data.name)
       //Iniciando a estrutura da requisição
 
