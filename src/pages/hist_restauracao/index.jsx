@@ -196,10 +196,11 @@ export default function Hist_restauracao() {
   
         })
         setLoading(false)
-        setSuccess(true)
+        
         setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
-        
+        setCaminho('/usuarios/listaUsuario')
+        setSuccess(true)
       } else if(opcaoElemento == 2){
         const response = await fetch(URL_API_ARVORE + "/" + evt, {
           method: 'PATCH',
@@ -210,9 +211,11 @@ export default function Hist_restauracao() {
   
         })
         setLoading(false)
-        setSuccess(true)
+       
         setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
+        setCaminho('/arvores/listarArvores')
+        setSuccess(true)
       } else if(opcaoElemento == 3){
         const response = await fetch(URL_API_LOCAIS + "/" + evt, {
           method: 'PATCH',
@@ -223,9 +226,10 @@ export default function Hist_restauracao() {
   
         })
         setLoading(false)
-        setSuccess(true)
         setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
+        setCaminho('/locaisPlantacao/listaLocais')
+        setSuccess(true)
       } else if(opcaoElemento == 4){
         const response = await fetch(URL_API_CATEGORIA + "/" + evt, {
           method: 'PATCH',
@@ -236,9 +240,10 @@ export default function Hist_restauracao() {
   
         })
         setLoading(false)
-        setSuccess(true)
         setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
+        setCaminho('/configuracao')
+        setSuccess(true)
       } else if(opcaoElemento == 5){
         const response = await fetch(URL_API_PAPEL + "/" + evt, {
           method: 'PATCH',
@@ -249,9 +254,10 @@ export default function Hist_restauracao() {
   
         })
         setLoading(false)
-        setSuccess(true)
         setShowPermissao(false)
         setReloadCount(prevCount => prevCount + 1);
+        setCaminho('/configuracao')
+        setSuccess(true)
       }
       
 
