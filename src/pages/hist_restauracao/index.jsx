@@ -53,7 +53,7 @@ export default function Hist_restauracao() {
 
   const [tipo, setTipo] = useState('')
   const [ordenar, setOrdenar] = useState('recente')
-  const [nome, setUsuarioNome] = useState('');
+  const [itemNome, setItemNome] = useState('');
   const [reloadCount, setReloadCount] = useState(0);
   const [busca, setBusca] = useState('')
   const [buscaTexto, setBuscaTexto] = useState('')
@@ -74,15 +74,26 @@ export default function Hist_restauracao() {
 
   const handleShowEdit = (idElemento, nome) => {
 
-    if (idElemento == 1) {
+    if (opcaoElemento == 1) {
       setIdUsuario(idElemento)
       setShowPermissao(true);
-      setUsuarioNome(nome)
+      setItemNome(nome)
     }
-    if (idElemento == 2) {
-
+    if (opcaoElemento == 2) {
       setShowPermissao(true);
-      // setUsuarioNome(nome)
+      setItemNome(nome);
+    }
+    if (opcaoElemento == 3) {
+      setShowPermissao(true);
+      setItemNome(nome);
+    }
+    if (opcaoElemento == 4) {
+      setShowPermissao(true);
+      setItemNome(nome);
+    }
+    if (opcaoElemento == 5) {
+      setShowPermissao(true);
+      setItemNome(nome);
     }
 
   }
@@ -755,7 +766,7 @@ export default function Hist_restauracao() {
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
             <h2 className={Style.tituloDeletar}>Restauração.</h2>
-            {/* <h5 className={Style.tituloDelet}>{nome}</h5> */}
+            <h5 className={Style.tituloDelet}>{itemNome}</h5>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
