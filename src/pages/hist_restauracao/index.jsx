@@ -56,6 +56,10 @@ export default function Hist_restauracao() {
   const [itemNome, setItemNome] = useState('');
   const [reloadCount, setReloadCount] = useState(0);
   const [busca, setBusca] = useState('')
+  const [buscaArvore, setBuscaArvore] = useState('')
+  const [buscaCategoria, setBuscaCategoria] = useState('')
+  const [buscaLugar, setBuscaLugar] = useState('')
+  const [buscaPapel, setBuscaPapel] = useState('')
   const [buscaTexto, setBuscaTexto] = useState('')
 
   const [opcaoElemento, setOpcaoElemento] = useState('1');
@@ -117,28 +121,28 @@ export default function Hist_restauracao() {
         setLoading(false)
 
         //Request para arvores
-        const responseArvore = await fetch(URL_API_ARVORE + "?page=" + pageQtd + "&limit=" + pageLimit + "&isDeleted=true")
+        const responseArvore = await fetch(URL_API_ARVORE +"?search=" + buscaArvore + "&page=" + pageQtd + "&limit=" + pageLimit + "&isDeleted=true")
         const dadosArvores = await responseArvore.json();
 
         setReposArv(dadosArvores);
         setLoading(false)
 
         //Request para lugar
-        const responseLugar = await fetch(URL_API_LUGAR + "?page=" + pageQtd + "&limit=" + pageLimit + "&isDeleted=true")
+        const responseLugar = await fetch(URL_API_LUGAR + "?search=" + buscaLugar +"&page=" + pageQtd + "&limit=" + pageLimit + "&isDeleted=true")
         const dadosLugar = await responseLugar.json();
 
         setReposLoc(dadosLugar);
         setLoading(false)
 
         //Request para categoria
-        const responseCat = await fetch(URL_API_CATEGORIA + "?page=" + pageQtd + "&limit=" + pageLimit + "&isDeleted=true")
+        const responseCat = await fetch(URL_API_CATEGORIA + "?search=" + buscaCategoria +"&page=" + pageQtd + "&limit=" + pageLimit + "&isDeleted=true")
         const dadosCategoria = await responseCat.json();
 
         setReposCat(dadosCategoria);
         setLoading(false)
 
         //Request para categoria
-        const responsePapel = await fetch(URL_API_PAPEL + "?page=" + pageQtd + "&limit=" + pageLimit + "&isDeleted=true")
+        const responsePapel = await fetch(URL_API_PAPEL +"?search=" + buscaPapel + "&page=" + pageQtd + "&limit=" + pageLimit + "&isDeleted=true")
         const dadosPapel = await responsePapel.json();
 
         setReposPap(dadosPapel);
@@ -274,23 +278,57 @@ export default function Hist_restauracao() {
 
   const onChangeBusca = (evt) => {
     setBuscaTexto(evt.target.value)
+    
 
   }
 
   const handleCampo1KeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      setBusca(buscaTexto)
+      
+      if(opcaoElemento == 1){
+        setBusca(buscaTexto)
+        setReloadCount(prevCount => prevCount + 1);
+      } else if(opcaoElemento == 2){
+        setBuscaArvore(buscaTexto)
+        setReloadCount(prevCount => prevCount + 1);
+      } else if(opcaoElemento == 3){
+        setBuscaCategoria(buscaTexto)
+        setReloadCount(prevCount => prevCount + 1);
+      } else if(opcaoElemento == 4){
+        setBuscaLugar(buscaTexto)
+        setReloadCount(prevCount => prevCount + 1);
+      } else if(opcaoElemento == 5){
+        setBuscaPapel(buscaTexto)
+        setReloadCount(prevCount => prevCount + 1);
+      } 
 
-      setReloadCount(prevCount => prevCount + 1);
+      
     }
   };
 
 
   const onChangeRoles = (role) => {
     setTipo(role)
-    // setLoading(true)
-    setReloadCount(prevCount => prevCount + 1);
+    if(opcaoElemento == 1){
+      setBusca("")
+      setReloadCount(prevCount => prevCount + 1);
+    } else if(opcaoElemento == 2){
+      setBuscaArvore("")
+      setReloadCount(prevCount => prevCount + 1);
+    } else if(opcaoElemento == 3){
+      setBuscaCategoria("")
+      setReloadCount(prevCount => prevCount + 1);
+    } else if(opcaoElemento == 4){
+      setBuscaLugar("")
+      setReloadCount(prevCount => prevCount + 1);
+    } else if(opcaoElemento == 5){
+      setBuscaPapel("")
+      setReloadCount(prevCount => prevCount + 1);
+    } 
+    // setBusca("")
+  
+    // setReloadCount(prevCount => prevCount + 1);
   }
 
   const onChangeOrdem = (ordem) => {
@@ -390,7 +428,7 @@ export default function Hist_restauracao() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu className={Style.OpDropNotifi}>
-                          <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Todos</Dropdown.Item>
                           <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
                           <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
 
@@ -475,9 +513,9 @@ export default function Hist_restauracao() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu className={Style.OpDropNotifi}>
-                          <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
-                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
-                          <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Todos</Dropdown.Item>
+                          {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
 
                         </Dropdown.Menu>
                       </Dropdown>
@@ -561,9 +599,9 @@ export default function Hist_restauracao() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu className={Style.OpDropNotifi}>
-                          <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
-                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
-                          <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Todos</Dropdown.Item>
+                          {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
 
                         </Dropdown.Menu>
                       </Dropdown>
@@ -648,9 +686,9 @@ export default function Hist_restauracao() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu className={Style.OpDropNotifi}>
-                          <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
-                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
-                          <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Todos</Dropdown.Item>
+                          {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
 
                         </Dropdown.Menu>
                       </Dropdown>
@@ -735,9 +773,9 @@ export default function Hist_restauracao() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu className={Style.OpDropNotifi}>
-                          <Dropdown.Item onClick={() => onChangeRoles("")}>Todos</Dropdown.Item>
-                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
-                          <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("user")}>Todos</Dropdown.Item>
+                          {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                          <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
 
                         </Dropdown.Menu>
                       </Dropdown>
