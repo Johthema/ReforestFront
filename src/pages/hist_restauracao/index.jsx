@@ -221,7 +221,7 @@ export default function Hist_restauracao() {
         setCaminho('/arvores/listarArvores')
         setSuccess(true)
       } else if(opcaoElemento == 3){
-        const response = await fetch(URL_API_LOCAIS + "/" + evt, {
+        const response = await fetch(URL_API_LUGAR + "/" + evt, {
           method: 'PATCH',
           headers: {
             Accept: 'application/json',
@@ -293,10 +293,10 @@ export default function Hist_restauracao() {
         setBuscaArvore(buscaTexto)
         setReloadCount(prevCount => prevCount + 1);
       } else if(opcaoElemento == 3){
-        setBuscaCategoria(buscaTexto)
+        setBuscaLugar(buscaTexto)
         setReloadCount(prevCount => prevCount + 1);
       } else if(opcaoElemento == 4){
-        setBuscaLugar(buscaTexto)
+        setBuscaCategoria(buscaTexto)
         setReloadCount(prevCount => prevCount + 1);
       } else if(opcaoElemento == 5){
         setBuscaPapel(buscaTexto)
@@ -317,10 +317,10 @@ export default function Hist_restauracao() {
       setBuscaArvore("")
       setReloadCount(prevCount => prevCount + 1);
     } else if(opcaoElemento == 3){
-      setBuscaCategoria("")
+      setBuscaLugar("")
       setReloadCount(prevCount => prevCount + 1);
     } else if(opcaoElemento == 4){
-      setBuscaLugar("")
+      setBuscaCategoria("")
       setReloadCount(prevCount => prevCount + 1);
     } else if(opcaoElemento == 5){
       setBuscaPapel("")
