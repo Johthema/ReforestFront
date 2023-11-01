@@ -291,7 +291,7 @@ export default function CadastrarLocal() {
 
 
 
-            <tbody>
+            <div>
               <div className={Style.divFundoModal}>
 
                 <Container>
@@ -417,7 +417,7 @@ export default function CadastrarLocal() {
                 
               </div>
 
-            </tbody>
+            </div>
 
           </div>
 
