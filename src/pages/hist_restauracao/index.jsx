@@ -51,7 +51,7 @@ export default function Hist_restauracao() {
   const [reposPap, setReposPap] = useState([]);
 
 
-  const [tipo, setTipo] = useState('')
+  const [tipo, setTipo] = useState('user')
   const [ordenar, setOrdenar] = useState('recente')
   const [itemNome, setItemNome] = useState('');
   const [reloadCount, setReloadCount] = useState(0);
