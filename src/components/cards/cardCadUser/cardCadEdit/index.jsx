@@ -220,7 +220,7 @@ export default function EditarUsuario({handleShowEdit}) {
         
           <Tab.Content>
             {handleShowEdit[1] == 'PF' &&
-            <Tab.Pane eventKey="first">
+            <Tab.Pane eventKey="first" >
             <Card >
                 <Card.Header>Dados Pessoa Física</Card.Header>
                 <Card.Body>

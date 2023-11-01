@@ -174,8 +174,8 @@ function LeftTabsExample() {
           </Nav>
         </Col>
         <Col sm={9} className={Style.ColunaSm9}>
-          <Tab.Content>
-            <Tab.Pane eventKey="first">
+          <Tab.Content >
+            <Tab.Pane eventKey="first" >
             <Card >
                 <Card.Header>Dados Pessoa Física</Card.Header>
                 <Card.Body>

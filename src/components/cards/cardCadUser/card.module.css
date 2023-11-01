@@ -9,6 +9,7 @@
 
 .ColunaSm9{
     width: 600px;
+    border-left: solid 1px #55acf0b3;
 }
 .ColunaSm3{
     display: none;
@@ -48,4 +49,9 @@
 .OpcaoCadEdit{
     display: none;
 
+}
+
+.bordaLateral{
+
+ border-left: solid 1px #000000;
 }
