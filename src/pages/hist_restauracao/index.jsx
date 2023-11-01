@@ -412,8 +412,8 @@ export default function Hist_restauracao() {
                     <Container>
                       <InputGroup className={Style.Busca}>
                         <Form.Control
-                          placeholder="Buscar por nome"
-                          aria-label="Buscar por nome"
+                          placeholder="Buscar por nome, email, telefone"
+                          aria-label="Buscar por nome, email, telefone"
                           aria-describedby="basic-addon2"
                           onChange={onChangeBusca}
                           onKeyPress={handleCampo1KeyPress}
