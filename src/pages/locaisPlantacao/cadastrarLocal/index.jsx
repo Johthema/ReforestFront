@@ -353,22 +353,25 @@ export default function CadastrarLocal() {
     setCountry(evt)
   }
   const onChangeLatitude = (evt) => {
-    setLatitude(evt.target.value)
+    const numericValue = evt.target.value.replace(/[^0-9]/g, '');
+    setLatitude(numericValue)
   }
   const onChangeLongitude = (evt) => {
-    setLongitude(evt.target.value)
+    const numericValue = evt.target.value.replace(/[^0-9]/g, '');
+    setLongitude(numericValue)
   }
   const onChangeTreesToBePlanted = (evt) => {
     if (evt.target.value === '' || (evt.target.value >= 0 && !isNaN(evt.target.value))) {
-
-      setTreesToBePlanted(evt.target.value)
+      const numericValue = evt.target.value.replace(/[^0-9]/g, '');
+      setTreesToBePlanted(numericValue)
     }
 
 
 
   }
   const onChangeHectare = (evt) => {
-    setHectare(evt.target.value)
+    const numericValue = evt.target.value.replace(/[^0-9]/g, '');
+    setHectare(numericValue)
   }
   const onChangePlantedTrees = (evt) => {
     if (evt.target.value === '' || (evt.target.value >= 0 && !isNaN(evt.target.value))) {
@@ -385,7 +388,8 @@ export default function CadastrarLocal() {
 
   }
   const onChangeLimitTrees = (evt) => {
-    setLimitTrees(evt.target.value)
+    const numericValue = evt.target.value.replace(/[^0-9]/g, '');
+    setLimitTrees(numericValue)
   }
   const onChangeIrrigation = (evt) => {
     console.log("irrigacao: ", evt.target.checked)
@@ -529,10 +533,10 @@ export default function CadastrarLocal() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupLocalizacao">
                 <FloatingLabel controlId="floatingInput" label="*latitude" className="mb-3">
-                  <Form.Control type="text" placeholder="*latitude" onChange={onChangeLatitude} ref={inputCampo2} />
+                  <Form.Control type="text" placeholder="*latitude" value={latitude} onChange={onChangeLatitude} ref={inputCampo2} />
                 </FloatingLabel>
                 <FloatingLabel controlId="floatingInput" label="*Longitude" className="mb-3">
-                  <Form.Control type="text" placeholder="*Longitude" onChange={onChangeLongitude} />
+                  <Form.Control type="text" placeholder="*Longitude" value={longitude} onChange={onChangeLongitude} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupEndereco">
@@ -575,12 +579,12 @@ export default function CadastrarLocal() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupHectare">
                 <FloatingLabel controlId="floatingInput" label="*Hectare" className="mb-3">
-                  <Form.Control type="text" placeholder="*Hectare" onChange={onChangeHectare} />
+                  <Form.Control type="text" placeholder="*Hectare" value={hectare} onChange={onChangeHectare} />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupLimite">
                 <FloatingLabel controlId="floatingInput" label="*Limite" className="mb-3">
-                  <Form.Control type="text" placeholder="*Limite" onChange={onChangeLimitTrees} />
+                  <Form.Control type="text" placeholder="*Limite" value={limitTrees} onChange={onChangeLimitTrees} />
                 </FloatingLabel>
               </Form.Group>
 
