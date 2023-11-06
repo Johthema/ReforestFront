@@ -311,20 +311,37 @@ export default function CadastrarLocal() {
     console.log("o endereco é: ", evt)
     setAddress(evt.target.value)
   }
+
+
+
   const onChangePostalCode = (evt) => {
     console.log("o vet: ", evt)
-    setPostalCode(evt.target.value)
+   
+    const numericValue = evt.target.value.replace(/[^0-9]/g, '');
+    setPostalCode(numericValue)
+    setCep(numericValue)
+    // setAddress(dadosEndereco.logradouro)
 
-    if (contador == 7) {
-      evt.preventDefault();
-      setCep(evt.target.value)
-      // setAddress(dadosEndereco.logradouro)
+    handleSearch(numericValue)
+    // if (!/^\d$/.test(evt.key) && evt.key !== 'Backspace' && evt.key !== 'Delete') {
+    //   evt.preventDefault();
+    //   setPostalCode(evt.target.value)
+    //   setCep(evt.target.value)
+    //   // setAddress(dadosEndereco.logradouro)
 
-      handleSearch(evt.target.value)
+    //   handleSearch(evt.target.value)
 
-      inputCampo2.current.focus(); // Foca no próximo campo de input
-    } else
-      setContador(contador + 1)
+    //  //inputCampo2.current.focus(); // Foca no próximo campo de input
+
+    //   // if (contador == 7) {
+    //   //   evt.preventDefault();
+       
+    //   // } else
+    //   //   setContador(contador + 1)
+    // }
+
+
+
 
     // setCep(evt.target.value)
     // handleSearch()
@@ -503,7 +520,11 @@ export default function CadastrarLocal() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupCdgPostal">
                 <FloatingLabel controlId="floatingInput" label="*Código postal" className="mb-3">
-                  <Form.Control type="text" placeholder="*Código postal" onChange={onChangePostalCode} maxLength={10} />
+                  <Form.Control type="text" placeholder="*Código postal" 
+                 
+                 
+                   value={postalCode}
+                   onChange={onChangePostalCode}  />
                 </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupLocalizacao">
