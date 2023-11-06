@@ -83,11 +83,43 @@ export default function CadastrarLocal() {
 
 
   const [modalShow, setModalShow] = useState(false);
+  const [showTarget, setShowTarget] = useState(true);
   const scrollTargetRef = useRef();
+ 
 
   const scrollToTarget = () => {
-    scrollTargetRef.current.scrollIntoView({ behavior: 'smooth' });
+    
+    const targetElement = document.getElementById('targetElement');
+    console.log("isto:", targetElement )
+    // setShowTarget(true);
+    // setReloadCount(prevCount => prevCount + 1);
+    
+
+    if (targetElement) {
+      // Rola a página até o elemento de destino
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+      
+      // Exibe o conteúdo após a rolagem
+      
+    }
+    
   };
+
+
+  // const scrollToTarget = () => {
+  //   setShowTarget(true);
+    
+  //   const valorShow = true
+  //   rolagemScrol(valorShow)
+    
+  // };
+
+  // function rolagemScrol(rolagem){
+  //   if(rolagem === true){
+  //     scrollTargetRef.current.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  // }
+
 
   useEffect(() => {
 
@@ -606,13 +638,13 @@ export default function CadastrarLocal() {
         </Card>
 
         {/* ------------------------------------Escolha de arvores------------------------------------- */}
+      
+        {showTarget && (
 
-
-
-        <div ref={scrollTargetRef}>
-
+        <div id="targetElement">
+       
           <div className={Style.divSubtituloModal}>
-            <h4>Selecione quais tipos de árvores deseja plantar nesta região</h4>
+            <h4 className={Style.SubtituloModal}>Selecione quais tipos de árvores deseja plantar nesta região</h4>
           </div>
 
           <div className={Style.divFundo}>
@@ -791,16 +823,15 @@ export default function CadastrarLocal() {
               </div>
 
             </div>
-
+        
           </div>
 
 
-          {/* <Arvores /> */}
 
         </div>
+        )}
 
-
-
+                    
 
 
 

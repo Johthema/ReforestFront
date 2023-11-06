@@ -54,14 +54,15 @@
 .Busca{
     width: 100%;
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
-
 .headerTabela{
     background-color: #2F2F2F;
-    width: 96%;
+    width: 80%;
     margin: auto;
     border-radius: 10px 10px 0px 0px;
+    height: 65px;
+ 
 } 
 
 .DropMENU{
@@ -164,6 +165,17 @@
 .divSubtituloModal{
     display: flex;
     justify-content: center;
+    background-color: #459443;
+    color: #fff;
+    flex-wrap: wrap;
+    height: 200px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.SubtituloModal{
+    font-size: 3rem;
+    display: flex;
+    margin: auto;
 }
 
 .imgArvore{
