@@ -83,7 +83,11 @@ export default function CadastrarLocal() {
 
   
   const [modalShow, setModalShow] = useState(false);
+  const scrollTargetRef = useRef();
 
+  const scrollToTarget = () => {
+    scrollTargetRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
    
@@ -130,8 +134,8 @@ export default function CadastrarLocal() {
     
   }, [reloadCount]);
 
-  const colec = MyVerticallyCenteredModal();
-  console.log("ta vindo: ", colec)
+  // const colec = MyVerticallyCenteredModal();
+  // console.log("ta vindo: ", colec)
 
   //-------------------------Paginação inicio
   const paginacao = (qtd) => {
@@ -157,7 +161,6 @@ export default function CadastrarLocal() {
   //  Filtro de busca
 
   //=====================================Modal escollha de árvores inicio==================================
-  function MyVerticallyCenteredModal(props) {
 
     // const [minhaLista, setMinhaLista] = useState([])
 
@@ -220,217 +223,11 @@ export default function CadastrarLocal() {
     console.log("o id coleção esta: ", trees)
     //e.target.value
 
-    return (
-      <Modal
-        {...props}
-        size="xl"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        className={Style.divModal}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Árvores disponíveis
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className={Style.divSubtituloModal}>
-            <h4>Selecione quais tipos de árvores deseja plantar nesta região</h4>
-          </div>
+    // return (
 
 
-
-
-          <div className={Style.divFundo}>
-
-            <Navbar className={Style.headerTabela}>
-              <Container>
-
-                <Form.Group className={Style.Busca}>
-                  <Form.Control
-                    type="text"
-                    placeholder="Buscar por nome"
-                    id="meuInput"
-                    onKeyPress={handleCampo1KeyPress}
-                  />
-
-                </Form.Group>
-
-
-                <Dropdown className={Style.DropMENU}>
-                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
-                    <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
-
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu className={Style.OpDropNotifi}>
-                    <Dropdown.Item onClick={() => onChangeTodos("todos")}>Todos</Dropdown.Item>
-                    <hr />
-                    {dadosCategoria.map((item, index) => (
-                      <Dropdown.Item key={index} onClick={() => onChangeFilterCategoria(item.name)}>{item.name}</Dropdown.Item>
-                    ))}
-                    {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
-                    <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
-
-                  </Dropdown.Menu>
-                </Dropdown>
-                {/* <Dropdown >
-                      <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
-                      <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
-                      
-                      </Dropdown.Toggle>
-
-                      <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
-                        <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
-                      </Dropdown.Menu>
-                </Dropdown> */}
-
-              </Container>
-            </Navbar>
-
-
-
-            <div>
-              <div className={Style.divFundoModal}>
-
-                <Container>
-                  <Row>
-                  <div className={Style.divPaginacao}>
-                  <Pagination>
-                    <Pagination.First onClick={() => paginacao(1)} />
-                    <Pagination.Prev onClick={() => paginaContador('sub')} />
-                    <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
-                    <Pagination.Ellipsis />
-
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
-               
-                    <Pagination.Ellipsis />
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
-                    <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
-                    <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
-                  </Pagination>
-                </div>
-                    <Col>
-
-
-
-
-<div className={Style.divItens1}>
-
-
-                      {repos.map((item, index) => (
-
-                        <Card className={Style.Card} key={item._id}>
-                          <Card.Header className={Style.HeaderCard0}>
-                            <div className={Style.HeaderCard}>
-
-                              {item.approved == true &&
-                                <h3 className={Style.StatusCard} >
-                                  Aprovado
-                                </h3>
-                              }
-                              {item.approved == false &&
-                                <h3 className={Style.StatusCard2} >
-                                  Reprovado
-                                </h3>
-                              }
-
-                              <div className={Style.opcoesCard}>
-                                {/* <FaEdit className={Style.iconeCard}/> */}
-                                {/* <CloseButton/> */}
-                                <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)} // prettier-ignore
-
-
-                                />
-                                {/* <FaRegWindowClose className={Style.iconeCard}/> */}
-                              </div>
-                            </div>
-
-                          </Card.Header>
-
-                          <Card.Body>
-                            <Card.Title>{item.name}</Card.Title>
-                            {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
-                            <Image src={ImgArvore} className={Style.imgArvore} alt="" />
-                          </Card.Body>
-                          <Card.Footer className="text-muted">
-                            {/* <Form.Control type="number" placeholder="Quantidade" /> */}
-                            <h5>Categoria: {item.category.name}</h5>
-                          </Card.Footer>
-                        </Card>
-
-                      ))}
-</div>
-                    </Col>
-                    <Col className={Style.coluna2}>
-<div className={Style.divItens2}>
-                      <ul>
-                        {colecao == '' &&
-
-                          <h4>Sem itens selecionados!</h4>
-                        }
-                        {colecao.map((elemento, index) => (
-
-                          <li key={index} className={Style.itemColecao} >
-                            {/* <div className={Style.divcolecao} onClick={() => removerElemento(index)}>
-                <h4 className={Style.itemColecao}>{elemento}</h4>
-              </div> */}
-
-                            <Alert variant="success" className={Style.alertaStilo} >
-
-                              <h4 className={Style.itemColecao}>{elemento}</h4>
-                              <FaTrashAlt onClick={() => removerElemento(elemento)} className={Style.alertaStiloDelete} />
-                            </Alert>
-
-                          </li>
-
-                        ))
-
-                        }
-
-                      </ul>
-                     
-</div>
-{colecao == '' &&
-                        <>
-                          <div className={Style.botaoPlantar1}>
-                            Permitir plantar estas espécies
-                          </div>
-                        </>
-                      }
-                      {colecao != '' &&
-                        <>
-                          <div className={Style.botaoPlantar2} >
-                            Permitir plantar estas espécies
-                          </div>
-                        </>
-
-                      }
-
-                    </Col>
-                  </Row>
-                </Container>
-
-                
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* <Arvores /> */}
-        </Modal.Body>
-        {/* <Modal.Footer>
-          <Button onClick={props.onHide}>Cancelar</Button>
-        </Modal.Footer> */}
-      </Modal>
-
-    );
-  }
+    // );
+  
 
   // const [colecaoTree, setColecaoTree] = useState([])
   // MyVerticallyCenteredModal()
@@ -786,28 +583,241 @@ export default function CadastrarLocal() {
               <br />
               <div>
                 <h5>Escolha as espécies de árvores que serão plantadas nesta região</h5>
-              <Button variant="primary" onClick={() => setModalShow(true)}>
+              {/* <Button variant="primary" onClick={() => setModalShow(true)} >
                 Selecione árvores
-              </Button>
+              </Button> */}
+             
               </div>
               
 
-              <MyVerticallyCenteredModal
+              {/* <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-              />
+              /> */}
               {/* <Arvores /> */}
 
             </Form>
 
             <br />
 
-            <Button variant="primary" onClick={enviarForm} className={Style.botaoSalvar}>Salvar</Button>
+            <Button variant="primary" onClick={scrollToTarget}  className={Style.botaoSalvar}>Prosseguir</Button>
           </Card.Body>
           {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
         </Card>
 
         {/* ------------------------------------Escolha de arvores------------------------------------- */}
+
+
+
+<div ref={scrollTargetRef}>
+{/* <Modal
+        {...props}
+        size="xl"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        className={Style.divModal}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Árvores disponíveis
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body> */}
+          <div className={Style.divSubtituloModal}>
+            <h4>Selecione quais tipos de árvores deseja plantar nesta região</h4>
+          </div>
+
+
+
+
+          <div className={Style.divFundo}>
+
+            <Navbar className={Style.headerTabela}>
+              <Container>
+
+                <Form.Group className={Style.Busca}>
+                  <Form.Control
+                    type="text"
+                    placeholder="Buscar por nome"
+                    id="meuInput"
+                    onKeyPress={handleCampo1KeyPress}
+                  />
+
+                </Form.Group>
+
+
+                <Dropdown className={Style.DropMENU}>
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                    <Nav.Link> <FaFilter className={Style.Icon} />Mostrar</Nav.Link>
+
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className={Style.OpDropNotifi}>
+                    <Dropdown.Item onClick={() => onChangeTodos("todos")}>Todos</Dropdown.Item>
+                    <hr />
+                    {dadosCategoria.map((item, index) => (
+                      <Dropdown.Item key={index} onClick={() => onChangeFilterCategoria(item.name)}>{item.name}</Dropdown.Item>
+                    ))}
+                    {/* <Dropdown.Item onClick={() => onChangeRoles("user")}>Usuário</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onChangeRoles("admin")}>Administrador</Dropdown.Item> */}
+
+                  </Dropdown.Menu>
+                </Dropdown>
+                {/* <Dropdown >
+                      <Dropdown.Toggle variant="primary" id="dropdown-basic" className={Style.IconeMENU}>
+                      <Nav.Link><FaListOl className={Style.Icon} />Ordenar</Nav.Link>
+                      
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => onChangeOrdem("recente")}>Mais recente</Dropdown.Item>
+                        <Dropdown.Item onClick={() => onChangeOrdem("antigo")}>Mais antigo</Dropdown.Item>
+                      </Dropdown.Menu>
+                </Dropdown> */}
+
+              </Container>
+            </Navbar>
+
+
+
+            <div>
+              <div className={Style.divFundoModal}>
+
+                <Container>
+                  <Row>
+                  <div className={Style.divPaginacao}>
+                  <Pagination>
+                    <Pagination.First onClick={() => paginacao(1)} />
+                    <Pagination.Prev onClick={() => paginaContador('sub')} />
+                    <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                    <Pagination.Ellipsis />
+
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+               
+                    <Pagination.Ellipsis />
+                    <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                    <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                    <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+                  </Pagination>
+                </div>
+                    <Col>
+
+
+
+
+<div className={Style.divItens1}>
+
+
+                      {repos.map((item, index) => (
+
+                        <Card className={Style.Card} key={item._id}>
+                          <Card.Header className={Style.HeaderCard0}>
+                            <div className={Style.HeaderCard}>
+
+                              {item.approved == true &&
+                                <h3 className={Style.StatusCard} >
+                                  Aprovado
+                                </h3>
+                              }
+                              {item.approved == false &&
+                                <h3 className={Style.StatusCard2} >
+                                  Reprovado
+                                </h3>
+                              }
+
+                              <div className={Style.opcoesCard}>
+                                {/* <FaEdit className={Style.iconeCard}/> */}
+                                {/* <CloseButton/> */}
+                                <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)} // prettier-ignore
+
+
+                                />
+                                {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+                              </div>
+                            </div>
+
+                          </Card.Header>
+
+                          <Card.Body>
+                            <Card.Title>{item.name}</Card.Title>
+                            {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+                            <Image src={ImgArvore} className={Style.imgArvore} alt="" />
+                          </Card.Body>
+                          <Card.Footer className="text-muted">
+                            {/* <Form.Control type="number" placeholder="Quantidade" /> */}
+                            <h5>Categoria: {item.category.name}</h5>
+                          </Card.Footer>
+                        </Card>
+
+                      ))}
+</div>
+                    </Col>
+                    <Col className={Style.coluna2}>
+<div className={Style.divItens2}>
+                      <ul>
+                        {colecao == '' &&
+
+                          <h4>Sem itens selecionados!</h4>
+                        }
+                        {colecao.map((elemento, index) => (
+
+                          <li key={index} className={Style.itemColecao} >
+                            {/* <div className={Style.divcolecao} onClick={() => removerElemento(index)}>
+                <h4 className={Style.itemColecao}>{elemento}</h4>
+              </div> */}
+
+                            <Alert variant="success" className={Style.alertaStilo} >
+
+                              <h4 className={Style.itemColecao}>{elemento}</h4>
+                              <FaTrashAlt onClick={() => removerElemento(elemento)} className={Style.alertaStiloDelete} />
+                            </Alert>
+
+                          </li>
+
+                        ))
+
+                        }
+
+                      </ul>
+                     
+</div>
+{colecao == '' &&
+                        <>
+                          <div className={Style.botaoPlantar1}>
+                            Slavar
+                          </div>
+                        </>
+                      }
+                      {colecao != '' &&
+                        <>
+                          <div className={Style.botaoPlantar2} onClick={enviarForm} >
+                           Salvar
+                          </div>
+                        </>
+
+                      }
+
+                    </Col>
+                  </Row>
+                </Container>
+
+                
+              </div>
+
+            </div>
+
+          </div>
+
+
+          {/* <Arvores /> */}
+      
+</div>
+
+
+
+
 
 
         {success &&
