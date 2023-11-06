@@ -81,7 +81,7 @@ export default function CadastrarLocal() {
   const [categori, setCategori] = useState('');
   const [dadosCategoria, setDadosCat] = useState([])
 
-  
+
   const [modalShow, setModalShow] = useState(false);
   const scrollTargetRef = useRef();
 
@@ -90,7 +90,7 @@ export default function CadastrarLocal() {
   };
 
   useEffect(() => {
-   
+
 
     setUserId(localStorage.getItem("idUs"))
     const minhaLista = [];
@@ -107,7 +107,7 @@ export default function CadastrarLocal() {
       try {
         setLoading(true)
         console.log("o tipo de arvore é: ", tipo)
-      
+
         if (tipo == 'todos') {
           const response = await fetch(URL_API_TREE + "?search=" + busca + "&category=" + categori + "&page=" + pageQtd + "&limit=" + pageLimit)
           const dados = await response.json();
@@ -127,11 +127,11 @@ export default function CadastrarLocal() {
       }
     }
 
-   
+
 
 
     fetchRepos()
-    
+
   }, [reloadCount]);
 
   // const colec = MyVerticallyCenteredModal();
@@ -156,83 +156,83 @@ export default function CadastrarLocal() {
       setReloadCount(prevCount => prevCount + 1);
     }
   }
-//-------------------------Paginação fim
+  //-------------------------Paginação fim
 
   //  Filtro de busca
 
   //=====================================Modal escollha de árvores inicio==================================
 
-    // const [minhaLista, setMinhaLista] = useState([])
+  // const [minhaLista, setMinhaLista] = useState([])
 
 
-    const handleCampo1KeyPress = (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        setBusca(e.target.value)
-        setLoading(true)
-        setReloadCount(prevCount => prevCount + 1);
-        console.log("os dados salvos na variavel: ", e.target.value)
-      }
-    };
-
-    function onChangeTodos() {
-      setBusca('')
+  const handleCampo1KeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      setBusca(e.target.value)
       setLoading(true)
       setReloadCount(prevCount => prevCount + 1);
+      console.log("os dados salvos na variavel: ", e.target.value)
     }
-    const onChangeFilterCategoria = (cate) => {
-      setCategori(cate);
-      setLoading(true)
-      setReloadCount(prevCount => prevCount + 1);
+  };
+
+  function onChangeTodos() {
+    setBusca('')
+    setLoading(true)
+    setReloadCount(prevCount => prevCount + 1);
+  }
+  const onChangeFilterCategoria = (cate) => {
+    setCategori(cate);
+    setLoading(true)
+    setReloadCount(prevCount => prevCount + 1);
+  }
+
+
+  // Estado para armazenar a coleção
+  const [colecao, setColecao] = useState([]);
+  // const [colecaoTree, setColecaoTree] = useState([]);
+
+  // Função para adicionar um novo elemento à coleção no último índice
+  const selecionarItem = (evt, event, idTree) => {
+    console.log("o event check: ", event)
+
+    if (event == false) {
+      removerElemento(evt)
+    } else if (event == true) {
+      // Crie o novo elemento (pode ser qualquer valor ou objeto)
+      const novoElemento = `Elemento ${colecao.length + 1}`;
+
+      const novoElementoTree = `Elemento ${trees.length + 1}`;
+      // Atualize o estado da coleção adicionando o novo elemento à última posição
+      setColecao([...colecao, evt]);
+      setTrees([...trees, { _id: idTree }]);
+      // return colecaoTree
+
     }
 
 
-    // Estado para armazenar a coleção
-    const [colecao, setColecao] = useState([]);
-    // const [colecaoTree, setColecaoTree] = useState([]);
 
-    // Função para adicionar um novo elemento à coleção no último índice
-    const selecionarItem = (evt, event, idTree) => {
-      console.log("o event check: ", event)
+  };
 
-      if (event == false) {
-        removerElemento(evt)
-      } else if (event == true) {
-        // Crie o novo elemento (pode ser qualquer valor ou objeto)
-        const novoElemento = `Elemento ${colecao.length + 1}`;
-        
-        const novoElementoTree = `Elemento ${trees.length + 1}`;
-        // Atualize o estado da coleção adicionando o novo elemento à última posição
-        setColecao([...colecao, evt]);
-        setTrees([...trees, {_id: idTree}]);
-        // return colecaoTree
-        
-      }
+  const removerElemento = (elemento) => {
+    const novaColecao = colecao.filter((item) => item !== elemento);
+    setColecao(novaColecao);
+  };
 
 
+  console.log("a coleção esta: ", colecao)
+  console.log("o id coleção esta: ", trees)
+  //e.target.value
 
-    };
-
-    const removerElemento = (elemento) => {
-      const novaColecao = colecao.filter((item) => item !== elemento);
-      setColecao(novaColecao);
-    };
+  // return (
 
 
-    console.log("a coleção esta: ", colecao)
-    console.log("o id coleção esta: ", trees)
-    //e.target.value
+  // );
 
-    // return (
-
-
-    // );
-  
 
   // const [colecaoTree, setColecaoTree] = useState([])
   // MyVerticallyCenteredModal()
-  
- //=====================================Modal escollha de árvores fim==================================
+
+  //=====================================Modal escollha de árvores fim==================================
 
 
   //------------Buscar automaticamente o endereço através do cep inserido
@@ -582,13 +582,13 @@ export default function CadastrarLocal() {
               </Row>
               <br />
               <div>
-                <h5>Escolha as espécies de árvores que serão plantadas nesta região</h5>
-              {/* <Button variant="primary" onClick={() => setModalShow(true)} >
+                {/* <h5>Escolha as espécies de árvores que serão plantadas nesta região</h5> */}
+                {/* <Button variant="primary" onClick={() => setModalShow(true)} >
                 Selecione árvores
               </Button> */}
-             
+
               </div>
-              
+
 
               {/* <MyVerticallyCenteredModal
                 show={modalShow}
@@ -600,7 +600,7 @@ export default function CadastrarLocal() {
 
             <br />
 
-            <Button variant="primary" onClick={scrollToTarget}  className={Style.botaoSalvar}>Prosseguir</Button>
+            <Button variant="primary" onClick={scrollToTarget} className={Style.botaoSalvar}>Prosseguir</Button>
           </Card.Body>
           {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
         </Card>
@@ -609,26 +609,11 @@ export default function CadastrarLocal() {
 
 
 
-<div ref={scrollTargetRef}>
-{/* <Modal
-        {...props}
-        size="xl"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        className={Style.divModal}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Árvores disponíveis
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body> */}
+        <div ref={scrollTargetRef}>
+
           <div className={Style.divSubtituloModal}>
             <h4>Selecione quais tipos de árvores deseja plantar nesta região</h4>
           </div>
-
-
-
 
           <div className={Style.divFundo}>
 
@@ -679,111 +664,110 @@ export default function CadastrarLocal() {
             </Navbar>
 
 
-
             <div>
               <div className={Style.divFundoModal}>
 
                 <Container>
                   <Row>
-                  <div className={Style.divPaginacao}>
-                  <Pagination>
-                    <Pagination.First onClick={() => paginacao(1)} />
-                    <Pagination.Prev onClick={() => paginaContador('sub')} />
-                    <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
-                    <Pagination.Ellipsis />
+                    <div className={Style.divPaginacao}>
+                      <Pagination>
+                        <Pagination.First onClick={() => paginacao(1)} />
+                        <Pagination.Prev onClick={() => paginaContador('sub')} />
+                        <Pagination.Item onClick={() => paginacao(pageQtd)} active>{pageQtd}</Pagination.Item>
+                        <Pagination.Ellipsis />
 
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
-               
-                    <Pagination.Ellipsis />
-                    <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
-                    <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
-                    <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
-                  </Pagination>
-                </div>
+                        <Pagination.Item onClick={() => paginacao(pageQtd + 2)} disabled={pageQtd >= 125}>{pageQtd + 2}</Pagination.Item>
+                        <Pagination.Item onClick={() => paginacao(pageQtd + 3)} disabled={pageQtd >= 125}>{pageQtd + 3}</Pagination.Item>
+                        <Pagination.Item onClick={() => paginacao(pageQtd + 4)} disabled={pageQtd >= 125}>{pageQtd + 4}</Pagination.Item>
+
+                        <Pagination.Ellipsis />
+                        <Pagination.Item onClick={() => paginacao(pageQtd + 20)} disabled={pageQtd >= 125}>{pageQtd + 20}</Pagination.Item>
+                        <Pagination.Next onClick={() => paginaContador('sum')} disabled={pageQtd >= 125} />
+                        <Pagination.Last onClick={() => paginacao(130)} disabled={pageQtd >= 125} />
+                      </Pagination>
+                    </div>
                     <Col>
 
 
 
 
-<div className={Style.divItens1}>
+                      <div className={Style.divItens1}>
 
 
-                      {repos.map((item, index) => (
+                        {repos.map((item, index) => (
 
-                        <Card className={Style.Card} key={item._id}>
-                          <Card.Header className={Style.HeaderCard0}>
-                            <div className={Style.HeaderCard}>
+                          <Card className={Style.Card} key={item._id}>
+                            <Card.Header className={Style.HeaderCard0}>
+                              <div className={Style.HeaderCard}>
 
-                              {item.approved == true &&
-                                <h3 className={Style.StatusCard} >
-                                  Aprovado
-                                </h3>
-                              }
-                              {item.approved == false &&
-                                <h3 className={Style.StatusCard2} >
-                                  Reprovado
-                                </h3>
-                              }
+                                {item.approved == true &&
+                                  <h3 className={Style.StatusCard} >
+                                    Aprovado
+                                  </h3>
+                                }
+                                {item.approved == false &&
+                                  <h3 className={Style.StatusCard2} >
+                                    Reprovado
+                                  </h3>
+                                }
 
-                              <div className={Style.opcoesCard}>
-                                {/* <FaEdit className={Style.iconeCard}/> */}
-                                {/* <CloseButton/> */}
-                                <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)} // prettier-ignore
+                                <div className={Style.opcoesCard}>
+                                  {/* <FaEdit className={Style.iconeCard}/> */}
+                                  {/* <CloseButton/> */}
+                                  <Form.Check onClick={(e) => selecionarItem(item.name, e.target.checked, item._id)} // prettier-ignore
 
 
-                                />
-                                {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+                                  />
+                                  {/* <FaRegWindowClose className={Style.iconeCard}/> */}
+                                </div>
                               </div>
-                            </div>
 
-                          </Card.Header>
+                            </Card.Header>
 
-                          <Card.Body>
-                            <Card.Title>{item.name}</Card.Title>
-                            {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
-                            <Image src={ImgArvore} className={Style.imgArvore} alt="" />
-                          </Card.Body>
-                          <Card.Footer className="text-muted">
-                            {/* <Form.Control type="number" placeholder="Quantidade" /> */}
-                            <h5>Categoria: {item.category.name}</h5>
-                          </Card.Footer>
-                        </Card>
+                            <Card.Body>
+                              <Card.Title>{item.name}</Card.Title>
+                              {/* <Image src={ImgArvore} className={Style.imgArvore} alt=""/> */}
+                              <Image src={ImgArvore} className={Style.imgArvore} alt="" />
+                            </Card.Body>
+                            <Card.Footer className="text-muted">
+                              {/* <Form.Control type="number" placeholder="Quantidade" /> */}
+                              <h5>Categoria: {item.category.name}</h5>
+                            </Card.Footer>
+                          </Card>
 
-                      ))}
-</div>
+                        ))}
+                      </div>
                     </Col>
                     <Col className={Style.coluna2}>
-<div className={Style.divItens2}>
-                      <ul>
-                        {colecao == '' &&
+                      <div className={Style.divItens2}>
+                        <ul>
+                          {colecao == '' &&
 
-                          <h4>Sem itens selecionados!</h4>
-                        }
-                        {colecao.map((elemento, index) => (
+                            <h4>Sem itens selecionados!</h4>
+                          }
+                          {colecao.map((elemento, index) => (
 
-                          <li key={index} className={Style.itemColecao} >
-                            {/* <div className={Style.divcolecao} onClick={() => removerElemento(index)}>
-                <h4 className={Style.itemColecao}>{elemento}</h4>
-              </div> */}
-
-                            <Alert variant="success" className={Style.alertaStilo} >
-
+                            <li key={index} className={Style.itemColecao} >
+                              {/* <div className={Style.divcolecao} onClick={() => removerElemento(index)}>
                               <h4 className={Style.itemColecao}>{elemento}</h4>
-                              <FaTrashAlt onClick={() => removerElemento(elemento)} className={Style.alertaStiloDelete} />
-                            </Alert>
+                            </div> */}
 
-                          </li>
+                              <Alert variant="success" className={Style.alertaStilo} >
 
-                        ))
+                                <h4 className={Style.itemColecao}>{elemento}</h4>
+                                <FaTrashAlt onClick={() => removerElemento(elemento)} className={Style.alertaStiloDelete} />
+                              </Alert>
 
-                        }
+                            </li>
 
-                      </ul>
-                     
-</div>
-{colecao == '' &&
+                          ))
+
+                          }
+
+                        </ul>
+
+                      </div>
+                      {colecao == '' &&
                         <>
                           <div className={Style.botaoPlantar1}>
                             Slavar
@@ -793,7 +777,7 @@ export default function CadastrarLocal() {
                       {colecao != '' &&
                         <>
                           <div className={Style.botaoPlantar2} onClick={enviarForm} >
-                           Salvar
+                            Salvar
                           </div>
                         </>
 
@@ -803,7 +787,7 @@ export default function CadastrarLocal() {
                   </Row>
                 </Container>
 
-                
+
               </div>
 
             </div>
@@ -812,8 +796,8 @@ export default function CadastrarLocal() {
 
 
           {/* <Arvores /> */}
-      
-</div>
+
+        </div>
 
 
 
