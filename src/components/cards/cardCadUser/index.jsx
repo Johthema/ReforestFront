@@ -27,6 +27,7 @@ function LeftTabsExample() {
   const [roles, setRoles] = useState('');
   const [person, setPerson] = useState('PF');
   const [phone, setPhone] = useState('')
+  const [phoneTeste, setPhoneTeste] = useState('')
   const [site, setSite] = useState('')
   const [fullname, setFullName] = useState('')
 
@@ -53,7 +54,9 @@ function LeftTabsExample() {
     setEmail(evt.target.value)
   }
   const onChangePhone = (evt) =>{
-    setPhone('+55'+ evt.target.value)
+    const numericValue = evt.target.value.replace(/[^0-9]/g, '');
+    setPhone('+55'+ numericValue)
+    setPhoneTeste(numericValue)
   }
   const onChangePassword = (evt) =>{
     setPassword(evt.target.value)
@@ -202,7 +205,7 @@ function LeftTabsExample() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPhone">
                     <FloatingLabel controlId="floatingInput" label="*Telefone(xx)xxxxx-xxxx" className="mb-3">
-                        <Form.Control type="text" placeholder='*Telefone(xx)xxxxx-xxxx' name='phone' maxLength={11}   onChange={onChangePhone}/>
+                        <Form.Control type="text" placeholder='*Telefone(xx)xxxxx-xxxx' name='phone' maxLength={11} value={phoneTeste}  onChange={onChangePhone}/>
                     </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -252,7 +255,7 @@ function LeftTabsExample() {
                             </FloatingLabel>
 
                             <FloatingLabel controlId="floatingInput" label="*Telefone" className="mb-3">
-                              <Form.Control placeholder='*Telefone' maxLength={11} onChange={onChangePhone} />
+                              <Form.Control placeholder='*Telefone' maxLength={11} value={phoneTeste} onChange={onChangePhone} />
                             </FloatingLabel>
                             
                             <FloatingLabel controlId="floatingInput" label="Site(opcional)" className="mb-3">
@@ -278,12 +281,11 @@ function LeftTabsExample() {
                             <Form.Group as={Col} controlId="formGridState" className={Style.formPapel}>
                           
                             <Form.Select  onChange={(e) =>onChangeRoles(e.target.value) }>
-                        <option value="user">Usuário</option>
-                        <option value="admin">Administrador</option>
-                        
-                        {/* <option value="3">Opção3</option> */}
-                        
-                    </Form.Select>
+                                <option value="user">Usuário</option>
+                                <option value="admin">Administrador</option>
+
+                                
+                            </Form.Select>
                             <Example/>
                             </Form.Group>
                         </Row>
