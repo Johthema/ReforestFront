@@ -48,8 +48,8 @@ export default function CadastrarLocal() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [hectare, setHectare] = useState('');
-  const [treesToBePlanted, setTreesToBePlanted] = useState(0);
-  const [plantedTrees, setPlantedTrees] = useState(0);
+  const [treesToBePlanted, setTreesToBePlanted] = useState('');
+  const [plantedTrees, setPlantedTrees] = useState('');
   const [falledTrees, setFalledTrees] = useState('');
   const [limitTrees, setLimitTrees] = useState('');
   const [irrigation, setIrrigation] = useState(Boolean);
@@ -386,6 +386,8 @@ export default function CadastrarLocal() {
       setFalledTrees(evt.target.value)
     }
 
+    
+
   }
   const onChangeLimitTrees = (evt) => {
     const numericValue = evt.target.value.replace(/[^0-9]/g, '');
@@ -510,7 +512,7 @@ export default function CadastrarLocal() {
 
 
         <Card className={Style.cardArvore}>
-          <Card.Header>Cadastro do Local</Card.Header>
+          <Card.Header>Cadastro de Local</Card.Header>
           <Card.Body>
 
             <Form onSubmit={enviarForm} method='post'>
@@ -594,13 +596,13 @@ export default function CadastrarLocal() {
 
               <Row>
                 <Col>
-                  <Form.Control type="number" placeholder="Árvores derrubadas" onChange={onChangeFalledTrees} />
+                  <Form.Control type="number" placeholder="Árvores derrubadas" value={falledTrees} onChange={onChangeFalledTrees} />
                 </Col>
                 <Col>
-                  <Form.Control type="number" placeholder="Árvores ja plantadas " onChange={onChangePlantedTrees} />
+                  <Form.Control type="number" placeholder="Árvores ja plantadas " value={plantedTrees} onChange={onChangePlantedTrees} />
                 </Col>
                 <Col>
-                  <Form.Control type="number" placeholder="Árvores a plantar" onChange={onChangeTreesToBePlanted} />
+                  <Form.Control type="number" placeholder="Árvores a plantar" value={treesToBePlanted} onChange={onChangeTreesToBePlanted} />
                 </Col>
               </Row>
 
