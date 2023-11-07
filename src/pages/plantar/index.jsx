@@ -347,7 +347,7 @@ const items = [];
   items.push(
     // <div className="item" data-value={i}>local-{i}: {item.name}</div>
 
-
+<div className={Style.divEscolhaLocal}>
   
       <Card key={i} className={Style.cardLocais}>
       <Card.Header className={Style.HeaderLocais}><h4>{item.name} </h4>
@@ -383,7 +383,7 @@ const items = [];
 
       </Card.Footer>
     </Card>
-
+    </div>
   )
 ))}
 function editarDadosRota() {

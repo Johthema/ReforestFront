@@ -459,6 +459,10 @@ color: #55ACEE
 }
 
 /* ===============ESTILO DOS CARDS ARVORES=============== */
+.divEscolhaLocal{
+    cursor: grab;
+}
+
 .divItens1{
     /* height: 400px;
     overflow-y: auto; */
