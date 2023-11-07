@@ -801,8 +801,10 @@ export default function CadastrarLocal() {
                       <div className={Style.divItens2}>
                         <ul>
                           {colecao == '' &&
-
-                            <h4>Sem itens selecionados!</h4>
+<div className={Style.legendaSemItens}>
+<h4>Sem itens selecionados!</h4>
+</div>
+                           
                           }
                           {colecao.map((elemento, index) => (
 

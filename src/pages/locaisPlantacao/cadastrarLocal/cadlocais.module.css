@@ -273,3 +273,10 @@
     height: 400px;
     overflow-y: auto;
 }
+
+.legendaSemItens{
+color:#6d6d6d;
+display: flex;
+justify-content: center;
+margin: auto;
+}
